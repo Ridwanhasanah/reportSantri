@@ -11,6 +11,8 @@
 
     <title>@yield('title')</title>
     <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <link href="{{asset('dashboard/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
@@ -252,7 +254,12 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li>
+                            <a href="/logout" 
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out fa-fw"></i> Logout
+                            </a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -268,24 +275,38 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{route('admin')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{route('dashboardIT')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
+                        {{-- ====== Kegiatan atau Report ====== --}}
                         <li>
-                            <a href=""><i class="fa fa-cubes fa-fw"></i> Report<span class="fa arrow"></span></a>
+                            <a href="{{route('report.all')}}"><i class="fa fa-cubes fa-fw"></i> Report<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">All Report</a>
+                                    <a href="{{route('report.all')}}">All Report</a>
                                 </li>
                                 <li>
-                                    <a href="">Add New</a>
+                                    <a href="{{route('report.add')}}">Add New</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        {{-- ===== Goal ===== --}}
+                         <li>
+                            <a href="{{route('goal.all')}}"><i class="fa fa-cubes fa-fw"></i> Report<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('goal.all')}}">All Report</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('goal.add')}}">Add New</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -403,6 +424,11 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{asset('dashboard/dist/js/sb-admin-2.js')}}"></script>
 
-</body>
+    {{-- reportPondokit --}}
+    <script src="{{asset('js/reportPondokit.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-</html>
+        </body>
+
+        </html>

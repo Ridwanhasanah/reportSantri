@@ -373,7 +373,7 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper"> {{-- Here  --}}
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Tables</h1>

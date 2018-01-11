@@ -1,0 +1,7 @@
+===> laporan kasih user_id nanti ketika user login detek nya Auth::user()->id; begitu kira2
+
+===> Logikanya jika user_id datanya sama dengan auth idnya maka aksesnya boleh, else tidak boleh
+
+===>Ambil dari Session User ID, query user_id = session_id
+
+===> $data = Data::where('user_id, Auth::user()->id);
