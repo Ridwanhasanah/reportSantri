@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Goal;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class GoalController extends Controller
 {
@@ -13,9 +16,18 @@ class GoalController extends Controller
      */
     public function index()
     {
-        $goals = Goal::latest()->paginate(5);
+        // $goals = Goal::latest()->paginate(5);
 
-        return view('dashboard.goal.allgoal', compact('goals'));
+        $id = Auth::user()->id; //untuk mengecek id user
+
+        $goals = DB::table('users')
+            ->select('goals.*')
+            ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->latest()->paginate(5);
+            // dd($users);
+
+        return view('dashboard.goal.allgoal', compact('goals','users'));
     }
 
     /**
@@ -45,6 +57,7 @@ class GoalController extends Controller
         $goal->option    = $request->option;
         $goal->when      = $request->when;
         $goal->reality   = $request->reality;
+        $goal->user_id   = Auth::user()->id;
 
         $goal->save();
      
@@ -83,29 +96,31 @@ class GoalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Goal $Goal)
+    public function update(Request $request, $id)
     {
-
+/*
         $request = new Request;
         $goal->update([
 
-            'goal'  => request('goal'),
-            'option'    => request('option'),
-            'when' => request('when'),
-            'reality'      => request('reality'),
+            'goal'    => request('goal'),
+            'option'  => request('option'),
+            'reality' => request('reality'),
+            'when'    => request('when'),
         ]);
 
-        return redirect()->back();
+        return redirect()->back();*/
 
-        /*$Goal = Goal::find($id);
+        $goal = Goal::find($id);
 
-        $Goal->Goal  = $request->Goal;
-        $Goal->result    = $request->result;
-        $Goal->follow_up = $request->follow_up;
-        $Goal->when      = $request->when;
+        $goal->goal      = $request->goal;
+        $goal->option    = $request->option;
+        $goal->reality   = $request->reality;
+        $goal->when      = $request->when;
 
-        $Goal->update();
-        return redirect()->route('goal.all', compact('id', 'Goal'));*/
+         // dd($goal);
+
+        $goal->update();
+        return redirect()->route('goal.all', compact('id', 'goal'));
         
     }
 

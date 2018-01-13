@@ -19,7 +19,14 @@ class CreateActivitiesTable extends Migration
             $table->string('result')->nullable();
             $table->string('follow_up')->nullable();
             $table->date('when')->nullable();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('user_id')
+           ->references('id')
+           ->on('users')
+           ->onUpdate('cascade')
+           ->onDelete('cascade');
         });
     }
 

@@ -12,6 +12,6 @@ class Activity extends Model
 
     public function users(){
 
-    	return $this->belongsToMany(User::class, 'activity_users', 'activity_id','user_id');
+    	return $this->belongsTo(User::class, 'users','id');
     }
 }

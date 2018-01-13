@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Activity;
-use App\Models\ActivityUser;
 use App\User;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
@@ -18,16 +17,15 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::latest()->paginate(5);
+        // $activities = Activity::latest()->paginate(5);
         $id = Auth::user()->id; //untuk mengecek id user
         //$user = DB::table('users')->get();
 
-        $users = DB::table('users')
+        $activities = DB::table('users')
             ->select('activities.*')
-            ->rightJoin('activity_users', 'activity_users.user_id', '=', 'users.id' )
-            ->leftJoin('activities','activity_users.activity_id', '=', 'activities.id')
+            ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
             ->where('users.id', "$id")
-            ->get();
+            ->latest()->paginate(5);;
 
             //dd($users);
 
@@ -59,37 +57,26 @@ class ActivityController extends Controller
     {
         $activity = new Activity;
 
-        $activities = DB::table('activities')->insertGetId([ //menggunakan inserGetId untuk mengambil id latest
-            'activity' => $request->activity,
-            'result' => $request->result,
-            'follow_up' => $request->follow_up,
-            'when' => $request->when
-        ]);
 
 
-        /*$activity->activity  = $request->activity;
-        $activity->result    = $request->result;
-        $activity->follow_up = $request->follow_up;
-        $activity->when      = $request->when;*/
+        // $activities = DB::table('activities')->insertGetId([ //menggunakan inserGetId untuk mengambil id latest
+            $activity->activity = $request->activity;
+            $activity->result = $request->result;
+            $activity->follow_up = $request->follow_up;
+            $activity->when = $request->when;
+            $activity->user_id = Auth::user()->id;
+        // ]);
+            $activity->save();
 
-        // dd(DB::table('activities')->getPdo()->lastInsertId());
-
-        // $activity->save();
-        // dd($activity);
-        /*Pivot*/
-        // $id = DB::getPdo()->lastInsertId();
-        $idUser = Auth::user()->id;
+        /*$idUser = Auth::user()->id; 
         $activityUser = ActivityUser::insert([ 
             'user_id' => $idUser,
             'activity_id' => $activities
-        ]);
-
-        // $activityUser->user_id = $idUser; //masukin id user ke pivot activityUser
-        // $activityUser->activity_id = $activities;
+        ]);*/
 
 
      
-        return redirect()->route('report.edit',$activities); 
+        return redirect()->route('report.edit',$activity); 
 
     }
 

@@ -300,10 +300,10 @@
                         </li>
                         {{-- ===== Goal ===== --}}
                          <li>
-                            <a href="{{route('goal.all')}}"><i class="fa fa-cubes fa-fw"></i> Report<span class="fa arrow"></span></a>
+                            <a href="{{route('goal.all')}}"><i class="fa fa-cubes fa-fw"></i> Goals<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('goal.all')}}">All Report</a>
+                                    <a href="{{route('goal.all')}}">All Goals</a>
                                 </li>
                                 <li>
                                     <a href="{{route('goal.add')}}">Add New</a>

@@ -11,6 +11,6 @@ class Goal extends Model
 
     public function users(){
 
-    	return $this->belongsToMany(User::class, 'goal_users');
+    	return $this->belongsTo(User::class, 'users','id');
     }
 }

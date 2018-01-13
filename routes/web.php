@@ -53,16 +53,16 @@ Route::group(['middleware'=>'auth'], function(){ // itu midddleware web apaan? g
 
 
 	/*===== Goal Start =====*/
-	/*All Report*/
-	Route::get('/goal/all', 'GoalController@index')->name('goal.all');
-	/*Add Report*/
-	Route::get('/goal/add', 'GoalController@create')->name('goal.add');
-	Route::post('/goal/add', 'GoalController@store')->name('goal.addstore');
-	/*Delete Report*/
-	Route::delete('/goal/{id}/delete', 'GoalController@destroy')->name('goal.delete');
-	/*Edit Report*/
-	Route::get('goal/{activities}/edit', 'GoalController@edit')->name('goal.edit');
-	Route::patch('goal/{goal}/edit', 'GoalController@update')->name('goal.update');
+	/*All Goal*/
+	Route::get('/goals/all', 'GoalController@index')->name('goal.all');
+	/*Add Goal*/
+	Route::get('/goals/add', 'GoalController@create')->name('goal.add');
+	Route::post('/goals/add', 'GoalController@store')->name('goal.addstore');
+	/*Delete Goal*/
+	Route::delete('/goals/{id}/delete', 'GoalController@destroy')->name('goal.delete');
+	/*Edit Goal*/
+	Route::get('goals/{id}/edit', 'GoalController@edit')->name('goal.edit');
+	Route::patch('goals/{id}/edit', 'GoalController@update')->name('goal.update');
 	/*===== Goal End =====*/
 
 

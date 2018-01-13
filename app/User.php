@@ -35,12 +35,12 @@ class User extends Authenticatable
 
     /*Realtion Many to manty User - goal*/
     public function goals(){
-        return $this->belongsToMany(Models\Goal::class, 'goal_users');
+        return $this->hasMany(Models\Goal::class, 'goals');
     }
 
     /*Realtion Many to manty User - activity*/
     public function activities(){
-        return $this->belongsToMany(Models\Activity::class, 'activity_users');
+        return $this->hasMany(Models\Activity::class, 'activities');
     }
 
 

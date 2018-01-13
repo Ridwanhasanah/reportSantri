@@ -20,18 +20,6 @@ All Reports
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                Testing
-                <pre>ID    : {{ $id }}</pre>
-                {{-- <pre>{{dd($user->where('id','$id'))}}</pre> --}}
-                Testing
-                {{-- <pre>
-                    {{print_r($users[0]->activities)}}
-                </pre> --}}
-                {{-- @foreach ($users[0]->activities as $activity)
-                <pre>
-                    {{$activity->activity}}
-                </pre>
-                @endforeach --}}
                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr>
@@ -44,7 +32,7 @@ All Reports
                     </thead>
                     <tbody>
                        
-                    	@foreach ($users as $activity)
+                    	@foreach ($activities as $activity)
                     		<tr class="odd gradeX">
                             <td>
                                 {{$activity->activity}}<br>
