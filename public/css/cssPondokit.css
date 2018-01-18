@@ -1,0 +1,17 @@
+.rupdate{
+	margin: 15px 0px 0px 0px;
+    text-align: center;
+}
+
+.rbtn{
+	padding: 2px 5px !important;
+	font-size: 11px !important;
+}
+
+.rvalidasi{
+	border: #f00;
+	color: #f00 !important;
+	background: #fdd6d687;
+	padding: 5px;
+	border-radius: 4px;
+}

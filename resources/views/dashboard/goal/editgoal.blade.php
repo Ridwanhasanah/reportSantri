@@ -6,6 +6,7 @@ Edit Goal
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
+            @include('layouts.patrials.alerts')
             <h1 class="page-header">Goal</h1>
         </div>
         <!-- /.col-lg-12 -->

@@ -40,15 +40,15 @@ Dashboard
                                     <form style="float: left; color: red;" class="" action="{{route('goal.delete',$goal->id)}}" method="post">
                                       {{ csrf_field() }}
                                       {{ method_field('DELETE') }}
-                                      <button type="submit" class="btn btn-danger">
-                                        <i class="fa fa-trash-o"></i>&nbsp;Hapus
+                                      <button type="submit" class="btn btn-danger rbtn">
+                                        <i class="fa fa-trash-o"></i>
                                         <input type="hidden">
                                       </button>
                                 </form>
                                 &nbsp;
                                 <a href="{{route('goal.edit',$goal->id)}}">
-                                <button class="btn btn-success">
-                                        <i class="fa fa-pencil"></i>&nbsp; Edit
+                                <button class="btn btn-success rbtn">
+                                        <i class="fa fa-pencil "></i>
                                         <input type="hidden">
                                 </button>
                                 </a>
@@ -103,15 +103,15 @@ Dashboard
                                     <form style="float: left; color: red;" class="" action="{{route('report.delete',$activity->id)}}" method="post">
                                       {{ csrf_field() }}
                                       {{ method_field('DELETE') }}
-                                      <button type="submit" class="btn btn-danger">
-                                        <i class="fa fa-trash-o"></i>&nbsp;Hapus
+                                      <button type="submit" class="btn btn-danger rbtn">
+                                        <i class="fa fa-trash-o"></i>
                                         <input type="hidden">
                                       </button>
                                 </form>
                                 &nbsp;
                                 <a href="{{route('report.edit',$activity->id)}}">
-                                <button class="btn btn-success">
-                                        <i class="fa fa-pencil"></i>&nbsp; Edit
+                                <button class="btn btn-success rbtn">
+                                        <i class="fa fa-pencil"></i>
                                         <input type="hidden">
                                 </button>
                                 </a>

@@ -7,4 +7,4 @@ $(document).ready(function(){
 		changeYear: true,
 		yearRange: "1900:2222"});
 	/*===== Date Picker End =====*/
-})
+});

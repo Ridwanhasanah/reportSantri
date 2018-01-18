@@ -25,7 +25,7 @@ class ActivityController extends Controller
             ->select('activities.*')
             ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
             ->where('users.id', "$id")
-            ->latest()->paginate(5);;
+            ->latest()->paginate(5);
 
             //dd($users);
 
@@ -76,7 +76,7 @@ class ActivityController extends Controller
 
 
      
-        return redirect()->route('report.edit',$activity); 
+        return redirect()->route('report.edit',$activity)->with('success', 'Report Added'); 
 
     }
 
@@ -123,7 +123,11 @@ class ActivityController extends Controller
             'when'      => request('when'),
         ]);
 
-        return redirect()->back();
+        if ($activity->update()) {
+            
+        }
+
+        return redirect()->back()->with('info','Success Updated');
 
         /*$activity = Activity::find($id);
 
@@ -148,7 +152,7 @@ class ActivityController extends Controller
         $activity = Activity::find($id);
         $activity->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('danger', 'Report Deleted');
 
     }
 }

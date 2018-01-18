@@ -14,6 +14,13 @@ class AddColumnUser extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table){
+            $table->enum('department', [
+                'Programmer', 
+                'Multimedia',
+                'Imers',
+                'Cyber'
+                'Staff Pondok IT'
+            ]);
             $table->text('address')->nullable();
             $table->string('hp')->nullable();
             $table->integer('level')->nullable();
@@ -24,7 +31,7 @@ class AddColumnUser extends Migration
             $table->string('creation')->nullable();
             $table->string('photo')->nullable();
             $table->date('date_birth')->nullable();
-            $table->date('date_place')->nullable();
+            $table->string('birth_place')->nullable();
 
         });
     }

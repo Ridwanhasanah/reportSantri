@@ -61,7 +61,7 @@ class GoalController extends Controller
 
         $goal->save();
      
-        return redirect()->route('goal.edit',$goal->id); 
+        return redirect()->route('goal.edit',$goal->id)->with('success', 'Goal Added'); 
 
     }
 
@@ -120,7 +120,7 @@ class GoalController extends Controller
          // dd($goal);
 
         $goal->update();
-        return redirect()->route('goal.all', compact('id', 'goal'));
+        return redirect()->back()->with('info', 'Goal Updated');
         
     }
 
@@ -135,7 +135,7 @@ class GoalController extends Controller
         $goal = goal::find($id);
         $goal->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('danger', 'Goal Deleted');
 
     }
 }

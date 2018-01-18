@@ -21,18 +21,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('report/all', 'ActivityController@index')->name('report.all');
 
 Route::group(['middleware'=>'auth'], function(){ // itu midddleware web apaan? ga tw ane cuma ikut tuttor aja gan
 	Route::resource('report', 'ActivityController');
 
 	/*Dasboard*/
-	Route::get('/adminPondok', function(){
-	return view('dashboard.masterdashboard');
-	});
+	Route::get('/home', 'PondokitController@index')->name('dashboardIT');
+	
+
+	Route::get('/adminPondok', 'PondokitController@index')->name('dashboardIT');
 
 	Route::get('/PondokIT', 'PondokitController@index')->name('dashboardIT');
 
@@ -65,6 +62,28 @@ Route::group(['middleware'=>'auth'], function(){ // itu midddleware web apaan? g
 	Route::patch('goals/{id}/edit', 'GoalController@update')->name('goal.update');
 	/*===== Goal End =====*/
 
+	/*===== Profile Start ===== */
+	Route::get('profile','ProfileController@index')->name('profile');
+	/*Edit*/
+	Route::get('profile/{id}/edit','ProfileController@edit')->name('profile.edit');
+	Route::patch('profile/{id}/edit','ProfileController@update')->name('profile.update');
+
+	/*===== Profile End ===== */
+
+	/*Admin Start*/
+	/*All User*/
+	Route::get('alluser','AllUserController@index')->name('alluser');
+	/*Create*/
+	Route::get('user/add','AllUserController@create')->name('user.add');
+	Route::post('user/add','AllUserController@store')->name('user.addstore');
+	/*Edit*/
+	Route::get('user/{id}/edit','AllUserController@edit')->name('user.edit');
+	Route::patch('user/{id}/edit','AllUserController@update')->name('user.update');
+	/*Detail*/
+	Route::get('user/{id}/detail','AllUserController@show')->name('user.detail');
+	/*Delete*/
+	Route::delete('user/{id}/delete','AllUserController@destroy')->name('user.delete');
+	/*Admin End*/
 
 	
 
