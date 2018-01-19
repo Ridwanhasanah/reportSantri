@@ -20,7 +20,7 @@ Add User
         <div class="panel-body">
               <div class="row">
 
-                 <form action="{{route('user.addstore')}}" method="post" role="form" enctype="multipart/form-data">
+                 <form action="{{route('user.store')}}" method="post" role="form" enctype="multipart/form-data">
                     {{csrf_field()}}
                     {{ method_field('POST') }}
 

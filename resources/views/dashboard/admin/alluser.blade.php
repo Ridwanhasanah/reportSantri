@@ -48,18 +48,28 @@ All User
                                                 </div>
                                             @endif
 
-                                            <b><a href="{{route('user.detail',$user->id)}}">{{ $user->name }}</a></b><br>
+                                            <b><a href="{{route('user.show',$user->id)}}">{{ $user->name }}</a></b><br>
                                             <small>
-                                                    <a style="float: left;" href="{{route('user.edit',$user->id)}}">Edit | </a>
-                                                    <form style="float: left; color: red;" class="" action="" method="post">
+                                                    <a style="float: left;" href="{{route('user.edit',$user->id)}}">
+                                                        <button class="btn btn-success rbtn">
+                                                            <i class="fa fa-pencil"></i>
+                                                            <input type="hidden">
+                                                        </button>
+                                                    <a>
+                                                    <form style="float: left; color: red;" class="" action="{{route('user.destroy',$user->id)}}" method="post">
                                                           {{ csrf_field() }}
                                                           {{ method_field('DELETE') }}
-                                                          <a href="">
-                                                            &nbsp;Delete | 
+                                                          <button type="submit" class="btn btn-danger rbtn">
+                                                            <i class="fa fa-trash-o"></i>
                                                             <input type="hidden">
-                                                          </a>
+                                                          </button>
                                                       </form>
-                                                      <a style="float: left;" href="{{route('user.detail',$user->id)}}">&nbsp;View</a>
+                                                      <a style="float: left;" href="{{route('user.show',$user->id)}}">
+                                                          <button class="btn btn-info rbtn">
+                                                            <i class="fa fa-eye"></i>
+                                                            <input type="hidden">
+                                                        </button>
+                                                      </a>
                                             </small>
 
                                         </td>

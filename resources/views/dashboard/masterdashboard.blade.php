@@ -296,13 +296,32 @@
                         @if (Auth::user()->level==1)
                         
                         <li>
-                            <a href="{{route('alluser')}}"><i class="fa fa-users fa-fw"></i> Santri<span class="fa arrow"></span></a>
+                            <a href="{{route('user.index')}}"><i class="fa fa-users fa-fw"></i> Santri<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('alluser')}}">All Santri</a>
+                                    <a href="{{route('user.index')}}">All Santri<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a href="{{route('user.add')}}">Add Santri</a>
+                                    <a href="#">Third Level </a>
+                                    
+                                    <!-- /.nav-third-level -->
+                                </li>
+                                <li>
+                                    <a href="{{route('user.create')}}">Add Santri</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -15,15 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*Dashboard*/
-	Route::get('report/add', 'ActivityController@create')->name('report.add');
-
-
 Auth::routes();
 
 
-Route::group(['middleware'=>'auth'], function(){ // itu midddleware web apaan? ga tw ane cuma ikut tuttor aja gan
-	Route::resource('report', 'ActivityController');
+Route::group(['middleware'=>'auth'], function(){ 
+	// Route::resource('report', 'ActivityController');
 
 	/*Dasboard*/
 	Route::get('/home', 'PondokitController@index')->name('dashboardIT');
@@ -70,20 +66,28 @@ Route::group(['middleware'=>'auth'], function(){ // itu midddleware web apaan? g
 
 	/*===== Profile End ===== */
 
+	Route::group(['middleware'=>'check_user'], function(){ 
+
+		Route::resources([
+			'user' => 'AllUserController'
+		]);
+		
+	});
+
 	/*Admin Start*/
 	/*All User*/
-	Route::get('alluser','AllUserController@index')->name('alluser');
-	/*Create*/
-	Route::get('user/add','AllUserController@create')->name('user.add');
-	Route::post('user/add','AllUserController@store')->name('user.addstore');
-	/*Edit*/
-	Route::get('user/{id}/edit','AllUserController@edit')->name('user.edit');
-	Route::patch('user/{id}/edit','AllUserController@update')->name('user.update');
-	/*Detail*/
-	Route::get('user/{id}/detail','AllUserController@show')->name('user.detail');
-	/*Delete*/
-	Route::delete('user/{id}/delete','AllUserController@destroy')->name('user.delete');
-	/*Admin End*/
+	// Route::get('alluser','AllUserController@index')->name('alluser');
+	// /*Create*/
+	// Route::get('user/add','AllUserController@create')->name('user.add');
+	// Route::post('user/add','AllUserController@store')->name('user.addstore');
+	// /*Edit*/
+	// Route::get('user/{id}/edit','AllUserController@edit')->name('user.edit');
+	// Route::patch('user/{id}/edit','AllUserController@update')->name('user.update');
+	// /*Detail*/
+	// Route::get('user/{id}/detail','AllUserController@show')->name('user.detail');
+	// /*Delete*/
+	// Route::delete('user/{id}/delete','AllUserController@destroy')->name('user.destroy');
+	// /*Admin End*/
 
 	
 

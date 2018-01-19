@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class AllUserController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +24,9 @@ class AllUserController extends Controller
 
             return view('dashboard.admin.alluser', compact('users'));
             
-        }else{
-            return redirect()->route('dashboardIT');
-        }
+        // }else{
+        //     return redirect()->route('dashboardIT');
+        // }
     }
 
     /**
@@ -182,4 +184,5 @@ class AllUserController extends Controller
 
         return redirect()->back()->with('danger', 'User Deleted');
     }
+
 }
