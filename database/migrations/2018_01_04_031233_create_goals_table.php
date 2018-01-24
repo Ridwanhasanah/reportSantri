@@ -19,6 +19,7 @@ class CreateGoalsTable extends Migration
             $table->string('option')->nullable();
             $table->date('when')->nullable();
             $table->text('reality')->nullable();
+            $table->text('information')->nullable();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 

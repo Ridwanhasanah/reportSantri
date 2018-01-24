@@ -2,38 +2,52 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Models\Activity;
+use App\Models\Goal;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AllUserController extends Controller
 {
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        
+        /*Mengambil Url dan mengambil url divinysa untuk di masukan sebagaikondisi*/
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
 
-            $users = DB::table('users')->latest()->paginate(5);;
-
-
-            return view('dashboard.admin.alluser', compact('users'));
+        /*Jika Urlnya stall maka jalankan ini*/
+        if ($divisi == 'staff') {
             
-        // }else{
-        //     return redirect()->route('dashboardIT');
-        // }
+            $users = DB::table('users')
+            ->where('department','Staff Pondok IT')
+            ->latest()->paginate(20);
+
+            $department = 'Staff';
+
+        }else{
+
+            $users = DB::table('users')
+            ->whereIn('department',[
+             'Programmer',
+             'Multimedia',
+             'Imers',
+             'Cyber',
+         ])->latest()->paginate(20);
+
+            $department = 'Santri';
+
+        }
+
+        $semuaUser = DB::table('users')->count();
+
+        $admin = DB::table('users')->where('department','Staff Pondok IT')->count();
+        $santri = $semuaUser - $admin;
+
+        return view('dashboard.admin.alluser', compact('users', 'santri', 'department'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         if (Auth::user()->level == 1) {
@@ -45,12 +59,6 @@ class AllUserController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -105,12 +113,6 @@ class AllUserController extends Controller
         return redirect()->route('user.edit',$user->id)->with('success', 'User Added');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $user = User::find($id);
@@ -118,12 +120,6 @@ class AllUserController extends Controller
         return view('dashboard.admin.userdetail', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $user = User::find($id);
@@ -131,13 +127,6 @@ class AllUserController extends Controller
         return view('dashboard.admin.useredit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $user  = User::find($id);
@@ -171,12 +160,6 @@ class AllUserController extends Controller
         return redirect()->back()->with('success', ' Profile Updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $user = User::find($id);
@@ -185,4 +168,168 @@ class AllUserController extends Controller
         return redirect()->back()->with('danger', 'User Deleted');
     }
 
+
+    /*========== Menampilkan Santri Sesuai Divisi Start ========== */
+    public function santriProgrammer(){
+
+        $users = DB::table('users')->select('*')->where('department',"Programmer")->latest()->paginate(20);
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        /*Menghitung Total santri*/
+        $total = DB::table('users')->where('department','Programmer')->count();
+
+
+        return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
+
+    }
+
+    public function santriMultimedia(){
+
+        $users = DB::table('users')->select('*')->where('department',"Multimedia")->latest()->paginate(20);
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        /*Menghitung Total santri*/
+        $total = DB::table('users')->where('department','Multimedia')->count();
+
+        return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
+
+    }
+
+    public function santriImers(){
+
+        $users = DB::table('users')->select('*')->where('department',"Imers")->latest()->paginate(20);
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        /*Menghitung Total santri*/
+        $total = DB::table('users')->where('department','Imers')->count();
+
+        return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
+
+    }
+
+    public function santriCyber(){
+
+        $users = DB::table('users')->select('*')->where('department',"Cyber")->latest()->paginate(20);
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        /*Menghitung Total santri*/
+        $total = DB::table('users')->where('department','Cyber')->count();
+
+        return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
+
+    }
+
+    /*======================================== Menampilkan Santri Sesuai Divisi End ============================== */
+
+    /*======================================== Activty Santri CRUD Start ========================================*/
+
+    /*Index*/
+     public function indexActivtySantri($id)
+    {
+
+        $activities = DB::table('users')
+            ->select('activities.*')
+            ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->latest()->paginate(20);
+
+            // dd($users);
+
+        
+        
+        return view('dashboard.activity.allreport', compact('activities', 'users','id'));
+    }
+
+    /*Create*/
+    public function createActivitySantri($id)
+    {
+        return view('dashboard.activity.addreport',compact('id'));
+    }
+
+    /*Store*/
+    public function storeActivitySantri(Request $request, $id)
+    {
+        $activity = new Activity;
+        $user = DB::table('users');
+
+
+
+        // $activities = DB::table('activities')->insertGetId([ //menggunakan inserGetId untuk mengambil id latest
+            $activity->activity  = $request->activity;
+            $activity->result    = $request->result;
+            $activity->follow_up = $request->follow_up;
+            $activity->when      = $request->when;
+            $activity->user_id   = $id;
+
+            // dd($id);
+        // ]);
+            $activity->save();
+
+        /*$idUser = Auth::user()->id; 
+        $activityUser = ActivityUser::insert([ 
+            'user_id' => $idUser,
+            'activity_id' => $activities
+        ]);*/
+
+
+     
+        return redirect()->route('report.edit',$activity)->with('success', 'Report Added'); 
+
+    }
+    /*================================================== Activiry Santi CRUD End ========================================*/
+
+    /*================================================== Goal Santri CRUD Start ========================================*/
+    /*Index*/
+    public function indexGoalSantri($id)
+    {
+
+        $goals = DB::table('users')
+            ->select('goals.*')
+            ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->latest()->paginate(20);
+
+        return view('dashboard.goal.allgoal', compact('goals','users','id'));
+    }
+
+    /*Create*/
+    public function createGoalSantri($id)
+    {
+        return view('dashboard.goal.addgoal',compact('id'));
+    }
+
+    /*Store*/
+    public function storeGoalSantri(Request $request,$id)
+    {
+        $goal = new Goal;
+        $user = DB::table('users');
+
+        $goal->goal        = $request->goal;
+        $goal->option      = $request->option;
+        $goal->when        = $request->when;
+        $goal->reality     = $request->reality;
+        $goal->information = $request->information;
+        $goal->user_id     = $id;
+
+        $goal->save();
+     
+        return redirect()->route('goal.edit',$goal->id)->with('success', 'Goal Added'); 
+
+    }
+    /*================================================== Goal Santri CRUD End ========================================*/
+
+
 }
+

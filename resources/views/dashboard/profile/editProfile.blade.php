@@ -1,6 +1,6 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-{{$user->name}}'s Profile
+{{$user->name}} Profile
 @endsection
 
 @section('content')
@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">{{$user->name}}'s Profile</h1>
+        <h1 class="page-header">{{$user->name}} Profile</h1>
     </div>
   </div>
   <div class="row">
@@ -40,19 +40,19 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Name : </td>
+                        <td>Nama</td>
                         <td><input placeholder="Ridwan" class="form-control" type="" name="name" value="{{$user->name}}"></td>
                       </tr>
                       <tr>
-                        <td>Department:</td>
+                        <td>Divisi</td>
                         <td><input readonly class="form-control" type="" name="departemt" value="{{$user->department}}"></td>
                       </tr>
                       <tr>
-                        <td>Date of Birth</td>
+                        <td>Tempat, Tanggal Lahir</td>
                         <td><input class="form-control" id="datepicker" name="date_birth" value="{{$user->date_birth}}"> , <input placeholder="Contoh : Jakarta" name="birth_place" class="form-control" value="{{$user->birth_place}}"></td>
                       </tr>
                       <tr>
-                        <td>Gender</td>
+                        <td>Jenis Kelamin</td>
                         <td>
 
                           <input {{$user->gender=='Pria' ? 'checked' : ''}} type="radio" name="gender" value="Pria"> Pria<br>
@@ -60,7 +60,7 @@
                         </td>
                       </tr>
                         <tr>
-                        <td>Home Address</td>
+                        <td>Alamat</td>
                         <td><textarea placeholder="Contoh : jl.pesangrahan" class="form-control" type="text" name="address">{{$user->address}}</textarea></td>
                       </tr>
                       <tr>
@@ -68,19 +68,19 @@
                         <td><input placeholder="Contoh : ridwan@pondokit.com" class="form-control" type="email" name="email" value="{{$user->email}}"></td>
                       </tr>
                       <tr>
-                        <td>Phone Number</td>
+                        <td>Nomor HandPhone</td>
                         <td><input placeholder="Contoh : 089123456789" class="form-control" type="number" name="hp" value="{{$user->hp}}">(Mobile)</td>
                       </tr>
                       <tr>
-                        <td>Dream / Impian</td>
+                        <td>Impian</td>
                         <td><input placeholder="Contoh : Menjadi Mater WEB" class="form-control" type="text" name="dream" value="{{$user->dream}}"></td>
                       </tr>
                       <tr>
-                        <td>Hobby</td>
+                        <td>Hobi</td>
                         <td><input placeholder="Contoh : Memanah" class="form-control" type="" name="hobby" value="{{$user->hobby}}"></td>
                       </tr>
                       <tr>
-                        <td>Experience / Pengalaman</td>
+                        <td>Pengalaman</td>
                         <td><input placeholder="Contoh : Membuat CRUD di Laravel" class="form-control" type="text" name="experience" value="{{$user->experience}}"></td>
                       </tr>
                       <tr>
@@ -93,10 +93,6 @@
                       </tr>
                     </tbody>
                   </table>
-                  
-                  
-                  <a href="#" class="btn btn-primary">My Sales Performance</a>
-                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
                 </div>
                 </form>
               </div>

@@ -66,15 +66,48 @@ Route::group(['middleware'=>'auth'], function(){
 
 	/*===== Profile End ===== */
 
-	Route::group(['middleware'=>'check_user'], function(){ 
 
+	/*=============================================================================================*/
+	/*======================================== Admin Start ========================================*/
+	/*=============================================================================================*/
+	Route::group(['middleware'=>'check_user'], function(){ /*Auth untuk chek admin atau bukan*/
+	/*All Divisi*/
+	Route::get('user/programmer','AllUserController@santriProgrammer')->name('user.programmer');
+	Route::get('user/multimedia','AllUserController@santriMultimedia')->name('user.multimedia');
+	Route::get('user/imers','AllUserController@santriImers')->name('user.imers');
+	Route::get('user/cyber','AllUserController@santriCyber')->name('user.cyber');
+	Route::get('user/staff','AllUserController@index')->name('user.staff');
+
+	/*===== Acitivity Santri CRUD For Admin Access Start =====*/
+	/*Index*/
+	Route::get('santri/report/{id}','AllUserController@indexActivtySantri')->name('santri.report');
+	/*Create*/
+	Route::get('santri/createreport/{id}','AllUserController@createActivitySantri')->name('santri.createreport');
+	/*Store*/
+	Route::post('santri/createreport/{id}','AllUserController@storeActivitySantri')->name('santri.storereport');
+	/*===== Acitivity Santri CRUD For Admin Access End =====*/
+
+	/*===== Goal Santri CRUD For Admin Access Start =====*/
+	/*Index*/
+	Route::get('santri/goal/{id}','AllUserController@indexGoalSantri')->name('santri.goal');
+	/*Create*/
+	Route::get('santri/creategoal/{id}','AllUserController@createGoalSantri')->name('santri.creategoal');
+	/*Store*/
+	Route::post('santri/creategoal/{id}','AllUserController@storeGoalSantri')->name('santri.storegoal');
+	/*===== Goal Santri CRUD For Admin Access End =====*/
+
+	
+	/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
 		Route::resources([
 			'user' => 'AllUserController'
 		]);
-		
+	
+
 	});
 
-	/*Admin Start*/
+	/*=============================================================================================*/
+	/*======================================== Admin End ==========================================*/
+	/*=============================================================================================*/
 	/*All User*/
 	// Route::get('alluser','AllUserController@index')->name('alluser');
 	// /*Create*/

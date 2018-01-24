@@ -14,9 +14,9 @@ class PondokitController extends Controller
      */
     public function index()
     {
-        $goals = Goal::latest()->paginate(5);
+        $goals = Goal::latest()->paginate(20);
 
-        $activities = Activity::latest()->paginate(5);
+        $activities = Activity::latest()->paginate(20);
 
         return view('dashboard.dashboard', compact('activities','goals'));
     }

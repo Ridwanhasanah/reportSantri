@@ -24,7 +24,7 @@ class GoalController extends Controller
             ->select('goals.*')
             ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
             ->where('users.id', "$id")
-            ->latest()->paginate(5);
+            ->latest()->paginate(20);
             // dd($users);
 
         return view('dashboard.goal.allgoal', compact('goals','users'));
@@ -53,11 +53,12 @@ class GoalController extends Controller
     {
         $goal = new Goal;
 
-        $goal->goal      = $request->goal;
-        $goal->option    = $request->option;
-        $goal->when      = $request->when;
-        $goal->reality   = $request->reality;
-        $goal->user_id   = Auth::user()->id;
+        $goal->goal        = $request->goal;
+        $goal->option      = $request->option;
+        $goal->when        = $request->when;
+        $goal->reality     = $request->reality;
+        $goal->information = $request->information;
+        $goal->user_id     = Auth::user()->id;
 
         $goal->save();
      
@@ -112,10 +113,11 @@ class GoalController extends Controller
 
         $goal = Goal::find($id);
 
-        $goal->goal      = $request->goal;
-        $goal->option    = $request->option;
-        $goal->reality   = $request->reality;
-        $goal->when      = $request->when;
+        $goal->goal        = $request->goal;
+        $goal->option      = $request->option;
+        $goal->reality     = $request->reality;
+        $goal->information = $request->information;
+        $goal->when        = $request->when;
 
          // dd($goal);
 

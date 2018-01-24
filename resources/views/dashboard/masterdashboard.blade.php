@@ -52,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Report Santri Pondok IT</a>
+                <a class="navbar-brand" href="index.html">Kegiatan Santri Pondok IT</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -290,38 +290,36 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{route('dashboardIT')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{route('dashboardIT')}}"><i class="fa fa-dashboard fa-fw"></i> Dasbor</a>
                         </li>
                         {{-- ALL User --}}
                         @if (Auth::user()->level==1)
                         
                         <li>
-                            <a href="{{route('user.index')}}"><i class="fa fa-users fa-fw"></i> Santri<span class="fa arrow"></span></a>
+                            <a href="{{route('user.index')}}"><i class="fa fa-users fa-fw"></i> Santri &amp; Staff<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('user.index')}}">All Santri<span class="fa arrow"></span></a>
+                                    <a href="{{route('user.index')}}">Semua Santri<span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="#">Third Level Item</a>
+                                            <a href="{{route('user.programmer')}}">Programmer</a>
                                         </li>
                                         <li>
-                                            <a href="#">Third Level Item</a>
+                                            <a href="{{route('user.multimedia')}}">Multimedia</a>
                                         </li>
                                         <li>
-                                            <a href="#">Third Level Item</a>
+                                            <a href="{{route('user.imers')}}">Imers</a>
                                         </li>
                                         <li>
-                                            <a href="#">Third Level Item</a>
+                                            <a href="{{route('user.cyber')}}">Cyber</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Third Level </a>
-                                    
-                                    <!-- /.nav-third-level -->
+                                    <a href="{{route('user.staff')}}">Semua Staff</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('user.create')}}">Add Santri</a>
+                                    <a href="{{route('user.create')}}">Tambah Santri &#47; Staff</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -329,26 +327,26 @@
                         @endif
                         {{-- ====== Kegiatan atau Report ====== --}}
                         <li>
-                            <a href="{{route('report.all')}}"><i class="fa fa-book fa-fw"></i> Report<span class="fa arrow"></span></a>
+                            <a href="{{route('report.all')}}"><i class="fa fa-book fa-fw"></i> Kegiatan<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('report.all')}}">All Report</a>
+                                    <a href="{{route('report.all')}}">Semua Kegiatan</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('report.add')}}">Add New</a>
+                                    <a href="{{route('report.add')}}">Tambah Kegiatan</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         {{-- ===== Goal ===== --}}
                          <li>
-                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Goals<span class="fa arrow"></span></a>
+                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('goal.all')}}">All Goals</a>
+                                    <a href="{{route('goal.all')}}">Semua Target</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('goal.add')}}">Add New</a>
+                                    <a href="{{route('goal.add')}}">Tambah Target</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

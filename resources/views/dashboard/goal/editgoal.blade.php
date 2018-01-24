@@ -1,6 +1,6 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-Edit Goal
+Ubah Target
 @endsection
 @section('content')
 <div id="page-wrapper">
@@ -16,7 +16,7 @@ Edit Goal
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Isi Goal Mu Minggu ini
+                    Lengkapi Target Mu Minggu ini
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -26,9 +26,8 @@ Edit Goal
                             	{{csrf_field()}}
                                 {{ method_field('PATCH') }}
                                 <div class="form-group">
-                                    <label>Goal</label>
+                                    <label>Target</label>
                                     <input name="goal" class="form-control" value="{{$goal->goal}}">
-                                    <p class="help-block">Example block-level help text here.</p>
                                 </div>
                                 <div class="form-group">
                                     <label>Option</label>
@@ -36,10 +35,15 @@ Edit Goal
                                 </div>
                                 <div class="form-group">
                                     <label>Reality</label>
-                                    <input name="reality" class="form-control" value="{{$goal->reality}}" ">
+                                    <p><small>Isi dengan hasil target mu minggu ini,Contoh : masih kesulitan dalam membuat program</small></p>
+                                    <input name="reality" class="form-control" value="{{$goal->reality}}" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label>Kapan</label>
+                                    <label>Keterangan</label>
+                                    <input name="information" class="form-control" value="{{$goal->information}}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal</label>
                                     <input name="when" id="datepicker" class="form-control" value="{{$goal->when}}">
                                 </div>
                                 <p id="x"></p>

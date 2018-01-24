@@ -1,6 +1,6 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-{{$user->name}}'s Profile
+{{$user->name}} Profile
 @endsection
 
 @section('content')
@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">{{$user->name}}'s Profile</h1>
+        <h1 class="page-header">{{$user->name}} Profile</h1>
     </div>
   </div>
   <div class="row">
@@ -30,20 +30,20 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Department:</td>
+                        <td>Divisi</td>
                         <td>{{$user->department}}</td>
 
                       </tr>
                       <tr>
-                        <td>Date of Birth</td>
+                        <td>Tempat, Tanggal Lahir</td>
                         <td>{{$user->date_birth}} , {{$user->birth_place}}</td>
                       </tr>
                       <tr>
-                        <td>Gender</td>
+                        <td>Jenis Kelamin</td>
                         <td>{{$user->gender}}</td>
                       </tr>
                         <tr>
-                        <td>Home Address</td>
+                        <td>Alamat</td>
                         <td>{{$user->address}}</td>
                       </tr>
                       <tr>
@@ -51,19 +51,19 @@
                         <td><a href="{{$user->email}}">{{$user->email}}</a></td>
                       </tr>
                       <tr>
-                        <td>Phone Number</td>
+                        <td>Nomor HandPhone</td>
                         <td>{{$user->hp}}(Mobile)</td>
                       </tr>
                       <tr>
-                        <td>Dream / Impian</td>
+                        <td>Impian</td>
                         <td>{{$user->dream}}</td>
                       </tr>
                       <tr>
-                        <td>Hobby</td>
+                        <td>Hobi</td>
                         <td>{{$user->hobby}}</td>
                       </tr>
                       <tr>
-                        <td>Experience / Pengalaman</td>
+                        <td>Pengalaman</td>
                         <td>{{$user->experience}}</td>
                       </tr>
                       <tr>
@@ -72,9 +72,6 @@
                       </tr>
                     </tbody>
                   </table>
-                  
-                  <a href="#" class="btn btn-primary">My Sales Performance</a>
-                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
                 </div>
               </div>
         </div>

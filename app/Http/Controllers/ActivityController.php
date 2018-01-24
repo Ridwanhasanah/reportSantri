@@ -25,7 +25,7 @@ class ActivityController extends Controller
             ->select('activities.*')
             ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
             ->where('users.id', "$id")
-            ->latest()->paginate(5);
+            ->latest()->paginate(20);
 
             //dd($users);
 
@@ -76,7 +76,7 @@ class ActivityController extends Controller
 
 
      
-        return redirect()->route('report.edit',$activity)->with('success', 'Report Added'); 
+        return redirect()->route('report.edit',$activity->id)->with('success', 'Report Added'); 
 
     }
 

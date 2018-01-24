@@ -1,6 +1,6 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-All Reports
+Semua Kegiatan
 @endsection
 
 @section('content')
@@ -8,7 +8,7 @@ All Reports
 <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">All Report</h1>
+        <h1 class="page-header">Semua Kegiatan</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -17,7 +17,12 @@ All Reports
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Kegiatan
+                <!-- @if (Auth::user()->level == 1)
+                     <a class="btn btn-primary" href="{{route('santri.createreport',$id)}}">Tambah Kegiatan</a><br>
+                @else
+                    <a class="btn btn-primary" href="{{route('report.add')}}">Tambah Kegiatan</a><br>
+                @endif -->
+                <b> Semua Kagiatan </b>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -27,7 +32,6 @@ All Reports
                             <th>Kegiatan</th>
                             <th>Hasil</th>
                             <th>Tindak Lanjut</th>
-                            <th>Kapan</th>
                             <th>Tanggal</th>
                         </tr>
                     </thead>
@@ -59,18 +63,13 @@ All Reports
                             <td>{{$activity->result}}</td>
                             <td>{{$activity->follow_up}}</td>
                             <td class="center">{{$activity->when}}</td>
-                            <td class="center">{{$activity->created_at}}</td>
+                            {{--  <td class="center">{{$activity->created_at->diffForHumans()}}</td>  --}}
                         </tr>
                     	@endforeach
                     </tbody>
                 </table>
                 {!! $activities->render() !!}
-                <!-- /.table-responsive -->
-                <div class="well">
-                    <h4>DataTables Usage Information</h4>
-                    <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
-                    <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
-                </div>
+                
             </div>
             <!-- /.panel-body -->
         </div>

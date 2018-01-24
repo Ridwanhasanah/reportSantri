@@ -1,13 +1,13 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-Add Goal
+Tambah Target
 @endsection
 @section('content')
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
             @include('layouts.patrials.alerts')
-            <h1 class="page-header">Forms</h1>
+            <h1 class="page-header">Tabah Target</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -16,29 +16,33 @@ Add Goal
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Isi Goal mu Minggu ini
+                    Isi Target mu Minggu ini
                 </div>
                 <div class="panel-body">
                     <div class="row">
                     	<div class="col-lg-3"></div>
                         <div class="col-lg-6 col-ld-pull-3">
+                            {{-- <form action="{{Auth::user()->level==1?route('santri.storegoal',$id):route('goal.addstore')}}" method="post" role="form"> --}}
                             <form action="{{route('goal.addstore')}}" method="post" role="form">
                             	{{csrf_field()}}
                                 <div class="form-group">
-                                    <label>Goal</label>
-                                    <input name="goal" class="form-control">
-                                    <p class="help-block">Example block-level help text here.</p>
+                                    <label>Target</label>
+                                    <input name="goal" class="form-control" placeholder="Contoh: Membuat Program kalkulator, Membuat Website">
                                 </div>
                                 <div class="form-group">
                                     <label>Option</label>
-                                    <input name="option" class="form-control" placeholder="Enter text">
+                                    <input name="option" class="form-control" placeholder="Isi dengan caramu mencapai target, Contoh : Menonton Video Tutorial">
                                 </div>
                                 <div class="form-group">
                                     <label>Reality</label>
-                                    <input name="reality" class="form-control" placeholder="Enter text">
+                                    <input name="reality" class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label>Kapan</label>
+                                    <label>Keterangan</label>
+                                    <input name="information" class="form-control" placeholder="Enter text">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal</label>
                                     <input name="when" id="datepicker" class="form-control">
                                 </div>
                                 <p id="x"></p>

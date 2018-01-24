@@ -1,6 +1,6 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-All User
+Semua {{$department}}
 @endsection
 @section('content')
 {{-- =================================================================== --}}
@@ -8,7 +8,7 @@ All User
             <div class="row">
                 <div class="col-lg-12">
                     @include('layouts.patrials.alerts')
-                    <h1 class="page-header">All User</h1>
+                    <h1 class="page-header">Semua {{$department}}</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -17,7 +17,7 @@ All User
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables All User
+                            <p class="blue">Total Seluruh Santri <b class="red">{{$santri}}</b></p>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -34,7 +34,6 @@ All User
                                 <tbody>
 
                                     @foreach ($users as $user)
-                                    @if ($user->level != 1)
 
                                     <tr class="odd gradeX">
                                         <td>
@@ -78,7 +77,6 @@ All User
                                         <td class="center">{{$user->address}}</td>
                                         <td class="center">{{$user->gender}}</td>
                                     </tr>
-                                    @endif
 
                                     @endforeach
 

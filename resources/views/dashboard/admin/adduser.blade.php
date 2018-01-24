@@ -15,7 +15,7 @@ Add User
     <div class="col-lg-12">
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title">Add User</h3>
+          <h3 class="panel-title">Tambah Santri / Staff</h3>
         </div>
         <div class="panel-body">
               <div class="row">
