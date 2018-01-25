@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Goal;
 use Illuminate\Http\Request;
 
+
 class ActivityController extends Controller
 {
     /**
