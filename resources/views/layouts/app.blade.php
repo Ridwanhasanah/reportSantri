@@ -12,10 +12,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+     {{--  Login Css  --}}
+    <link href="{{asset('css/mainlogin.css')}}" rel="stylesheet">
+    <link href="{{asset('css/utillogin.css')}}" rel="stylesheet">
+    <link href="{{asset('dashboard/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        {{--  <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -69,12 +74,14 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>  --}}
 
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {{--  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>  --}}
+    <script src="{{asset('js/login.js')}}"></script>
 </body>
 </html>
