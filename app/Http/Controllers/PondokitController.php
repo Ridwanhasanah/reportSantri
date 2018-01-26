@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Goal;
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PondokitController extends Controller
 {
@@ -14,9 +17,26 @@ class PondokitController extends Controller
      */
     public function index()
     {
-        $goals = Goal::latest()->paginate(20);
+        // $activities = Activity::latest()->paginate(5);
+        $id = Auth::user()->id; //untuk mengecek id user
+        //$user = DB::table('users')->get();
 
-        $activities = Activity::latest()->paginate(20);
+        $activities = DB::table('users')
+            ->select('activities.*')
+            ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->latest()->paginate(20);
+
+            //dd($users);
+
+        $goals = DB::table('users')
+            ->select('goals.*')
+            ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->latest()->paginate(20);
+
+        
+        
 
         return view('dashboard.dashboard', compact('activities','goals'));
     }

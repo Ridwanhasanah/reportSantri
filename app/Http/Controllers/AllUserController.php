@@ -17,7 +17,7 @@ class AllUserController extends Controller
         $url_array = explode('/', $url);
         $divisi = end($url_array);
 
-        /*Jika Urlnya stall maka jalankan ini*/
+        /*Jika Urlnya staff maka jalankan ini*/
         if ($divisi == 'staff') {
             
             $users = DB::table('users')

@@ -295,11 +295,11 @@
                         {{-- ALL User --}}
                         @if (Auth::user()->level==1)
                         
-                        <li>
+                        <li id="menu">
                             <a href="{{route('user.index')}}"><i class="fa fa-users fa-fw"></i> Santri &amp; Staff<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+                            <ul class="nav nav-second-level rhide"  id="show">
                                 <li>
-                                    <a href="{{route('user.index')}}">Semua Santri<span class="fa arrow"></span></a>
+                                    <a  href="{{route('user.index')}}">Semua Santri<span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
                                             <a href="{{route('user.programmer')}}">Programmer</a>
@@ -326,9 +326,9 @@
                         </li>
                         @endif
                         {{-- ====== Kegiatan atau Report ====== --}}
-                        <li>
+                        <li id="menu1">
                             <a href="{{route('report.all')}}"><i class="fa fa-book fa-fw"></i> Kegiatan<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+                            <ul class="nav nav-second-level rhide" id="show1">
                                 <li>
                                     <a href="{{route('report.all')}}">Semua Kegiatan</a>
                                 </li>
@@ -339,9 +339,9 @@
                             <!-- /.nav-second-level -->
                         </li>
                         {{-- ===== Goal ===== --}}
-                         <li>
+                         <li id="menu2">
                             <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+                            <ul class="nav nav-second-level rhide" id="show2">
                                 <li>
                                     <a href="{{route('goal.all')}}">Semua Target</a>
                                 </li>
