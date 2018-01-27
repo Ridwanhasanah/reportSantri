@@ -18,8 +18,8 @@ class AddColumnUser extends Migration
                 'Programmer', 
                 'Multimedia',
                 'Imers',
-                'Cyber'
-                'Staff Pondok IT'
+                'Cyber',
+                'StaffPondokIT'
             ]);
             $table->text('address')->nullable();
             $table->string('hp')->nullable();

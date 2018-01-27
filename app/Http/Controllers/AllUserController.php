@@ -107,8 +107,8 @@ class AllUserController extends Controller
         }
 
 
-
-        $user->save();
+        dd($user->save());
+        // $user->save();
 
         return redirect()->route('user.edit',$user->id)->with('success', 'User Added');
     }
