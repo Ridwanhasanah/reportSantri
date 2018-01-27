@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $user = Auth::user();
@@ -22,57 +17,27 @@ class ProfileController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $user = Auth::user();
         return view('dashboard.profile.editProfile',compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
        $user  = User::find($id);
@@ -108,14 +73,34 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Profile Updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
+    }
+
+    // 100 Cita Cita / 100 Dream
+    public function dreamIndex(){
+
+        $user = Auth::user();
+        $dreams = explode(',', $user->dream);
+        return view('dashboard.dream.dream',compact('user' ,'dreams'));
+    }
+
+    public function dreamEdit($id){
+
+        $user = Auth::user();
+
+        return view('dashboard.dream.editDream',compact('user'));
+    }
+
+    public function dreamUpdate(Request $request, $id){
+
+        $user = User::find($id);
+
+        $user->dream       = $request->dream;
+
+        $user->update();
+
+        return redirect()->back()->with('success', '100 Cita - Cita Updated');
     }
 }

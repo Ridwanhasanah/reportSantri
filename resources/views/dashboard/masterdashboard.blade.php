@@ -327,7 +327,7 @@
                         @endif
                         {{-- ====== Kegiatan atau Report ====== --}}
                         <li id="menu1">
-                            <a href="{{route('report.all')}}"><i class="fa fa-book fa-fw"></i> Kegiatan<span class="fa arrow"></span></a>
+                            <a href="{{route('report.all')}}"><i class="fa fa-thumb-tack fa-fw"></i> Kegiatan<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level rhide" id="show1">
                                 <li>
                                     <a href="{{route('report.all')}}">Semua Kegiatan</a>
@@ -352,13 +352,13 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li id="menu">
-                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> 100 Cita - Cita Hidup<span class="fa arrow"></span></a>
+                            <a href="{{route('dream')}}"><i class="fa fa-star fa-fw"></i> 100 Cita - Cita Hidupku<span class="fa arrow"></span></a>
                         </li>
                         <li id="menu">
-                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target Terdekat (3 Bulan)<span class="fa arrow"></span></a>
+                            <a href="{{route('goal.all')}}"><i class="fa fa-bullseye fa-fw"></i> Target Terdekat (3 Bulan)<span class="fa arrow"></span></a>
                         </li>
                         <li id="menu2">
-                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Tataterib Pondok IT<span class="fa arrow"></span></a>
+                            <a href="{{route('goal.all')}}"><i class="fa fa-shield fa-fw"></i> Tataterib Pondok IT<span class="fa arrow"></span></a>
                         </li>
                         <li id="menu3">
                             <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target Lain<span class="fa arrow"></span></a>
@@ -376,7 +376,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{route('goal.add')}}"> <i class="fa fa-book fa-fw"></i>Amaliah</a>
+                            <a href="{{route('goal.add')}}"> <i class="fa fa-moon-o fa-fw"></i>Amaliah</a>
                         </li>
                     </ul>
                 </div>

@@ -66,6 +66,14 @@ Route::group(['middleware'=>'auth'], function(){
 
 	/*===== Profile End ===== */
 
+	/*===== 100 Dream Start ===== */
+	Route::get('/100dream','ProfileController@dreamIndex')->name('dream');
+	/*Edit*/
+	Route::get('dream/{id}/edit','ProfileController@dreamEdit')->name('dream.edit');
+	Route::patch('dream/{id}/edit','ProfileController@dreamUpdate')->name('dream.update');
+	/*===== 100 Dream End ===== */
+	
+
 
 	/*=============================================================================================*/
 	/*======================================== Admin Start ========================================*/
