@@ -340,7 +340,7 @@
                         </li>
                         {{-- ===== Goal ===== --}}
                          <li id="menu2">
-                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target<span class="fa arrow"></span></a>
+                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target Mingguan<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level rhide" id="show2">
                                 <li>
                                     <a href="{{route('goal.all')}}">Semua Target</a>
@@ -350,6 +350,33 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
+                        </li>
+                        <li id="menu">
+                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> 100 Cita - Cita Hidup<span class="fa arrow"></span></a>
+                        </li>
+                        <li id="menu">
+                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target Terdekat (3 Bulan)<span class="fa arrow"></span></a>
+                        </li>
+                        <li id="menu2">
+                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Tataterib Pondok IT<span class="fa arrow"></span></a>
+                        </li>
+                        <li id="menu3">
+                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target Lain<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level rhide" id="show3">
+                                <li>
+                                    <a href="{{route('goal.all')}}">Agama</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('goal.add')}}">Skill</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('goal.add')}}">Soft Skill</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="{{route('goal.add')}}"> <i class="fa fa-book fa-fw"></i>Amaliah</a>
                         </li>
                     </ul>
                 </div>

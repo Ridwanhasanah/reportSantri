@@ -16,7 +16,8 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('dashboard.profile.profile',compact('user'));
+        $dreams = explode(',', $user->dream);
+        return view('dashboard.profile.profile',compact('user' ,'dreams'));
 
 
     }

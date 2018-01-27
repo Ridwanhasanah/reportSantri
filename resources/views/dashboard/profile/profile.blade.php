@@ -30,45 +30,49 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Divisi</td>
+                        <td><b>Divisi</b></td>
                         <td>{{$user->department}}</td>
 
                       </tr>
                       <tr>
-                        <td>Tempat, Tanggal Lahir</td>
+                        <td><b>Tempat, Tanggal Lahir</b></td>
                         <td>{{$user->date_birth}} , {{$user->birth_place}}</td>
                       </tr>
                       <tr>
-                        <td>Jenis Kelamin</td>
+                        <td><b>Jenis Kelamin</b></td>
                         <td>{{$user->gender}}</td>
                       </tr>
                         <tr>
-                        <td>Alamat</td>
+                        <td><b>Alamat</b></td>
                         <td>{{$user->address}}</td>
                       </tr>
                       <tr>
-                        <td>Email</td>
+                        <td><b>Email</b></td>
                         <td><a href="{{$user->email}}">{{$user->email}}</a></td>
                       </tr>
                       <tr>
-                        <td>Nomor HandPhone</td>
+                        <td><b>Nomor HandPhone</b></td>
                         <td>{{$user->hp}}(Mobile)</td>
                       </tr>
                       <tr>
-                        <td>Impian</td>
-                        <td>{{$user->dream}}</td>
-                      </tr>
-                      <tr>
-                        <td>Hobi</td>
+                        <td><b>Hobi</b></td>
                         <td>{{$user->hobby}}</td>
                       </tr>
                       <tr>
-                        <td>Pengalaman</td>
+                        <td><b>Pengalaman</b></td>
                         <td>{{$user->experience}}</td>
                       </tr>
                       <tr>
-                        <td>Karya</td>
+                        <td><b>Karya</b></td>
                         <td>{{$user->creation}}</td>
+                      </tr>
+                      <tr>
+                        <td><b>100 Cita-Cita Ku</b></td>
+                        <td>
+                          @foreach($dreams as $dream)
+                            {{$dream}}<br>
+                          @endforeach
+                        </td>
                       </tr>
                     </tbody>
                   </table>
