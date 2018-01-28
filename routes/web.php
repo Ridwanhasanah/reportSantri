@@ -72,6 +72,16 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('dream/{id}/edit','ProfileController@dreamEdit')->name('dream.edit');
 	Route::patch('dream/{id}/edit','ProfileController@dreamUpdate')->name('dream.update');
 	/*===== 100 Dream End ===== */
+
+	/*===== Amaliyah Start ===== */
+	Route::get('amaliyah', function(){
+		return view('dashboard.amaliyah.amaliyah');
+	});
+	
+	// Route::resources([
+	// 	'user' => 'AllUserController'
+	// ]);
+	/*===== Amaliyah End ===== */
 	
 
 
@@ -106,7 +116,7 @@ Route::group(['middleware'=>'auth'], function(){
 
 	
 	/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
-		Route::resources([
+	Route::resources([
 			'user' => 'AllUserController'
 		]);
 	

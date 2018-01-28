@@ -29,3 +29,12 @@
 .rhide{
 	display: none;
 }
+
+.scrolltab{
+	overflow: auto;
+	min-height: 300px;
+	max-height: 500px;
+}
+.rwidth{
+	width: 25px;
+}
