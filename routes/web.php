@@ -110,6 +110,10 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::post('santri/creategoal/{id}','AllUserController@storeGoalSantri')->name('santri.storegoal');
 	/*===== Goal Santri CRUD For Admin Access End =====*/
 
+	/*===== All Activity Goal Start=====*/ 
+	Route::get('allgoalactivity.{id}', 'AllActivityGoalController@index')->name('allactivitygoal');
+	/*===== All Activity Goal End=====*/ 
+
 	
 	/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
 	Route::resources([

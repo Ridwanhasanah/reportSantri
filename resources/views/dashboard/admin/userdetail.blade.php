@@ -75,6 +75,7 @@
                   
                   <a href="{{route('santri.report',$user->id)}}" class="btn btn-primary">Kegiatan</a>
                   <a href="{{route('santri.goal',$user->id)}}" class="btn btn-primary">Goal</a>
+                  <a href="{{route('allactivitygoal',$user->id)}}" class="btn btn-primary">Goal dan Kegiatan</a>
                 </div>
               </div>
         </div>
