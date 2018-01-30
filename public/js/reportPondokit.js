@@ -8,9 +8,9 @@ $(document).ready(function(){
 		yearRange: "1900:2222"});
 	/*===== Date Picker End =====*/
 
-	function showmenu($menu,$show){
-		$('#'+$menu).hover(function(){
-			$('#'+$show).toggle();
+	function showmenu(menu,show){
+		$('#'+menu).hover(function(){
+			$('#'+show).toggle();
 		});
 	}
 
@@ -19,6 +19,7 @@ $(document).ready(function(){
 	showmenu('menu2','show2');
 	showmenu('menu3','show3');
 	showmenu('menu4','show4');
+	showmenu('menu5','show5');
 	
 
 });

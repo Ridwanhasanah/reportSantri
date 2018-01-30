@@ -42,6 +42,10 @@
 	width: 170px;
 }
 
+.rfontsize{
+	font-size: 12px;
+}
+
 /* Css Add Amaliyah */
 
 .form-group input[type="checkbox"] {

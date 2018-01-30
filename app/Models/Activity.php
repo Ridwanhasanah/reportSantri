@@ -10,8 +10,8 @@ class Activity extends Model
     protected $table = 'activities';
 
 
-    public function users(){
+    public function user(){
 
-    	return $this->belongsTo(User::class, 'users','id');
+    	return $this->belongsTo(User::class);//, 'users','id');
     }
 }

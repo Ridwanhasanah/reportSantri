@@ -324,6 +324,27 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li id="menu5">
+                            <a href="{{route('dailyactivity')}}"><i class="fa fa-sun-o fa-fw"></i> Kegiatan Santri Hari ini<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level rhide"  id="show5">
+                                <li>
+                                    <a  href="{{route('dailyactivity')}}">Semua Santri</a>
+                                </li>
+                                <li>
+                                    <a href="">Programmer</a>
+                                </li>
+                                <li>
+                                    <a href="">Multimedia</a>
+                                </li>
+                                <li>
+                                    <a href="">Imers</a>
+                                </li>
+                                <li>
+                                    <a href="">Cyber</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                         @endif
                         {{-- ====== Kegiatan atau Report ====== --}}
                         <li id="menu1">

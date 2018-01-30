@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Goal;
 use App\Models\Activity;
 use Illuminate\Http\Request;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 

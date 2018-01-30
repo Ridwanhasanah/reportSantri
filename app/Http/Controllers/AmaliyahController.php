@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+use App\Models\User;
 use App\Models\Amaliyah;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;

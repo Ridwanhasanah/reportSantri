@@ -112,7 +112,11 @@ Route::group(['middleware'=>'auth'], function(){
 
 	/*===== All Activity Goal Start=====*/ 
 	Route::get('allgoalactivity.{id}', 'AllActivityGoalController@index')->name('allactivitygoal');
-	/*===== All Activity Goal End=====*/ 
+	/*===== All Activity Goal End=====*/
+	
+	/*===== Daily Activity  Start=====*/ 
+	Route::get('dailyactivity', 'Admin\DailyActivityController@index')->name('dailyactivity');
+	/*===== Daily Activity  End=====*/ 
 
 	
 	/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/

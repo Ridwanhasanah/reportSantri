@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     /*Realtion Many to manty User - activity*/
     public function activities(){
-        return $this->hasMany(Models\Activity::class, 'activities');
+        return $this->hasMany(Models\Activity::class);//, 'activities');
     }
 
     /*Realtion Many to manty User - amaliyah*/

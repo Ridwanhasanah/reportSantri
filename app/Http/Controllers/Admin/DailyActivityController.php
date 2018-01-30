@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\Goal;
-use App\Models\Activity;
-use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+namespace App\Http\Controllers\Admin;
 
-class PondokitController extends Controller
+use App\User;
+use App\Models\Activity;
+use App\Models\Goal;
+use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class DailyActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,28 +19,27 @@ class PondokitController extends Controller
      */
     public function index()
     {
-        // $activities = Activity::latest()->paginate(5);
-        $id = Auth::user()->id; //untuk mengecek id user
-        //$user = DB::table('users')->get();
+        // $users = User::latest()->paginate(20);
+            
+        $activities = \App\Models\Activity::latest()->paginate(20);
 
-        $activities = DB::table('users')
-            ->select('activities.*')
-            ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
-            ->where('users.id', "$id")
-            ->latest()->paginate(20);
+        //     ->whereIn('department',[
+        //      'Programmer',
+        //      'Multimedia',
+        //      'Imers',
+        //      'Cyber',
+        //  ])->latest()->paginate(20);
 
-            //dd($users);
-
-        $goals = DB::table('users')
-            ->select('goals.*')
-            ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
-            ->where('users.id', "$id")
-            ->latest()->paginate(20);
+            $department = 'Santri';
 
         
-        
 
-        return view('dashboard.dashboard', compact('activities','goals'));
+        $semuaUser = DB::table('users')->count();
+
+        $admin = DB::table('users')->where('department','Staff Pondok IT')->count();
+        $santri = $semuaUser - $admin;
+
+        return view('dashboard.admin.santri.dailyactivity', compact('activities', 'santri', 'department'));
     }
 
     /**
