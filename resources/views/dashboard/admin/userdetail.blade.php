@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">{{$user->name}} Profile {{$user->id}}</h1>
+        <h1 class="page-header">{{$user->name}} Profile</h1>
     </div>
   </div>
   <div class="row">

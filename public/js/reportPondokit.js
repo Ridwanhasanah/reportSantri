@@ -18,6 +18,7 @@ $(document).ready(function(){
 	showmenu('menu1','show1');
 	showmenu('menu2','show2');
 	showmenu('menu3','show3');
+	showmenu('menu4','show4');
 	
 
 });

@@ -375,8 +375,16 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="{{route('goal.add')}}"> <i class="fa fa-moon-o fa-fw"></i>Amaliah</a>
+                        <li id="menu4">
+                            <a href="{{route('amaliyah.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Amaliah<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level rhide" id="show4">
+                                <li>
+                                    <a href="{{route('amaliyah.index')}}">Catatan Amaliyah</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('amaliyah.create')}}">Check List Amaliyah Hari ini</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

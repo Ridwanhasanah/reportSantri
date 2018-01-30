@@ -14,6 +14,12 @@ Amaliah Santri
         </div>
         <div class="row scrolltab">
           <div class="col-lg-12 ">
+            @foreach ($amal as $amal)
+                {{$amal->subuh_jmh}}
+            @endforeach
+            <form action="{{route('amaliyah.store')}}" method="post" role="form" >
+              {{csrf_field()}}
+              {{method_field('POST')}}
             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
               <thead>
                   <tr>
@@ -34,37 +40,46 @@ Amaliah Santri
                     <tr>
                       <td>Subuh&nbsp;Jamaah</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          @if (29 == $i)
+                              <td><input type="checkbox" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}></td>
+                          @else
+                              <td><input type="checkbox"></td>
+                          @endif
+                          {{--  @if($i < 10)
+                          <td><input  name="subuh_jmh0{{$i}}" type="checkbox" value="1" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}>
+                          @elseif($i>=10)
+                          <td><input  name="subuh_jmh{{$i}}" type="checkbox" value="1" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}></td>
+                          @endif    --}}
                       @endfor
                     </tr>
                     <tr>
                       <td>Dzuhur&nbsp;Jamaah</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="dzuhur_jmh" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Ashar&nbsp;Jamaah</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="ashar_jmh" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Maghrib&nbsp;Jamaah</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="maghrib_jmh" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Isya&nbsp;Jamaah</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="isya_jmh" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Tilawah&nbsp;Alquran</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input class="rwidth" type="text"></td>
+                          <td><input name="tilawah" class="rwidth" type="text"></td>
                       @endfor
                     </tr>
                     <tr class="odd gradeX">
@@ -73,97 +88,97 @@ Amaliah Santri
                     <tr>
                       <td>Tahajud</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="tahajud" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Witir</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="witir" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Qobliyah&nbsp;Subuh</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="qobliyah_subuh" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Hafalan&nbsp;Ayat</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input class="rwidth" type="text"></td>
+                          <td><input name="hafalan" class="rwidth" type="text"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Sholat&nbsp;Dhuha</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="dhuha" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Qobliyah&nbsp;Dzuhur</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="qobliyah_dzuhur" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Badiyah&nbsp;Dzuhur</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="badiyah_dzuhur" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Badiyah&nbsp;Maghrib</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="badiyah_maghrib" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Badiyah&nbsp;Isya</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="badiyah_isya" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Puasa&nbsp;&#40;Senin&amp;Kamis&#41;</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="puasa" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Doa&nbsp;untuk&nbsp;Orang&nbsp;Tua</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="doa_ortu" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Doa&nbsp;Untuk&nbsp;Donatur &amp;Pondok&nbsp;IT</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="doa_donatur" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Infaq&nbsp;Untuk&nbsp;Pondok&nbsp;IT</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="infaq" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Dzikir&nbsp;Pagi</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="dzikir_pagi" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Dzikir&nbsp;Petang</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="dzikir_petang" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Baca&nbsp;Surat&nbsp;Al-Kahfi</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          <td><input type="checkbox"></td>
+                          <td><input name="alkahfi" type="checkbox" value="1"></td>
                       @endfor
                     </tr>
                     
@@ -183,11 +198,7 @@ Amaliah Santri
                 
             </table>
             <input class="btn btn-primary" type="submit" value="Simpan">
-
-                <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                <span class="pull-right">
-                  <a href="" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><b>Edit</b><i class="glyphicon glyphicon-edit"></i></a>
-                </span>
+          </form>
               </div>
             </div>
           </div>

@@ -35,5 +35,10 @@ class User extends Authenticatable
         return $this->hasMany(Models\Activity::class, 'activities');
     }
 
+    /*Realtion Many to manty User - amaliyah*/
+    public function amaliyah(){
+        return $this->hasMany(Models\Amaliyah::class, 'amaliyahs');
+    }
+
 
 }

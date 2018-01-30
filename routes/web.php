@@ -74,13 +74,9 @@ Route::group(['middleware'=>'auth'], function(){
 	/*===== 100 Dream End ===== */
 
 	/*===== Amaliyah Start ===== */
-	Route::get('amaliyah', function(){
-		return view('dashboard.amaliyah.amaliyah');
-	});
-	
-	// Route::resources([
-	// 	'user' => 'AllUserController'
-	// ]);
+	Route::resources([
+		'amaliyah' => 'AmaliyahController'
+	]);
 	/*===== Amaliyah End ===== */
 	
 
