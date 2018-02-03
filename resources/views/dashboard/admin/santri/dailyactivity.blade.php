@@ -71,6 +71,8 @@ Kegiatan Santri Hari Ini
                                     <tr>
                                         <th>Nama</th>
                                         <th>Kegiatan</th>
+                                        <th>Hasil</th>
+                                        <th>Tindak Lanjut</th>
                                         <th>Jurusan</th>
                                         <th>Tanggal</th>
                                     </tr>

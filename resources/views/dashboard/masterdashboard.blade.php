@@ -403,7 +403,7 @@
                                     <a href="{{route('amaliyah.index')}}">Catatan Amaliyah</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('amaliyah.create')}}">Check List Amaliyah Hari ini</a>
+                                    <a href="{{route('amaliyahcheck')}}">Check List Amaliyah Hari ini</a>
                                 </li>
                             </ul>
                         </li>

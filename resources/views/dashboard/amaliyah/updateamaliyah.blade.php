@@ -14,12 +14,13 @@ Amaliah Santri
   </div>
   <div class="row">
       <div class="col-lg-12 ">
-        <form action="{{route('amaliyah.store')}}" method="post" role="form" >
+        <form action="{{route('amaliyah.update')}}" method="post" role="form" >
         {{csrf_field()}}
         {{method_field('POST')}}
         <div class="col-md-3 col-lg-3">
             <div class="[ form-group ]">
-                <input
+                <input 
+                {{$amal[0]->subuh_jmh == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="subuh_jmh"
                 id="subuh_jmh"
@@ -37,6 +38,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->dzuhur_jmh == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="dzuhur_jmh"
                 id="dzuhur_jmh"
@@ -54,6 +56,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->ashar_jmh == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="ashar_jmh"
                 id="ashar_jmh"
@@ -71,6 +74,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->maghrib_jmh == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="maghrib_jmh"
                 id="maghrib_jmh"
@@ -88,6 +92,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->isya_jmh == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="isya_jmh"
                 id="isya_jmh"
@@ -108,6 +113,7 @@ Amaliah Santri
         <div class="col-md-3 col-lg-3">
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->tahajud == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="tahajud"
                 id="tahajud"
@@ -124,7 +130,8 @@ Amaliah Santri
                 </div>
             </div>
             <div class="[ form-group ]">
-                <input type="checkbox" name="witir" id="witir" autocomplete="off" value="1"/>
+                <input 
+                {{$amal[0]->witir == 1 ? 'checked': ''}} type="checkbox" name="witir" id="witir" autocomplete="off" value="1"/>
                 <div class="[ btn-group ]">
                     <label for="witir" class="[ btn btn-success ]">
                         <span class="[ glyphicon glyphicon-ok ]"></span>
@@ -137,6 +144,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->qobliyah_subuh == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="qobliyah_subuh"
                 id="qobliyah_subuh"
@@ -153,7 +161,8 @@ Amaliah Santri
                 </div>
             </div>
             <div class="[ form-group ]">
-                <input type="checkbox" name="dhuha" id="dhuha" autocomplete="off" value="1"/>
+                <input 
+                {{$amal[0]->dhuha == 1 ? 'checked': ''}} type="checkbox" name="dhuha" id="dhuha" autocomplete="off" value="1"/>
                 <div class="[ btn-group ]">
                     <label for="dhuha" class="[ btn btn-success ]">
                         <span class="[ glyphicon glyphicon-ok ]"></span>
@@ -166,6 +175,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->qobliyah_dzuhur == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="qobliyah_dzuhur"
                 id="qobliyah_dzuhur"
@@ -186,6 +196,7 @@ Amaliah Santri
         <div class="col-md-3 col-lg-3">
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->badiyah_dzuhur == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="badiyah_dzuhur"
                 id="badiyah_dzuhur"
@@ -203,6 +214,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->badiyah_maghrib == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="badiyah_maghrib"
                 id="badiyah_maghrib"
@@ -220,6 +232,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->badiyah_isya == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="badiyah_isya"
                 id="badiyah_isya"
@@ -236,7 +249,8 @@ Amaliah Santri
                 </div>
             </div>
             <div class="[ form-group ]">
-                <input type="checkbox" name="puasa" id="puasa" autocomplete="off" value="1"/>
+                <input 
+                {{$amal[0]->puasa == 1 ? 'checked': ''}} type="checkbox" name="puasa" id="puasa" autocomplete="off" value="1"/>
                 <div class="[ btn-group ]">
                     <label for="puasa" class="[ btn btn-success ]">
                         <span class="[ glyphicon glyphicon-ok ]"></span>
@@ -249,6 +263,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->doa_ortu == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="doa_ortu"
                 id="doa_ortu"
@@ -269,6 +284,7 @@ Amaliah Santri
         <div class="col-md-3 col-lg-3">
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->doa_donatur == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="doa_donatur"
                 id="doa_donatur"
@@ -285,7 +301,8 @@ Amaliah Santri
                 </div>
             </div>
             <div class="[ form-group ]">
-                <input type="checkbox" name="infaq" id="infaq" autocomplete="off" value="1"/>
+                <input 
+                {{$amal[0]->infaq == 1 ? 'checked': ''}} type="checkbox" name="infaq" id="infaq" autocomplete="off" value="1"/>
                 <div class="[ btn-group ]">
                     <label for="infaq" class="[ btn btn-success ]">
                         <span class="[ glyphicon glyphicon-ok ]"></span>
@@ -298,6 +315,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->dzikir_pagi == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="dzikir_pagi"
                 id="dzikir_pagi"
@@ -315,6 +333,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->dzikir_petang == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="dzikir_petang"
                 id="dzikir_petang"
@@ -332,6 +351,7 @@ Amaliah Santri
             </div>
             <div class="[ form-group ]">
                 <input
+                {{$amal[0]->alkahfi == 1 ? 'checked': ''}}
                 type="checkbox"
                 name="alkahfi"
                 id="alkahfi"
@@ -359,9 +379,9 @@ Amaliah Santri
                         <td>
                             <input
                             placeholder="Tulis Total Halaman Baca Quran"
-                            name="tilawah_alquran"
+                            name="tilawah"
                             class="form-control"
-                            type="number">
+                            type="number" value="{{$amal[0]->tilawah_alquran}}"> 
                         </td>
                     </tr>
                     <tr>
@@ -370,6 +390,7 @@ Amaliah Santri
                         </td>
                         <td>
                             <input
+                            value="{{$amal[0]->hafalan}}
                             placeholder="Tulis Total Hafal Ayat"
                             name="hafalan"
                             class="form-control"
