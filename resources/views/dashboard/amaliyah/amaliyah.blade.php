@@ -11,6 +11,7 @@ Amaliah Santri
               @include('layouts.patrials.alerts')
               <h1 class="page-header">Evaluasi Ibadah Santri</h1>
           </div>
+
         </div>
         <div class="row scrolltab">
           <div class="col-lg-12 ">
@@ -34,22 +35,25 @@ Amaliah Santri
                   </tr>
                 </thead>
                 <tbody>
+                  {{-- @foreach($amal as $amal) --}}
+                    <pre>{{print_r($amal->subuh_jmh)}}</pre>
+                  {{-- @endforeach --}}
                     <tr class="odd gradeX">
                         <td><b>Ibadah&nbsp;Wajib</b></td>
                     </tr>
                     <tr>
                       <td>Subuh&nbsp;Jamaah</td>
                       @for ($i = 1; $i <= 31; $i++)
-                          @if (29 == $i)
-                              <td><input type="checkbox" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}></td>
-                          @else
-                              <td><input type="checkbox"></td>
-                          @endif
-                          {{--  @if($i < 10)
-                          <td><input  name="subuh_jmh0{{$i}}" type="checkbox" value="1" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}>
-                          @elseif($i>=10)
-                          <td><input  name="subuh_jmh{{$i}}" type="checkbox" value="1" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}></td>
-                          @endif    --}}
+                          {{-- @foreach($amal as $amal)
+                          {{dd($amal->)}}
+                            @if(date('d', strtotime($amal->date)) == $i)
+                              @if($ama->subuh_jmh == 1)
+                              <td><input checked="checked" type="checkbox" value="1"></td>
+                              @else
+                                <td><input type="checkbox"></td>
+                              @endif
+                            @endif
+                          @endforeach --}}
                       @endfor
                     </tr>
                     <tr>

@@ -18,16 +18,19 @@ class AmaliyahController extends Controller
     {
         $id = Auth::user()->id; //untuk mengecek id user
 
-        $amal = DB::table('users')
-            ->select('amaliyahs.date')
-            ->rightJoin('amaliyahs', 'amaliyahs.user_id', '=', 'users.id' )
-            ->where('users.id', date('Y-m-d'));
+        // $amal = DB::table('users')
+        //     ->select('amaliyahs.date')
+        //     ->rightJoin('amaliyahs', 'amaliyahs.user_id', '=', 'users.id' )
+        //     ->where('users.id', $id);
+        $amal = DB::table('amaliyahs')->where('user_id', '=', $id
+            // ['date', '=', $tgl],
+        )->get();
             //->latest()->paginate(20);
 
         // $amal = new Amaliyah;
         // $date_array = explode('-',$amal->date);
         // $tgl = end($date_array);
-        // dd($amal);
+        dd($amal);
 
         return view('dashboard.amaliyah.amaliyah',compact('amal','tgl'));
     }
@@ -95,7 +98,7 @@ class AmaliyahController extends Controller
         $amal->date            = date('Y-m-d');
 
         $amal->save();
-        return view('dashboard.amaliyah.addamaliyah',compact('amal','amaldate'))->with('success', 'Amaliyah Sudah di Ubah dan di Simpan'); ;
+        return view('dashboard.amaliyah.updateamaliyah',compact('amal','amaldate'))->with('success', 'Amaliyah Sudah di Ubah dan di Simpan'); ;
 
     }
 
@@ -128,19 +131,23 @@ class AmaliyahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id, $tgl)
+    public function update(Request $request, $id)
     {
 
         // $id = Auth::user()->id;
-        // $tgl = '2018-02-02';//date('Y-m-d');
+        $tgl = date('Y-m-d');
 
-        // $amal = DB::table('amaliyahs')->where([
+        // $amal = App\Amaliyah::where([
         //     ['user_id', '=', $id],
         //     ['date', '=', $tgl],
-        // ])->get();
+        // ])->first();
+        // DB::table('amaliyahs')->where([
+        //     ['user_id', '=', $id],
+        //     ['date', '=', $tgl],
+        // ])->all();
 
-        $amal = new Amaliyah;
-
+        $amal = Amaliyah::find($id);
+        // dd($amal);
         // Ibadah Wajib
         $amal->subuh_jmh       = $request->subuh_jmh;
         $amal->dzuhur_jmh      = $request->dzuhur_jmh;
@@ -167,7 +174,7 @@ class AmaliyahController extends Controller
         $amal->alkahfi         = $request->alkahfi;
 
         $amal->update();
-
+        return view('dashboard.amaliyah.updateamaliyah', compact('amal'));
 
 
     }
@@ -178,6 +185,7 @@ class AmaliyahController extends Controller
     }
 
 
+
     public function checkAmaliyah(){
 
         $id = Auth::user()->id;
@@ -186,18 +194,14 @@ class AmaliyahController extends Controller
         $amal = DB::table('amaliyahs')->where([
             ['user_id', '=', $id],
             ['date', '=', $tgl],
-        ])->get();
+        ])->first();
 
-
-
-         // dd($amal);
-
-        if ( $amal==0) {
+        if ( $amal) {
             
-            return 'menujud create';//return view('dashboard.amaliyah.updateamaliyah', compact('amal'));
+           return /*redirect()->route('amaliyah.update');*/view('dashboard.amaliyah.updateamaliyah', compact('amal'));
         }else{
 
-            echo 'test';
+            return view('dashboard.amaliyah.addamaliyah',compact('amal','amaldate'/*,'id','tgl'*/));
         }
     }
 }

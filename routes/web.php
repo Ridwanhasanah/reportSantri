@@ -75,13 +75,13 @@ Route::group(['middleware'=>'auth'], function(){
 
 	/*===== Amaliyah Start ===== */
 	Route::get('amaliyahcheck', 'AmaliyahController@checkAmaliyah')->name('amaliyahcheck');
-	Route::get('amaliyah', 'AmalliyahConroller@index')->name('amaliyah.index');
+	Route::get('amaliyah', 'AmaliyahController@index')->name('amaliyah.index');
 	// create
 	Route::get('amaliyah/create', 'AmaliyahController@create')->name('amaliyah.create');
 	Route::post('amaliyah/create', 'AmaliyahController@store')->name('amaliyah.store');
 	// edit
 	// Route::get('amaliyah/edit', 'AmaliyahController@update')->name('amaliyah.edit');
-	Route::patch('amaliyah/edit/id/tgl', 'AmaliyahController@update')->name('amaliyah.update');
+	Route::patch('amaliyah/edit/{id}', 'AmaliyahController@update')->name('amaliyah.update');
 	/*===== Amaliyah End ===== */
 	
 
