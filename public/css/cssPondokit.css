@@ -33,7 +33,7 @@
 .scrolltab{
 	overflow: auto;
 	min-height: 300px;
-	max-height: 1500px;
+	max-height: 480px;
 }
 .rwidth{
 	width: 25px;

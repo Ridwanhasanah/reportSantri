@@ -18,21 +18,16 @@ class AmaliyahController extends Controller
     {
         $id = Auth::user()->id; //untuk mengecek id user
 
-        // $amal = DB::table('users')
-        //     ->select('amaliyahs.date')
-        //     ->rightJoin('amaliyahs', 'amaliyahs.user_id', '=', 'users.id' )
-        //     ->where('users.id', $id);
-        $amal = DB::table('amaliyahs')->where('user_id', '=', $id
-            // ['date', '=', $tgl],
-        )->get();
-            //->latest()->paginate(20);
+        $amal = DB::table('amaliyahs')
+               ->where('user_id', '=', $id)
+               ->whereMonth('date', date('m'))
+               ->get();
 
-        // $amal = new Amaliyah;
-        // $date_array = explode('-',$amal->date);
-        // $tgl = end($date_array);
-        dd($amal);
-
-        return view('dashboard.amaliyah.amaliyah',compact('amal','tgl'));
+        $calender  = CAL_GREGORIAN;
+        $month     = date('m');
+        $year      = date('Y');
+        $total_day = cal_days_in_month($calender, $month, $year);
+        return view('dashboard.amaliyah.amaliyah',compact('amal','day', 'month',  'total_day'));
     }
 
     /**

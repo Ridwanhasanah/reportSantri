@@ -11,13 +11,15 @@ Amaliah Santri
               @include('layouts.patrials.alerts')
               <h1 class="page-header">Evaluasi Ibadah Santri</h1>
           </div>
-
         </div>
         <div class="row scrolltab">
           <div class="col-lg-12 ">
-            @foreach ($amal as $amal)
-                {{$amal->subuh_jmh}}
-            @endforeach
+           {{--  @foreach($amal as $amal)
+              @if(date('d',strtotime($amal->date)) == 06)
+                  {{dd(date('d',strtotime($amal->date)))}}
+              @endif
+              <br>
+            @endforeach --}}
             <form action="{{route('amaliyah.store')}}" method="post" role="form" >
               {{csrf_field()}}
               {{method_field('POST')}}
@@ -25,35 +27,27 @@ Amaliah Santri
               <thead>
                   <tr>
                       <th>Tanggal</th>
-                      @for($i = 1; $i <= 31; $i++)
+                      @for($i = 1; $i <= $total_day; $i++)
                         @if($i < 10)
-                          <th>0{{$i}}</th>
+                          <th style="text-align: center;">0{{$i}}</th>
                         @elseif($i>=10)
-                          <th>{{$i}}</th>
+                          <th style="text-align: center;">{{$i}}</th>
                         @endif  
                       @endfor
                   </tr>
                 </thead>
                 <tbody>
-                  {{-- @foreach($amal as $amal) --}}
-                    <pre>{{print_r($amal->subuh_jmh)}}</pre>
-                  {{-- @endforeach --}}
                     <tr class="odd gradeX">
                         <td><b>Ibadah&nbsp;Wajib</b></td>
                     </tr>
                     <tr>
                       <td>Subuh&nbsp;Jamaah</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          {{-- @foreach($amal as $amal)
-                          {{dd($amal->)}}
-                            @if(date('d', strtotime($amal->date)) == $i)
-                              @if($ama->subuh_jmh == 1)
-                              <td><input checked="checked" type="checkbox" value="1"></td>
-                              @else
-                                <td><input type="checkbox"></td>
-                              @endif
-                            @endif
-                          @endforeach --}}
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->subuh_jmh == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
                       @endfor
                     </tr>
                     <tr>
