@@ -73,6 +73,13 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::patch('dream/{id}/edit','ProfileController@dreamUpdate')->name('dream.update');
 	/*===== 100 Dream End ===== */
 
+	/*===== Target Terdekat Start ===== */
+	Route::get('/target','ProfileController@targetIndex')->name('target');
+	/*Edit*/
+	Route::get('target/{id}/edit','ProfileController@targetEdit')->name('target.edit');
+	Route::patch('target/{id}/edit','ProfileController@targetUpdate')->name('target.update');
+	/*===== Target Terdekat End ===== */
+
 	/*===== Amaliyah Start ===== */
 	Route::get('amaliyahcheck', 'AmaliyahController@checkAmaliyah')->name('amaliyahcheck');
 	Route::get('amaliyah', 'AmaliyahController@index')->name('amaliyah.index');

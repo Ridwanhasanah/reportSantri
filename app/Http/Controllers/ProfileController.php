@@ -104,4 +104,31 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', '100 Cita - Cita Updated');
     }
 
+
+    // Target Terdekat
+    public function targetIndex(){
+
+        $user = Auth::user();
+        $targets = explode(',', $user->target);
+        return view('dashboard.target.target',compact('user' ,'targets'));
+    }
+
+    public function targetEdit($id){
+
+        $user = Auth::user();
+
+        return view('dashboard.target.editTarget',compact('user'));
+    }
+
+    public function targetUpdate(Request $request, $id){
+
+        $user = User::find($id);
+
+        $user->target = $request->target;
+
+        $user->update();
+
+        return redirect()->back()->with('success', 'Target Terdekat Updated');
+    }
+
 }

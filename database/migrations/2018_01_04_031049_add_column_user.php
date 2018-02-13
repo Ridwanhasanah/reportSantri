@@ -32,6 +32,7 @@ class AddColumnUser extends Migration
             $table->string('photo')->nullable();
             $table->date('date_birth')->nullable();
             $table->string('birth_place')->nullable();
+            $table->text('target')->nullable();
 
         });
     }

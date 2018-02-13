@@ -376,7 +376,7 @@
                             <a href="{{route('dream')}}"><i class="fa fa-star fa-fw"></i> 100 Cita - Cita Hidupku<span class="fa arrow"></span></a>
                         </li>
                         <li id="menu">
-                            <a href="{{route('goal.all')}}"><i class="fa fa-bullseye fa-fw"></i> Target Terdekat (3 Bulan)<span class="fa arrow"></span></a>
+                            <a href="{{route('target')}}"><i class="fa fa-bullseye fa-fw"></i> Target Terdekat (3 Bulan)<span class="fa arrow"></span></a>
                         </li>
                         <li id="menu2">
                             <a href="{{route('goal.all')}}"><i class="fa fa-shield fa-fw"></i> Tataterib Pondok IT<span class="fa arrow"></span></a>
