@@ -6,7 +6,7 @@ use App\Models\Amaliyah;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use \stdClass;
 class AmaliyahController extends Controller
 {
     /**
@@ -23,11 +23,21 @@ class AmaliyahController extends Controller
                ->whereMonth('date', date('m'))
                ->get();
 
-        $calender  = CAL_GREGORIAN;
+        $calender  = 'CAL_GREGORIAN';
         $month     = date('m');
         $year      = date('Y');
-        $total_day = cal_days_in_month($calender, $month, $year);
-        return view('dashboard.amaliyah.amaliyah',compact('amal','day', 'month',  'total_day'));
+        $total_day = date('t');//cal_days_in_month($calender, $month, $year);
+
+        for ($i=1; $i <=$total_day ; $i++) { 
+           
+            if($i <= count($amal)){
+                $subuh = $amal[$i-1]->subuh_jmh;
+            }
+            
+
+        }
+
+        return view('dashboard.amaliyah.amaliyah',compact('subuh','amal','day', 'month',  'total_day', 'arr_date'));
     }
 
     /**
@@ -35,15 +45,54 @@ class AmaliyahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $id = Auth::user()->id;
-        $tgl = date('Y-m-d');
-        $amal = new Amaliyah;
+        $last_day = date('t'); //total hari dalam 1 bulan
+        $month = date('Y-m-'); //Tahun dan bulan
+
+        $id = Auth::user()->id; //id user
+        $tgl = date('Y-m-d'); //tanggal hari ini
+        $amal = new Amaliyah; 
         $amaldate = DB::table('users')
             ->select('amaliyahs.date')
             ->rightJoin('amaliyahs', 'amaliyahs.user_id', '=', 'users.id' )
             ->where('users.id', date('Y-m-d'));
+
+        $amaliyah = DB::table('amaliyahs')->where([
+            ['user_id', '=', $id],
+            ['date', '=', $month.'01'],
+        ])->first();
+
+        // dd($amaliyah);
+
+        /*Periksa apakah sudah punya inputan data pada awal bulan*/
+        // if ($amaliyah != $month.'01') {
+            
+            // $arr = [];
+            // for($i=1; $i <= 5; $i++) {
+            //  $arr[] = new Stdclass([
+            //    'user_id' => $id,
+            //   'date' => $month
+            // ]);
+            // }
+            // $variable->stdclass()->saveMany($arr);
+            // Model::create($arr);
+
+
+            // for ($i=1; $i <= 5/*$last_day*/; $i++) { 
+
+            //     Amaliyah::create([
+            //         $amal->user_id = $user_id,
+            //         $amal->date = $month.$i
+            //     ]);
+            //     $amal->create([
+            //         'user_id' => $id,
+            //         'date'    => $month.$i,
+
+            //     ]
+            // );
+            // }
+        // }
 
         return view('dashboard.amaliyah.addamaliyah',compact('amal','amaldate','id','tgl'));
     }
@@ -193,10 +242,10 @@ class AmaliyahController extends Controller
 
         if ( $amal) {
             
-           return /*redirect()->route('amaliyah.update');*/view('dashboard.amaliyah.updateamaliyah', compact('amal'));
+           return view('dashboard.amaliyah.updateamaliyah', compact('amal'));
         }else{
 
-            return view('dashboard.amaliyah.addamaliyah',compact('amal','amaldate'/*,'id','tgl'*/));
+            return redirect()->route('amaliyah.create');//return view('dashboard.amaliyah.addamaliyah',compact('amal','amaldate'/*,'id','tgl'*/));
         }
     }
 }

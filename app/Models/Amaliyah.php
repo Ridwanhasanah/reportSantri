@@ -10,6 +10,8 @@ class Amaliyah extends Model
     protected $table   = 'amaliyahs';
     public $timestamps = false;
 
+    // $amal = App\Models\Amaliyah::create();
+
     public function users(){
         
         return $this->belongsTo(User::class, 'users', 'id'); 
