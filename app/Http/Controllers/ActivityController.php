@@ -61,11 +61,11 @@ class ActivityController extends Controller
 
 
         // $activities = DB::table('activities')->insertGetId([ //menggunakan inserGetId untuk mengambil id latest
-            $activity->activity = $request->activity;
-            $activity->result = $request->result;
+            $activity->activity  = $request->activity;
+            $activity->result    = $request->result;
             $activity->follow_up = $request->follow_up;
-            $activity->when = $request->when;
-            $activity->user_id = Auth::user()->id;
+            $activity->when      = $request->when;
+            $activity->user_id   = Auth::user()->id;
         // ]);
             $activity->save();
 

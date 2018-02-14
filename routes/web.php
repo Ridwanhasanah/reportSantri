@@ -90,6 +90,13 @@ Route::group(['middleware'=>'auth'], function(){
 	// Route::get('amaliyah/edit', 'AmaliyahController@update')->name('amaliyah.edit');
 	Route::patch('amaliyah/edit/{id}', 'AmaliyahController@update')->name('amaliyah.update');
 	/*===== Amaliyah End ===== */
+
+	/*===== Kirim Saran Start=====*/
+	Route::resources([
+		'suggestion' => 'SuggestionController'
+	]);
+	
+	/*===== Kirim Saran End=====*/
 	
 
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Goal extends Model
 {
-    protected $guarder = ['id'];
+    protected $guarded = ['id'];
     protected $table = 'goals';
 
     public function users(){

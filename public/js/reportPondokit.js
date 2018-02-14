@@ -20,6 +20,7 @@ $(document).ready(function(){
 	showmenu('menu3','show3');
 	showmenu('menu4','show4');
 	showmenu('menu5','show5');
+	showmenu('menu6','show6');
 	
 
 });

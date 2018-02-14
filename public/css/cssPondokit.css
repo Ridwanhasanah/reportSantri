@@ -8,6 +8,17 @@
 	font-size: 11px !important;
 	margin-right: 2px;
 }
+.rtext{
+	text-decoration: none;
+}
+.rfloat{
+	float: left;
+}
+
+.rdate{
+	float: right;
+	padding: 10px;
+}
 
 .rvalidasi{
 	border: #f00;

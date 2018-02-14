@@ -407,6 +407,10 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- Kirim Saran --}}
+                        <li id="menu6">
+                            <a href="{{Auth::user()->level==1?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->id==1?'Semua Saran':'Kirim Saran'}} &nbsp; <span class="fa arrow"></span></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
