@@ -28,16 +28,17 @@ class AmaliyahController extends Controller
         $year      = date('Y');
         $total_day = date('t');//cal_days_in_month($calender, $month, $year);
 
-        for ($i=1; $i <=$total_day ; $i++) { 
-           
-            if($i <= count($amal)){
-                $subuh = $amal[$i-1]->subuh_jmh;
-            }
-            
+        /*Untk cek amal di bulan sekarang apakah masih kosong*/
+        if (count($amal) != 0) {
 
+            return view('dashboard.amaliyah.amaliyah',compact('amal', 'month', 'total_day'));
+
+        }else{
+
+            return redirect()->route('amaliyah.create');
         }
 
-        return view('dashboard.amaliyah.amaliyah',compact('subuh','amal','day', 'month',  'total_day', 'arr_date'));
+        
     }
 
     /**
@@ -63,38 +64,24 @@ class AmaliyahController extends Controller
             ['date', '=', $month.'01'],
         ])->first();
 
-        // dd($amaliyah);
+         // dd($id);
 
         /*Periksa apakah sudah punya inputan data pada awal bulan*/
-        // if ($amaliyah != $month.'01') {
-            
-            // $arr = [];
-            // for($i=1; $i <= 5; $i++) {
-            //  $arr[] = new Stdclass([
-            //    'user_id' => $id,
-            //   'date' => $month
-            // ]);
-            // }
-            // $variable->stdclass()->saveMany($arr);
-            // Model::create($arr);
+        if ($amaliyah != $month.'01') {
 
+            $dataSet = [];
+            for ($i=1; $i <= $last_day; $i++) { 
+                $dataSet[] = [
+                    'user_id' => $id,
+                    'date'    => $month.$i,
+                ];
+            }
 
-            // for ($i=1; $i <= 5/*$last_day*/; $i++) { 
+            DB::table('amaliyahs')->insert($dataSet);
+            }
+        
 
-            //     Amaliyah::create([
-            //         $amal->user_id = $user_id,
-            //         $amal->date = $month.$i
-            //     ]);
-            //     $amal->create([
-            //         'user_id' => $id,
-            //         'date'    => $month.$i,
-
-            //     ]
-            // );
-            // }
-        // }
-
-        return view('dashboard.amaliyah.addamaliyah',compact('amal','amaldate','id','tgl'));
+        return redirect()->route('amaliyah.index')->with('amal', 'Amaliyah mu masih kosong ayo di isi.. ');//view('dashboard.amaliyah.amaliyah',compact('amal','amaldate','id','tgl'));
     }
 
     /**
@@ -103,6 +90,8 @@ class AmaliyahController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    /*Store, fungsi ini sudah tidak di gunakan lagi */
     public function store(Request $request)
     {
         $amaldate = DB::table('users')
@@ -198,12 +187,20 @@ class AmaliyahController extends Controller
         $amal->ashar_jmh       = $request->ashar_jmh;
         $amal->maghrib_jmh     = $request->maghrib_jmh;
         $amal->isya_jmh        = $request->isya_jmh;
-        $amal->tilawah_alquran = $request->tilawah_alquran;
+        if ($request->tilawah_alquran >127) {
+            $amal->tilawah_alquran = 127;
+        }else{
+            $amal->tilawah_alquran = $request->tilawah_alquran;
+        }
         // Ibadah Sunnah
         $amal->tahajud         = $request->tahajud;
         $amal->witir           = $request->witir;
         $amal->qobliyah_subuh  = $request->qobliyah_subuh;
-        $amal->hafalan         = $request->hafalan;
+        if ($request->hafalan >127) {
+            $amal->hafalan = 127;
+        }else{
+            $amal->hafalan = $request->hafalan;
+        }
         $amal->dhuha           = $request->dhuha;
         $amal->qobliyah_dzuhur = $request->qobliyah_dzuhur;
         $amal->badiyah_dzuhur  = $request->badiyah_dzuhur;
@@ -218,7 +215,7 @@ class AmaliyahController extends Controller
         $amal->alkahfi         = $request->alkahfi;
 
         $amal->update();
-        return view('dashboard.amaliyah.updateamaliyah', compact('amal'));
+        return redirect()->route('amaliyah.index');//return view('dashboard.amaliyah.updateamaliyah', compact('amal'));
 
 
     }
@@ -229,7 +226,7 @@ class AmaliyahController extends Controller
     }
 
 
-
+/*Untuk Chek Amaliyah apakah Sudah punya amaliyah atau blom*/
     public function checkAmaliyah(){
 
         $id = Auth::user()->id;

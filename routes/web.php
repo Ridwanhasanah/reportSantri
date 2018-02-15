@@ -137,6 +137,11 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('dailyactivity', 'Admin\DailyActivityController@index')->name('dailyactivity');
 	/*===== Daily Activity  End=====*/ 
 
+	/*===== Amaliyah Santri Start =====*/
+	Route::get('amaliyah/santri/{id}', 'AllUserController@amaliyahIndex')->name('santri.amaliyah');
+	/*===== Amaliyah Santri End =====*/
+
+
 	
 	/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
 	Route::resources([

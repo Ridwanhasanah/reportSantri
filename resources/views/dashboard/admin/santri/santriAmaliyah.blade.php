@@ -9,13 +9,13 @@ Amaliah Santri
         <div class="row">
           <div class="col-lg-12">
               @include('layouts.patrials.alerts')
-              <h1 class="page-header">Evaluasi Ibadah Santri</h1>
+              <h1 class="page-header">Evaluasi Ibadah Santri : {{$santri[0]->name}}</h1>
           </div>
         </div>
         @if(count($amal) == 0)
         <div class="panel panel-default">
           <div class="panel panel-body">
-            <h2 style="text-align: center;">Amaliyah mu masih kosong Bulan ini, ayo segera di isi :)</h2>
+            <h2 style="text-align: center;">Amaliyah {{$santri[0]->name}} masih kosong Bulan ini.</h2>
           </div>
         </div>
         @else

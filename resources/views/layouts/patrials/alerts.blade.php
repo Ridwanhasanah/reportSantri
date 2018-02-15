@@ -15,3 +15,11 @@
 		{{session('danger')}}
 	</div>
 @endif
+
+@if (session('amal'))
+	<div class="alert alert-info rupdate">
+		<h1>
+			{{session('amal')}}&nbsp;<b><i class="fa fa-hand-o-right"><a style="color: #f00;" href="{{route('amaliyahcheck')}}">&nbsp;Klik disini</a></i></b>
+		</h1>
+	</div>
+@endif

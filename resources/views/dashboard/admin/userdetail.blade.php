@@ -73,9 +73,10 @@
                     </tbody>
                   </table>
                   
-                  <a href="{{route('santri.report',$user->id)}}" class="btn btn-primary">Kegiatan</a>
-                  <a href="{{route('santri.goal',$user->id)}}" class="btn btn-primary">Goal</a>
-                  <a href="{{route('allactivitygoal',$user->id)}}" class="btn btn-primary">Goal dan Kegiatan</a>
+                  <a href="{{route('santri.report',$user->id)}}" class="btn btn-outline btn-info">Kegiatan</a>
+                  <a href="{{route('santri.goal',$user->id)}}" class="btn btn-outline btn-success">Goal</a>
+                  <a href="{{route('allactivitygoal',$user->id)}}" class="btn btn-outline btn-primary">Goal dan Kegiatan</a>
+                  <a href="{{route('santri.amaliyah',$user->id)}}" class="btn btn-outline btn-warning">Amaliyah</a>
                 </div>
               </div>
         </div>
@@ -83,7 +84,7 @@
           <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
           <span class="pull-right">
             <a href="{{route('user.edit',$user->id)}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><b>Edit</b><i class="glyphicon glyphicon-edit"></i></a>
-            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+            <a href="{{route('user.index')}}" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
           </span>
         </div>
       </div>

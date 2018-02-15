@@ -230,9 +230,9 @@ class AllUserController extends Controller
 
     }
 
-    /*======================================== Menampilkan Santri Sesuai Divisi End ============================== */
+    /*================================ Menampilkan Santri Sesuai Divisi End ============================== */
 
-    /*======================================== Activty Santri CRUD Start ========================================*/
+    /*================================ Activty Santri CRUD Start ========================================*/
 
     /*Index*/
      public function indexActivtySantri($id)
@@ -287,9 +287,9 @@ class AllUserController extends Controller
         return redirect()->route('report.edit',$activity)->with('success', 'Report Added'); 
 
     }
-    /*================================================== Activiry Santi CRUD End ========================================*/
+    /*======================================= Activity Santi CRUD End ========================================*/
 
-    /*================================================== Goal Santri CRUD Start ========================================*/
+    /*======================================== Goal Santri CRUD Start ========================================*/
     /*Index*/
     public function indexGoalSantri($id)
     {
@@ -327,8 +327,28 @@ class AllUserController extends Controller
         return redirect()->route('goal.edit',$goal->id)->with('success', 'Goal Added'); 
 
     }
-    /*================================================== Goal Santri CRUD End ========================================*/
+    /*======================================== Goal Santri CRUD End ========================================*/
 
+    /*======================================== Amaliyah Santri Start ======================================*/
+    public function amaliyahIndex($id){
+
+        $santri = DB::table('users')->select('name')
+                ->where('id','=',$id)->get();
+
+        $amal = DB::table('amaliyahs')
+               ->where('user_id', '=', $id)
+               ->whereMonth('date', date('m'))
+               ->get();
+
+        $calender  = 'CAL_GREGORIAN';
+        $month     = date('m');
+        $year      = date('Y');
+        $total_day = date('t');//cal_days_in_month($calender, $month, $year);
+
+        return view('dashboard.admin.santri.santriAmaliyah',compact('santri','amal', 'month',  'total_day'));
+
+    }
+    /*======================================== Amaliyah Santri End =========================================*/
 
 }
 
