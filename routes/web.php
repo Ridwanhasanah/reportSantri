@@ -63,6 +63,8 @@ Route::group(['middleware'=>'auth'], function(){
 	/*Edit*/
 	Route::get('profile/{id}/edit','ProfileController@edit')->name('profile.edit');
 	Route::patch('profile/{id}/edit','ProfileController@update')->name('profile.update');
+	Route::get('profilepass/{id}/edit','ProfileController@passwordEdit')->name('profilepass.edit');
+	Route::patch('profilepass/{id}/edit','ProfileController@passwordUpdate')->name('profilepass.update');
 
 	/*===== Profile End ===== */
 
@@ -141,6 +143,10 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::get('amaliyah/santri/{id}', 'AllUserController@amaliyahIndex')->name('santri.amaliyah');
 	/*===== Amaliyah Santri End =====*/
 
+	/*===== Ubah Password start =====*/
+	Route::get('userpass/{id}/edit', 'AllUserController@passwordEdit')->name('password.edit');
+	Route::patch('userpass/{id}/edit', 'AllUserController@passwordUpdate')->name('password.update');
+	/*===== Ubah Password start =====*/
 
 	
 	/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/

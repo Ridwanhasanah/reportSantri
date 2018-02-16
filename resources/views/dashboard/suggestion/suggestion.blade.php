@@ -25,7 +25,9 @@ Semua Saran
                     <p>{{ str_limit($suggestion->suggestion,100)}}</p>
                 </div>
                 <div class="panel-footer">
-                    <button class="btn btn-outline btn-info"><a style="text-decoration: none;" href="{{route('suggestion.show',$suggestion->id)}}">View</a></button>
+                    <a class="btn btn-outline btn-primary" href="{{route('suggestion.show',$suggestion->id)}}">
+                        View
+                    </a>
                     <form class="rfloat" action="{{route('suggestion.destroy',$suggestion->id)}}" method="post">
                         {{csrf_field()}}
                         {{ method_field('DELETE') }}

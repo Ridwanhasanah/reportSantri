@@ -32,6 +32,8 @@
                 @endif 
                   <br>
                   <input type="file" name="photo" class="form-control">
+                  <br>
+                  <a href="{{route('profilepass.edit',$user->id)}}" id="editpass" class="btn btn-outline btn-danger">Ubah Password</a>
                 </div>
 
                

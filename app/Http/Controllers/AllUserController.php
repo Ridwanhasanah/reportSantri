@@ -115,8 +115,9 @@ class AllUserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $dreams = explode(',', $user->dream);
 
-        return view('dashboard.admin.userdetail', compact('user'));
+        return view('dashboard.admin.userdetail', compact('user','dreams'));
     }
 
     public function edit($id)
@@ -131,6 +132,11 @@ class AllUserController extends Controller
         $user  = User::find($id);
 
         $user->name        = $request->name;
+        if ($request->password == $request->repassword) {
+            $user->password = bcrypt($request->password);
+        }else{
+            return redirect()->back()->with('danger', ' Password dan Ulangi Password tidak sama');
+        }
         $user->department  = $request->department;
         $user->date_birth  = $request->date_birth;
         $user->birth_place = $request->birth_place;
@@ -164,7 +170,7 @@ class AllUserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->back()->with('danger', 'User Deleted');
+        return redirect()->route('user.index')->with('danger', 'Santri sudah di hapus');
     }
 
 
@@ -349,6 +355,33 @@ class AllUserController extends Controller
 
     }
     /*======================================== Amaliyah Santri End =========================================*/
+    
+    /*======================================== Ubah Password Start =========================================*/
+    public function passwordEdit($id){
+        return view('dashboard.admin.editPassword',compact('id'));
+    }
+
+    public function passwordUpdate(Request $request, $id){
+
+        $this->validate($request,[
+
+            'password'   => 'required|min:6',
+            'repassword' => 'required|min:6',
+
+        ]);
+
+
+        $user = User::find($id);
+        if ($request->password == $request->repassword) {
+            $user->password = bcrypt($request->password);
+        }else{
+            return redirect()->back()->with('danger', 'Password tidak sama');
+        }
+        $user->update();
+        return redirect()->route('user.edit',$id)->with('success','Password telah di ubah');   
+        
+    }
+    /*======================================== Ubah Password End   =========================================*/
 
 }
 

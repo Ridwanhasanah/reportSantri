@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    
 
     <title>@yield('title')</title>
     {{-- Pondokit Ridwan Css Start--}}
@@ -409,7 +412,7 @@
                         </li>
                         {{-- Kirim Saran --}}
                         <li id="menu6">
-                            <a href="{{Auth::user()->level==1?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->id==1?'Semua Saran':'Kirim Saran'}} &nbsp; <span class="fa arrow"></span></a>
+                            <a href="{{Auth::user()->level==1?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->level==1?'Semua Saran':'Kirim Saran'}} &nbsp; <span class="fa arrow"></span></a>
                         </li>
                     </ul>
                 </div>
@@ -445,6 +448,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-        </body>
 
-        </html>
+</body>
+
+</html>

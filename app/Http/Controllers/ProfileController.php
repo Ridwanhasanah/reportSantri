@@ -101,7 +101,7 @@ class ProfileController extends Controller
 
         $user->update();
 
-        return redirect()->back()->with('success', '100 Cita - Cita Updated');
+        return redirect()->back()->with('success', '100 Cita - Cita telah di perbarui');
     }
 
 
@@ -130,5 +130,32 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('success', 'Target Terdekat Updated');
     }
+
+    /*========== Edit Password Start =========*/
+    public function passwordEdit($id){
+        return view('dashboard.profile.editPassword',compact('id'));
+    }
+
+    public function passwordUpdate(Request $request, $id){
+
+        $this->validate($request,[
+
+            'password'   => 'required|min:6',
+            'repassword' => 'required|min:6',
+
+        ]);
+
+        $user = User::find($id);
+        if ($request->password == $request->repassword) {
+            $user->password = bcrypt($request->password);
+        }else{
+            return redirect()->back()->with('danger', 'Password tidak sama');
+        }
+        $user->update();
+        return redirect()->route('profile.edit',$id)->with('success','Password telah di ubah');   
+        
+    }
+    /*========== Edit Password End =========*/
+
 
 }
