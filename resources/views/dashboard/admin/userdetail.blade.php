@@ -25,6 +25,14 @@
                   @else
                     <img alt="User Pic" src="{{asset('storage/photos/'.$user->photo)}}" class="img-circle img-responsive"> 
                   @endif 
+                  <div class="panel panel-info rmargin">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><b>Quote</b></h3>
+                    </div>
+                    <div class="panel-body">
+                      <p><i><b>{{$user->quote}}</b></i></p>
+                    </div>
+                  </div>
                 </div>
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">

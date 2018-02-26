@@ -293,10 +293,10 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{route('dashboardIT')}}"><i class="fa fa-dashboard fa-fw"></i> Dasbor</a>
+                            <a href="{{route('dashboard.home')}}"><i class="fa fa-dashboard fa-fw"></i> Dasbor</a>
                         </li>
                         {{-- ALL User --}}
-                        @if (Auth::user()->level==1)
+                        @if (Auth::user()->hasRole('teacher'))
                         
                         <li id="menu">
                             <a href="{{route('user.index')}}"><i class="fa fa-users fa-fw"></i> Santri &amp; Staff<span class="fa arrow"></span></a>
@@ -410,9 +410,17 @@
                                 </li>
                             </ul>
                         </li>
+
+                            @php
+                                $check = Auth::user()->roles();
+                            @endphp
+                            @if (!$check)
+                                <button type="button" id="upgrade" class="btn btn-xs btn-info" data-id="{{ Auth::id() }}" data-member="member">upgrade</button>
+                            @endif
+
                         {{-- Kirim Saran --}}
                         <li id="menu6">
-                            <a href="{{Auth::user()->level==1?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->level==1?'Semua Saran':'Kirim Saran'}} &nbsp; <span class="fa arrow"></span></a>
+                            <a href="{{Auth::user()->hasRole('master')?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->hasRole('master')=='master'?'Semua Saran':'Kirim Saran'}} &nbsp; <span class="fa arrow"></span></a>
                         </li>
                     </ul>
                 </div>

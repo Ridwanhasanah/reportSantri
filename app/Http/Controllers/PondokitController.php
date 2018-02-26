@@ -10,100 +10,111 @@ use Illuminate\Support\Facades\DB;
 
 class PondokitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    // public function handle($request, Closure $next)
+    // {
+    //     $user = Auth::user();
+    //     if($user->role === User::master) {
+    //         return $next($request);
+    //     }
+
+    //     return redirect('home');
+    // }
+    
     public function index()
     {
-        // $activities = Activity::latest()->paginate(5);
-        $id = Auth::user()->id; //untuk mengecek id user
-        //$user = DB::table('users')->get();
 
-        $activities = DB::table('users')
-            ->select('activities.*')
-            ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
-            ->where('users.id', "$id")
-            ->latest()->paginate(20);
 
-            //dd($users);
+        $programmer = DB::table('users')->where('department','Programmer')->count();
+        $multimedia = DB::table('users')->where('department','Multimedia')->count();
+        $imers      = DB::table('users')->where('department','Imers')->count();
+        $cyber      = DB::table('users')->where('department','Cyber')->count();
 
-        $goals = DB::table('users')
-            ->select('goals.*')
-            ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
-            ->where('users.id', "$id")
-            ->latest()->paginate(20);
+        // dd(Auth::user()->roles->id);
 
-        
-        
-
-        return view('dashboard.dashboard', compact('activities','goals'));
+        // $userRoleName = User::find(1)->role[0]->name;
+        return view('dashboard.dashboard.dashboard', compact('programmer','multimedia','imers','cyber','userRoleName'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    
+    public function create(){}
+
+    public function store(Request $request){}
+
+    
+    public function show($id){}
+
+    
+    public function edit($id){}
+
+    
+    public function update(Request $request, $id){}
+
+   
+    public function destroy($id){}
+
+    /*========== Menampilkan Santri Sesuai Divisi Start ========== */
+    public function santriProgrammer(){
+
+        $students = DB::table('users')->select('*')->where('department',"Programmer")->latest()->paginate(21);
+
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        return view('dashboard.dashboard.listSantri', compact('students','divisi'));
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function santriMultimedia(){
+
+        $students = DB::table('users')->select('*')->where('department',"Multimedia")->latest()->paginate(21);
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        /*Menghitung Total santri*/
+        $total = DB::table('users')->where('department','Multimedia')->count();
+
+        return view('dashboard.dashboard.listSantri', compact('students','divisi'));
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function santriImers(){
+
+        $students = DB::table('users')->select('*')->where('department',"Imers")->latest()->paginate(21);
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        /*Menghitung Total santri*/
+        $total = DB::table('users')->where('department','Imers')->count();
+
+        return view('dashboard.dashboard.listSantri', compact('students','divisi'));
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function santriCyber(){
+
+        $students = DB::table('users')->select('*')->where('department',"Cyber")->latest()->paginate(21);
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        /*Menghitung Total santri*/
+        $total = DB::table('users')->where('department','Cyber')->count();
+
+        return view('dashboard.dashboard.listSantri', compact('students','divisi'));
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    /*================================ Menampilkan Santri Sesuai Divisi End ============================== */
 }

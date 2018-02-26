@@ -54,6 +54,7 @@ class ProfileController extends Controller
         $user->hobby       = $request->hobby;
         $user->experience  = $request->experience;
         $user->creation    = $request->creation;
+        $user->quote       = $request->quote;
 
         if ($request->hasFile('photo')) {
 

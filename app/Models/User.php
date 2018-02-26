@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarder = ['id'];
-
+    protected $table = 'users';
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -32,7 +32,7 @@ class User extends Authenticatable
 
     /*Realtion Many to manty User - activity*/
     public function activities(){
-        return $this->hasMany(Models\Activity::class);//, 'activities');
+        return $this->hasMany(Activity::class);//, 'activities');
     }
 
     /*Realtion Many to manty User - amaliyah*/
@@ -40,5 +40,35 @@ class User extends Authenticatable
         return $this->hasMany(Models\Amaliyah::class, 'amaliyahs');
     }
 
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role', 'role_users', 'user_id', 'role_id');
+        
+    }
 
+    // public function hasAnyRole($roles){
+
+    //     if (is_array($roles)) {
+    //         foreach ($$role as $role) {
+    //             if ($this->hasRole($role)) {
+    //                 return true;
+    //             }
+    //         }
+    //     }else{
+    //         if ($this->hasRole($role)) {
+    //                 return true;
+    //             }
+    //     }
+
+    //     return false;
+    // }
+
+    /*Ini di gunakan untuk check Role user apakah admin - master dll*/
+    public function hasRole($role){
+
+        if ($this->roles()->where('name', $role)->first()) {
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -111,7 +111,8 @@ class GoalController extends Controller
 
         return redirect()->back();*/
 
-        $goal = Goal::find($id);
+        
+        $goal = Goal::find(Crypt::decrypt($id));
 
         $goal->goal        = $request->goal;
         $goal->option      = $request->option;

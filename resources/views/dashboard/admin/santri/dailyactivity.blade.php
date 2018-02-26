@@ -26,26 +26,20 @@ Kegiatan Santri Hari Ini
                                     <tr>
                                         <th>Nama</th>
                                         <th>Kegiatan</th>
-                                        <th>Hasil</th>
-                                        <th>Tindak Lanjut</th>
                                         <th>Jurusan</th>
+                                        <th>Status</th>
                                         <th>Tanggal</th>
                                     </tr>
                                 </thead>
                                 <tbody class="rfontsize">
 
-                                    @foreach ($activities as $activity)
+                                    @foreach($users as $user)
 
-                                        @if ($activity->user->department != 'Staff Pondok IT')
-                                            
-                                            @if ($activity->when == date('Y-m-d'))
-                                                
-                                            
                                             <tr class="odd gradeX">
                                                 <td>
-                                                    @if (count($activity->user->photo) != 0)
+                                                    @if (count($user->photo) != 0)
                                                         <div class="form-group">
-                                                            <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$activity->user->photo)}}">
+                                                            <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$user->photo)}}">
                                                         </div>
                                                     @else
                                                         <div class="form-group">
@@ -53,16 +47,13 @@ Kegiatan Santri Hari Ini
                                                         </div>
                                                     @endif
 
-                                                    <b>{{ $activity->user->name }}</b><br>
+                                                    <b>{{ $user->name }}</b><br>
                                                 </td>
-                                                <td>{{$activity->activity}}</td>
-                                                <td>{{$activity->result}}</td>
-                                                <td>{{$activity->follow_up}}</td>
-                                                <td>{{$activity->user->department}}</td>
-                                                <td class="center">{{date('d F Y', strtotime($activity->when))}}</td>
+                                                <td></td>
+                                                <td>{{$user->department}}</td>
+                                                <td><button class="btn btn-info">Sudah Laporan</button></td>
+                                                <td class="center">{{$user->activities[count($user->activities)-1]->activity}}</td>
                                             </tr>
-                                            @endif
-                                        @endif
                                     @endforeach
 
                                     
@@ -78,7 +69,7 @@ Kegiatan Santri Hari Ini
                                     </tr>
                                 </thead>
                             </table>
-                            {!! $activities->render() !!}
+                            {!! $users->render() !!}
                             <!-- /.table-responsive -->
                             
                         </div>

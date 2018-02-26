@@ -36,6 +36,14 @@ Ubah Santri / Staff
                   <input type="file" name="photo" class="form-control">
                   <br>
                   <a href="{{route('password.edit',$user->id)}}" id="editpass" class="btn btn-outline btn-danger">Ubah Password</a>
+                  <div class="panel panel-info rmargin">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><b>Quote</b></h3>
+                    </div>
+                    <div class="panel-body">
+                      <textarea placeholder="Contoh : Berilmu sebelum berkata dan beramal" class="form-control" type="textarea" name="quote">{{$user->quote}}</textarea>
+                    </div>
+                  </div>
                 </div>
 
                
@@ -51,7 +59,11 @@ Ubah Santri / Staff
                         <td><b>Divisi</b></td>
                         <td>
                           <select name="department" class="form-control">
+                            @if(Auth::user()->hasRole('master'))
+                            <option {{$user->department=='Master' ? 'selected' : ''}} value="Staff Pondok IT">Master</option>
                             <option {{$user->department=='Staff Pondok IT' ? 'selected' : ''}} value="Staff Pondok IT">Staff Pondok IT</option>
+                            <option {{$user->department=='Teacher' ? 'selected' : ''}} value="Cyber">Guru / Mentor</option>
+                            @endif
                             <option {{$user->department=='Programmer' ? 'selected' : ''}} value="Programmer">Programmer</option>
                             <option {{$user->department=='Multimedia' ? 'selected' : ''}}  value="Multimedia">Multimedia</option>
                             <option {{$user->department=='Imers' ? 'selected' : ''}} value="Imers">Imers</option>

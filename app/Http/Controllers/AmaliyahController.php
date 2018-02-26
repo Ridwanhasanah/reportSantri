@@ -59,6 +59,7 @@ class AmaliyahController extends Controller
             ->rightJoin('amaliyahs', 'amaliyahs.user_id', '=', 'users.id' )
             ->where('users.id', date('Y-m-d'));
 
+        /*Mengecek Amaliyah pada awal bulan*/
         $amaliyah = DB::table('amaliyahs')->where([
             ['user_id', '=', $id],
             ['date', '=', $month.'01'],

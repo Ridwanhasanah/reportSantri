@@ -22,7 +22,7 @@ Ubah Target
                     <div class="row">
                     	<div class="col-lg-3"></div>
                         <div class="col-lg-6 col-ld-pull-3">
-                            <form action="{{route('goal.update',$goal->id)}}" method="post" role="form">
+                            <form action="{{route('goal.update',Crypt::encrypt($goal->id))}}" method="post" role="form">
                             	{{csrf_field()}}
                                 {{ method_field('PATCH') }}
                                 <div class="form-group">

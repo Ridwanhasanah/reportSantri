@@ -66,7 +66,11 @@ Add User
                             <option value="Multimedia">Multimedia</option>
                             <option value="Imers">Imers</option>
                             <option value="Cyber">Cyber</option>
+                            @if(Auth::user()->hasRole('master'))
                             <option value="Staff Pondok IT">Staff Pondok IT</option>
+                            <option value="Teacher">Guru / Mentor</option>
+                            <option value="Master">Master</option>
+                            @endif
                           </select>
                         </td>
                       </tr>

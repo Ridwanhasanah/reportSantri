@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Activity;
+use App\Models\RoleUser;
 use App\Models\Goal;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
@@ -50,7 +51,7 @@ class AllUserController extends Controller
 
     public function create()
     {
-        if (Auth::user()->level == 1) {
+        if (Auth::user()->hasRole('admin')) {
 
              return view('dashboard.admin.adduser');
 
@@ -63,7 +64,11 @@ class AllUserController extends Controller
     {
 
         
-        $user  = new User;
+        $memeber  = new User;
+        $role_users1 = new RoleUser; //RoleUser 1
+        $role_users2 = new RoleUser; //RoleUser 2
+        $role_users3 = new RoleUser; //RoleUser 3
+        $role_users4 = new RoleUser; //RoleUser 4
 
         $this->validate($request,[
 
@@ -73,45 +78,88 @@ class AllUserController extends Controller
 
         ]);
 
-        $user->name        = $request->name;
-        $user->password    = bcrypt($request->password);
-        $user->department  = $request->department;
-        $user->date_birth  = $request->date_birth;
-        $user->birth_place = $request->birth_place;
-        $user->gender      = $request->gender;
-        $user->address     = $request->address;
-        $user->email       = $request->email;
-        $user->hp          = $request->hp;
-        $user->dream       = $request->dream;
-        $user->hobby       = $request->hobby;
-        $user->experience  = $request->experience;
-        $user->creation    = $request->creation;
+        $memeber->name        = $request->name;
+        $memeber->password    = bcrypt($request->password);
+        $memeber->department  = $request->department;
+        $memeber->date_birth  = $request->date_birth;
+        $memeber->birth_place = $request->birth_place;
+        $memeber->gender      = $request->gender;
+        $memeber->address     = $request->address;
+        $memeber->email       = $request->email;
+        $memeber->hp          = $request->hp;
+        $memeber->dream       = $request->dream;
+        $memeber->hobby       = $request->hobby;
+        $memeber->experience  = $request->experience;
+        $memeber->creation    = $request->creation;
 
-        if ($user->department == 'Staff Pondok IT') {
-            
-            $user->level = 1;
         
-        }else{
-            $user->level = 2;
-        }
-
+        //jika ada photo maka
         if ($request->hasFile('photo')) {
 
             $filename = $request->photo->getClientOriginalName();
             
             $request->file('photo')->storeAs('photos',$filename);
 
-            $user->photo   = $filename;
+            $memeber->photo   = $filename;
 
 
         }
 
 
-        $user->save();
+        $memeber->save();
 
-        return redirect()->route('user.edit',$user->id)->with('success', 'User Added');
+        /*Menambahkan RoleUser Sesuai dengan Department yang di pilih*/
+        if ($request->department == 'Staff Pondok IT') {
+            
+            $role_users2->user_id = $memeber->id;
+            $role_users2->role_id = 2;
+            $role_users3->user_id = $memeber->id;
+            $role_users3->role_id = 3;
+            $role_users4->user_id = $memeber->id;
+            $role_users4->role_id = 4;
+
+            $role_users2->save();
+            $role_users3->save();
+            $role_users4->save();
+        
+        }elseif ($request->department == 'Teacher') {
+            
+            $role_users3->user_id = $memeber->id;
+            $role_users3->role_id = 3;
+            $role_users4->user_id = $memeber->id;
+            $role_users4->role_id = 4;
+
+            $role_users3->save();
+            $role_users4->save();
+        
+        }elseif ($request->department == 'Master') {
+            
+            $role_users1->user_id = $memeber->id;
+            $role_users1->role_id = 1;
+            $role_users2->user_id = $memeber->id;
+            $role_users2->role_id = 2;
+            $role_users3->user_id = $memeber->id;
+            $role_users3->role_id = 3;
+            $role_users4->user_id = $memeber->id;
+            $role_users4->role_id = 4;
+
+            $role_users1->save();
+            $role_users2->save();
+            $role_users3->save();
+            $role_users4->save();
+        
+        }else{
+
+            $role_users4->user_id = $memeber->id;
+            $role_users4->role_id = 4;
+
+            $role_users->save();
+        }
+
+        return redirect()->route('user.edit',$memeber->id)->with('success', 'Santri / Staff sudah di tambah');
     }
 
+    /*===== Show =====*/
     public function show($id)
     {
         $user = User::find($id);
@@ -119,24 +167,18 @@ class AllUserController extends Controller
 
         return view('dashboard.admin.userdetail', compact('user','dreams'));
     }
-
+    /*===== Edit =====*/
     public function edit($id)
     {
         $user = User::find($id);
 
         return view('dashboard.admin.useredit', compact('user'));
     }
-
+    /*===== Update =====*/
     public function update(Request $request, $id)
     {
         $user  = User::find($id);
 
-        $user->name        = $request->name;
-        if ($request->password == $request->repassword) {
-            $user->password = bcrypt($request->password);
-        }else{
-            return redirect()->back()->with('danger', ' Password dan Ulangi Password tidak sama');
-        }
         $user->department  = $request->department;
         $user->date_birth  = $request->date_birth;
         $user->birth_place = $request->birth_place;
@@ -148,6 +190,7 @@ class AllUserController extends Controller
         $user->hobby       = $request->hobby;
         $user->experience  = $request->experience;
         $user->creation    = $request->creation;
+        $user->quote       = $request->quote;
 
         if ($request->hasFile('photo')) {
 
