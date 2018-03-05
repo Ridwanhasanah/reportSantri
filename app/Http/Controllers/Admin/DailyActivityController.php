@@ -18,17 +18,20 @@ class DailyActivityController extends Controller
      */
     public function index()
     {
-        $users = User::all()->whereIn('department',[
-             'Programmer',
-             'Multimedia',
-             'Imers',
-             'Cyber',
-         ]);
+
+        $user = 
+
+        $activities = \App\Models\Activity::where('when', '=' , date('Y-m-d'))->latest()->paginate(20);
+        
+
+        return view('dashboard.admin.santri.dailyactivity', compact('activities'));
+
+        
 
         
         //dd($users[1]->activities[count($users[1]->activities)-1]->activity);
 
-        return view('dashboard.admin.santri.dailyactivity', compact('users'));
+        // return view('dashboard.admin.santri.dailyactivity', compact('activities'));
     }
 
     /**

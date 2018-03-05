@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 use App\Models\Goal;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 
 class ActivityController extends Controller
@@ -56,18 +57,18 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        $activity = new Activity;
+        // $activity = new Activity;
 
 
 
         // $activities = DB::table('activities')->insertGetId([ //menggunakan inserGetId untuk mengambil id latest
-            $activity->activity  = $request->activity;
-            $activity->result    = $request->result;
-            $activity->follow_up = $request->follow_up;
-            $activity->when      = $request->when;
-            $activity->user_id   = Auth::user()->id;
+            // $activity->activity  = $request->activity;
+            // $activity->result    = $request->result;
+            // $activity->follow_up = $request->follow_up;
+            // $activity->when      = $request->when;
+            // $activity->user_id   = Auth::user()->id;
         // ]);
-            $activity->save();
+            // $activity->save();
 
         /*$idUser = Auth::user()->id; 
         $activityUser = ActivityUser::insert([ 
@@ -75,9 +76,19 @@ class ActivityController extends Controller
             'activity_id' => $activities
         ]);*/
 
+        $data = [
+            'activity' => $request['activity'],
+            'result'   => $request['result'],
+            'follow_up' => $request['follow_up'],
+            'when'      => $request['when'],
+            'user_id'   => Auth::user()->id
+        ];
+
+        return Activity::create($data);//->with('success', 'Kegiatann Sudah di Tambah');
+
 
      
-        return redirect()->route('report.edit',$activity->id)->with('success', 'Report Added'); 
+        // return redirect()->route('report.edit',$activity->id)->with('success', 'Report Added'); 
 
     }
 
@@ -89,7 +100,9 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-        //
+        $activity = Activity::find($id);
+
+        return $activity;
     }
 
     /**
@@ -100,9 +113,13 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-        $activity = Activity::find($id);
+        // $activity = Activity::find($id);
     
-        return view('dashboard.activity.editreport',compact('activity'));
+        // return view('dashboard.activity.editreport',compact('activity'));
+
+        $activity = Activity::find($id);
+
+        return $activity;
     }
 
     /**
@@ -112,10 +129,10 @@ class ActivityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Activity $activity)
+    public function update(Request $request, $id)
     {
 
-        $request = new Request;
+        /*$request = new Request;
         $activity->update([
 
             'activity'  => request('activity'),
@@ -128,7 +145,17 @@ class ActivityController extends Controller
             
         }
 
-        return redirect()->back()->with('info','Success Updated');
+        return redirect()->back()->with('info','Success Updated');*/
+
+        $activity = Activity::find($id);
+        $activity->activity  = $request['activity'];
+        $activity->result    = $request['result'];
+        $activity->follow_up = $request['follow_up'];
+        $activity->when      = $request['when'];
+
+        $activity->update();
+
+        return $activity;
 
         /*$activity = Activity::find($id);
 
@@ -153,7 +180,26 @@ class ActivityController extends Controller
         $activity = Activity::find($id);
         $activity->delete();
 
-        return redirect()->back()->with('danger', 'Report Deleted');
+        // return redirect()->back()->with('danger', 'Report Deleted');
 
+    }
+
+    public function apiActivity(){
+
+        // $activities = Activity::latest()->paginate(5);
+        $id = Auth::user()->id; //untuk mengecek id user
+        //$user = DB::table('users')->get();
+
+        $activities = DB::table('users')
+            ->select('activities.*')
+            ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->orderBy('id','desc');
+
+        return Datatables::of($activities)->addColumn('action', function($activities){
+            return '<a onclick="editActivity('.$activities->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.
+                '<a onclick="deleteActivity('.$activities->id.')" class="btn btn-outline btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;&nbsp;Delete</a> ';
+        })->make(true);
+        
     }
 }

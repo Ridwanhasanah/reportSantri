@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
+
 
 class GoalController extends Controller
 {
@@ -51,7 +53,7 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        $goal = new Goal;
+        /*$goal = new Goal;
 
         $goal->goal        = $request->goal;
         $goal->option      = $request->option;
@@ -62,7 +64,18 @@ class GoalController extends Controller
 
         $goal->save();
      
-        return redirect()->route('goal.edit',$goal->id)->with('success', 'Goal Added'); 
+        return redirect()->route('goal.edit',$goal->id)->with('success', 'Goal Added'); */
+
+        $data = [
+            'user_id'     => Auth::user()->id,
+            'goal'        => $request['goal'],
+            'option'      => $request['option'],
+            'when'        => $request['when'],
+            'information' => $request['information'],
+            'reality'     => $request['reality']
+        ];
+
+        return Goal::create($data);
 
     }
 
@@ -87,7 +100,7 @@ class GoalController extends Controller
     {
         $goal = Goal::find($id);
     
-        return view('dashboard.goal.editgoal',compact('goal'));
+        return $goal;//view('dashboard.goal.editgoal',compact('goal'));
     }
 
     /**
@@ -112,7 +125,7 @@ class GoalController extends Controller
         return redirect()->back();*/
 
         
-        $goal = Goal::find(Crypt::decrypt($id));
+        $goal = Goal::find($id);
 
         $goal->goal        = $request->goal;
         $goal->option      = $request->option;
@@ -123,7 +136,7 @@ class GoalController extends Controller
          // dd($goal);
 
         $goal->update();
-        return redirect()->back()->with('info', 'Goal Updated');
+        return $goal;
         
     }
 
@@ -138,7 +151,22 @@ class GoalController extends Controller
         $goal = goal::find($id);
         $goal->delete();
 
-        return redirect()->back()->with('danger', 'Goal Deleted');
+    }
 
+    public function apiGoal(){
+
+        $id = Auth::user()->id; //untuk mengecek id user
+
+        $goals = DB::table('users')
+            ->select('goals.*')
+            ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->orderBy('id','desc');
+
+        return Datatables::of($goals)->addColumn('action', function($goals){
+            return '<a onclick="editGoal('.$goals->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.
+                '<a onclick="deleteGoal('.$goals->id.')" class="btn btn-outline btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;&nbsp;Delete</a> ';
+        })->make(true);
+        
     }
 }

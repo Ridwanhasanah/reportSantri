@@ -10,16 +10,31 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    
-
     <title>@yield('title')</title>
+
     {{-- Pondokit Ridwan Css Start--}}
     <link rel="stylesheet" href="{{asset('css/cssPondokit.css')}}">
-    {{-- <link rel="stylesheet" href="{{asset('css/profile.css')}}">     {{-- Pondokit Ridwan Css End--}}
+    {{-- <link rel="stylesheet" href="{{asset('css/profile.css')}}">    --}}
+    {{-- Pondokit Ridwan Css End--}}
+
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    {{-- <link rel="stylesheet" href="/resources/demos/style.css"> --}}
     <link href="{{asset('dashboard/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    {{-- DataTables --}}
+    <link href="{{asset('dashboard/vendor/datatables/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+
+    {{-- SweetAlert2 --}}
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
+    <link href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{ asset('dashboard/vendor/bootstrap/css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{{ asset('dashboard/vendor/bootstrap/js/ie-emulation-modes-warning.js') }}"></script>
 
     <!-- MetisMenu CSS -->
     <link href="{{asset('dashboard/vendor/metisMenu/metisMenu.min.css')}}" rel="stylesheet">
@@ -32,6 +47,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{asset('dashboard/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -298,12 +314,15 @@
                         {{-- ALL User --}}
                         @if (Auth::user()->hasRole('teacher'))
                         
-                        <li id="menu">
+                        <li {{-- id="menu" --}}>
                             <a href="{{route('user.index')}}"><i class="fa fa-users fa-fw"></i> Santri &amp; Staff<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide"  id="show">
+                            <ul class="nav nav-second-level" {{-- rhide"  id="show" --}}>
                                 <li>
                                     <a  href="{{route('user.index')}}">Semua Santri<span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="{{route('user.index')}}">Semua Santri</a>
+                                        </li>
                                         <li>
                                             <a href="{{route('user.programmer')}}">Programmer</a>
                                         </li>
@@ -327,13 +346,13 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li id="menu5">
+                        <li {{-- id="menu5" --}}>
                             <a href="{{route('dailyactivity')}}"><i class="fa fa-sun-o fa-fw"></i> Kegiatan Santri Hari ini<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level rhide"  id="show5">
                                 <li>
                                     <a  href="{{route('dailyactivity')}}">Semua Santri</a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="">Programmer</a>
                                 </li>
                                 <li>
@@ -344,64 +363,46 @@
                                 </li>
                                 <li>
                                     <a href="">Cyber</a>
-                                </li>
+                                </li> --}}
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         @endif
-                        {{-- ====== Kegiatan atau Report ====== --}}
-                        <li id="menu1">
-                            <a href="{{route('report.all')}}"><i class="fa fa-thumb-tack fa-fw"></i> Kegiatan<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide" id="show1">
-                                <li>
-                                    <a href="{{route('report.all')}}">Semua Kegiatan</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('report.add')}}">Tambah Kegiatan</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                        {{-- ====== Kegiatan atau Activity ====== --}}
+                        <li>
+                            <a href="{{route('activity.index')}}"><i class="fa fa-thumb-tack fa-fw"></i> Kegiatan</a>
                         </li>
                         {{-- ===== Goal ===== --}}
-                         <li id="menu2">
-                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target Mingguan<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide" id="show2">
+                         <li {{-- id="menu2" --}}>
+                            <a href="{{route('goal.index')}}"><i class="fa fa-book fa-fw"></i> Target Mingguan</a>
+                        </li>
+                        <li {{-- id="menu" --}}>
+                            <a href="{{route('dream')}}"><i class="fa fa-star fa-fw"></i> 100 Cita - Cita Hidupku</a>
+                        </li>
+                        <li {{-- id="menu --}}">
+                            <a href="{{route('target')}}"><i class="fa fa-bullseye fa-fw"></i> Target Terdekat (3 Bulan)</a>
+                        </li>
+                        <li {{-- id="menu2" --}}>
+                            <a href="#5"><i class="fa fa-shield fa-fw"></i> Tataterib Pondok IT</span></a>
+                        </li>
+                        <li {{-- id="menu3" --}}>
+                            <a href="#1"><i class="fa fa-book fa-fw"></i> Target Lain<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level rhide" {{-- id="show3 --}}">
                                 <li>
-                                    <a href="{{route('goal.all')}}">Semua Target</a>
+                                    <a href="#2">Agama</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('goal.add')}}">Tambah Target</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li id="menu">
-                            <a href="{{route('dream')}}"><i class="fa fa-star fa-fw"></i> 100 Cita - Cita Hidupku<span class="fa arrow"></span></a>
-                        </li>
-                        <li id="menu">
-                            <a href="{{route('target')}}"><i class="fa fa-bullseye fa-fw"></i> Target Terdekat (3 Bulan)<span class="fa arrow"></span></a>
-                        </li>
-                        <li id="menu2">
-                            <a href="{{route('goal.all')}}"><i class="fa fa-shield fa-fw"></i> Tataterib Pondok IT<span class="fa arrow"></span></a>
-                        </li>
-                        <li id="menu3">
-                            <a href="{{route('goal.all')}}"><i class="fa fa-book fa-fw"></i> Target Lain<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide" id="show3">
-                                <li>
-                                    <a href="{{route('goal.all')}}">Agama</a>
+                                    <a href="#3">Skill</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('goal.add')}}">Skill</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('goal.add')}}">Soft Skill</a>
+                                    <a href="#4">Soft Skill</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li id="menu4">
+                        <li {{-- id="menu4" --}}>
                             <a href="{{route('amaliyah.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Amaliah<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide" id="show4">
+                            <ul class="nav nav-second-level rhide" {{-- id="show4" --}}>
                                 <li>
                                     <a href="{{route('amaliyah.index')}}">Catatan Amaliyah</a>
                                 </li>
@@ -410,17 +411,9 @@
                                 </li>
                             </ul>
                         </li>
-
-                            @php
-                                $check = Auth::user()->roles();
-                            @endphp
-                            @if (!$check)
-                                <button type="button" id="upgrade" class="btn btn-xs btn-info" data-id="{{ Auth::id() }}" data-member="member">upgrade</button>
-                            @endif
-
                         {{-- Kirim Saran --}}
-                        <li id="menu6">
-                            <a href="{{Auth::user()->hasRole('master')?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->hasRole('master')=='master'?'Semua Saran':'Kirim Saran'}} &nbsp; <span class="fa arrow"></span></a>
+                        <li {{-- id="menu6" --}}>
+                            <a href="{{Auth::user()->hasRole('master')?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->hasRole('master')=='master'?'Semua Saran':'Kirim Saran'}} &nbsp;</a>
                         </li>
                     </ul>
                 </div>
@@ -444,8 +437,8 @@
 
     <!-- Morris Charts JavaScript -->
     <script src="{{asset('dashboard/vendor/raphael/raphael.min.js')}}"></script>
-    <script src="{{asset('dashboard/vendor/morrisjs/morris.min.js')}}"></script>
-    <script src="{{asset('dashboard/data/morris-data.js')}}"></script>
+    {{-- <script src="{{asset('dashboard/vendor/morrisjs/morris.min.js')}}"></script> --}}
+    {{-- <script src="{{asset('dashboard/data/morris-data.js')}}"></script> --}}
 
     <!-- Custom Theme JavaScript -->
     <script src="{{asset('dashboard/dist/js/sb-admin-2.js')}}"></script>
@@ -453,9 +446,19 @@
     {{-- reportPondokit --}}
     <script src="{{asset('js/reportPondokit.js')}}"></script>
     {{-- <script src="{{asset('js/profile.js')}}"></script> --}}
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> --}}
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+     <!-- Placed at the end of the document so the pages load faster -->
+    {{-- <script src="{{ asset('assets/jquery/jquery-1.12.4.min.js') }}"></script> --}}
+
+    {{-- dataTables --}}
+    <script src="{{ asset('dashboard/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendor/datatables/js/dataTables.bootstrap.min.js') }}"></script>
+
+    {{-- Validator --}}
+    <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
+    @yield('js');
 
 </body>
 

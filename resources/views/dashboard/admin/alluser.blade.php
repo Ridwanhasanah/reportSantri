@@ -37,7 +37,7 @@ Semua {{$department}}
 
                                     <tr class="odd gradeX">
                                         <td>
-                                            @if (count($user->photo) != 0)
+                                            @if ($user->photo != 0)
                                                 <div class="form-group">
                                                     <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$user->photo)}}">
                                                 </div>

@@ -36,21 +36,17 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 	Route::get('list/cyber','PondokitController@santriCyber')->name('list.cyber');
 	/*===== Dasboard End =====*/
 
-	/*===== Report Start =====*/
-	/*All Report*/
-	Route::get('/report/all', 'ActivityController@index')->name('report.all');
-	/*Add Report*/
-	Route::get('/report/add', 'ActivityController@create')->name('report.add');
-	Route::post('/report/add', 'ActivityController@store')->name('report.addstore');
-	/*Delete Report*/
-	Route::delete('/report/{id}/delete', 'ActivityController@destroy')->name('report.delete');
-	/*Edit Report*/
-	Route::get('report/{id}/edit', 'ActivityController@edit')->name('report.edit');
-	Route::patch('report/{activity}/edit', 'ActivityController@update')->name('report.update');
-	/*===== Report End =====*/
+	/*===== Activity Start =====*/
+	Route::resource('activity', 'ActivityController');
+
+	Route::get('api/activity','ActivityController@apiActivity')->name('api.activity');
+	/*===== Activity End =====*/
 
 
 	/*===== Goal Start =====*/
+	Route::resource('goal', 'GoalController');
+	
+	Route::get('api/goal','GoalController@apiGoal')->name('api.goal');
 	/*All Goal*/
 	Route::get('/goals/all', 'GoalController@index')->name('goal.all');
 	/*Add Goal*/

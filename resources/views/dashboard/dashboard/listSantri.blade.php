@@ -21,7 +21,7 @@ Semua Santri {{$divisi}}
                 <div class="panel-heading">
                     <div class="row">
                     <div class="col-xs-6 col-xs-offset-3 col">
-                        @if (count($student->photo) != 0)
+                        @if ($student->photo != 0)
                             <div class="form-group">
                                 <img height="120" width="150" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$student->photo)}}">
                             </div>

@@ -20,7 +20,7 @@
         <div class="panel-body">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">
-                  @if (count($user->photo)==0)
+                  @if ($user->photo ==0)
                     <img alt="User Pic" src="{{asset('images/personal.png')}}" class="img-circle img-responsive"> 
                   @else
                     <img alt="User Pic" src="{{asset('storage/photos/'.$user->photo)}}" class="img-circle img-responsive"> 
