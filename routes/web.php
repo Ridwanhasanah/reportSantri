@@ -149,6 +149,11 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::patch('userpass/{id}/edit', 'AllUserController@passwordUpdate')->name('password.update');
 		/*===== Ubah Password start =====*/
 
+		/*===== Register Start =====*/
+		Route::resource('register','Admin\RegisterController');
+		Route::get('api/register','Admin\RegisterController@apiRegister')->name('api.register');
+		/*===== Register End =====*/
+
 		
 		/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
 		Route::resources([

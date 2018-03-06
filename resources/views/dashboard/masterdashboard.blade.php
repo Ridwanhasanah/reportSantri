@@ -367,6 +367,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        @if(Auth::user()->hasRole('admin'))
+                        <li>
+                            <a href="{{route('register.index')}}"><i class="fa fa-list-alt fa-fw"></i>Pendaftaran</a>
+                        </li>
+                        @endif
                         @endif
                         {{-- ====== Kegiatan atau Activity ====== --}}
                         <li>

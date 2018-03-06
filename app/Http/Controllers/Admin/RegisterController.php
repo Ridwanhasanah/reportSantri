@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\Suggestion;
-use App\Models\User;
+namespace App\Http\Controllers\Admin;
+use App\Models\Register;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 
-class SuggestionController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +17,8 @@ class SuggestionController extends Controller
      */
     public function index()
     {
-        $suggestions = Suggestion::all();
-
-        return view('dashboard.suggestion.suggestion',compact('suggestions'));
-
+         
+        return view('dashboard.admin.register.allRegister');
     }
 
     /**
@@ -29,7 +28,7 @@ class SuggestionController extends Controller
      */
     public function create()
     {
-        return view('dashboard.suggestion.addSuggestion');
+        //
     }
 
     /**
@@ -40,26 +39,19 @@ class SuggestionController extends Controller
      */
     public function store(Request $request)
     {
-        $suggestion = new Suggestion;
-
-        $suggestion->name       = $request->name;
-        $suggestion->hp         = $request->hp;
-        $suggestion->suggestion = $request->suggestion;
-        $suggestion->save();
-
-        return redirect()->route('dashboard.home')->with('success', 'Saran Telah di Kirim');
+        //
     }
 
-    public function limit_words($string, $word_limit){
-    $words = explode(" ",$string);
-    return implode(" ",array_splice($words,0,$word_limit));
-    }
-    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-        
-        $suggestion = Suggestion::find($id);
-        return view('dashboard.suggestion.viewSuggestion', compact('suggestion'));
+        $register = Register::find($id);
+        return view('dashboard.admin.register.showRegister', compact('register'));
     }
 
     /**
@@ -93,10 +85,17 @@ class SuggestionController extends Controller
      */
     public function destroy($id)
     {
-        $suggestion = Suggestion::find($id);
+        //
+    }
 
-        $suggestion->delete();
+    public function apiRegister(){
+        $register = Register::all();
 
-        return redirect()->back()->with('danger', 'Saran Telah di Hapus');
+        return Datatables::of($register)
+            ->addColumn('action', function($register){
+                return '<a onclick="showRegis('.$register->id.')" class="btn btn-outline btn-primary" style="margin-right:10px">Detail</a>'.
+                        '<a onclick="" class="btn btn-outline btn-success" style="margin-right:10px">Edit</a>'.
+                        '<a onclick="" class="btn btn-outline btn-danger">Hapus</a>';
+            })->make(true);
     }
 }

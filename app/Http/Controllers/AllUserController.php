@@ -56,7 +56,7 @@ class AllUserController extends Controller
              return view('dashboard.admin.adduser');
 
         }else{
-            return redirect()->route('dashboardIT');
+            return redirect()->route('dashboard.home');
         }
     }
 
