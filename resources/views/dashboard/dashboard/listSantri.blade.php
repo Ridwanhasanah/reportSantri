@@ -20,10 +20,10 @@ Semua Santri {{$divisi}}
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="row">
-                    <div class="col-xs-6 col-xs-offset-3 col">
-                        @if ($student->photo != 0)
-                            <div class="form-group">
-                                <img height="120" width="150" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$student->photo)}}">
+                    <div class="col-xs-12">
+                        @if (strlen($student->photo) != 0)
+                            <div class="form-group" style="overflow: hidden; padding: 0; min-height:300px; max-height:300px;" >
+                                <img style="max-height: auto; display: block; margin: auto; width: 100%;"  src="{{asset('storage/photos/'.$student->photo)}}">
                             </div>
                         @else
                             <div class="form-group">

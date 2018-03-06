@@ -93,23 +93,40 @@ Semua Kegiatan
 
       /*Delete Data*/
       function deleteGoal(id){
-        var popup =  confirm("Kamu yakin ingin menghapus Target ini ? ");
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
-        if (popup == true) {
+        swal({
+          title: 'Kamu yakin ?',
+          text: "Data Target yang di hapus tidak akan kembali!",
+          type: 'warning',
+          showCancelButton: true,
+          cancelButtonColor: '#d33',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Ya, Hapus ini!'
+        }).then(function(){
           $.ajax({
             url: "{{ url('goal') }}" + '/' + id,
             type: "DELETE",
             data: {'_mehtod' : 'DELETE', '_token' : csrf_token},
             success: function(data){
               table.ajax.reload();
-              console.log(data);
+              swal({
+                title:'Berhasil',
+                text: 'Target Sudah di hapus',
+                type: 'success',
+                timer: '1500'
+              })
             },
             error: function(){
-              alert("Oops! Something Wrong!");
+              swal({
+                title: 'Oops',
+                text: 'Something went wrong',
+                type: 'error',
+                timer: '1500'
+              })
             }
           })
-        }
+        })
       }
 
 
@@ -128,9 +145,19 @@ Semua Kegiatan
               success : function(data){
                 $('#modal-form').modal('hide');
                 table.ajax.reload()
+                swal({
+                  title: 'Berhasil',
+                  type: 'success',
+                  timer: '1500'
+                })
               },
               error : function(){
-                alert(' Oops! Something error!');
+                swal({
+                  title: 'Oops',
+                  text: 'Something Error',
+                  type: 'error',
+                  timer: '1500'
+                })
               }
             });
             return false;

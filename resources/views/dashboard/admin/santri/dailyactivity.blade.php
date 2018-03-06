@@ -43,7 +43,7 @@ Kegiatan Santri Hari Ini
                                             
                                             <tr class="odd gradeX">
                                                 <td>
-                                                    @if ($activity->user->photo != 0)
+                                                    @if (strlen($activity->user->photo) != 0)
                                                         <div class="form-group">
                                                             <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$activity->user->photo)}}">
                                                         </div>

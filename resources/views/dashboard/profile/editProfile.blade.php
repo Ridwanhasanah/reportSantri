@@ -25,7 +25,7 @@
                     {{ method_field('PATCH') }}
 
                 <div class="col-md-3 col-lg-3 " align="center">
-                @if ($user->photo ==0)
+                @if (strlen($user->photo) ==0)
                   <img alt="User Pic" src="http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png" class="img-circle img-responsive"> 
                 @else
                   <img alt="User Pic" src="{{asset('storage/photos/'.$user->photo)}}" class="img-circle img-responsive"> 
