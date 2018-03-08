@@ -19,11 +19,12 @@ class AddColumnUser extends Migration
                 'Multimedia',
                 'Imers',
                 'Cyber',
-                'StaffPondokIT'
+                'StaffPondokIT',
+                'Teacher',
+                'Master'
             ]);
             $table->text('address')->nullable();
             $table->string('hp')->nullable();
-            $table->integer('level')->nullable();
             $table->text('dream')->nullable();
             $table->enum('gender', ['Pria', 'Wanita']);
             $table->string('hobby')->nullable();

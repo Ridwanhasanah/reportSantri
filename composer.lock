@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "51c656804021f3943bb1a26272c20528",
-    "content-hash": "716237bc508a52ea178e16fa41b1ea0a",
+    "hash": "4726e907ce839f3c45a6749c65cb32d0",
+    "content-hash": "4c55482a66b5461af0cb3ab67d4ce387",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -270,6 +270,7 @@
                 "parser"
             ],
             "time": "2014-09-09 13:34:57"
+<<<<<<< HEAD
         },
         {
             "name": "dompdf/dompdf",
@@ -332,6 +333,8 @@
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "time": "2017-11-26 14:49:08"
+=======
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
         },
         {
             "name": "egulias/email-validator",
@@ -392,6 +395,7 @@
         },
         {
             "name": "erusev/parsedown",
+<<<<<<< HEAD
             "version": "1.7.1",
             "source": {
                 "type": "git",
@@ -402,6 +406,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/erusev/parsedown/zipball/92e9c27ba0e74b8b028b111d1b6f956a15c01fc1",
                 "reference": "92e9c27ba0e74b8b028b111d1b6f956a15c01fc1",
+=======
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown.git",
+                "reference": "6678d59be48c4be64eaca6ce70bea48a09488cc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/6678d59be48c4be64eaca6ce70bea48a09488cc2",
+                "reference": "6678d59be48c4be64eaca6ce70bea48a09488cc2",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
                 "shasum": ""
             },
             "require": {
@@ -434,7 +450,11 @@
                 "markdown",
                 "parser"
             ],
+<<<<<<< HEAD
             "time": "2018-03-08 01:11:30"
+=======
+            "time": "2018-02-28 11:41:37"
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
         },
         {
             "name": "fideloper/proxy",
@@ -582,6 +602,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v5.5.37",
             "source": {
                 "type": "git",
@@ -592,6 +613,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/cf750b00c77d0d73e889c86f7db6a0e13b8dea8c",
                 "reference": "cf750b00c77d0d73e889c86f7db6a0e13b8dea8c",
+=======
+            "version": "v5.5.36",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "9283cea4a5727aaf1def60a8fa820e49df2cf874"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/9283cea4a5727aaf1def60a8fa820e49df2cf874",
+                "reference": "9283cea4a5727aaf1def60a8fa820e49df2cf874",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
                 "shasum": ""
             },
             "require": {
@@ -712,6 +745,7 @@
                 "framework",
                 "laravel"
             ],
+<<<<<<< HEAD
             "time": "2018-03-07 14:11:09"
         },
         {
@@ -726,6 +760,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/tinker/zipball/eb8d3cfb41b7f74fb0ef4724e459d44f4cbb35b8",
                 "reference": "eb8d3cfb41b7f74fb0ef4724e459d44f4cbb35b8",
+=======
+            "time": "2018-03-01 13:59:00"
+        },
+        {
+            "name": "laravel/tinker",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/tinker.git",
+                "reference": "852c2abe0b0991555a403f1c0583e64de6acb4a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/852c2abe0b0991555a403f1c0583e64de6acb4a6",
+                "reference": "852c2abe0b0991555a403f1c0583e64de6acb4a6",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
                 "shasum": ""
             },
             "require": {
@@ -775,7 +825,11 @@
                 "laravel",
                 "psysh"
             ],
+<<<<<<< HEAD
             "time": "2018-03-06 13:48:07"
+=======
+            "time": "2017-12-18 16:25:11"
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
         },
         {
             "name": "league/flysystem",
@@ -1134,6 +1188,7 @@
                 "random"
             ],
             "time": "2017-09-27 21:40:39"
+<<<<<<< HEAD
         },
         {
             "name": "phenx/php-font-lib",
@@ -1211,6 +1266,8 @@
             "description": "A library to read, parse and export to PDF SVG files.",
             "homepage": "https://github.com/PhenX/php-svg-lib",
             "time": "2017-05-24 10:07:27"
+=======
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
         },
         {
             "name": "psr/container",
@@ -1354,7 +1411,11 @@
                 "psr-16",
                 "simple-cache"
             ],
+<<<<<<< HEAD
             "time": "2017-10-23 01:57:42"
+=======
+            "time": "2017-01-02 13:31:39"
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
         },
         {
             "name": "psy/psysh",
@@ -1509,6 +1570,7 @@
             "time": "2018-01-20 00:28:24"
         },
         {
+<<<<<<< HEAD
             "name": "sabberworm/php-css-parser",
             "version": "8.1.0",
             "source": {
@@ -1564,6 +1626,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/db-dumper/zipball/98a3b7df0186d66a2385f444603dc60ff656a6b9",
                 "reference": "98a3b7df0186d66a2385f444603dc60ff656a6b9",
+=======
+            "name": "spatie/db-dumper",
+            "version": "2.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/db-dumper.git",
+                "reference": "d7c0d4b747f913b3c82caae0421021757e76e523"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/d7c0d4b747f913b3c82caae0421021757e76e523",
+                "reference": "d7c0d4b747f913b3c82caae0421021757e76e523",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
                 "shasum": ""
             },
             "require": {
@@ -1600,7 +1675,11 @@
                 "mysqldump",
                 "spatie"
             ],
+<<<<<<< HEAD
             "time": "2018-03-05 23:49:28"
+=======
+            "time": "2018-01-20 14:47:45"
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
         },
         {
             "name": "spatie/laravel-backup",
@@ -1778,7 +1857,11 @@
         },
         {
             "name": "symfony/console",
+<<<<<<< HEAD
             "version": "v3.4.6",
+=======
+            "version": "v3.4.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -1847,7 +1930,11 @@
         },
         {
             "name": "symfony/css-selector",
+<<<<<<< HEAD
             "version": "v4.0.6",
+=======
+            "version": "v4.0.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -1900,7 +1987,11 @@
         },
         {
             "name": "symfony/debug",
+<<<<<<< HEAD
             "version": "v3.4.6",
+=======
+            "version": "v3.4.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -1956,7 +2047,11 @@
         },
         {
             "name": "symfony/event-dispatcher",
+<<<<<<< HEAD
             "version": "v4.0.6",
+=======
+            "version": "v4.0.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -2019,6 +2114,7 @@
         },
         {
             "name": "symfony/finder",
+<<<<<<< HEAD
             "version": "v3.4.6",
             "source": {
                 "type": "git",
@@ -2029,6 +2125,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/finder/zipball/a479817ce0a9e4adfd7d39c6407c95d97c254625",
                 "reference": "a479817ce0a9e4adfd7d39c6407c95d97c254625",
+=======
+            "version": "v3.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "6a615613745cef820d807443f32076bb9f5d0a38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/6a615613745cef820d807443f32076bb9f5d0a38",
+                "reference": "6a615613745cef820d807443f32076bb9f5d0a38",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
                 "shasum": ""
             },
             "require": {
@@ -2064,11 +2172,19 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-03-05 18:28:11"
         },
         {
             "name": "symfony/http-foundation",
             "version": "v3.4.6",
+=======
+            "time": "2018-02-11 17:15:12"
+        },
+        {
+            "name": "symfony/http-foundation",
+            "version": "v3.4.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
@@ -2122,6 +2238,7 @@
         },
         {
             "name": "symfony/http-kernel",
+<<<<<<< HEAD
             "version": "v3.4.6",
             "source": {
                 "type": "git",
@@ -2132,6 +2249,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/http-kernel/zipball/a443bbbd93682aa08e623fade4c94edd586ed2de",
                 "reference": "a443bbbd93682aa08e623fade4c94edd586ed2de",
+=======
+            "version": "v3.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-kernel.git",
+                "reference": "494f950becf513c174f52f9010cedb9026c12a92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/494f950becf513c174f52f9010cedb9026c12a92",
+                "reference": "494f950becf513c174f52f9010cedb9026c12a92",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
                 "shasum": ""
             },
             "require": {
@@ -2206,7 +2335,11 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-03-05 19:41:07"
+=======
+            "time": "2018-03-01 19:23:56"
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2328,7 +2461,11 @@
         },
         {
             "name": "symfony/process",
+<<<<<<< HEAD
             "version": "v3.4.6",
+=======
+            "version": "v3.4.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -2377,7 +2514,11 @@
         },
         {
             "name": "symfony/routing",
+<<<<<<< HEAD
             "version": "v3.4.6",
+=======
+            "version": "v3.4.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
@@ -2455,7 +2596,11 @@
         },
         {
             "name": "symfony/translation",
+<<<<<<< HEAD
             "version": "v4.0.6",
+=======
+            "version": "v4.0.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -2523,7 +2668,11 @@
         },
         {
             "name": "symfony/var-dumper",
+<<<<<<< HEAD
             "version": "v3.4.6",
+=======
+            "version": "v3.4.5",
+>>>>>>> 56cf0e8fc7e68c7c85e9d2c057749fb78d328fb8
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",

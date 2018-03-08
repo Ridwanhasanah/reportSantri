@@ -224,6 +224,4 @@ class RegisterController extends Controller
                         '<a onclick="deleteRegis('.$register->id.')" class="btn btn-outline btn-danger">Hapus</a>';
             })->make(true);
     }
-
-    public function 
 }

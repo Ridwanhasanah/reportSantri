@@ -15,9 +15,9 @@ class CreateSuggestionsTable extends Migration
     {
         Schema::create('suggestions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('hp');
-            $table->text('suggestion');
+            $table->string('name')->nullable();
+            $table->string('hp')->nullable();
+            $table->text('suggestion')->nullable();
             $table->timestamps();
         });
     }

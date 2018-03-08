@@ -47,7 +47,7 @@ class SuggestionController extends Controller
         $suggestion->suggestion = $request->suggestion;
         $suggestion->save();
 
-        return redirect()->route('dashboardIT')->with('success', 'Saran Telah di Kirim');
+        return redirect()->route('dashboard.home')->with('success', 'Saran Telah di Kirim');
     }
 
     public function limit_words($string, $word_limit){
