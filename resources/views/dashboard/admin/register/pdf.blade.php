@@ -1,16 +1,20 @@
-@extends('dashboard.masterdashboard')
-@section('title')
-{{$register->nama}} Detail
-@endsection
-
-@section('content')
-<div id="page-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="{{asset('dashboard/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('dashboard/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <div id="page-wrapper" style="margin:30px;">
   <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-            <h1 class="page-header">{{$register->nama}} </h1>
-           <a target="blank_" class=" btn btn-success btn-outline" href="{{route('register.pdf', $register->id)}}">Download PDF</a>
-            <br><br><br>            
+        <h1 class="page-header">{{$register->nama}}</h1>
     </div>
   </div>
   <div class="row">
@@ -23,7 +27,6 @@
             @else
               {{$register->proses}} Proses
             @endif
-              
           </h3>
         </div>
         <div class="panel-body">
@@ -266,10 +269,6 @@
                         <td><b>10 Impian Besar</b></td>
                         <td>{{$register->impian}}</td>
                       </tr>
-                      <tr>
-                        <td><b>Disc</b></td>
-                        <td><a class="btn btn-outline btn-info"  href="{{asset('storage/doc/'.$register->disc)}}"> Download file Talent</a</td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -278,14 +277,12 @@
         <div class="panel-footer">
           <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope">&nbsp;{{$register->email}}</i></a>
           <a href="{{ url('http:// #') }}" target="blank_" class="btn btn-primary btn-facebook"><i class="fa fa-facebook">&nbsp;{{$register->facebook}}</i></a>
-          <span class="pull-right">
-            <a href="" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><b>Edit</b><i class="glyphicon glyphicon-edit"></i></a>
-            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-          </span>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script src="{{asset('dashboard/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 
-@endsection
+</body>
+</html>

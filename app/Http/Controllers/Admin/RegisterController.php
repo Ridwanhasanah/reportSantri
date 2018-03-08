@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class RegisterController extends Controller
 {
@@ -223,5 +224,15 @@ class RegisterController extends Controller
                         '<a onclick="editRegis('.$register->id.')" class="btn btn-outline btn-success" style="margin-right:10px">Edit</a>'.
                         '<a onclick="deleteRegis('.$register->id.')" class="btn btn-outline btn-danger">Hapus</a>';
             })->make(true);
+    }
+
+    public function exportPDF($id){
+        $register = Register::find($id);
+
+        $pdf = PDF::loadView('dashboard.admin.register.pdf', compact('register'));
+
+        $pdf->setPaper('a4', 'potrait');
+
+        return $pdf->download();//view('dashboard.admin.register.pdf',compact('register'));
     }
 }

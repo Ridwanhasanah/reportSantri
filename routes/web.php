@@ -171,6 +171,8 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::get('api/register/imers','Admin\RegisterController@apiRegisterImers')->name('api.register.imers');
 		/*Divisi Cyber*/
 		Route::get('api/register/cyber','Admin\RegisterController@apiRegisterCyber')->name('api.register.cyber');
+		/*PDF*/
+		Route::get('register/pdf/{id}','Admin\RegisterController@exportPDF')->name('register.pdf');
 		/*===== Register End =====*/
 
 		
