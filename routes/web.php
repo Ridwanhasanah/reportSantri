@@ -24,6 +24,10 @@ Route::group(['middleware' => ['auth','role:teacher']], function(){
 
 Auth::routes();
 
+/*===== Form Register Start =====*/
+Route::resource('pendaftaran', 'FrontPage\RegisterController');
+/*===== Form Register Start =====*/
+
 
 Route::group(['middleware'=>['auth','role:student']], function(){ 
 
@@ -151,7 +155,22 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 
 		/*===== Register Start =====*/
 		Route::resource('register','Admin\RegisterController');
+
+		Route::get('register/all/programmer','Admin\RegisterController@index')->name('register.programmer');
+		Route::get('register/all/multimedia','Admin\RegisterController@index')->name('register.multimedia');
+		Route::get('register/all/imers','Admin\RegisterController@index')->name('register.imers');
+		Route::get('register/all/cyber','Admin\RegisterController@index')->name('register.cyber');
+		/*===== API =====*/
+		/*All Divisi*/
 		Route::get('api/register','Admin\RegisterController@apiRegister')->name('api.register');
+		/*Divisi Programmer*/
+		Route::get('api/register/programmer','Admin\RegisterController@apiRegisterProgrammer')->name('api.register.programmer');
+		/*Divisi Mulimedia*/
+		Route::get('api/register/multimedia','Admin\RegisterController@apiRegisterMultimedia')->name('api.register.multimedia');
+		/*Divisi Imers*/
+		Route::get('api/register/imers','Admin\RegisterController@apiRegisterImers')->name('api.register.imers');
+		/*Divisi Cyber*/
+		Route::get('api/register/cyber','Admin\RegisterController@apiRegisterCyber')->name('api.register.cyber');
 		/*===== Register End =====*/
 
 		

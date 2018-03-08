@@ -153,7 +153,7 @@ class AllUserController extends Controller
             $role_users4->user_id = $memeber->id;
             $role_users4->role_id = 4;
 
-            $role_users->save();
+            $role_users4->save();
         }
 
         return redirect()->route('user.edit',$memeber->id)->with('success', 'Santri / Staff sudah di tambah');

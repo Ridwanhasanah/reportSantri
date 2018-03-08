@@ -369,7 +369,25 @@
                         </li>
                         @if(Auth::user()->hasRole('admin'))
                         <li>
-                            <a href="{{route('register.index')}}"><i class="fa fa-list-alt fa-fw"></i>Pendaftaran</a>
+                            <a href="{{route('register.index')}}"><i class="fa fa-list-alt fa-fw"></i>Pendaftaran<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level rhide" {{-- id="show3 --}}">
+                                <li>
+                                    <a href="{{route('register.index')}}">Semua Pendaftar</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('register.programmer')}}">Programmer</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('register.multimedia')}}">Multimedia</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('register.imers')}}">Imers</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('register.cyber')}}">Cyber</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         @endif
                         @endif

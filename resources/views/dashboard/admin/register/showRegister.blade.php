@@ -265,7 +265,7 @@
                       </tr>
                       <tr>
                         <td><b>Disc</b></td>
-                        <td>{{$register->disc}}</td>
+                        <td><a class="btn btn-outline btn-info"  href="{{asset('storage/doc/'.$register->disc)}}"> Download file Talent</a</td>
                       </tr>
                     </tbody>
                   </table>
