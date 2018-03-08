@@ -12,23 +12,31 @@ Amaliah Santri
               <h1 class="page-header">Evaluasi Ibadah Santri</h1>
           </div>
         </div>
+        @if(count($amal) == 0)
+        <div class="panel panel-default">
+          <div class="panel panel-body">
+            <h2 style="text-align: center;">Amaliyah mu masih kosong Bulan ini, ayo segera di isi :)</h2>
+          </div>
+        </div>
+        @else
         <div class="row scrolltab">
           <div class="col-lg-12 ">
-            @foreach ($amal as $amal)
-                {{$amal->subuh_jmh}}
-            @endforeach
-            <form action="{{route('amaliyah.store')}}" method="post" role="form" >
-              {{csrf_field()}}
-              {{method_field('POST')}}
             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
               <thead>
+               {{--  @foreach($arr_date as $val)
+                  <th>{{date("d",strtotime($val))}}</th>
+                @endforeach --}}
+                <tr><th rowspan="3">Evaluasi Ibadah</th>
+                <tr><th colspan="{{$total_day}}">{{date("F Y")}}</th></tr>
+                <tr>
                   <tr>
                       <th>Tanggal</th>
-                      @for($i = 1; $i <= 31; $i++)
+
+                      @for($i = 1; $i <= $total_day; $i++)
                         @if($i < 10)
-                          <th>0{{$i}}</th>
+                          <th style="text-align: center;">0{{$i}}</th>
                         @elseif($i>=10)
-                          <th>{{$i}}</th>
+                          <th style="text-align: center;">{{$i}}</th>
                         @endif  
                       @endfor
                   </tr>
@@ -39,47 +47,71 @@ Amaliah Santri
                     </tr>
                     <tr>
                       <td>Subuh&nbsp;Jamaah</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          @if (29 == $i)
-                              <td><input type="checkbox" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}></td>
+                      {{-- @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal))
+                          @if(date('d', strtotime($amal[$i-1]->date)) == $i && $subuh == 1)
+                            <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
                           @else
-                              <td><input type="checkbox"></td>
+                            <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
                           @endif
-                          {{--  @if($i < 10)
-                          <td><input  name="subuh_jmh0{{$i}}" type="checkbox" value="1" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}>
-                          @elseif($i>=10)
-                          <td><input  name="subuh_jmh{{$i}}" type="checkbox" value="1" {{$amal->subuh_jmh == 1 ? 'checked' : ''}}></td>
-                          @endif    --}}
-                      @endfor
+                        @else
+                            <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor --}}
+                      
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->subuh_jmh == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
+                     
                     </tr>
                     <tr>
                       <td>Dzuhur&nbsp;Jamaah</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="dzuhur_jmh" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->dzuhur_jmh == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Ashar&nbsp;Jamaah</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="ashar_jmh" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->ashar_jmh == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Maghrib&nbsp;Jamaah</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="maghrib_jmh" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->maghrib_jmh == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Isya&nbsp;Jamaah</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="isya_jmh" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->isya_jmh == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Tilawah&nbsp;Alquran</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="tilawah" class="rwidth" type="text"></td>
+                      @for ($i = 1; $i <= $total_day; $i++)
+                          <td style="text-align: center;"><b>{{$amal[$i-1]->tilawah_alquran==0?'0':$amal[$i-1]->tilawah_alquran}}</b></td>
                       @endfor
                     </tr>
                     <tr class="odd gradeX">
@@ -87,106 +119,166 @@ Amaliah Santri
                     </tr>
                     <tr>
                       <td>Tahajud</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="tahajud" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->tahajud == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Witir</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="witir" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->witir == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Qobliyah&nbsp;Subuh</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="qobliyah_subuh" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->qobliyah_subuh == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Hafalan&nbsp;Ayat</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="hafalan" class="rwidth" type="text"></td>
+                      @for ($i = 1; $i <= $total_day; $i++)
+                          <td style="text-align: center;"><b>{{$amal[$i-1]->hafalan==0?'0':$amal[$i-1]->hafalan}}</b></td>
                       @endfor
                     </tr>
                     <tr>
                       <td>Sholat&nbsp;Dhuha</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="dhuha" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->dhuha == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Qobliyah&nbsp;Dzuhur</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="qobliyah_dzuhur" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->qobliyah_dzuhur == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Badiyah&nbsp;Dzuhur</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="badiyah_dzuhur" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->badiyah_dzuhur == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Badiyah&nbsp;Maghrib</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="badiyah_maghrib" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->badiyah_maghrib == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Badiyah&nbsp;Isya</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="badiyah_isya" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->badiyah_isya == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Puasa&nbsp;&#40;Senin&amp;Kamis&#41;</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="puasa" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->puasa == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Doa&nbsp;untuk&nbsp;Orang&nbsp;Tua</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="doa_ortu" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->doa_ortu == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Doa&nbsp;Untuk&nbsp;Donatur &amp;Pondok&nbsp;IT</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="doa_donatur" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->doa_donatur == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Infaq&nbsp;Untuk&nbsp;Pondok&nbsp;IT</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="infaq" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->infaq == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Dzikir&nbsp;Pagi</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="dzikir_pagi" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->dzikir_pagi == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Dzikir&nbsp;Petang</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="dzikir_petang" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->dzikir_petang == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     <tr>
                       <td>Baca&nbsp;Surat&nbsp;Al-Kahfi</td>
-                      @for ($i = 1; $i <= 31; $i++)
-                          <td><input name="alkahfi" type="checkbox" value="1"></td>
-                      @endfor
+                      @for ($i = 1; $i <= $total_day; $i++)
+                        @if($i <= count($amal) && date('d', strtotime($amal[$i-1]->date)) == $i && $amal[$i-1]->alkahfi == 1)
+                          <td><button type="button" class="btn btn-info disabled fa fa-check"></button></td>
+                        @else
+                          <td><button type="button" class="btn btn-default disabled fa fa-times"></button></td>
+                        @endif
+                      @endfor 
                     </tr>
                     
                 </tbody>
                 <tfooter>
                   <tr>
                       <th>Tanggal</th>
-                      @for($i = 1; $i <= 31; $i++)
+                      @for($i = 1; $i <= $total_day; $i++)
                         @if($i < 10)
                           <th>0{{$i}}</th>
                         @elseif($i>=10)
@@ -195,12 +287,10 @@ Amaliah Santri
                       @endfor
                   </tr>
                 </tfooter>
-                
             </table>
-            <input class="btn btn-primary" type="submit" value="Simpan">
-          </form>
               </div>
             </div>
+            @endif
           </div>
         </div>
       </div>

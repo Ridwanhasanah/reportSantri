@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+Login
+@endsection
 @section('content')
 
 <body style="background-color: #666666;">

@@ -1,6 +1,6 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-{{$user->name}} Profile
+{{$user->name}} Profil
 @endsection
 
 @section('content')
@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">{{$user->name}} Profile</h1>
+        <h1 class="page-header">{{$user->name}} Profil</h1>
     </div>
   </div>
   <div class="row">
@@ -20,11 +20,19 @@
         <div class="panel-body">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">
-                  @if (count($user->photo)==0)
+                  @if (strlen($user->photo) ==0)
                     <img alt="User Pic" src="{{asset('images/personal.png')}}" class="img-circle img-responsive"> 
                   @else
                     <img alt="User Pic" src="{{asset('storage/photos/'.$user->photo)}}" class="img-circle img-responsive"> 
                   @endif 
+                  <div class="panel panel-info rmargin">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><b>Quote</b></h3>
+                    </div>
+                    <div class="panel-body">
+                      <p><i><b>{{$user->quote}}</b></i></p>
+                    </div>
+                  </div>
                 </div>
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
@@ -32,7 +40,6 @@
                       <tr>
                         <td><b>Divisi</b></td>
                         <td>{{$user->department}}</td>
-
                       </tr>
                       <tr>
                         <td><b>Tempat, Tanggal Lahir</b></td>

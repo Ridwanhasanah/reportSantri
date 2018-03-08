@@ -19,10 +19,9 @@ Tambah Kegiatan
                     Isi Kegiatan mu hari ini
                 </div>
                 <div class="panel-body">
-                    <div class="row">{{-- Auth::user()->level==1?route('santri.storereport',$id): --}}
+                    <div class="row">
                     	<div class="col-lg-3"></div>
                         <div class="col-lg-6 col-ld-pull-3">
-                            {{-- <form action="{{Auth::user()->level==1?route('santri.storereport',$id):route('report.addstore')}}" method="post" role="form"> --}}
                             <form action="{{route('report.addstore')}}" method="post" role="form">
                                 {{csrf_field()}}
                                 <div class="form-group">

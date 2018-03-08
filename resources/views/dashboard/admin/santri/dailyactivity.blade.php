@@ -43,7 +43,7 @@ Kegiatan Santri Hari Ini
                                             
                                             <tr class="odd gradeX">
                                                 <td>
-                                                    @if (count($activity->user->photo) != 0)
+                                                    @if (strlen($activity->user->photo) != 0)
                                                         <div class="form-group">
                                                             <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$activity->user->photo)}}">
                                                         </div>
@@ -71,6 +71,8 @@ Kegiatan Santri Hari Ini
                                     <tr>
                                         <th>Nama</th>
                                         <th>Kegiatan</th>
+                                        <th>Hasil</th>
+                                        <th>Tindak Lanjut</th>
                                         <th>Jurusan</th>
                                         <th>Tanggal</th>
                                     </tr>

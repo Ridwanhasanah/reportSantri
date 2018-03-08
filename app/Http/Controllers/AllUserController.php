@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Activity;
+use App\Models\RoleUser;
 use App\Models\Goal;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
@@ -50,12 +51,12 @@ class AllUserController extends Controller
 
     public function create()
     {
-        if (Auth::user()->level == 1) {
+        if (Auth::user()->hasRole('admin')) {
 
              return view('dashboard.admin.adduser');
 
         }else{
-            return redirect()->route('dashboardIT');
+            return redirect()->route('dashboard.home');
         }
     }
 
@@ -63,7 +64,11 @@ class AllUserController extends Controller
     {
 
         
-        $user  = new User;
+        $memeber  = new User;
+        $role_users1 = new RoleUser; //RoleUser 1
+        $role_users2 = new RoleUser; //RoleUser 2
+        $role_users3 = new RoleUser; //RoleUser 3
+        $role_users4 = new RoleUser; //RoleUser 4
 
         $this->validate($request,[
 
@@ -73,65 +78,107 @@ class AllUserController extends Controller
 
         ]);
 
-        $user->name        = $request->name;
-        $user->password    = bcrypt($request->password);
-        $user->department  = $request->department;
-        $user->date_birth  = $request->date_birth;
-        $user->birth_place = $request->birth_place;
-        $user->gender      = $request->gender;
-        $user->address     = $request->address;
-        $user->email       = $request->email;
-        $user->hp          = $request->hp;
-        $user->dream       = $request->dream;
-        $user->hobby       = $request->hobby;
-        $user->experience  = $request->experience;
-        $user->creation    = $request->creation;
+        $memeber->name        = $request->name;
+        $memeber->password    = bcrypt($request->password);
+        $memeber->department  = $request->department;
+        $memeber->date_birth  = $request->date_birth;
+        $memeber->birth_place = $request->birth_place;
+        $memeber->gender      = $request->gender;
+        $memeber->address     = $request->address;
+        $memeber->email       = $request->email;
+        $memeber->hp          = $request->hp;
+        $memeber->dream       = $request->dream;
+        $memeber->hobby       = $request->hobby;
+        $memeber->experience  = $request->experience;
+        $memeber->creation    = $request->creation;
 
-        if ($user->department == 'Staff Pondok IT') {
-            
-            $user->level = 1;
         
-        }else{
-            $user->level = 2;
-        }
-
+        //jika ada photo maka
         if ($request->hasFile('photo')) {
 
             $filename = $request->photo->getClientOriginalName();
             
             $request->file('photo')->storeAs('photos',$filename);
 
-            $user->photo   = $filename;
+            $memeber->photo   = $filename;
 
 
         }
 
 
-        dd($user->save());
-        // $user->save();
+        $memeber->save();
 
-        return redirect()->route('user.edit',$user->id)->with('success', 'User Added');
+        /*Menambahkan RoleUser Sesuai dengan Department yang di pilih*/
+        if ($request->department == 'Staff Pondok IT') {
+            
+            $role_users2->user_id = $memeber->id;
+            $role_users2->role_id = 2;
+            $role_users3->user_id = $memeber->id;
+            $role_users3->role_id = 3;
+            $role_users4->user_id = $memeber->id;
+            $role_users4->role_id = 4;
+
+            $role_users2->save();
+            $role_users3->save();
+            $role_users4->save();
+        
+        }elseif ($request->department == 'Teacher') {
+            
+            $role_users3->user_id = $memeber->id;
+            $role_users3->role_id = 3;
+            $role_users4->user_id = $memeber->id;
+            $role_users4->role_id = 4;
+
+            $role_users3->save();
+            $role_users4->save();
+        
+        }elseif ($request->department == 'Master') {
+            
+            $role_users1->user_id = $memeber->id;
+            $role_users1->role_id = 1;
+            $role_users2->user_id = $memeber->id;
+            $role_users2->role_id = 2;
+            $role_users3->user_id = $memeber->id;
+            $role_users3->role_id = 3;
+            $role_users4->user_id = $memeber->id;
+            $role_users4->role_id = 4;
+
+            $role_users1->save();
+            $role_users2->save();
+            $role_users3->save();
+            $role_users4->save();
+        
+        }else{
+
+            $role_users4->user_id = $memeber->id;
+            $role_users4->role_id = 4;
+
+            $role_users4->save();
+        }
+
+        return redirect()->route('user.edit',$memeber->id)->with('success', 'Santri / Staff sudah di tambah');
     }
 
+    /*===== Show =====*/
     public function show($id)
     {
         $user = User::find($id);
+        $dreams = explode(',', $user->dream);
 
-        return view('dashboard.admin.userdetail', compact('user'));
+        return view('dashboard.admin.userdetail', compact('user','dreams'));
     }
-
+    /*===== Edit =====*/
     public function edit($id)
     {
         $user = User::find($id);
 
         return view('dashboard.admin.useredit', compact('user'));
     }
-
+    /*===== Update =====*/
     public function update(Request $request, $id)
     {
         $user  = User::find($id);
 
-        $user->name        = $request->name;
         $user->department  = $request->department;
         $user->date_birth  = $request->date_birth;
         $user->birth_place = $request->birth_place;
@@ -143,6 +190,7 @@ class AllUserController extends Controller
         $user->hobby       = $request->hobby;
         $user->experience  = $request->experience;
         $user->creation    = $request->creation;
+        $user->quote       = $request->quote;
 
         if ($request->hasFile('photo')) {
 
@@ -165,7 +213,7 @@ class AllUserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->back()->with('danger', 'User Deleted');
+        return redirect()->route('user.index')->with('danger', 'Santri sudah di hapus');
     }
 
 
@@ -231,9 +279,9 @@ class AllUserController extends Controller
 
     }
 
-    /*======================================== Menampilkan Santri Sesuai Divisi End ============================== */
+    /*================================ Menampilkan Santri Sesuai Divisi End ============================== */
 
-    /*======================================== Activty Santri CRUD Start ========================================*/
+    /*================================ Activty Santri CRUD Start ========================================*/
 
     /*Index*/
      public function indexActivtySantri($id)
@@ -288,9 +336,9 @@ class AllUserController extends Controller
         return redirect()->route('report.edit',$activity)->with('success', 'Report Added'); 
 
     }
-    /*================================================== Activiry Santi CRUD End ========================================*/
+    /*======================================= Activity Santi CRUD End ========================================*/
 
-    /*================================================== Goal Santri CRUD Start ========================================*/
+    /*======================================== Goal Santri CRUD Start ========================================*/
     /*Index*/
     public function indexGoalSantri($id)
     {
@@ -328,8 +376,55 @@ class AllUserController extends Controller
         return redirect()->route('goal.edit',$goal->id)->with('success', 'Goal Added'); 
 
     }
-    /*================================================== Goal Santri CRUD End ========================================*/
+    /*======================================== Goal Santri CRUD End ========================================*/
 
+    /*======================================== Amaliyah Santri Start ======================================*/
+    public function amaliyahIndex($id){
+
+        $santri = DB::table('users')->select('name')
+                ->where('id','=',$id)->get();
+
+        $amal = DB::table('amaliyahs')
+               ->where('user_id', '=', $id)
+               ->whereMonth('date', date('m'))
+               ->get();
+
+        $calender  = 'CAL_GREGORIAN';
+        $month     = date('m');
+        $year      = date('Y');
+        $total_day = date('t');//cal_days_in_month($calender, $month, $year);
+
+        return view('dashboard.admin.santri.santriAmaliyah',compact('santri','amal', 'month',  'total_day'));
+
+    }
+    /*======================================== Amaliyah Santri End =========================================*/
+    
+    /*======================================== Ubah Password Start =========================================*/
+    public function passwordEdit($id){
+        return view('dashboard.admin.editPassword',compact('id'));
+    }
+
+    public function passwordUpdate(Request $request, $id){
+
+        $this->validate($request,[
+
+            'password'   => 'required|min:6',
+            'repassword' => 'required|min:6',
+
+        ]);
+
+
+        $user = User::find($id);
+        if ($request->password == $request->repassword) {
+            $user->password = bcrypt($request->password);
+        }else{
+            return redirect()->back()->with('danger', 'Password tidak sama');
+        }
+        $user->update();
+        return redirect()->route('user.edit',$id)->with('success','Password telah di ubah');   
+        
+    }
+    /*======================================== Ubah Password End   =========================================*/
 
 }
 

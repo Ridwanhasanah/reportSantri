@@ -15,37 +15,42 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// Route Tes
+Route::group(['middleware' => ['auth','role:teacher']], function(){
+    Route::get('/master', function(){
+        return "<h1>Ini Master Page</h1>";
+    });
+}); 
+
 Auth::routes();
 
+/*===== Form Register Start =====*/
+Route::resource('pendaftaran', 'FrontPage\RegisterController');
+/*===== Form Register Start =====*/
 
-Route::group(['middleware'=>'auth'], function(){ 
-	// Route::resource('report', 'ActivityController');
 
-	/*Dasboard*/
-	Route::get('/home', 'PondokitController@index')->name('dashboardIT');
-	
+Route::group(['middleware'=>['auth','role:student']], function(){ 
 
-	Route::get('/adminPondok', 'PondokitController@index')->name('dashboardIT');
+	/*===== Dasboard Start =====*/
+	Route::get('/home', 'PondokitController@index')->name('dashboard.home');
+	/*List santri*/
+	Route::get('list/programmer','PondokitController@santriProgrammer')->name('list.programmer');
+	Route::get('list/multimedia','PondokitController@santriMultimedia')->name('list.multimedia');
+	Route::get('list/imers','PondokitController@santriImers')->name('list.imers');
+	Route::get('list/cyber','PondokitController@santriCyber')->name('list.cyber');
+	/*===== Dasboard End =====*/
 
-	Route::get('/PondokIT', 'PondokitController@index')->name('dashboardIT');
+	/*===== Activity Start =====*/
+	Route::resource('activity', 'ActivityController');
 
-	
-
-	/*===== Report Start =====*/
-	/*All Report*/
-	Route::get('/report/all', 'ActivityController@index')->name('report.all');
-	/*Add Report*/
-	Route::get('/report/add', 'ActivityController@create')->name('report.add');
-	Route::post('/report/add', 'ActivityController@store')->name('report.addstore');
-	/*Delete Report*/
-	Route::delete('/report/{id}/delete', 'ActivityController@destroy')->name('report.delete');
-	/*Edit Report*/
-	Route::get('report/{id}/edit', 'ActivityController@edit')->name('report.edit');
-	Route::patch('report/{activity}/edit', 'ActivityController@update')->name('report.update');
-	/*===== Report End =====*/
+	Route::get('api/activity','ActivityController@apiActivity')->name('api.activity');
+	/*===== Activity End =====*/
 
 
 	/*===== Goal Start =====*/
+	Route::resource('goal', 'GoalController');
+	
+	Route::get('api/goal','GoalController@apiGoal')->name('api.goal');
 	/*All Goal*/
 	Route::get('/goals/all', 'GoalController@index')->name('goal.all');
 	/*Add Goal*/
@@ -63,6 +68,8 @@ Route::group(['middleware'=>'auth'], function(){
 	/*Edit*/
 	Route::get('profile/{id}/edit','ProfileController@edit')->name('profile.edit');
 	Route::patch('profile/{id}/edit','ProfileController@update')->name('profile.update');
+	Route::get('profilepass/{id}/edit','ProfileController@passwordEdit')->name('profilepass.edit');
+	Route::patch('profilepass/{id}/edit','ProfileController@passwordUpdate')->name('profilepass.update');
 
 	/*===== Profile End ===== */
 
@@ -73,56 +80,104 @@ Route::group(['middleware'=>'auth'], function(){
 	Route::patch('dream/{id}/edit','ProfileController@dreamUpdate')->name('dream.update');
 	/*===== 100 Dream End ===== */
 
+	/*===== Target Terdekat Start ===== */
+	Route::get('/target','ProfileController@targetIndex')->name('target');
+	/*Edit*/
+	Route::get('target/{id}/edit','ProfileController@targetEdit')->name('target.edit');
+	Route::patch('target/{id}/edit','ProfileController@targetUpdate')->name('target.update');
+	/*===== Target Terdekat End ===== */
+
 	/*===== Amaliyah Start ===== */
-	Route::resources([
-		'amaliyah' => 'AmaliyahController'
-	]);
+	Route::get('amaliyahcheck', 'AmaliyahController@checkAmaliyah')->name('amaliyahcheck');
+	Route::get('amaliyah', 'AmaliyahController@index')->name('amaliyah.index');
+	// create
+	Route::get('amaliyah/create', 'AmaliyahController@create')->name('amaliyah.create');
+	Route::post('amaliyah/create', 'AmaliyahController@store')->name('amaliyah.store');
+	// edit
+	// Route::get('amaliyah/edit', 'AmaliyahController@update')->name('amaliyah.edit');
+	Route::patch('amaliyah/edit/{id}', 'AmaliyahController@update')->name('amaliyah.update');
 	/*===== Amaliyah End ===== */
+
+	/*===== Kirim Saran Start=====*/
+	Route::resources([
+		'suggestion' => 'SuggestionController'
+	]);
+	
+	/*===== Kirim Saran End=====*/
 	
 
 
 	/*=============================================================================================*/
 	/*======================================== Admin Start ========================================*/
 	/*=============================================================================================*/
-	Route::group(['middleware'=>'check_user'], function(){ /*Auth untuk chek admin atau bukan*/
-	/*All Divisi*/
-	Route::get('user/programmer','AllUserController@santriProgrammer')->name('user.programmer');
-	Route::get('user/multimedia','AllUserController@santriMultimedia')->name('user.multimedia');
-	Route::get('user/imers','AllUserController@santriImers')->name('user.imers');
-	Route::get('user/cyber','AllUserController@santriCyber')->name('user.cyber');
-	Route::get('user/staff','AllUserController@index')->name('user.staff');
+	Route::group(['middleware'=>['auth','role:teacher']], function(){ /*Auth untuk chek admin atau bukan*/
+		/*All Divisi*/
+		Route::get('user/programmer','AllUserController@santriProgrammer')->name('user.programmer');
+		Route::get('user/multimedia','AllUserController@santriMultimedia')->name('user.multimedia');
+		Route::get('user/imers','AllUserController@santriImers')->name('user.imers');
+		Route::get('user/cyber','AllUserController@santriCyber')->name('user.cyber');
+		Route::get('user/staff','AllUserController@index')->name('user.staff');
 
-	/*===== Acitivity Santri CRUD For Admin Access Start =====*/
-	/*Index*/
-	Route::get('santri/report/{id}','AllUserController@indexActivtySantri')->name('santri.report');
-	/*Create*/
-	Route::get('santri/createreport/{id}','AllUserController@createActivitySantri')->name('santri.createreport');
-	/*Store*/
-	Route::post('santri/createreport/{id}','AllUserController@storeActivitySantri')->name('santri.storereport');
-	/*===== Acitivity Santri CRUD For Admin Access End =====*/
+		/*===== Acitivity Santri CRUD For Admin Access Start =====*/
+		/*Index*/
+		Route::get('santri/report/{id}','AllUserController@indexActivtySantri')->name('santri.report');
+		/*Create*/
+		Route::get('santri/createreport/{id}','AllUserController@createActivitySantri')->name('santri.createreport');
+		/*Store*/
+		Route::post('santri/createreport/{id}','AllUserController@storeActivitySantri')->name('santri.storereport');
+		/*===== Acitivity Santri CRUD For Admin Access End =====*/
 
-	/*===== Goal Santri CRUD For Admin Access Start =====*/
-	/*Index*/
-	Route::get('santri/goal/{id}','AllUserController@indexGoalSantri')->name('santri.goal');
-	/*Create*/
-	Route::get('santri/creategoal/{id}','AllUserController@createGoalSantri')->name('santri.creategoal');
-	/*Store*/
-	Route::post('santri/creategoal/{id}','AllUserController@storeGoalSantri')->name('santri.storegoal');
-	/*===== Goal Santri CRUD For Admin Access End =====*/
+		/*===== Goal Santri CRUD For Admin Access Start =====*/
+		/*Index*/
+		Route::get('santri/goal/{id}','AllUserController@indexGoalSantri')->name('santri.goal');
+		/*Create*/
+		Route::get('santri/creategoal/{id}','AllUserController@createGoalSantri')->name('santri.creategoal');
+		/*Store*/
+		Route::post('santri/creategoal/{id}','AllUserController@storeGoalSantri')->name('santri.storegoal');
+		/*===== Goal Santri CRUD For Admin Access End =====*/
 
-	/*===== All Activity Goal Start=====*/ 
-	Route::get('allgoalactivity.{id}', 'AllActivityGoalController@index')->name('allactivitygoal');
-	/*===== All Activity Goal End=====*/
-	
-	/*===== Daily Activity  Start=====*/ 
-	Route::get('dailyactivity', 'Admin\DailyActivityController@index')->name('dailyactivity');
-	/*===== Daily Activity  End=====*/ 
+		/*===== All Activity Goal Start=====*/ 
+		Route::get('allgoalactivity/{id}', 'AllActivityGoalController@index')->name('allactivitygoal');
+		/*===== All Activity Goal End=====*/
+		
+		/*===== Daily Activity  Start=====*/ 
+		Route::get('dailyactivity', 'Admin\DailyActivityController@index')->name('dailyactivity');
+		/*===== Daily Activity  End=====*/ 
 
-	
-	/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
-	Route::resources([
-			'user' => 'AllUserController'
-		]);
+		/*===== Amaliyah Santri Start =====*/
+		Route::get('amaliyah/santri/{id}', 'AllUserController@amaliyahIndex')->name('santri.amaliyah');
+		/*===== Amaliyah Santri End =====*/
+
+		/*===== Ubah Password start =====*/
+		Route::get('userpass/{id}/edit', 'AllUserController@passwordEdit')->name('password.edit');
+		Route::patch('userpass/{id}/edit', 'AllUserController@passwordUpdate')->name('password.update');
+		/*===== Ubah Password start =====*/
+
+		/*===== Register Start =====*/
+		Route::resource('register','Admin\RegisterController');
+
+		Route::get('register/all/programmer','Admin\RegisterController@index')->name('register.programmer');
+		Route::get('register/all/multimedia','Admin\RegisterController@index')->name('register.multimedia');
+		Route::get('register/all/imers','Admin\RegisterController@index')->name('register.imers');
+		Route::get('register/all/cyber','Admin\RegisterController@index')->name('register.cyber');
+		/*===== API =====*/
+		/*All Divisi*/
+		Route::get('api/register','Admin\RegisterController@apiRegister')->name('api.register');
+		/*Divisi Programmer*/
+		Route::get('api/register/programmer','Admin\RegisterController@apiRegisterProgrammer')->name('api.register.programmer');
+		/*Divisi Mulimedia*/
+		Route::get('api/register/multimedia','Admin\RegisterController@apiRegisterMultimedia')->name('api.register.multimedia');
+		/*Divisi Imers*/
+		Route::get('api/register/imers','Admin\RegisterController@apiRegisterImers')->name('api.register.imers');
+		/*Divisi Cyber*/
+		Route::get('api/register/cyber','Admin\RegisterController@apiRegisterCyber')->name('api.register.cyber');
+		/*===== Register End =====*/
+
+		
+		/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
+		Route::resources([
+				'user' => 'AllUserController'
+			]);
 	
 
 	});
@@ -130,20 +185,4 @@ Route::group(['middleware'=>'auth'], function(){
 	/*=============================================================================================*/
 	/*======================================== Admin End ==========================================*/
 	/*=============================================================================================*/
-	/*All User*/
-	// Route::get('alluser','AllUserController@index')->name('alluser');
-	// /*Create*/
-	// Route::get('user/add','AllUserController@create')->name('user.add');
-	// Route::post('user/add','AllUserController@store')->name('user.addstore');
-	// /*Edit*/
-	// Route::get('user/{id}/edit','AllUserController@edit')->name('user.edit');
-	// Route::patch('user/{id}/edit','AllUserController@update')->name('user.update');
-	// /*Detail*/
-	// Route::get('user/{id}/detail','AllUserController@show')->name('user.detail');
-	// /*Delete*/
-	// Route::delete('user/{id}/delete','AllUserController@destroy')->name('user.destroy');
-	// /*Admin End*/
-
-	
-
 });

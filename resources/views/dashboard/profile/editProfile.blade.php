@@ -25,16 +25,24 @@
                     {{ method_field('PATCH') }}
 
                 <div class="col-md-3 col-lg-3 " align="center">
-                @if (count($user->photo)==0)
+                @if (strlen($user->photo) ==0)
                   <img alt="User Pic" src="http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png" class="img-circle img-responsive"> 
                 @else
                   <img alt="User Pic" src="{{asset('storage/photos/'.$user->photo)}}" class="img-circle img-responsive"> 
                 @endif 
                   <br>
                   <input type="file" name="photo" class="form-control">
+                  <br>
+                  <a href="{{route('profilepass.edit',$user->id)}}" id="editpass" class="btn btn-outline btn-danger">Ubah Password</a>
+                  <div class="panel panel-info rmargin">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><b>Quote</b></h3>
+                    </div>
+                    <div class="panel-body">
+                      <textarea placeholder="Contoh : Berilmu sebelum berkata dan beramal" class="form-control" type="textarea" name="quote">{{$user->quote}}</textarea>
+                    </div>
+                  </div>
                 </div>
-
-               
                 <div class=" col-md-9 col-lg-9 "> 
                  
                   <table class="table table-user-information">
