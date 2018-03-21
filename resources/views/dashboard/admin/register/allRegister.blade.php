@@ -24,6 +24,7 @@ Semua Calon Santri {{$divisi}}
                 <table style="max-width: 110px;" id="register-table" class="table table-striped scrolltab">
                     <thead>
                         <tr>
+                          <th>No</th>
                           <th>Nama</th>
                           <th width="50px">Proses</th>
                           <th>Divisi</th>
@@ -45,11 +46,12 @@ Semua Calon Santri {{$divisi}}
 
     @if ($divisi == 'programmer')
       <script type="text/javascript">
-        $('#register-table').DataTable({
+        var table = $('#register-table').DataTable({
           processing: true,
           serverSide: true,
           ajax: "{{ route('api.register.programmer') }}",
           columns:[
+            {data: 'no', name: 'no'},
             {data: 'nama', name: 'nama'},
             {data: 'proses', name: 'proses'},
             {data: 'divisi', name: 'divisi'},
@@ -106,11 +108,12 @@ Semua Calon Santri {{$divisi}}
       </script>
     @elseif ($divisi == 'multimedia')
       <script type="text/javascript">
-        $('#register-table').DataTable({
+       var table = $('#register-table').DataTable({
           processing: true,
           serverSide: true,
           ajax: "{{ route('api.register.multimedia') }}",
           columns:[
+            {data: 'no', name: 'no'},
             {data: 'nama', name: 'nama'},
             {data: 'proses', name: 'proses'},
             {data: 'divisi', name: 'divisi'},
@@ -167,11 +170,12 @@ Semua Calon Santri {{$divisi}}
       </script>
     @elseif ($divisi == 'imers')
       <script type="text/javascript">
-        $('#register-table').DataTable({
+        var table = $('#register-table').DataTable({
           processing: true,
           serverSide: true,
           ajax: "{{ route('api.register.imers') }}",
           columns:[
+            {data: 'no', name: 'no'},
             {data: 'nama', name: 'nama'},
             {data: 'proses', name: 'proses'},
             {data: 'divisi', name: 'divisi'},
@@ -228,11 +232,12 @@ Semua Calon Santri {{$divisi}}
       </script>
     @elseif ($divisi == 'cyber')
       <script type="text/javascript">
-        $('#register-table').DataTable({
+        var table = $('#register-table').DataTable({
           processing: true,
           serverSide: true,
           ajax: "{{ route('api.register.cyber') }}",
           columns:[
+            {data: 'no', name: 'no'},
             {data: 'nama', name: 'nama'},
             {data: 'proses', name: 'proses'},
             {data: 'divisi', name: 'divisi'},
@@ -295,6 +300,7 @@ Semua Calon Santri {{$divisi}}
           serverSide: true,
           ajax: "{{ route('api.register') }}",
           columns:[
+            {data: 'no', name: 'no'},
             {data: 'nama', name: 'nama'},
             {data: 'proses', name: 'proses'},
             {data: 'divisi', name: 'divisi'},
@@ -332,7 +338,7 @@ Semua Calon Santri {{$divisi}}
               table.ajax.reload();
               swal({
                 title:'Berhasil',
-                text: 'kegiatan Sudah di hapus',
+                text: 'Calon Santri Sudah di hapus',
                 type: 'success',
                 timer: '1500'
               })

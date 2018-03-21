@@ -13,6 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom CSS -->
 <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' />
+<link rel="shortcut icon" href="{{ asset('Logo IT ICON.png') }}" > 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -880,7 +881,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div><br>
 
 							<div class="form-group has-feedback{{$errors->has('disc') ? ' has-error' : ''}}">
-							<label class="syarat" for="disc">download file <a style="color:#F8D27F;" href="{{asset('doc/DISC.xlsx')}}">ini </a>, lalu isi dengan seksama, kemudian setelah di isi upload kembali di bawah ini</label>
+							<label class="syarat" for="disc">download file <a style="color:#F8D27F;" href="{{asset('doc/DISC.xlsx')}}">ini </a>, kemudian setelah di isi upload kembali di bawah ini</label>
 							<input required value="{{ old('disc') }}" type="file" name="disc" id="disc"  class="form-control">
               @if ($errors->has('disc'))
                 <span class="help-block">

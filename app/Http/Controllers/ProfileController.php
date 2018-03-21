@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -40,7 +41,7 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-       $user  = User::find($id);
+       $user  = User::findOrfail($id);
 
         $user->name        = $request->name;
         // $user->department = $request->department;
@@ -55,14 +56,23 @@ class ProfileController extends Controller
         $user->experience  = $request->experience;
         $user->creation    = $request->creation;
         $user->quote       = $request->quote;
-
+        // dd(storage_path().'/app/public/photos');
         if ($request->hasFile('photo')) {
 
-            $filename = $request->photo->getClientOriginalName();
-            
+            if (strlen($request->photo) != 0){
+
+                return storage_path().'/app/public/photos'.$request->photo->delete();
+                
+//unlink(storeAs('photos').$user->photo);
+
+                // echo '<h1>'.strlen($request->photo).'</h1>';
+            }
+            $filename = Auth::user()->id.$request->photo->getClientOriginalName();
+        
             $request->file('photo')->storeAs('photos',$filename);
 
-            $user->photo   = $filename;
+            $user->photo  = $filename;
+            
 
 
         }

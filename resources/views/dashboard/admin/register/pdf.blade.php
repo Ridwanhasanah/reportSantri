@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
     <title>Document</title>
     <link href="{{asset('dashboard/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('dashboard/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     
 </head>
 <body>
-    <div id="page-wrapper" style="margin:30px;">
+    <div id="page-wrapper" class="" style="width:700px; ">
   <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')

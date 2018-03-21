@@ -111,6 +111,7 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 	/*======================================== Admin Start ========================================*/
 	/*=============================================================================================*/
 	Route::group(['middleware'=>['auth','role:teacher']], function(){ /*Auth untuk chek admin atau bukan*/
+
 		/*All Divisi*/
 		Route::get('user/programmer','AllUserController@santriProgrammer')->name('user.programmer');
 		Route::get('user/multimedia','AllUserController@santriMultimedia')->name('user.multimedia');
@@ -118,16 +119,21 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::get('user/cyber','AllUserController@santriCyber')->name('user.cyber');
 		Route::get('user/staff','AllUserController@index')->name('user.staff');
 
-		/*===== Acitivity Santri CRUD For Admin Access Start =====*/
+		/*===== Acitivity Santri CRUD For The Admin Access Start =====*/
 		/*Index*/
 		Route::get('santri/report/{id}','AllUserController@indexActivtySantri')->name('santri.report');
 		/*Create*/
 		Route::get('santri/createreport/{id}','AllUserController@createActivitySantri')->name('santri.createreport');
 		/*Store*/
 		Route::post('santri/createreport/{id}','AllUserController@storeActivitySantri')->name('santri.storereport');
+		/*Update*/
+		Route::get('santri/editreport/{id}/edit','AllUserController@editActivitySantri')->name('santri.editreport');
+		Route::patch('santri/editreport/{id}','AllUserController@updateActivitySantri')->name('santri.updatereport');
+		/*Api*/
+		Route::get('santri/report/api/{id}','AllUserController@apiActivtySantri')->name('santri.apireport');
 		/*===== Acitivity Santri CRUD For Admin Access End =====*/
 
-		/*===== Goal Santri CRUD For Admin Access Start =====*/
+		/*===== Goal Santri CRUD For The Admin Access Start =====*/
 		/*Index*/
 		Route::get('santri/goal/{id}','AllUserController@indexGoalSantri')->name('santri.goal');
 		/*Create*/
@@ -155,6 +161,7 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 
 		/*===== Register Start =====*/
 		Route::resource('register','Admin\RegisterController');
+		// Route::delete('delete/{id}','Admin\RegisterController@destroy')->name('delete.delete');
 
 		Route::get('register/all/programmer','Admin\RegisterController@index')->name('register.programmer');
 		Route::get('register/all/multimedia','Admin\RegisterController@index')->name('register.multimedia');
@@ -174,7 +181,7 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		/*PDF*/
 		Route::get('register/pdf/{id}','Admin\RegisterController@exportPDF')->name('register.pdf');
 		/*===== Register End =====*/
-
+		
 		
 		/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
 		Route::resources([

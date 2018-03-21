@@ -27,13 +27,17 @@ class ActivityController extends Controller
             ->select('activities.*')
             ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
             ->where('users.id', "$id")
-            ->latest()->paginate(20);
+            ->get();
 
             //dd($users);
 
+            // dd(count($activities);
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $urls = end($url_array);
         
         
-        return view('dashboard.activity.allreport', compact('activities', 'users','id'));
+        return view('dashboard.activity.allreport', compact('activities', 'users','id','urls'));
     }
 
     /**

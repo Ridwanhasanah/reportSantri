@@ -12,6 +12,8 @@
 
     <title>@yield('title')</title>
 
+    <link rel="shortcut icon" href="{{ asset('Logo IT ICON.png') }}" >    
+
     {{-- Pondokit Ridwan Css Start--}}
     <link rel="stylesheet" href="{{asset('css/cssPondokit.css')}}">
     {{-- <link rel="stylesheet" href="{{asset('css/profile.css')}}">    --}}

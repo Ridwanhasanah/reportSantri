@@ -8,6 +8,7 @@ use App\Models\Goal;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class AllUserController extends Controller
 {
@@ -194,7 +195,13 @@ class AllUserController extends Controller
 
         if ($request->hasFile('photo')) {
 
-            $filename = $request->photo->getClientOriginalName();
+            if (strlen($request->photo) != 0){
+                //unlink(public_path('storage/photos/'.$user->photo));
+
+                echo '<h1>'.strlen($request->photo).'</h1>';
+            }
+            
+            $filename = Auth::user()->id.$request->photo->getClientOriginalName();
             
             $request->file('photo')->storeAs('photos',$filename);
 
@@ -293,11 +300,14 @@ class AllUserController extends Controller
             ->where('users.id', "$id")
             ->latest()->paginate(20);
 
-            // dd($users);
 
+            // dd($users);
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $urls = end($url_array);
         
         
-        return view('dashboard.activity.allreport', compact('activities', 'users','id'));
+        return view('dashboard.activity.allreport', compact('activities', 'users','id','urls'));
     }
 
     /*Create*/
@@ -312,18 +322,28 @@ class AllUserController extends Controller
         $activity = new Activity;
         $user = DB::table('users');
 
+        $data = [
+            'activity'  => $request['activity'],
+            'result'    => $request['result'],
+            'follow_up' => $request['follow_up'],
+            'when'      => $request['when'],
+            'user_id'   => $id
+        ];
+
+        return Activity::create($data);
+
 
 
         // $activities = DB::table('activities')->insertGetId([ //menggunakan inserGetId untuk mengambil id latest
-            $activity->activity  = $request->activity;
-            $activity->result    = $request->result;
-            $activity->follow_up = $request->follow_up;
-            $activity->when      = $request->when;
-            $activity->user_id   = $id;
+            // $activity->activity  = $request->activity;
+            // $activity->result    = $request->result;
+            // $activity->follow_up = $request->follow_up;
+            // $activity->when      = $request->when;
+            // $activity->user_id   = $id;
 
             // dd($id);
         // ]);
-            $activity->save();
+          // return  $activity->save();
 
         /*$idUser = Auth::user()->id; 
         $activityUser = ActivityUser::insert([ 
@@ -333,8 +353,50 @@ class AllUserController extends Controller
 
 
      
-        return redirect()->route('report.edit',$activity)->with('success', 'Report Added'); 
+        // return redirect()->route('report.edit',$activity)->with('success', 'Report Added'); 
 
+    }
+
+    /*Edit*/
+    public function editActivitySantri($id)
+    {
+        // $activity = Activity::find($id);
+    
+        // return view('dashboard.activity.editreport',compact('activity'));
+
+        $activity = Activity::find($id);
+
+        return $activity;
+    }
+
+    public function updateActivitySantri(Request $request, $id)
+    {
+
+        $activity = Activity::find($id);
+        $activity->activity  = $request['activity'];
+        $activity->result    = $request['result'];
+        $activity->follow_up = $request['follow_up'];
+        $activity->when      = $request['when'];
+
+        $activity->update();
+
+        return $activity;
+        
+    }
+    /*API*/
+    public function apiActivtySantri($id){
+
+        $activities = DB::table('users')
+            ->select('activities.*')
+            ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->orderBy('id','desc');
+
+        return Datatables::of($activities)->addColumn('action', function($activities){
+            return '<a onclick="editActivity('.$activities->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.
+                '<a onclick="deleteActivity('.$activities->id.')" class="btn btn-outline btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;&nbsp;Delete</a> ';
+        })->make(true);
+        
     }
     /*======================================= Activity Santi CRUD End ========================================*/
 

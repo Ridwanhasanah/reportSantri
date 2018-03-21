@@ -21,8 +21,24 @@ class RegisterController extends Controller
         $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         $url_array = explode('/', $url);
         $divisi = end($url_array);
+
+        $registers = DB::table('registers')->latest()->paginate(10);
          
-        return view('dashboard.admin.register.allRegister',compact('divisi'));
+        
+        // DB::statement(DB::raw('set @rownum=0'));
+        //        $registers = Register::select([
+        //         DB::raw('@rownum  := @rownum  + 1 AS rownum'),
+        //         'id',
+        //         'name',
+        //         'email',
+        //         'created_at',
+        //         'updated_at']);
+        //        $datatables = Datatables::of($registers);
+
+        //        dd($datatables);
+
+        return view('dashboard.admin.register.allRegister',compact('divisi','registers'));
+
     }
 
     /**
@@ -171,55 +187,135 @@ class RegisterController extends Controller
         $register->delete();
     }
 
-    public function apiRegister(){
-        $register = Register::all();
+    public function apiRegister(Request $request){
 
-        return Datatables::of($register)
-            ->addColumn('action', function($register){
+        DB::statement(DB::raw('set @rownum=0'));
+        $register = Register::select([
+            DB::raw('@rownum  := @rownum  + 1 AS no'),
+            'id',
+            'nama',
+            'proses',
+            'divisi',
+            'tgl_daftar',
+            'wa',
+            'iq'
+        ]);
+        $datatables = Datatables::of($register);
+
+        if ($keyword = $request->get('search')['value']) {
+            $datatables->filterColumn('no', 'whereRaw', '@rownum  + 1 like ?', ["%{$keyword}%"]);
+        }
+
+        $register2 = DB::table('registers')->orderBy('id','asc')->get();
+        return $datatables->addColumn('action', function($register){
                 return '<a onclick="showRegis('.$register->id.')" class="btn btn-outline btn-primary" style="margin-right:10px">Detail</a>'.
                         '<a onclick="editRegis('.$register->id.')" class="btn btn-outline btn-success" style="margin-right:10px">Edit</a>'.
                         '<a onclick="deleteRegis('.$register->id.')" class="btn btn-outline btn-danger">Hapus</a>';
             })->make(true);
     }
 
-    public function apiRegisterProgrammer(){
-        $register = DB::table('registers')->where('divisi', '=', 'programmer')->get();
+    public function apiRegisterProgrammer(Request $request){
+       
+       DB::statement(DB::raw('set @rownum=0'));
+        $register = Register::select([
+            DB::raw('@rownum  := @rownum  + 1 AS no'),
+            'id',
+            'nama',
+            'proses',
+            'divisi',
+            'tgl_daftar',
+            'wa',
+            'iq'
+        ])->where('divisi', '=', 'programmer');
+        $datatables = Datatables::of($register);
 
-        return Datatables::of($register)
-            ->addColumn('action', function($register){
+        if ($keyword = $request->get('search')['value']) {
+            $datatables->filterColumn('no', 'whereRaw', '@rownum  + 1 like ?', ["%{$keyword}%"]);
+        }
+
+        $register2 = DB::table('registers')->orderBy('id','asc')->get();
+        return $datatables->addColumn('action', function($register){
                 return '<a onclick="showRegis('.$register->id.')" class="btn btn-outline btn-primary" style="margin-right:10px">Detail</a>'.
                         '<a onclick="editRegis('.$register->id.')" class="btn btn-outline btn-success" style="margin-right:10px">Edit</a>'.
                         '<a onclick="deleteRegis('.$register->id.')" class="btn btn-outline btn-danger">Hapus</a>';
             })->make(true);
     }
 
-    public function apiRegisterMultimedia(){
-        $register = DB::table('registers')->where('divisi', '=', 'multimedia')->get();
+    public function apiRegisterMultimedia(Request $request){
+        
+        DB::statement(DB::raw('set @rownum=0'));
+        $register = Register::select([
+            DB::raw('@rownum  := @rownum  + 1 AS no'),
+            'id',
+            'nama',
+            'proses',
+            'divisi',
+            'tgl_daftar',
+            'wa',
+            'iq'
+        ])->where('divisi', '=', 'multimedia');
+        $datatables = Datatables::of($register);
 
-        return Datatables::of($register)
-            ->addColumn('action', function($register){
+        if ($keyword = $request->get('search')['value']) {
+            $datatables->filterColumn('no', 'whereRaw', '@rownum  + 1 like ?', ["%{$keyword}%"]);
+        }
+
+        $register2 = DB::table('registers')->orderBy('id','asc')->get();
+        return $datatables->addColumn('action', function($register){
                 return '<a onclick="showRegis('.$register->id.')" class="btn btn-outline btn-primary" style="margin-right:10px">Detail</a>'.
                         '<a onclick="editRegis('.$register->id.')" class="btn btn-outline btn-success" style="margin-right:10px">Edit</a>'.
                         '<a onclick="deleteRegis('.$register->id.')" class="btn btn-outline btn-danger">Hapus</a>';
             })->make(true);
     }
 
-    public function apiRegisterImers(){
-        $register = DB::table('registers')->where('divisi', '=', 'imers')->get();
+    public function apiRegisterImers(Request $request){
+       
+        DB::statement(DB::raw('set @rownum=0'));
+        $register = Register::select([
+            DB::raw('@rownum  := @rownum  + 1 AS no'),
+            'id',
+            'nama',
+            'proses',
+            'divisi',
+            'tgl_daftar',
+            'wa',
+            'iq'
+        ])->where('divisi', '=', 'imers');
+        $datatables = Datatables::of($register);
 
-        return Datatables::of($register)
-            ->addColumn('action', function($register){
+        if ($keyword = $request->get('search')['value']) {
+            $datatables->filterColumn('no', 'whereRaw', '@rownum  + 1 like ?', ["%{$keyword}%"]);
+        }
+
+        $register2 = DB::table('registers')->orderBy('id','asc')->get();
+        return $datatables->addColumn('action', function($register){
                 return '<a onclick="showRegis('.$register->id.')" class="btn btn-outline btn-primary" style="margin-right:10px">Detail</a>'.
                         '<a onclick="editRegis('.$register->id.')" class="btn btn-outline btn-success" style="margin-right:10px">Edit</a>'.
                         '<a onclick="deleteRegis('.$register->id.')" class="btn btn-outline btn-danger">Hapus</a>';
             })->make(true);
     }
 
-    public function apiRegisterCyber(){
-        $register = DB::table('registers')->where('divisi', '=', 'cyber')->get();
+    public function apiRegisterCyber(Request $request){
+        
+        DB::statement(DB::raw('set @rownum=0'));
+        $register = Register::select([
+            DB::raw('@rownum  := @rownum  + 1 AS no'),
+            'id',
+            'nama',
+            'proses',
+            'divisi',
+            'tgl_daftar',
+            'wa',
+            'iq'
+        ])->where('divisi', '=', 'cyber');
+        $datatables = Datatables::of($register);
 
-        return Datatables::of($register)
-            ->addColumn('action', function($register){
+        if ($keyword = $request->get('search')['value']) {
+            $datatables->filterColumn('no', 'whereRaw', '@rownum  + 1 like ?', ["%{$keyword}%"]);
+        }
+
+        $register2 = DB::table('registers')->orderBy('id','asc')->get();
+        return $datatables->addColumn('action', function($register){
                 return '<a onclick="showRegis('.$register->id.')" class="btn btn-outline btn-primary" style="margin-right:10px">Detail</a>'.
                         '<a onclick="editRegis('.$register->id.')" class="btn btn-outline btn-success" style="margin-right:10px">Edit</a>'.
                         '<a onclick="deleteRegis('.$register->id.')" class="btn btn-outline btn-danger">Hapus</a>';
@@ -233,6 +329,6 @@ class RegisterController extends Controller
 
         $pdf->setPaper('a4', 'potrait');
 
-        return $pdf->download();//view('dashboard.admin.register.pdf',compact('register'));
+        return $pdf->stream();//view('dashboard.admin.register.pdf',compact('register'));
     }
 }
