@@ -160,6 +160,7 @@ class RegisterController extends Controller
             $register->kamu_tau          = $request->kamu_tau;
             $register->jalani_kehidupan  = $request->jalani_kehidupan;
             $register->ktp               = $request->ktp;
+            $register->harapan           = $request->harapan;
             if ($request->hasFile('foto')) {
 
             $filename = $request->foto->getClientOriginalName();

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\FrontPage;
 
 use App\Models\Register;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Validator;
 
 class RegisterController extends Controller
 {
+    use ValidatesRequests;
+
     /**
      * Display a listing of the resource.
      *
@@ -29,19 +32,13 @@ class RegisterController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
       $this->validate(request(),[
-          'divisi'            => 'required|max:30',
-          'nama'              => 'required|max:30|min:3',
-          'tempat_lahir'      => 'required|max:30',
-          'tanggal_lahir'     => 'required|max:10|min:10',
+          'divisi'            => 'required|max:190',
+          'nama'              => 'required|max:190',
+          'tempat_lahir'      => 'required|max:190',
+          'tanggal_lahir'     => 'required|max:190',
           'email'             => 'required|unique:registers|max:190',
           'rumah'             => 'required|max:190',
           'kota'              => 'required|max:190',
@@ -49,7 +46,7 @@ class RegisterController extends Controller
           'cita'              => 'required|max:190',
           'facebook'          => 'required|max:190',
           'hp'                => 'required|unique:registers|max:13|min:10',
-          'wa'                => 'required|unique:registers|max:13|min10',
+          'wa'                => 'required|unique:registers|max:13|min:10',
           'lulusan'           => 'required|max:190',
           'sekolah'           => 'required|max:190',
           'jurusan'           => 'required|max:190',
@@ -67,9 +64,9 @@ class RegisterController extends Controller
           'laptop'            => 'required|max:190',
           'iq'                => 'required|max:10',
           'hafalan'           => 'required',
-          'skill'             => 'required',
-          'kekuranganmu'      => 'required',
-          'kelebihanmu'       => 'required',
+          'skill'             => 'required|min:8',
+          'kekuranganmu'      => 'required|min:8',
+          'kelebihanmu'       => 'required|min:8',
           'idola'             => 'required|max:190',
           'buku'              => 'required|max:190',
           'ustad'             => 'required|max:190',
@@ -82,22 +79,23 @@ class RegisterController extends Controller
           'pernah'            => 'required|max:190',
           'pemahaman'         => 'required|max:190',
           'pernyataan'        => 'required|max:190',
-          'limam'             => 'required',
-          'kekurangan'        => 'required',
-          'marah'             => 'required',
-          'bahagia'           => 'required',
+          'limam'             => 'required|min:20',
+          'kekurangan'        => 'required|min:5',
+          'marah'             => 'required|min:6',
+          'bahagia'           => 'required|min:6',
           'alokasi'           => 'required|max:190',
           'magang'            => 'required|max:190',
           'berjuang'          => 'required|max:190',
           'cita_pondok'       => 'required|max:190',
           'berinfak'          => 'required|max:190',
           'sudah_punya'       => 'required|max:190',
-          'peraturan'         => 'required',
-          'kekurangan_pondok' => 'required',
-          'impian'            => 'required',
-          'alasan'            => 'required',
+          'peraturan'         => 'required|min:15',
+          'kekurangan_pondok' => 'required|min:15',
+          'impian'            => 'required|min:15',
+          'harapan'            => 'required|min:15',
+          'alasan'            => 'required|min:10',
           'kamu_tau'          => 'required|max:190',
-          'jalani_kehidupan'  => 'required',
+          'jalani_kehidupan'  => 'required|min:10',
           'ktp'               => 'required|unique:registers|max:17|min:15',
           'disc'              => 'required|max:190',
           'foto'              => 'required',
@@ -113,7 +111,7 @@ class RegisterController extends Controller
             $register->nama           = $request->nama;
             $register->tgl_daftar     = date('d-m-Y');
             $register->tempat_lahir   = $request->tempat_lahir;
-            $register->tanggal_lahir           = $request->tanggal_lahir;
+            $register->tanggal_lahir     = $request->tanggal_lahir;
             $register->email             = $request->email;
             $register->rumah             = $request->rumah;
             $register->kota              = $request->kota;
@@ -167,6 +165,7 @@ class RegisterController extends Controller
             $register->peraturan         = $request->peraturan;
             $register->kekurangan_pondok = $request->kekurangan_pondok;
             $register->impian            = $request->impian;
+            $register->harapan           = $request->harapan;
             $register->alasan            = $request->alasan;
             $register->kamu_tau          = $request->kamu_tau;
             $register->jalani_kehidupan  = $request->jalani_kehidupan;

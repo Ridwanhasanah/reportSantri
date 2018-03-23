@@ -15,6 +15,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' />
 <link rel="shortcut icon" href="{{ asset('Logo IT ICON.png') }}" > 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+{{-- SweetAlert2 --}}
+<script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
+<link href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+
+<link href="{{asset('dashboard/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
@@ -62,13 +69,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="progressbar-heading grids-heading">
 						<h2>Pendaftaran Pondok IT</h2>
 
-						@if (session('success'))
+						{{-- @if (session('success'))
 							<b>
 								<p class="alert">
 							      {{session('success')}}
 							    </p>
 								</b>
-							@endif
+							@endif --}}
+						@include('layouts.patrials.alerts')
 
 					</div>
 					<div class="forms-grids">
@@ -220,8 +228,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											</div><br>
 
 												<div class="form-group has-feedback{{$errors->has('facebook') ? ' has-error' : ''}}">
-												<label class="syarat" for="facebook">Nama Akun Facebook</label>
-												<input required value="{{ old('facebook') }}" type="text" class="form-control" id="facebook" name="facebook" >
+												<label class="syarat" for="facebook">Link Akun Facebook</label>
+												<input required value="{{ old('facebook') }}" type="url" class="form-control" id="facebook" name="facebook" >
                         @if ($errors->has('facebook'))
                           <span class="help-block">
                             <p>{{$errors->first('facebook')}}</p>
@@ -473,7 +481,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 									<div class="form-group has-feedback{{$errors->has('skill') ? ' has-error' : ''}}">
 									<label class="syarat" for="skill">Jelaskan Tentang Skill IT Yang Sudah Dimiliki</label>
-									<textarea required style="height: 100px;" name="skill" id="skill" class="form-control" rows="8" cols="70" >{{ old('skill') }}</textarea>
+									<textarea reqired style="height: 100px;" name="skill" id="skill" class="form-control" rows="8" cols="70" >{{ old('skill') }}</textarea>
                   @if ($errors->has('skill'))
                     <span class="help-block">
                       <p>{{$errors->first('skill')}}</p>
@@ -482,7 +490,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</div><br>
 								<div class="form-group has-feedback{{$errors->has('kelebihanmu') ? ' has-error' : ''}}">
 								<label class="syarat" for="kelebihanmu">Sebutkan Minimal 5 Kelebihan Diri Anda (karakter)</label>
-								<textarea required style="height: 100px;" name="kelebihanmu" id="kelebihanmu" class="form-control" rows="8" cols="70" >{{ old('kelebihanmu') }}</textarea>
+								<textarea reqired style="height: 100px;" name="kelebihanmu" id="kelebihanmu" class="form-control" rows="8" cols="70" >{{ old('kelebihanmu') }}</textarea>
                 @if ($errors->has('kelebihanmu'))
                   <span class="help-block">
                     <p>{{$errors->first('kelebihanmu')}}</p>
@@ -492,7 +500,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('kekuranganmu') ? ' has-error' : ''}}">
 							<label class="syarat" for="kekuranganmu">Sebutkan Minimal 5 Keburukan Diri Anda (karakter)</label>
-							<textarea required style="height: 100px;" name="kekuranganmu" id="kekuranganmu" class="form-control" rows="8" cols="70" >{{ old('kekuranganmu') }}</textarea>
+							<textarea reqired style="height: 100px;" name="kekuranganmu" id="kekuranganmu" class="form-control" rows="8" cols="70" >{{ old('kekuranganmu') }}</textarea>
               @if ($errors->has('kekuranganmu'))
                 <span class="help-block">
                   <p>{{$errors->first('kekuranganmu')}}</p>
@@ -674,7 +682,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('limam') ? ' has-error' : ''}}">
 							<label class="syarat" for="limam">Kami mau Tanya Kalau Alloh Menitipkan Uang Kepadamu Sebesar 5M Ke Kamu, Uangnya mau Kamu Buat Apa ? (Baik Urusan Dunia Maupun Urusan Akhirat) , alokasikan menjadi 5 bagian, dan tentukan berapa jumlah untuk setiap alokasi </label>
-							<textarea required class="form-control" style="height: 100px;" name="limam" id="limam" rows="8" cols="70" >{{ old('limam') }}</textarea>
+							<textarea reqired class="form-control" style="height: 100px;" name="limam" id="limam" rows="8" cols="70" >{{ old('limam') }}</textarea>
               @if ($errors->has('limam'))
                 <span class="help-block">
                   <p>{{$errors->first('limam')}}</p>
@@ -684,7 +692,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('kekurangan') ? ' has-error' : ''}}">
 							<label class="syarat" for="kekurangan">Bagaimana Kamu Menyikapi Kekurangan Orang Lain? Karena Di Pondok Programmer Kamu Akan Menemui Banyak Karakter Orang </label>
-							<textarea required class="form-control" style="height: 100px;" name="kekurangan" id="kekurangan" rows="8" cols="70" >{{ old('kekurangan') }}</textarea>
+							<textarea reqired class="form-control" style="height: 100px;" name="kekurangan" id="kekurangan" rows="8" cols="70" >{{ old('kekurangan') }}</textarea>
               @if ($errors->has('kekurangan'))
                 <span class="help-block">
                   <p>{{$errors->first('kekurangan')}}</p>
@@ -694,7 +702,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('marah') ? ' has-error' : ''}}">
 							<label class="syarat" for="marah">Hal Yang Menyebabkan Anda Marah</label>
-							<textarea required class="form-control" style="height: 100px;" name="marah" id="marah" rows="8" cols="70" >{{ old('marah') }}</textarea>
+							<textarea reqired class="form-control" style="height: 100px;" name="marah" id="marah" rows="8" cols="70" >{{ old('marah') }}</textarea>
               @if ($errors->has('marah'))
                 <span class="help-block">
                   <p>{{$errors->first('marah')}}</p>
@@ -704,7 +712,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('bahagia') ? ' has-error' : ''}}">
 							<label class="syarat" for="bahagia">Hal Yang Menyebabkan Anda Bahagia</label>
-							<textarea required class="form-control" style="height: 100px;" name="bahagia" id="bahagia" rows="8" cols="70" >{{ old('bahagia') }}</textarea>
+							<textarea reqired class="form-control" style="height: 100px;" name="bahagia" id="bahagia" rows="8" cols="70" >{{ old('bahagia') }}</textarea>
               @if ($errors->has('bahagia'))
                 <span class="help-block">
                   <p>{{$errors->first('bahagia')}}</p>
@@ -810,7 +818,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('peraturan') ? ' has-error' : ''}}">
 							<label class="syarat" for="peraturan">Siap Untuk Mengikuti Aturan-Aturan Di pondok Baik yang Disukai Maupun yang Tidak Di Sukai </label>
-							<textarea required class="form-control" style="height: 100px;" name="peraturan" id="peraturan" rows="8" cols="70" >{{ old('peraturan') }}</textarea>
+							<textarea reqired class="form-control" style="height: 100px;" name="peraturan" id="peraturan" rows="8" cols="70" >{{ old('peraturan') }}</textarea>
               @if ($errors->has('peraturan'))
                 <span class="help-block">
                   <p>{{$errors->first('peraturan')}}</p>
@@ -820,7 +828,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('kekurangan_pondok') ? ' has-error' : ''}}">
 							<label class="syarat" for="kekurangan_pondok">Siap Untuk Menerima Kekurangan Yang Ada Di Pondok  </label>
-							<textarea required class="form-control" style="height: 100px;" name="kekurangan_pondok" id="kekurangan_pondok" rows="8" cols="70" >{{ old('kekurangan_pondok') }}</textarea>
+							<textarea reqired class="form-control" style="height: 100px;" name="kekurangan_pondok" id="kekurangan_pondok" rows="8" cols="70" >{{ old('kekurangan_pondok') }}</textarea>
               @if ($errors->has('kekurangan_pondok'))
                 <span class="help-block">
                   <p>{{$errors->first('kekurangan_pondok')}}</p>
@@ -830,7 +838,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('impian') ? ' has-error' : ''}}">
 							<label class="syarat" for="impian">Sebutkan 10 Impian Terbesar Dalam Hidupmu </label>
-							<textarea required class="form-control" style="height: 100px;" name="impian" id="impian" rows="8" cols="70" >{{ old('impian') }}</textarea>
+							<textarea reqired class="form-control" style="height: 100px;" name="impian" id="impian" rows="8" cols="70" >{{ old('impian') }}</textarea>
               @if ($errors->has('impian'))
                 <span class="help-block">
                   <p>{{$errors->first('impian')}}</p>
@@ -838,9 +846,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               @endif
 							</div><br>
 
+			  				<div class="form-group has-feedback{{$errors->has('harapan') ? ' has-error' : ''}}">
+							<label class="syarat" for="harapan">Apa Harapanmu jika di terima di PondokIT </label>
+							<textarea reqired class="form-control" style="height: 100px;" name="harapan" id="harapan" rows="8" cols="70" >{{ old('harapan') }}</textarea>
+              @if ($errors->has('harapan'))
+                <span class="help-block">
+                  <p>{{$errors->first('harapan')}}</p>
+                </span>
+              @endif
+							</div><br>
+
 							<div class="form-group has-feedback{{$errors->has('alasan') ? ' has-error' : ''}}">
 							<label class="syarat" for="alasan"> 10 Alasan Masuk Pondok </label>
-							<textarea required class="form-control" style=" height: 100px;" name="alasan" id="alasan" rows="8" cols="70" >{{ old('alasan') }}</textarea>
+							<textarea reqired class="form-control" style=" height: 100px;" name="alasan" id="alasan" rows="8" cols="70" >{{ old('alasan') }}</textarea>
               @if ($errors->has('alasan'))
                 <span class="help-block">
                   <p>{{$errors->first('alasan')}}</p>
@@ -860,7 +878,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 							<div class="form-group has-feedback{{$errors->has('jalani_kehidupan') ? ' has-error' : ''}}">
 							<label class="syarat" for="jalani_kehidupan"> Sebutkan Hal-Hal Yang membuat Kamu Semangat Dalam Menjalani Kehidupan</label>
-							<textarea required style=" height: 100px;" class="form-control" name="jalani_kehidupan" id="jalani_kehidupan" >{{ old('jalani_kehidupan') }}</textarea>
+							<textarea reqired style=" height: 100px;" class="form-control" name="jalani_kehidupan" id="jalani_kehidupan" >{{ old('jalani_kehidupan') }}</textarea>
               @if ($errors->has('jalani_kehidupan'))
                 <span class="help-block">
                   <p>{{$errors->first('jalani_kehidupan')}}</p>
@@ -945,6 +963,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				// Exemple 1
 				$('.valida').valida();
 
+				
 				// Exemple 2
 				/*
 				$('.valida').valida({
@@ -991,6 +1010,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!--validator js-->
 		<script src="js/validator.min.js"></script>
 		<!--//validator js-->
+		 <!-- jQuery -->
+	    <script src="{{asset('dashboard/vendor/jquery/jquery.min.js')}}"></script>
+
+	    <!-- Bootstrap Core JavaScript -->
+	    <script src="{{asset('dashboard/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
 		
 
 </body>
