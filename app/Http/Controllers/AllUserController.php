@@ -311,10 +311,10 @@ class AllUserController extends Controller
     }
 
     /*Create*/
-    public function createActivitySantri($id)
-    {
-        return view('dashboard.activity.addreport',compact('id'));
-    }
+    // public function createActivitySantri($id)
+    // {
+    //     return view('dashboard.activity.addreport',compact('id'));
+    // }
 
     /*Store*/
     public function storeActivitySantri(Request $request, $id)
@@ -331,30 +331,20 @@ class AllUserController extends Controller
         ];
 
         return Activity::create($data);
-
-
-
         // $activities = DB::table('activities')->insertGetId([ //menggunakan inserGetId untuk mengambil id latest
             // $activity->activity  = $request->activity;
             // $activity->result    = $request->result;
             // $activity->follow_up = $request->follow_up;
             // $activity->when      = $request->when;
             // $activity->user_id   = $id;
-
-            // dd($id);
         // ]);
           // return  $activity->save();
-
         /*$idUser = Auth::user()->id; 
         $activityUser = ActivityUser::insert([ 
             'user_id' => $idUser,
             'activity_id' => $activities
         ]);*/
-
-
-     
         // return redirect()->route('report.edit',$activity)->with('success', 'Report Added'); 
-
     }
 
     /*Edit*/
@@ -411,32 +401,69 @@ class AllUserController extends Controller
             ->where('users.id', "$id")
             ->latest()->paginate(20);
 
-        return view('dashboard.goal.allgoal', compact('goals','users','id'));
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $urls = end($url_array);
+
+        return view('dashboard.goal.allgoal', compact('goals','users','id', 'urls'));
     }
 
     /*Create*/
-    public function createGoalSantri($id)
-    {
-        return view('dashboard.goal.addgoal',compact('id'));
-    }
-
+    // public function createGoalSantri($id)
+    // {
+    //     return view('dashboard.goal.addgoal',compact('id'));
+    // }
     /*Store*/
-    public function storeGoalSantri(Request $request,$id)
+    public function storeGoalSantri(Request $request, $id)
     {
-        $goal = new Goal;
+        $activity = new Activity;
         $user = DB::table('users');
 
+        $data = [
+            'goal'  => $request['goal'],
+            'option'    => $request['option'],
+            'reality' => $request['reality'],
+            'when'      => $request['when'],
+            'information' => $request['information'],
+            'user_id'   => $id
+        ];
+
+        return Goal::create($data);
+    }
+
+    /*Edit*/
+    public function editGoalSantri($id)
+    {
+        $goal = Goal::find($id);
+        return $goal;
+    }
+    public function updateGoalSantri(Request $request, $id)
+    {
+        $goal = Goal::find($id);
         $goal->goal        = $request->goal;
         $goal->option      = $request->option;
         $goal->when        = $request->when;
         $goal->reality     = $request->reality;
         $goal->information = $request->information;
-        $goal->user_id     = $id;
+        $goal->update();
 
-        $goal->save();
-     
-        return redirect()->route('goal.edit',$goal->id)->with('success', 'Goal Added'); 
+        return $goal;
+    }
 
+    /*API*/
+    public function apiGoalSantri($id){
+
+        $goals = DB::table('users')
+            ->select('goals.*')
+            ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->orderBy('id', 'desc');
+
+        return Datatables::of($goals)->addColumn('action', function($goals){
+            return '<a onclick="editGoal('.$goals->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.
+                '<a onclick="deleteGoal('.$goals->id.')" class="btn btn-outline btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;&nbsp;Delete</a> ';
+        })->make(true);
+        
     }
     /*======================================== Goal Santri CRUD End ========================================*/
 

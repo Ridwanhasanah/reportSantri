@@ -42,25 +42,12 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 
 	/*===== Activity Start =====*/
 	Route::resource('activity', 'ActivityController');
-
 	Route::get('api/activity','ActivityController@apiActivity')->name('api.activity');
 	/*===== Activity End =====*/
 
-
 	/*===== Goal Start =====*/
 	Route::resource('goal', 'GoalController');
-	
 	Route::get('api/goal','GoalController@apiGoal')->name('api.goal');
-	/*All Goal*/
-	Route::get('/goals/all', 'GoalController@index')->name('goal.all');
-	/*Add Goal*/
-	Route::get('/goals/add', 'GoalController@create')->name('goal.add');
-	Route::post('/goals/add', 'GoalController@store')->name('goal.addstore');
-	/*Delete Goal*/
-	Route::delete('/goals/{id}/delete', 'GoalController@destroy')->name('goal.delete');
-	/*Edit Goal*/
-	Route::get('goals/{id}/edit', 'GoalController@edit')->name('goal.edit');
-	Route::patch('goals/{id}/edit', 'GoalController@update')->name('goal.update');
 	/*===== Goal End =====*/
 
 	/*===== Profile Start ===== */
@@ -140,6 +127,11 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::get('santri/creategoal/{id}','AllUserController@createGoalSantri')->name('santri.creategoal');
 		/*Store*/
 		Route::post('santri/creategoal/{id}','AllUserController@storeGoalSantri')->name('santri.storegoal');
+		/*Update*/
+		Route::get('santri/editgoal/{id}/edit','AllUserController@editGoalSantri')->name('santri.editgoal');
+		Route::patch('santri/editgoal/{id}','AllUserController@updateGoalSantri')->name('santri.updategoal');
+		/*Api*/
+		Route::get('santri/goal/api/{id}','AllUserController@apiGoalSantri')->name('santri.apigoal');
 		/*===== Goal Santri CRUD For Admin Access End =====*/
 
 		/*===== All Activity Goal Start=====*/ 

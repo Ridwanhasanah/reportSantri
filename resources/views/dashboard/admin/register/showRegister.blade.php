@@ -277,7 +277,7 @@
         </div>
         <div class="panel-footer">
           <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope">&nbsp;{{$register->email}}</i></a>
-          <a href="{{ url($register->facebook) }}" target="blank_" class="btn btn-primary btn-facebook"><i class="fa fa-facebook">&nbsp;</i></a>
+          <a href="{{ url($register->facebook) }}" target="blank_" class="btn btn-primary btn-facebook"><i class="fa fa-facebook">&nbsp;{{$register->nama}}</i></a>
           <span class="pull-right">
             <a href="" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><b>Edit</b><i class="glyphicon glyphicon-edit"></i></a>
             <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>

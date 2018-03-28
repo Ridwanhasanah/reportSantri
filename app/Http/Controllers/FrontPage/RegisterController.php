@@ -36,7 +36,7 @@ class RegisterController extends Controller
     {
       $this->validate(request(),[
           'divisi'            => 'required|max:190',
-          'nama'              => 'required|max:190',
+          'nama'              => 'required|max:50|min:3',
           'tempat_lahir'      => 'required|max:190',
           'tanggal_lahir'     => 'required|max:190',
           'email'             => 'required|unique:registers|max:190',
@@ -54,8 +54,8 @@ class RegisterController extends Controller
           'hp_ortu'           => 'required|max:13|min:10',
           'rizki'             => 'required|max:190',
           'tau'               => 'required|max:190',
-          'nama_ayah'         => 'required|max:30|min:3',
-          'nama_ibu'          => 'required|max:30|min:3',
+          'nama_ayah'         => 'required|max:50|min:3',
+          'nama_ibu'          => 'required|max:50|min:3',
           'p_ayah'            => 'required|max:16|min:5',
           'p_ibu'             => 'required|max:16|min:5',
           'gaji'              => 'required|max:190',

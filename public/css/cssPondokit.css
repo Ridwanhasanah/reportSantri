@@ -1,3 +1,21 @@
+.errorRegis{
+	display: none;
+	background: white;
+    padding: 5px;
+    color: red;
+    border-radius: 5px;
+    border: 1px solid red;
+    font-size: 14px;
+}
+
+.errorRegis2{
+	background: white;
+    padding: 5px;
+    color: red;
+    border-radius: 5px;
+    border: 1px solid red;
+    font-size: 14px;
+}
 .rmargin{
 	margin-top: 20px;
 }
