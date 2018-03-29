@@ -76,9 +76,11 @@
                       <tr>
                         <td><b>100 Cita-Cita Ku</b></td>
                         <td>
+                          <div class="scrolltab">
                           @foreach($dreams as $dream)
                             {{$dream}}<br>
                           @endforeach
+                          </div>
                         </td>
                       </tr>
                     </tbody>

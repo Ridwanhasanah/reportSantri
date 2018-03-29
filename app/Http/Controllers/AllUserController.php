@@ -495,24 +495,25 @@ class AllUserController extends Controller
 
     public function passwordUpdate(Request $request, $id){
 
-        $this->validate($request,[
+        // $this->validate($request,[
 
-            'password'   => 'required|min:6',
-            'repassword' => 'required|min:6',
+        //     'password'   => 'required|min:6',
+        //     'repassword' => 'required|min:6',
 
-        ]);
+        // ]);
 
 
         $user = User::find($id);
-        if ($request->password == $request->repassword) {
+        if ($request->password == $request->repass) {
             $user->password = bcrypt($request->password);
         }else{
             return redirect()->back()->with('danger', 'Password tidak sama');
         }
         $user->update();
-        return redirect()->route('user.edit',$id)->with('success','Password telah di ubah');   
+        // return redirect()->route('user.edit',$id)->with('success','Password telah di ubah');   
         
     }
+
     /*======================================== Ubah Password End   =========================================*/
 
 }

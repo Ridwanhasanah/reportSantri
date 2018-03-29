@@ -149,13 +149,6 @@ class ProfileController extends Controller
 
     public function passwordUpdate(Request $request, $id){
 
-        $this->validate($request,[
-
-            'password'   => 'required|min:6',
-            'repassword' => 'required|min:6',
-
-        ]);
-
         $user = User::find($id);
         if ($request->password == $request->repassword) {
             $user->password = bcrypt($request->password);
@@ -163,7 +156,7 @@ class ProfileController extends Controller
             return redirect()->back()->with('danger', 'Password tidak sama');
         }
         $user->update();
-        return redirect()->route('profile.edit',$id)->with('success','Password telah di ubah');   
+        // return redirect()->route('profile.edit',$id)->with('success','Password telah di ubah');   
         
     }
     /*========== Edit Password End =========*/

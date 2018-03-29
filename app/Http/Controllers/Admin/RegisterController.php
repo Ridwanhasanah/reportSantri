@@ -21,24 +21,9 @@ class RegisterController extends Controller
         $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         $url_array = explode('/', $url);
         $divisi = end($url_array);
-
         $registers = DB::table('registers')->latest()->paginate(10);
-         
         
-        // DB::statement(DB::raw('set @rownum=0'));
-        //        $registers = Register::select([
-        //         DB::raw('@rownum  := @rownum  + 1 AS rownum'),
-        //         'id',
-        //         'name',
-        //         'email',
-        //         'created_at',
-        //         'updated_at']);
-        //        $datatables = Datatables::of($registers);
-
-        //        dd($datatables);
-
         return view('dashboard.admin.register.allRegister',compact('divisi','registers'));
-
     }
 
     /**
@@ -83,7 +68,6 @@ class RegisterController extends Controller
     public function edit($id)
     {
         $register = Register::find($id);
-
         return view('dashboard.admin.register.editRegister', compact('register'));
     }
 

@@ -33,7 +33,8 @@
                   <br>
                   <input type="file" name="photo" class="form-control">
                   <br>
-                  <a href="{{route('profilepass.edit',$user->id)}}" id="editpass" class="btn btn-outline btn-danger">Ubah Password</a>
+                  <a onclick="editPass()" class="btn btn-outline btn-danger">Ubah Password</a>
+                  {{-- <a href="{{route('profilepass.edit',$user->id)}}" id="editpass" class="btn btn-outline btn-danger">Ubah Password</a> --}}
                   <div class="panel panel-info rmargin">
                     <div class="panel-heading">
                       <h3 class="panel-title"><b>Quote</b></h3>
@@ -123,6 +124,93 @@
 
     </div>
   </div>
+  @include('dashboard.profile.editPassword')
 </div>
+@endsection
+@section('js')
+<script type="text/javascript"> {{-- Edit Password --}}
+  function editPass(){
+        $('input[name=_method]').val('PATCH'); /*Untuk input post yang ada di modal form, method_field()*/
+        $('#modal-form').modal('show');
+        $('#modal-form form')[0].reset(); /*untuk mereset form input*/
+        $('#update').click(function(e){
+          e.preventDefault();
+          $.ajax({
+            url: "{{route('profilepass.update',$user->id)}}",
+            method: "post",
+            data: $('form').serialize(),
+            dataType: "text",
+            success:function(){
+              swal({
+                title:'Berhasil',
+                text: 'Password Berhasil di  ubah',
+                type: 'success',
+                timer: '2500'
+              })
+            },
+            error: function(){
+              swal({
+                title: 'Oops',
+                text: 'Something went wrong',
+                type: 'error',
+                timer: '1500'
+              })
+            }
+          })
 
+        })
+  }
+
+  $(document).ready(function(){
+    var pass      = $('#password');
+    var repass    = $('#repass');
+    var erpass    = $('#errorPassword');
+    var errepass = $('#errorRepass');
+    var update    = $('#update');
+
+    function checkVal(//function for check input
+            name, //long string check 
+            value, //value string for show
+            error,//<span> id in the html for the show();
+            condition //Kondisi if
+            ){
+                if (name <= condition) {
+              error.html(value).show(); //menampilkan text string yang ada
+              error.show();//menampilkan span
+            }else{
+              error.hide(); //jika false maka hide
+            }
+          }
+
+          pass.hover(function(){
+            checkVal(pass.val().length,'password minimal 6 karakter',erpass,5)
+          });
+          repass.hover(function(){
+            checkVal(repass.val().length,'password minimal 6 karakter', errepass,5)
+          });
+
+    update.hover(function(){
+
+          if (pass.val() !== repass.val()) {
+            swal({
+                title: 'Oops',
+                text: 'Password tidak sesuai',
+                type: 'error',
+                timer: '1500'
+              })
+
+          }else if(pass.val().length <= 5 || repass.val().length <= 5){
+            swal({
+                title: 'Oops',
+                text: 'Password minimal 6 karakter',
+                type: 'error',
+                timer: '1500'
+              })
+          }
+
+
+    } )
+
+  } )
+</script>
 @endsection
