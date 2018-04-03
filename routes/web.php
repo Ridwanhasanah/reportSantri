@@ -136,6 +136,8 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 
 		/*===== All Activity Goal Start=====*/ 
 		Route::get('allgoalactivity/{id}', 'AllActivityGoalController@index')->name('allactivitygoal');
+		Route::get('api/activitysantri/{id}','AllActivityGoalController@apiActivity')->name('api.activitysantri');
+		Route::get('api/goalsantri/{id}','AllActivityGoalController@apiGoal')->name('api.goalsantri');
 		/*===== All Activity Goal End=====*/
 		
 		/*===== Daily Activity  Start=====*/ 

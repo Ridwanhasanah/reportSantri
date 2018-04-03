@@ -164,9 +164,8 @@ class AllUserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $dreams = explode(',', $user->dream);
 
-        return view('dashboard.admin.userdetail', compact('user','dreams'));
+        return view('dashboard.admin.userdetail', compact('user'));
     }
     /*===== Edit =====*/
     public function edit($id)

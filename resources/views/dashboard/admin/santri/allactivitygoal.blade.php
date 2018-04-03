@@ -2,129 +2,86 @@
 @section('title')
 Dasbor
 @endsection
-
 @section('content')
 <div id="page-wrapper">
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Semua Target</h1>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	{{-- ===== Goal Start ====--}}
-    <div class="col-lg-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Goal
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                        <tr>
-                            <th>Target</th>
-                            <th>Option</th>
-                            <th>Reality</th>
-                            <th>Tanggal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	@foreach ($goals as $goal)
-                    		<tr class="odd gradeX">
-                            <td>
-                                {{$goal->goal}}<br>
-                                <small>
-                                    <form style="float: left; color: red;" class="" action="{{route('goal.delete',$goal->id)}}" method="post">
-                                      {{ csrf_field() }}
-                                      {{ method_field('DELETE') }}
-                                      <button type="submit" class="btn btn-danger rbtn">
-                                        <i class="fa fa-trash-o"></i>
-                                        <input type="hidden">
-                                      </button>
-                                </form>
-                                &nbsp;
-                                <a href="{{route('goal.edit',$goal->id)}}">
-                                <button class="btn btn-success rbtn">
-                                        <i class="fa fa-pencil "></i>
-                                        <input type="hidden">
-                                </button>
-                                </a>
-                                </small>
-
-                            </td>
-                            <td>{{$goal->option}}</td>
-                            <td>{{$goal->reality}}</td>
-                            <td class="center">{{$goal->when}}</td>
-                        </tr>
-                    	@endforeach
-                    </tbody>
-                </table>
-                {!! $goals->render() !!}
-                <!-- /.table-responsive -->
-            </div>
-            <!-- /.panel-body -->
+     <div class="row">
+        <div class="col-lg-12">
+            @include('layouts.patrials.alerts')
+            <h1 class="page-header">Semua Target Mingguan dan Kegiatan</h1>
         </div>
-        <!-- /.panel -->
     </div>
-    {{-- ===== Goal End =====--}}
-    <!-- /.col-lg-12 -->
-    <div class="col-lg-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Kegiatan
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Semua Target Mingguan</h4>
+                </div>
+                <div class="panel-body">
+                    <table id="goal-table" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="100">Tanggal</th>
+                                <th width="300">Target</th>
+                                <th width="300">Tindakan</th>
+                                {{-- <th></th> --}}
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                        <tr>
-                            <th>Kegiatan</th>
-                            <th>Hasil</th>
-                            <th>Tindak Lanjut</th>
-                            <th>Tanggal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	@foreach ($activities as $activity)
-                    		<tr class="odd gradeX">
-                            <td>
-                                {{$activity->activity}}<br>
-                                <small>
-                                    <form style="float: left; color: red;" class="" action="{{route('report.delete',$activity->id)}}" method="post">
-                                      {{ csrf_field() }}
-                                      {{ method_field('DELETE') }}
-                                      <button type="submit" class="btn btn-danger rbtn">
-                                        <i class="fa fa-trash-o"></i>
-                                        <input type="hidden">
-                                      </button>
-                                </form>
-                                &nbsp;
-                                <a href="{{route('report.edit',$activity->id)}}">
-                                <button class="btn btn-success rbtn">
-                                        <i class="fa fa-pencil"></i>
-                                        <input type="hidden">
-                                </button>
-                                </a>
-                                </small>
-
-                            </td>
-                            <td>{{$activity->result}}</td>
-                            <td>{{$activity->follow_up}}</td>
-                            <td class="center">{{$activity->when}}</td>
-                        </tr>
-                    	@endforeach
-                    </tbody>
-                </table>
-                {!! $activities->render() !!}
-                <!-- /.table-responsive -->
-            </div>
-            <!-- /.panel-body -->
         </div>
-        <!-- /.panel -->
-    </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Semua Kegiatan</h4>
+                </div>
+                <div class="panel-body">
+                    <table id="activity-table" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="100">Tanggal</th>
+                                <th width="300">Kegiatan</th>
+                                <th width="300">Hasil</th>
+                                {{-- <th></th> --}}
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+  </div>
 </div>
-<!-- /.row -->
-</div>
+@endsection
+@section('js')
+<script type="text/javascript">
+ $('#activity-table').DataTable({
+    order: [[1, 'desc']],
+    processing: true,
+    serverSide: true,
+    ajax: "{{route('api.activitysantri',$id)}}" ,
+    columns:[
+    {data: 'when', name: 'when'},
+    {data: 'activity', name: 'activity'},
+    {data: 'result', name: 'result'},
+    // {data: 'action', name: 'action', ordertable: false, searchable:false}
+
+    ]
+})
+
+ $('#goal-table').DataTable({
+    order: [[1, 'desc']],
+    processing: true,
+    serverSide: true,
+    ajax: "{{route('api.goalsantri',$id)}}",
+    columns:[
+    {data: 'when', name: 'when'},
+    {data: 'goal', name: 'goal'},
+    {data: 'option', name: 'option'},
+    // {data: 'action', name: 'action', ordertable: false, searchable:false}
+
+    ]
+})
+</script>
 @endsection

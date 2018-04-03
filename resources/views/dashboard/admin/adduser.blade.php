@@ -88,7 +88,7 @@ Add User
                         <tr>
                         <td>Alamat</td>
                         <td>
-                          <textarea value="{{old('address')}}" placeholder="Contoh : jl.pesangrahan" class="form-control" type="text" name="address">
+                          <textarea value="{{old('address')}}" placeholder="Contoh : jl.pesangrahan" class="form-control wysiwyg" type="text" name="address">
                             
                           </textarea>
                         </td>

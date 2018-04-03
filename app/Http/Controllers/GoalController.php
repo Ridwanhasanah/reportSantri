@@ -29,7 +29,11 @@ class GoalController extends Controller
             ->latest()->paginate(20);
             // dd($users);
 
-        return view('dashboard.goal.allgoal', compact('goals','users'));
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $urls = end($url_array);
+
+        return view('dashboard.goal.allgoal', compact('goals','users','urls'));
     }
 
     /**

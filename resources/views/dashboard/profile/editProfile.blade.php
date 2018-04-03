@@ -96,11 +96,10 @@
                         <td><b>100 Cita - Cita ku</b></td>
                         <td><textarea 
                           placeholder="
-                          Pisahkan dengan tanda koma yaa cita citanya
                           Contoh : 
                           1. Mempunyai Istri Cantik dan Sholeha,
                           2.Mempunyai Rumah 4 lantai di Jakarta, dst
-                          " rows="30" class="form-control" type="text" name="dream">{{$user->dream}}</textarea></td>
+                          " rows="30" class="form-control wysiwyg" type="text" name="dream">{{$user->dream}}</textarea></td>
                       </tr>
                       <tr>
                         <td></td>

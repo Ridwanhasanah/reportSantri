@@ -9,20 +9,18 @@ Target Terdekat
         <div class="row">
           <div class="col-lg-12">
               @include('layouts.patrials.alerts')
-              <h1 class="page-header">Target Terdekat</h1>
+              <h1 class="page-header"></h1>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="panel panel-info">
               <div class="panel-heading">
-                <h3 class="panel-title">Target Terdekat</h3>
+                <h3 class="panel-title"><b>Target Terdekat</b></h3>
               </div>
               <div class="panel-body">
                    <p>
-                        @foreach($targets as $target)
-                            {{$target}}<br>
-                        @endforeach
+                      {!! $user->target !!}
                    </p>
               </div>
               <div class="panel-footer">

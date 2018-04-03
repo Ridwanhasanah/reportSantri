@@ -7,14 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class AllActivityGoalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($id)
     {
         // $activities = Activity::latest()->paginate(5);
@@ -38,72 +34,40 @@ class AllActivityGoalController extends Controller
         
         
 
-        return view('dashboard.admin.santri.allactivitygoal', compact('activities','goals'));
+        return view('dashboard.admin.santri.allactivitygoal', compact('activities','goals','id'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function apiActivity($id){
+
+        // $activities = Activity::latest()->paginate(5);
+         //untuk mengecek id user
+        //$user = DB::table('users')->get();
+
+        $activities = DB::table('users')
+            ->select('activities.*')
+            ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->orderBy('id','desc');
+
+        return Datatables::of($activities)->addColumn('action', function($activities){
+            return '<a onclick="editActivity('.$activities->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.
+                '<a onclick="deleteActivity('.$activities->id.')" class="btn btn-outline btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;&nbsp;Delete</a> ';
+        })->make(true);
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function apiGoal($id){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $goals = DB::table('users')
+            ->select('goals.*')
+            ->rightJoin('goals', 'goals.user_id', '=', 'users.id' )
+            ->where('users.id', "$id")
+            ->orderBy('id','desc');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return Datatables::of($goals)->addColumn('action', function($goals){
+            return '<a onclick="editGoal('.$goals->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.
+                '<a onclick="deleteGoal('.$goals->id.')" class="btn btn-outline btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;&nbsp;Delete</a> ';
+        })->make(true);
+        
     }
 }
