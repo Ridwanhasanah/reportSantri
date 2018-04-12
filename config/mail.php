@@ -3,6 +3,17 @@
 return [
 
     /*
+    Ridwan : modified file for forgot password
+
+1. config/mail.php
+2. vendor/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php
+3. vendor/laravel/framework/src/Illuminate/Mail/resources/views/html/footer.blade.php
+4. vendor/laravel/framework/src/Illuminate/Mail/resources/views/html/message.blade.php
+
+
+    */
+
+    /*
     |--------------------------------------------------------------------------
     | Mail Driver
     |--------------------------------------------------------------------------
@@ -56,8 +67,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@pondokit.com'),
+        'name' => env('MAIL_FROM_NAME', 'Laporan Santri Pondok IT'),
     ],
 
     /*

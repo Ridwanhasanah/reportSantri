@@ -18,7 +18,7 @@ Target Terdekat
               <div class="panel-heading">
                 <h3 class="panel-title"><b>Target Terdekat</b></h3>
               </div>
-              <div class="panel-body">
+              <div class="panel-body scrolltab">
                    <p>
                       {!! $user->target !!}
                    </p>

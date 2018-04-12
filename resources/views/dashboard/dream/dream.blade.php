@@ -18,7 +18,7 @@
               <div class="panel-heading">
                 <h3 class="panel-title"><b>100 Cita - Cita</b></h3>
               </div>
-              <div class="panel-body">
+              <div class="panel-body scrolltab">
                    <p>{!! $user->dream !!}</p>
               </div>
               <div class="panel-footer">

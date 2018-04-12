@@ -200,7 +200,14 @@ class ActivityController extends Controller
             ->where('users.id', "$id")
             ->orderBy('id','desc');
 
-        return Datatables::of($activities)->addColumn('action', function($activities){
+        return Datatables::of($activities)
+        ->editColumn('when', function($activities){
+            return $activities->when;
+        })
+        ->addColumn('activity', function($activities){
+             return html_entity_decode('<b>bismillah</b>');
+        })
+        ->addColumn('action', function($activities){
             return '<a onclick="editActivity('.$activities->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.
                 '<a onclick="deleteActivity('.$activities->id.')" class="btn btn-outline btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;&nbsp;Delete</a> ';
         })->make(true);

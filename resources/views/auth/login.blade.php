@@ -89,8 +89,48 @@ Login
 				</div>
 			</div>
 		</div>
+		 @include('auth.passwords.popupEmail'){{-- menambahkan modal form forget email --}}
 	</div>
 
 {{--  ============================================================  --}}
 
+@endsection
+@section('js')
+<script type="text/javascript">
+	function email(){
+		$('input[name=_method]').val('POST'); /*Untuk input post yang ada di modal form, method_field()*/
+        $('#modal-form').modal('show');
+        $('#modal-form form')[0].reset(); /*untuk mereset form input*/
+	}
+
+	$(function(){
+        $('#modal-form form').validator().on('submit', function(e){
+          if(!e.isDefaultPrevented()){
+            $.ajax({
+              url : "{{ route('password.email') }}",
+              type : "GET",
+              data : $('#modal-form form').serialize(),
+              success : function(data){
+                $('#modal-form').modal('hide');
+                swal({
+                  title: 'Berhasil',
+                  text: 'Kami telah mengirimkan email reset password ke emailmu',
+                  type: 'success',
+                  timer: '4000'
+                })
+              },
+              error : function(){
+                swal({
+                  title: 'Oops',
+                  text: 'Something Error',
+                  type: 'error',
+                  timer: '1500'
+                })
+              }
+            });
+            return false;
+          }
+        });
+      });
+</script>
 @endsection

@@ -16,6 +16,10 @@
     <link href="{{asset('css/mainlogin.css')}}" rel="stylesheet">
     <link href="{{asset('css/utillogin.css')}}" rel="stylesheet">
     <link href="{{asset('dashboard/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+
+    {{-- SweetAlert2 --}}
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
+    <link href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
     
 </head>
 <body>
@@ -80,6 +84,7 @@
     </div>
 
     <!-- Scripts -->
+    @yield('js')
     <script src="{{ asset('js/app.js') }}"></script>
     {{--  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>  --}}
     <script src="{{asset('js/login.js')}}"></script>

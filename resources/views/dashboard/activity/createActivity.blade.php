@@ -13,32 +13,32 @@
 				<div class="modal-body">
 					<input type="hidden" name="id" id="id">
 					<div class="form-group">
-						<label for="activity" class="col-md-3 control-label">Kegiatan</label>
-						<div class="col-md-6">
-							<input type="text" name="activity" id="activity" class="form-control" autofocus required>
+						<label for="activity" class="col-md-1 control-label">Kegiatan</label>
+						<div class="col-md-11">
+							<textarea type="text" name="activity" id="activity" class="form-control wysiwyg" autofocus required></textarea>
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="result" class="col-md-3 control-label">Hasil</label>
-						<div class="col-md-6">
+						<label for="result" class="col-md-1 control-label">Hasil</label>
+						<div class="col-md-11">
 							<input type="text" name="result" id="result" class="form-control">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="follow_up" class="col-md-3 control-label">Tindak Lanjut</label>
-						<div class="col-md-6">
+						<label for="follow_up" class="col-md-1 control-label">Tindak Lanjut</label>
+						<div class="col-md-11">
 							<input type="text" name="follow_up" id="follow_up" class="form-control">
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>
 
 					<div class="form-group">
-                        <label for="when" class="col-md-3 control-label">Tanggal</label>
-                        <div class="col-md-6">
+                        <label for="when" class="col-md-1 control-label">Tanggal</label>
+                        <div class="col-md-11">
 							<input type="text" name="when" id="datepicker" class="form-control when" required>
 							<span class="help-block with-errors"></span>
 							<p id="x"></p>
