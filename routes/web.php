@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+
 
 // Route Tes
 Route::group(['middleware' => ['auth','role:teacher']], function(){
@@ -32,6 +30,7 @@ Route::resource('pendaftaran', 'FrontPage\RegisterController');
 Route::group(['middleware'=>['auth','role:student']], function(){ 
 
 	/*===== Dasboard Start =====*/
+	Route::get('/', 'PondokitController@index')->name('dashboard.home');
 	Route::get('/home', 'PondokitController@index')->name('dashboard.home');
 	/*List santri*/
 	Route::get('list/programmer','PondokitController@santriProgrammer')->name('list.programmer');
