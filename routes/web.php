@@ -27,11 +27,11 @@ Route::resource('pendaftaran', 'FrontPage\RegisterController');
 /*===== Form Register Start =====*/
 
 
-Route::group(['middleware'=>['auth','role:student']], function(){ 
+Route::group(['middleware'=>['auth','role:student']], function(){  
 
 	/*===== Dasboard Start =====*/
 	Route::get('/', 'PondokitController@index')->name('dashboard.home');
-	Route::get('/home', 'PondokitController@index')->name('dashboard.home');
+	// Route::get('/home', 'PondokitController@index')->name('dashboard.home');
 	/*List santri*/
 	Route::get('list/programmer','PondokitController@santriProgrammer')->name('list.programmer');
 	Route::get('list/multimedia','PondokitController@santriMultimedia')->name('list.multimedia');
@@ -83,6 +83,12 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 	// Route::get('amaliyah/edit', 'AmaliyahController@update')->name('amaliyah.edit');
 	Route::patch('amaliyah/edit/{id}', 'AmaliyahController@update')->name('amaliyah.update');
 	/*===== Amaliyah End ===== */
+
+	/*===== Motor start =====*/
+	Route::resource('motor','MotorController');
+	Route::get('api/motor','MotorController@apiMotor')->name('api.motor');
+	Route::get('done/motor/{id}','MotorController@done')->name('done.motor');
+	/*===== Motor End =====*/
 
 	/*===== Kirim Saran Start=====*/
 	Route::resources([
@@ -151,6 +157,12 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::get('userpass/{id}/edit', 'AllUserController@passwordEdit')->name('password.edit');
 		Route::patch('userpass/{id}/edit', 'AllUserController@passwordUpdate')->name('password.update');
 		/*===== Ubah Password start =====*/
+
+		/*===== Izin Motor Start =====*/
+		Route::resource('adminmotor','Admin\MotorAdminController');
+		Route::get('apimotoradmin', 'Admin\MotorAdminController@apiMotor')->name('api.motor.admin');
+		/*===== Izin Motor end =====*/
+
 
 		/*===== Register Start =====*/
 		Route::resource('register','Admin\RegisterController');

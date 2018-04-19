@@ -426,6 +426,16 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li {{-- id="menu4" --}}>
+                            <a href="{{route('motor.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Izin Motor<span class="fa arrow"></span></a>
+                            @if (Auth::user()->hasRole('teacher'))
+                                <ul class="nav nav-second-level rhide" {{-- id="show4" --}}>
+                                <li>
+                                    <a href="{{route('adminmotor.index')}}">Semua Izin Motor</a>
+                                </li>
+                            </ul>
+                            @endif
+                        </li>
+                        <li {{-- id="menu4" --}}>
                             <a href="{{route('amaliyah.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Amaliah<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level rhide" {{-- id="show4" --}}>
                                 <li>

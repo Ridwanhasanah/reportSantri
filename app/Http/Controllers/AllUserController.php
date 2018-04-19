@@ -514,6 +514,5 @@ class AllUserController extends Controller
     }
 
     /*======================================== Ubah Password End   =========================================*/
-
 }
 
