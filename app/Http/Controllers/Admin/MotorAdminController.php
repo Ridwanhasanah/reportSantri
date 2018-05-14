@@ -67,11 +67,11 @@ class MotorAdminController extends Controller
 
     public function apiMotor(){
         $id = Auth::user()->id;
-        $motors = DB::table('users')
-            ->select('motors.*')
-            ->rightJoin('motors', 'motors.user_id', '=', 'users.id')
-            ->where('users.id', "$id")
-            ->orderBy('id', 'desc');
+        $motors = DB::table('motors')->orderBy('id', 'desc');
+            // ->select('motors.*')
+            // ->rightJoin('motors', 'motors.user_id', '=', 'users.id')
+            // ->where('users.id', "$id")
+            // ->orderBy('id', 'desc');
 
         return Datatables::of($motors)
         ->addColumn('action', function($motors){

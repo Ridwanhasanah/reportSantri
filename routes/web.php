@@ -20,17 +20,22 @@ Route::group(['middleware' => ['auth','role:teacher']], function(){
     });
 }); 
 
+Route::get('/', function(){
+	return view('kakakAsuh.frontPage.homekka');
+});
+
 Auth::routes();
 
 /*===== Form Register Start =====*/
 Route::resource('pendaftaran', 'FrontPage\RegisterController');
+Route::resource('kkaregis', 'Kka\RegisterController');
 /*===== Form Register Start =====*/
 
 
 Route::group(['middleware'=>['auth','role:student']], function(){  
 
 	/*===== Dasboard Start =====*/
-	Route::get('/', 'PondokitController@index')->name('dashboard.home');
+	Route::get('/home', 'PondokitController@index')->name('dashboard.home');
 	// Route::get('/home', 'PondokitController@index')->name('dashboard.home');
 	/*List santri*/
 	Route::get('list/programmer','PondokitController@santriProgrammer')->name('list.programmer');

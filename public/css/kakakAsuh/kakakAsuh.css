@@ -1,0 +1,162 @@
+.headerkka{
+	background: #F1F0EE;
+}
+
+.headerlogin{
+	/*margin: 15px 0px 15px 0px;*/
+	padding: 10px 0px 10px 0px;
+}
+
+.kka1{
+	background: #fff;
+	padding-top: 20px;
+    padding-bottom: 110px;
+}
+#bouncing1{
+	width: 450px;
+	height: 450px;
+	position: absolute;
+	top: 0px;
+	/*left: 50%;*/
+}
+#bouncing2{
+	width: 450px;
+	height: 450px;
+	position: absolute;
+	top: 0px;
+	/*left: 50%;*/
+}
+.kka1a{
+
+	padding: 50px;	
+}
+.kka2{
+	background: #F1F0EE;
+}
+.kka2a{
+	margin: 5px 100px 50px 100px;
+}
+.kka2a h3{
+	font-size: 30px;
+}
+.kka2a p{
+	    font-size: 17px;
+}
+.kka3{
+	background: #1791DF; 
+	color:#fff;
+}
+.kka3 h3{
+	font-size: 30px;
+}
+.kka3 h1{
+	font-size: 57px;
+}
+.kka3 h2{
+	font-size: 33px;
+}
+.kka3margin{
+	margin: 5px 100px 50px 100px;
+}
+.kka4{
+	background: #F1F0EE;
+}
+.kka4a{
+	margin: 10px 100px 10px 100px;
+	text-align: center;
+}
+.kka4 img{
+	width: 137px;
+	height: 137px;
+}
+.kka4 h3{
+	font-size: 30px;
+}
+.kka4 p{
+	font-size: 17px;
+}
+.kka5{
+	background: #fff;
+}
+.kka5a{
+	margin: 5px 100px 50px 100px;
+}
+.kka5 h3{
+	text-align: center;
+	font-size: 28px;
+    margin: 30px 0px;
+}
+.kka5 img{
+	margin-left: 50px;
+	margin-top: 100px;
+	height: 340px;
+	width: 340px;
+}
+.kka-footer{
+	background: #222D32;
+	color: #fff;
+	text-align: center;
+}
+.kka-footer p{
+	font-size: 17px;
+}
+.copyright {
+    padding-top: 72px;
+    padding-bottom: 68px;
+    /* background: #00A8E1; */
+}
+.footer-row{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+.footer-col{
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+.kka-footer a{
+	color: #fff;
+}
+.footer-sosmed{
+	background: #0090E0;
+}
+.icon-top {
+    font-size: 30px;
+    margin-bottom: 10px;
+    /* color: #91C640; */
+}
+.box{
+	background: #fff;
+	padding: 15px;
+	border: 3px solid #F1F1F1;
+	border-radius: 5px;
+	width: 380px;
+	height: 283px;
+}
+.box:hover{
+	box-shadow: 3px 3px 10px #ccc;
+    transform: translateY(-30px);
+    margin-top: 0;
+}
+.feature {
+    padding: 15px;
+    margin-top: 30px;
+    font-weight: lighter;
+    text-align: center;
+}
+.feature span {
+    font-size: 5em;
+    color: #016cc7;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.header-title{
+	text-align: center;
+}
+.row-title {
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}

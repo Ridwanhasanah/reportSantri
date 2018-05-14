@@ -306,7 +306,7 @@ Semua Izin Motor
         $('#modal-form form').validator().on('submit', function(e){
           if(!e.isDefaultPrevented()){
             var id = $('#id').val();
-            if (save_method == 'add'){ url = "{{ url('adminmotor',$id)}}";}
+            if (save_method == 'add'){ url = "{{ route('adminmotor.store')}}";}
             else url = "{{ url('adminmotor') . '/' }}" + id;
 
             $.ajax({
