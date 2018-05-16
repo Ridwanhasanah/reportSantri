@@ -40,23 +40,6 @@ class PondokitController extends Controller
         return view('dashboard.dashboard.dashboard', compact('programmer','multimedia','imers','cyber','userRoleName'));
     }
 
-    
-    public function create(){}
-
-    public function store(Request $request){}
-
-    
-    public function show($id){}
-
-    
-    public function edit($id){}
-
-    
-    public function update(Request $request, $id){}
-
-   
-    public function destroy($id){}
-
     /*========== Menampilkan Santri Sesuai Divisi Start ========== */
     public function santriProgrammer(){
 

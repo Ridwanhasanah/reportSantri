@@ -12,6 +12,7 @@ Login
 				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 					<span class="login100-form-title p-b-43">
+						@include('layouts.patrials.alerts')
 						Login to continue
 					</span>
 					
@@ -59,6 +60,12 @@ Login
 								Forgot Password?
 							</a>
 						</div>
+						<div>
+							<a href="{{ route('auth.activate.resend') }}" class="txt1">
+								Kirim Ulang Aktivasi Akun?
+							</a>
+						</div>
+
 					</div>
 			
 

@@ -25,6 +25,11 @@ Route::get('/', function(){
 });
 
 Auth::routes();
+/* Activate Email*/
+Route::get('auth/activate','Auth\ActivationController@activate')->name('auth.activate');
+/*Resend Activate Email*/
+Route::get('auth/activate/resend','Auth\ActivationResendController@showResendForm')->name('auth.activate.resend');
+Route::post('auth/activate/resend','Auth\ActivationResendController@resend');
 
 /*===== Form Register Start =====*/
 Route::resource('pendaftaran', 'FrontPage\RegisterController');

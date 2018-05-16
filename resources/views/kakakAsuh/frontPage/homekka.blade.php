@@ -67,12 +67,12 @@
 		<div class="container-fluid">
 				<div class="row headerkka">
 					<div class=" headerlogin col col-lg-push-8 col-lg-4">
-						<a class="btn btn-default btn-outline" href="">
+						<a class="btn btn-default btn-outline" href="{{route('login')}}">
 							<i class="fa fa-sign-in"></i>
 							LOGIN
 							<span>Relawan  / Donatur</span>
 						</a>
-						<a class="btn btn-default btn-outline" href="">
+						<a target="_blank" class="btn btn-default btn-outline" href="http://pondokit.com">
 							<i class="fa fa-home"></i>
 							<span>pondokit.com</span>
 						</a>
@@ -233,7 +233,7 @@
 												Daftar <span class="ti-arrow-right"></span>
 											</button>
 											<p class="pull-right">
-												<a href="" class="btn btn-info btn-lg">Login</a>
+												<a href="{{route('login')}}" class="btn btn-info btn-lg">Login</a>
 												&nbsp; atau &nbsp;
 											</p>
 										</div>

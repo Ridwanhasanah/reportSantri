@@ -16,7 +16,28 @@ Semua Santri {{$divisi}}
 <div class="row">
     <div class="col-lg-12">
         @foreach($students as $student)
-        <div class="col-lg-4">
+            <div class="card" style="width: 18rem;">
+                    @if (strlen($student->photo) != 0)
+                            <img class="card-img-top" alt="Card image cap"src="{{asset('storage/photos/'.$student->photo)}}">
+                    @else
+                            <img class="card-img-top" alt="Card image cap"src="{{asset('images/personal.png')}}">
+                    @endif
+                  {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        {{-- <div class="col-lg-3">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="row">
@@ -35,7 +56,7 @@ Semua Santri {{$divisi}}
                     {{$student->name}}&nbsp;|&nbsp;{{$student->hp}}
                 </div>
                 <div class="panel-body">
-                    <p><i><b>{{$student->quote}}</b></i></p>
+                    <p><i><b>{{ str_limit($student->quote, 35) }}</b></i></p>
                 </div>
                 {{-- <div class="panel-footer">
                     <a class="btn btn-outline btn-primary" href="{{route('student.show',$student->id)}}">
@@ -48,8 +69,8 @@ Semua Santri {{$divisi}}
                     </form>
                     <i style="float: right; padding-top: 10px;">{{ $student->created_at->diffForHumans()}}</i>
                 </div> --}}
-            </div>
-        </div>
+            {{-- </div> --}}
+        {{-- </div> --}}
         @endforeach
     </div>
     <!-- /.col-lg-12 -->

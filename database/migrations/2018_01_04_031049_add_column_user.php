@@ -21,7 +21,8 @@ class AddColumnUser extends Migration
                 'Cyber',
                 'StaffPondokIT',
                 'Teacher',
-                'Master'
+                'Master',
+                'Foster Brother'
             ]);
             $table->text('address')->nullable();
             $table->string('hp')->nullable();
@@ -35,6 +36,8 @@ class AddColumnUser extends Migration
             $table->string('birth_place')->nullable();
             $table->text('target')->nullable();
             $table->text('quote')->nullable();
+            $table->boolean('active')->default(false);
+            $table->string('activation_token')->nullable();
 
         });
     }

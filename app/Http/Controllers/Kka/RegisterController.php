@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Events\Auth\UserActivationEmail;
 
 class RegisterController extends Controller
 {
@@ -44,14 +45,16 @@ class RegisterController extends Controller
         $role_user = new RoleUser;
         $role_user2 = new RoleUser;
 
-        $member->name        = $request->name;
-        $member->department  = 'Cyber';
-        $member->date_birth  = date('Y-m-d',strtotime($request->date_birth));
-        $member->birth_place = $request->birth_place;
-        $member->address     = $request->address;
-        $member->email       = $request->email;
-        $member->hp          = $request->hp;
-        $member->password    = bcrypt('123456');
+        $member->name             = $request->name;
+        $member->department       = 'Foster Brother';
+        $member->date_birth       = date('Y-m-d',strtotime($request->date_birth));
+        $member->birth_place      = $request->birth_place;
+        $member->address          = $request->address;
+        $member->email            = $request->email;
+        $member->hp               = $request->hp;
+        $member->active           = false;
+        $member->activation_token = str_random(255); 
+        $member->password         = bcrypt('123456');//bcrypt(str_random(6));
 
         $member->save();
 
@@ -63,7 +66,10 @@ class RegisterController extends Controller
         $role_user->save();
         $role_user2->save();
 
-        return redirect()->route('login');
+        /*Send Email*/
+        event(new UserActivationEmail($member));
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil, Silahkan buka email anda untuk melakukan Vertifikasi');;
     }
 
     /**
