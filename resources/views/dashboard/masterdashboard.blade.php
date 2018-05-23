@@ -50,7 +50,6 @@
     <!-- Custom Fonts -->
     <link href="{{asset('dashboard/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -310,146 +309,154 @@
                             </div>
                             <!-- /input-group -->
                         </li> --}}
-                        <li>
-                            <a href="{{route('dashboard.home')}}"><i class="fa fa-dashboard fa-fw"></i> Dasbor</a>
-                        </li>
-                        {{-- ALL User --}}
-                        @if (Auth::user()->hasRole('teacher'))
-                        
-                        <li {{-- id="menu" --}}>
-                            <a href="{{route('user.index')}}"><i class="fa fa-users fa-fw"></i> Santri &amp; Staff<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level" {{-- rhide"  id="show" --}}>
-                                <li>
-                                    <a  href="{{route('user.index')}}">Semua Santri<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="{{route('user.index')}}">Semua Santri</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('user.programmer')}}">Programmer</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('user.multimedia')}}">Multimedia</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('user.imers')}}">Imers</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('user.cyber')}}">Cyber</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="{{route('user.staff')}}">Semua Staff</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('user.create')}}">Tambah Santri &#47; Staff</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li {{-- id="menu5" --}}>
-                            <a href="{{route('dailyactivity')}}"><i class="fa fa-sun-o fa-fw"></i> Kegiatan Santri Hari ini<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide"  id="show5">
-                                <li>
-                                    <a  href="{{route('dailyactivity')}}">Semua Santri</a>
-                                </li>
-                                {{-- <li>
-                                    <a href="">Programmer</a>
-                                </li>
-                                <li>
-                                    <a href="">Multimedia</a>
-                                </li>
-                                <li>
-                                    <a href="">Imers</a>
-                                </li>
-                                <li>
-                                    <a href="">Cyber</a>
-                                </li> --}}
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        @if(Auth::user()->hasRole('admin'))
-                        <li>
-                            <a href="{{route('register.index')}}"><i class="fa fa-list-alt fa-fw"></i>Pendaftaran<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide" {{-- id="show3 --}}">
-                                <li>
-                                    <a href="{{route('register.index')}}">Semua Pendaftar</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('register.programmer')}}">Programmer</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('register.multimedia')}}">Multimedia</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('register.imers')}}">Imers</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('register.cyber')}}">Cyber</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        @endif
-                        @endif
-                        {{-- ====== Kegiatan atau Activity ====== --}}
-                        <li>
-                            <a href="{{route('activity.index')}}"><i class="fa fa-thumb-tack fa-fw"></i> Kegiatan</a>
-                        </li>
-                        {{-- ===== Goal ===== --}}
-                         <li {{-- id="menu2" --}}>
-                            <a href="{{route('goal.index')}}"><i class="fa fa-book fa-fw"></i> Target Mingguan</a>
-                        </li>
-                        <li {{-- id="menu" --}}>
-                            <a href="{{route('dream')}}"><i class="fa fa-star fa-fw"></i> 100 Cita - Cita Hidupku</a>
-                        </li>
-                        <li {{-- id="menu --}}">
-                            <a href="{{route('target')}}"><i class="fa fa-bullseye fa-fw"></i> Target Terdekat (3 Bulan)</a>
-                        </li>
-                        <li {{-- id="menu2" --}}>
-                            <a href="#5"><i class="fa fa-shield fa-fw"></i> Tataterib Pondok IT</span></a>
-                        </li>
-                        <li {{-- id="menu3" --}}>
-                            <a href="#1"><i class="fa fa-book fa-fw"></i> Target Lain<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide" {{-- id="show3 --}}">
-                                <li>
-                                    <a href="#2">Agama</a>
-                                </li>
-                                <li>
-                                    <a href="#3">Skill</a>
-                                </li>
-                                <li>
-                                    <a href="#4">Soft Skill</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li {{-- id="menu4" --}}>
-                            <a href="{{route('motor.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Izin Motor<span class="fa arrow"></span></a>
+                        {{-- ===== Kakak Asuh Dasboard Start ===== --}}
+                        @if(Auth::user()->hasRole('student') && Auth::user()->hasRole('foster_brother'))
+                            @include('kakakAsuh.dashboard.menukka')
+                        {{-- ===== Kakak Asuh Dasboard end ===== --}}
+                        @else 
+                        {{-- ===== Laporan Santri , Admin and Master Start --}}
+                            <li>
+                                <a href="{{route('dashboard.home')}}"><i class="fa fa-dashboard fa-fw"></i> Dasbor</a>
+                            </li>
+                            {{-- ALL User --}}
                             @if (Auth::user()->hasRole('teacher'))
-                                <ul class="nav nav-second-level rhide" {{-- id="show4" --}}>
-                                <li>
-                                    <a href="{{route('adminmotor.index')}}">Semua Izin Motor</a>
-                                </li>
-                            </ul>
+                            
+                            <li {{-- id="menu" --}}>
+                                <a href="{{route('user.index')}}"><i class="fa fa-users fa-fw"></i> Santri &amp; Staff<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level" {{-- rhide"  id="show" --}}>
+                                    <li>
+                                        <a  href="{{route('user.index')}}">Semua Santri<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="{{route('user.index')}}">Semua Santri</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('user.programmer')}}">Programmer</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('user.multimedia')}}">Multimedia</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('user.imers')}}">Imers</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('user.cyber')}}">Cyber</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('user.staff')}}">Semua Staff</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('user.create')}}">Tambah Santri &#47; Staff</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <li {{-- id="menu5" --}}>
+                                <a href="{{route('dailyactivity')}}"><i class="fa fa-sun-o fa-fw"></i> Kegiatan Santri Hari ini<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level rhide"  id="show5">
+                                    <li>
+                                        <a  href="{{route('dailyactivity')}}">Semua Santri</a>
+                                    </li>
+                                    {{-- <li>
+                                        <a href="">Programmer</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Multimedia</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Imers</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Cyber</a>
+                                    </li> --}}
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            @if(Auth::user()->hasRole('admin'))
+                            <li>
+                                <a href="{{route('register.index')}}"><i class="fa fa-list-alt fa-fw"></i>Pendaftaran<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level rhide" {{-- id="show3 --}}">
+                                    <li>
+                                        <a href="{{route('register.index')}}">Semua Pendaftar</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('register.programmer')}}">Programmer</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('register.multimedia')}}">Multimedia</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('register.imers')}}">Imers</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('register.cyber')}}">Cyber</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
                             @endif
-                        </li>
-                        <li {{-- id="menu4" --}}>
-                            <a href="{{route('amaliyah.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Amaliah<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level rhide" {{-- id="show4" --}}>
-                                <li>
-                                    <a href="{{route('amaliyah.index')}}">Catatan Amaliyah</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('amaliyahcheck')}}">Check List Amaliyah Hari ini</a>
-                                </li>
-                            </ul>
-                        </li>
-                        {{-- Kirim Saran --}}
-                        <li {{-- id="menu6" --}}>
-                            <a href="{{Auth::user()->hasRole('master')?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->hasRole('master')=='master'?'Semua Saran':'Kirim Saran'}} &nbsp;</a>
-                        </li>
+                            @endif
+                            {{-- ====== Kegiatan atau Activity ====== --}}
+                            <li>
+                                <a href="{{route('activity.index')}}"><i class="fa fa-thumb-tack fa-fw"></i> Kegiatan</a>
+                            </li>
+                            {{-- ===== Goal ===== --}}
+                             <li {{-- id="menu2" --}}>
+                                <a href="{{route('goal.index')}}"><i class="fa fa-book fa-fw"></i> Target Mingguan</a>
+                            </li>
+                            <li {{-- id="menu" --}}>
+                                <a href="{{route('dream')}}"><i class="fa fa-star fa-fw"></i> 100 Cita - Cita Hidupku</a>
+                            </li>
+                            <li {{-- id="menu --}}">
+                                <a href="{{route('target')}}"><i class="fa fa-bullseye fa-fw"></i> Target Terdekat (3 Bulan)</a>
+                            </li>
+                            <li {{-- id="menu2" --}}>
+                                <a href="#5"><i class="fa fa-shield fa-fw"></i> Tataterib Pondok IT</span></a>
+                            </li>
+                            <li {{-- id="menu3" --}}>
+                                <a href="#1"><i class="fa fa-book fa-fw"></i> Target Lain<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level rhide" {{-- id="show3 --}}">
+                                    <li>
+                                        <a href="#2">Agama</a>
+                                    </li>
+                                    <li>
+                                        <a href="#3">Skill</a>
+                                    </li>
+                                    <li>
+                                        <a href="#4">Soft Skill</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <li {{-- id="menu4" --}}>
+                                <a href="{{route('motor.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Izin Motor<span class="fa arrow"></span></a>
+                                @if (Auth::user()->hasRole('teacher'))
+                                    <ul class="nav nav-second-level rhide" {{-- id="show4" --}}>
+                                    <li>
+                                        <a href="{{route('adminmotor.index')}}">Semua Izin Motor</a>
+                                    </li>
+                                </ul>
+                                @endif
+                            </li>
+                            <li {{-- id="menu4" --}}>
+                                <a href="{{route('amaliyah.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Amaliah<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level rhide" {{-- id="show4" --}}>
+                                    <li>
+                                        <a href="{{route('amaliyah.index')}}">Catatan Amaliyah</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('amaliyahcheck')}}">Check List Amaliyah Hari ini</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {{-- Kirim Saran --}}
+                            <li>
+                                <a href="{{Auth::user()->hasRole('master')?route('suggestion.index'):route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>{{Auth::user()->hasRole('master')=='master'?'Semua Saran':'Kirim Saran'}} &nbsp;</a>
+                            </li>
+                        {{-- ===== Laporan Santri , Admin and Master End --}}
+                    @endif
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

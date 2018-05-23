@@ -69,7 +69,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'info@pondokit.com'),
-        'name' => env('MAIL_FROM_NAME', 'Laporan Santri Pondok IT'),
+        'name' => env('MAIL_FROM_NAME', 'Pondok IT'),
     ],
 
     /*

@@ -45,6 +45,11 @@ class RegisterController extends Controller
         $role_user = new RoleUser;
         $role_user2 = new RoleUser;
 
+        $this->validate(request(),[
+            'email' => 'required|unique:users',
+            'hp'    => 'required|unique:users',
+        ]);
+
         $member->name             = $request->name;
         $member->department       = 'Foster Brother';
         $member->date_birth       = date('Y-m-d',strtotime($request->date_birth));
@@ -54,7 +59,11 @@ class RegisterController extends Controller
         $member->hp               = $request->hp;
         $member->active           = false;
         $member->activation_token = str_random(255); 
-        $member->password         = bcrypt('123456');//bcrypt(str_random(6));
+        if ($request->password == $request->repass) {
+            $member->password = bcrypt($request->password);
+        }else{
+            return redirect()->back()->with('danger', 'Password anda tidak sama');
+        }
 
         $member->save();
 
@@ -69,7 +78,7 @@ class RegisterController extends Controller
         /*Send Email*/
         event(new UserActivationEmail($member));
 
-        return redirect()->route('login')->with('success', 'Registrasi berhasil, Silahkan buka email anda untuk melakukan Vertifikasi');;
+        return redirect()->route('login')->with('success', 'Registrasi berhasil, Silahkan buka email anda untuk melakukan Vertifikasi');
     }
 
     /**

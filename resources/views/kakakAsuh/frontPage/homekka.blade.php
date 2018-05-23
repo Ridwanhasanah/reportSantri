@@ -80,18 +80,18 @@
 				</div>
 				{{-- row 1 start--}}
 				<div class="row kka1">
-					<div class="kka1a col col-lg-7">
+					<div class="kka1a col col-xs-6 col-sm-6 col-md-6 col-lg-7 ">
 						<img src="http://pondokit.com/wp-content/uploads/2017/10/Logo-IT-tulisan-putih-e1519097611504.png">
 						<h1>
-							Pondok IT
-							adalah program bantuan biaya pendidikan bagi anak yatim, dhuafa binaan Komunitas @SedekahHarian
+							Ayo jadi kakak asuh di Pondok IT,
+							Pondok IT Membuka program membantu adik asuh (santri Pondok IT) yang tidak mampu atau belum mandiri
 						</h1>
 						<h3>
 							Kategori: Program Pendidikan
 						</h3>
 						<a href="" class="btn btn-lg btn-danger hidden-xs">Lanjut <span class="ti-arrow-right""></span></a>
 					</div>
-					<div class="kka1a col col-lg-5">
+					<div class="kka1a col-xs-6 col-sm-6 col-md-6 col-lg-5 ">
 						<img id="bouncing1" src="https://sedekahharian.com/assets/kakakasuh/img/kakak-asuh-perempuan.png">
 					</div>
 				</div>
@@ -100,48 +100,49 @@
 				<div class="row kka2 ">
 					<h1 class="row-title header-title">Mengapa program kakak asuh?</h1>
 					<div  class="row justify-content-md-center kka2a">
-						<div class="col col-lg-3 feature">
-							<span class="ti-ruler-pencil"></span>
-							<h3>Biaya Pendidikan</h3>
-							<p>Setiap kakak asuh di perkenankan untuk menanggung biaya pendidikan adik asuhnya dengan jumlah anak, sesuai pilihan dan kemampuan kakak asuh.</p>
-						</div>
-						<div class="col col-lg-3 feature">
-							<span class="ti-id-badge"></span>
-							<h3>Mendapat Data Diri</h3>
-							<p>Setiap kakak asuh akan mendapatkan data adik asuh yang menjadi tanggungannya, setelah mentransfer minimal untuk 3 (tiga) bulan pertama biaya pendidikan adik asuhnya.</p>
-						</div>
-						<div class="col col-lg-3 feature">
-							<span class="ti-stats-up"></span>
-							<h3>Laporan Perkembangan</h3>
-							<p>Kakak asuh menerima laporan per-caturwulan perkembangan adik asuhnya.</p>
-						</div>
-						<div class="col col-lg-3 feature">
-							<span class="ti-face-smile"></span>
-							<h3>Silaturrahmi</h3>
-							<p>Kakak asuh mendapatkan program silaturrahmi antara kakak asuh dengan adik yang ditanggung biaya pendidikannya.</p>
+						<div class="col col-lg-12 col-xs-12 col-md-12">
+							<div class="col col-xs-6 col-md-3 col-lg-3 feature">
+								<span class="ti-ruler-pencil"></span>
+								<h3>Biaya Pendidikan</h3>
+								<p>Setiap kakak asuh di perkenankan untuk menanggung biaya pendidikan adik asuhnya sesuai jumlah adik asuh dan paket yang di ambil (sesuai pilihan dan kemampuan kakak asuh).</p>
+							</div>
+							<div class="col col-xs-6 col-md-3 col-lg-3 feature">
+								<span class="ti-id-badge"></span>
+								<h3>Mendapat Data Diri</h3>
+								<p>Setiap kakak asuh akan mendapatkan data adik asuh yang menjadi tanggungannya</p>
+							</div>
+							<div class="col col-xs-12 col-md-3 col-lg-3 feature">
+								<span class="ti-stats-up"></span>
+								<h3>Laporan Perkembangan</h3>
+								<p>Kakak asuh akan menerima laporan perbulan perkembangan adik asuhnya.</p>
+							</div>
+							<div class="col col-xs-12 col-md-3 col-lg-3 feature">
+								<span class="ti-face-smile"></span>
+								<h3>Silaturrahmi</h3>
+								<p>Kakak asuh mendapatkan program silaturrahmi antara kakak asuh dengan adik yang ditanggung biaya pendidikannya.</p>
+							</div>
 						</div>
 					</div>
 				</div>
 				{{-- row 2 end--}}
 				{{-- row 3 start--}}
 				<div class="row kka3">
-					<h2 class="row-title header-title">Pilihan Jenis Beasiswa Adik Asuh</h2>
+					<h2 class="row-title header-title">Jenis Pilihan Paket Adik Asuh</h2>
 					<div class="row feature  justify-content-md-center kka4margin">
-						<div  class="col col-lg-6">
-							<h3>Beasiswa SD</h3>
-							<h1>Rp 300.000</h1>
-							<p>per Bulan dan per Anak</p>
-							<h3>Beasiswa SMA</h3>
-							<h1>Rp 500.000</h1>
-							<p>per Bulan dan per Anak</p>
+						<div  class="col col-lg-4">
+							<h3>Paket A</h3>
+							<h1>Rp 108.000</h1>
+							<p>per Bulan dan per Santri</p>
 						</div>
-						<div class="col col-lg-6">
-							<h3>Beasiswa SMP</h3>
-							<h1>Rp 400.000</h1>
-							<p>per Bulan dan per Anak</p>
-							<h3>Beasiswa S1</h3>
-							<h1>Rp 750.000</h1>
-							<p>per Bulan dan per Anak</p>
+						<div class="col col-lg-4">
+							<h3>Paket B</h3>
+							<h1>Rp 180.000</h1>
+							<p>per Bulan dan per Santri</p>
+						</div>
+						<div class="col col-lg-4">
+							<h3>Paket C</h3>
+							<h1>Rp 288.000</h1>
+							<p>per Bulan dan per Santri</p>
 						</div>
 					</div>
 				</div>
@@ -151,17 +152,17 @@
 					<div class="kka4a">
 						<h2 class="row-title header-title">Cara Menjadi Kakak Asuh</h2>
 							<div class="row">
-								<div class="col col-lg-4 box">
+								<div class="col col-lg-4 col-md-4 col-xs-6 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-1.png">
 									<h3>Isi Form</h3>
 									<p>Sertakan nama, email, nomor HP, alamat & foto asli.</p>
 								</div>
-								<div class="col col-lg-4 box">
+								<div class="col col-lg-4 col-md-4 col-xs-6 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-2.png">
 									<h3>Pilih Beasiswa</h3>
 									<p>Tentukan jenis beasiswa yang ingin di ambil.</p>
 								</div>
-								<div class="col col-lg-4 box">
+								<div class="col col-lg-4 col-md-4 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-3.png">
 									<h3>Jumlah Anak</h3>
 									<p>Tentukan jumlah anak yang ingin di asuh.</p>
@@ -169,13 +170,13 @@
 							</div>
 							<br>
 							<div class="row">
-								<div class="col col-lg-2"></div>
-								<div class="col col-lg-4 box">
+								<div class="col col-xs-12 col-lg-2"></div>
+								<div class="col col-xs-6 col-lg-4 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-4.png">
 									<h3>Transfer Awal</h3>
 									<p>Transfer awal sebagai bentuk komitmen.</p>
 								</div>
-								<div class="col col-lg-4 box">
+								<div class="col col-xs-6 col-lg-4 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-5.png">
 									<h3>Invoice</h3>
 									<p>Kakak asuh akan menerima invoice keikutsertaan.</p>
@@ -187,60 +188,90 @@
 				{{-- row 5 start--}}
 				<div class="row kka5">
 					<div class="kka5a">
-						<div class="col col-lg-6">
+						<div class="col col-lg-6 col-xs-6 col-md-6">
+							@include('layouts.patrials.alerts')
 							<h3><span class="ti-write"></span> &nbsp; Form Keikutsertaan</h3>
 							<form class="form-horizontal" method="post" action="{{route('kkaregis.store')}}">
 								{{csrf_field()}}
 									<div class="form-group">
 										<label class="col-lg-3">Nama*</label>
 										<div class="col-lg-9">
-											<input name="name" id="name" class="form-control" type="text">
+											<input required value="{{ old('name') }}" name="name" id="name" class="form-control" type="text">
+											<span  class="errorval errorRegis" id="errorName"></span>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group has-feedback{{$errors->has('email') ? ' has-error' : ''}}">
 										<label class="col-lg-3">Email*</label>
 										<div class="col-lg-9">
-											<input name="email" class="form-control" type="email">
+											<input id="email" required name="email" value="{{ old('email') }}" class="form-control" type="email">
+											<span  class="errorval errorRegis" id="errorEmail"></span>
+											@if ($errors->has('email'))
+												<span class="errorRegis2">
+													{{$errors->first('email')}}
+												</span>
+											@endif
 										</div>
 									</div>
 									<div class="form-group">
+										<label class="col-lg-3">Password*</label>
+										<div class="col-lg-9">
+											<input id="password" required name="password" class="form-control" type="password">
+											<span  class="errorval errorRegis" id="errorPassword"></span>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3">Ulangi Password*</label>
+										<div class="col-lg-9">
+											<input id="repass" required name="repass" class="form-control" type="password">
+										</div>
+									</div>
+									<div class="form-group has-feedback{{$errors->has('hp') ? ' has-error' : ''}}">
 										<label class="col-lg-3">Nomor HP*</label>
 										<div class="col-lg-9">
-											<input name="hp" class="form-control" type="number">
+											<input id="hp" required name="hp" value="{{ old('hp') }}" class="form-control" type="number">
+											<span  class="errorval errorRegis" id="errorHp"></span>
+											@if ($errors->has('hp'))
+											<span class="errorRegis2">
+												{{$errors->first('hp')}}
+											</span>
+											@endif
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3">Tempat Lahir*</label>
 										<div class="col-lg-9">
-											<input name="date_birth" class="form-control" type="text">
+											<input required id="date_place" name="date_place" value="{{ old('date_birth') }}" class="form-control" type="text">
+											<span  class="errorval errorRegis" id="errorDateplace"></span>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3">Tanggal Lahir*</label>
 										<div class="col-lg-9">
-											<input name="date_place" id="datepicker" class="form-control" type="date">
+											<input value="{{old('date_birth')}}" required name="date_birth" id="datepicker" class="form-control date_birth" type="date">
+											<span  class="errorval errorRegis" id="errorDatebirth"></span>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3">Alamat*</label>
 										<div class="col-lg-9">
-											<textarea name="address" class="form-control" rows="7"></textarea>
+											<textarea id="address" name="address" class="form-control" rows="7">{{ old('address') }}</textarea>
+											<span  class="errorval errorRegis" id="errorAddress"></span>
 										</div>
 									</div>
 									<div class="form-group">
-										<div class="col-lg-9 col-lg-offset-3">
-											<button name="submit" value="submit" id="submit" type="submit" class="btn btn-info btn-outline btn-lg pull-right">
+										<div class="col-lg-9 col-lg-offset-3 col-xs-12">
+											<button name="submit" value="submit" id="submit" type="submit" class="btn btn-info btn-lg pull-right">
 												Daftar <span class="ti-arrow-right"></span>
 											</button>
 											<p class="pull-right">
-												<a href="{{route('login')}}" class="btn btn-info btn-lg">Login</a>
+												<a href="{{route('login')}}" class="btn btn-default btn-lg">Login</a>
 												&nbsp; atau &nbsp;
 											</p>
 										</div>
 									</div>
 							</form>
 						</div>
-						<div class="col col-lg-6">
+						<div class="col col-lg-6 col-xs-6 col-md-6">
 							<img id="bouncing2" src="https://sedekahharian.com/assets/kakakasuh/img/kakak-asuh-pria.png">
 						</div>
 					</div>
@@ -249,56 +280,56 @@
 				{{-- footer start --}}
 				<footer class="row kka-footer">
 					<div class="footer-row">
-						<div class="col col-lg-3 footer-col">
+						<div class="col col-xs-6 col-lg-3 footer-col">
 							<div class="icon-top">
 								<i class="fa fa-map-marker"></i>
 							</div>
 							<p>
-								Perumahan Dasana Indah
+								Glagah Lor RT.02 No.64
 								<br>
-								Blok UE2 No. 24-25 Bonang
+								Desa Tamanan
 								<br>
-								Bojong Nangka - Kelapa Dua
+								 Kec. Banguntapan, Kab. Bantul
 								<br>
-								Tangerang, Banten
+								Daerah Istimewa Yogyakarta 
 							</p>						
 						</div>
-						<div class="col col-lg-3 footer-col">
+						<div class="col col-xs-6 col-lg-3 footer-col">
 							<div class="icon-top">
 								<i class="fa fa-envelope"></i>
 							</div>
 							<p>
-								layanan@sedekahharian.com
+								info@pondokit.com
 							</p>						
 						</div>
-						<div class="col col-lg-3 footer-col">
+						<div class="col col-xs-12 col-lg-3 footer-col">
 							<div class="icon-top">
 								<i class="fa fa-phone"></i>
 							</div>
 							<p>
-								+62 811 1877 121
+								085228802828 (informasi)
 							</p>						
 						</div>
-						<div class="col col-lg-3 footer-col footer-sosmed">
+						<div class="col col-xs-12 col-lg-3 footer-col footer-sosmed">
 							<div class="icon-top">
-								<a href="">
+								<a href="https://www.facebook.com/pondokitcom/?ref=br_rs" target="_blank">
 									<i class="fa fa-facebook"></i>
 								</a>
-								<a href="">
+								<a href="" target="_blank">
 									<i class="fa fa-twitter"></i>
 								</a>
-								<a href="">
+								<a href="" target="_blank">
 									<i class="fa fa-google-plus"></i>
 								</a>
-								<a href="">
+								<a href="https://www.youtube.com/watch?v=maw1XuVX72Y" target="_blank">
 									<i class="fa fa-youtube"></i>
 								</a>
-								<a href="">
+								<a href="https://www.instagram.com/pondokit/" target="_blank">
 									<i class="fa fa-instagram"></i>
 								</a>
 							</div>
 							<p>
-								© <a href="">pondokit.com</a>
+								© <a href="http://pondokit.com" target="_blank">pondokit.com</a>
 							</p>	
 							<br><br><br><br>					
 						</div>

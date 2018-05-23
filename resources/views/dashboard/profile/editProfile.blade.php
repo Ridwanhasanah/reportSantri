@@ -68,7 +68,15 @@
                           <input  {{$user->gender=='Wanita' ? 'checked' : ''}} type="radio" name="gender" value="Wanita"> Wanita<br>
                         </td>
                       </tr>
-                        <tr>
+                      <tr>
+                        <td><b>Kota</b></td>
+                        <td><input placeholder="Contoh : DIY" class="form-control" type="text" name="city" value="{{$user->city}}"></td>
+                      </tr>
+                      <tr>
+                        <td><b>Kabupaten</b></td>
+                        <td><input placeholder="Contoh : Bantul" class="form-control" type="text" name="district" value="{{$user->district}}"></td>
+                      </tr>
+                      <tr>
                         <td><b>Alamat</b></td>
                         <td><textarea placeholder="Contoh : jl.pesangrahan" class="form-control" type="text" name="address">{{$user->address}}</textarea></td>
                       </tr>

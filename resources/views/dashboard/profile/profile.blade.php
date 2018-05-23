@@ -49,7 +49,15 @@
                         <td><b>Jenis Kelamin</b></td>
                         <td>{{$user->gender}}</td>
                       </tr>
-                        <tr>
+                      <tr>
+                        <td><b>Kota</b></td>
+                        <td>{{$user->city}}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Jenis Kelamin</b></td>
+                        <td>{{$user->district}}</td>
+                      </tr>
+                      <tr>
                         <td><b>Alamat</b></td>
                         <td>{{$user->address}}</td>
                       </tr>

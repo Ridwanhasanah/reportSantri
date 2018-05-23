@@ -65,11 +65,12 @@ class AllUserController extends Controller
     {
 
         
-        $memeber  = new User;
+        $member  = new User;
         $role_users1 = new RoleUser; //RoleUser 1
         $role_users2 = new RoleUser; //RoleUser 2
         $role_users3 = new RoleUser; //RoleUser 3
         $role_users4 = new RoleUser; //RoleUser 4
+        $role_users5 = new RoleUser; //RoleUser 4
 
         $this->validate($request,[
 
@@ -79,19 +80,20 @@ class AllUserController extends Controller
 
         ]);
 
-        $memeber->name        = $request->name;
-        $memeber->password    = bcrypt($request->password);
-        $memeber->department  = $request->department;
-        $memeber->date_birth  = $request->date_birth;
-        $memeber->birth_place = $request->birth_place;
-        $memeber->gender      = $request->gender;
-        $memeber->address     = $request->address;
-        $memeber->email       = $request->email;
-        $memeber->hp          = $request->hp;
-        $memeber->dream       = $request->dream;
-        $memeber->hobby       = $request->hobby;
-        $memeber->experience  = $request->experience;
-        $memeber->creation    = $request->creation;
+        $member->name        = $request->name;
+        $member->password    = bcrypt($request->password);
+        $member->department  = $request->department;
+        $member->date_birth  = $request->date_birth;
+        $member->birth_place = $request->birth_place;
+        $member->gender      = $request->gender;
+        $member->address     = $request->address;
+        $member->email       = $request->email;
+        $member->hp          = $request->hp;
+        $member->dream       = $request->dream;
+        $member->hobby       = $request->hobby;
+        $member->experience  = $request->experience;
+        $member->active      = true;
+        $member->creation    = $request->creation;
 
         
         //jika ada photo maka
@@ -101,22 +103,22 @@ class AllUserController extends Controller
             
             $request->file('photo')->storeAs('photos',$filename);
 
-            $memeber->photo   = $filename;
+            $member->photo   = $filename;
 
 
         }
 
 
-        $memeber->save();
+        $member->save();
 
         /*Menambahkan RoleUser Sesuai dengan Department yang di pilih*/
         if ($request->department == 'Staff Pondok IT') {
             
-            $role_users2->user_id = $memeber->id;
+            $role_users2->user_id = $member->id;
             $role_users2->role_id = 2;
-            $role_users3->user_id = $memeber->id;
+            $role_users3->user_id = $member->id;
             $role_users3->role_id = 3;
-            $role_users4->user_id = $memeber->id;
+            $role_users4->user_id = $member->id;
             $role_users4->role_id = 4;
 
             $role_users2->save();
@@ -125,23 +127,33 @@ class AllUserController extends Controller
         
         }elseif ($request->department == 'Teacher') {
             
-            $role_users3->user_id = $memeber->id;
+            $role_users3->user_id = $member->id;
             $role_users3->role_id = 3;
-            $role_users4->user_id = $memeber->id;
+            $role_users4->user_id = $member->id;
             $role_users4->role_id = 4;
 
             $role_users3->save();
             $role_users4->save();
         
+        }elseif ($request->department == 'Foster Brother') {
+            
+            $role_users3->user_id = $member->id;
+            $role_users3->role_id = 3;
+            $role_users5->user_id = $member->id;
+            $role_users5->role_id = 5;
+
+            $role_users3->save();
+            $role_users5->save();
+        
         }elseif ($request->department == 'Master') {
             
-            $role_users1->user_id = $memeber->id;
+            $role_users1->user_id = $member->id;
             $role_users1->role_id = 1;
-            $role_users2->user_id = $memeber->id;
+            $role_users2->user_id = $member->id;
             $role_users2->role_id = 2;
-            $role_users3->user_id = $memeber->id;
+            $role_users3->user_id = $member->id;
             $role_users3->role_id = 3;
-            $role_users4->user_id = $memeber->id;
+            $role_users4->user_id = $member->id;
             $role_users4->role_id = 4;
 
             $role_users1->save();
@@ -151,13 +163,13 @@ class AllUserController extends Controller
         
         }else{
 
-            $role_users4->user_id = $memeber->id;
+            $role_users4->user_id = $member->id;
             $role_users4->role_id = 4;
 
             $role_users4->save();
         }
 
-        return redirect()->route('user.edit',$memeber->id)->with('success', 'Santri / Staff sudah di tambah');
+        return redirect()->route('user.edit',$member->id)->with('success', 'Santri / Staff sudah di tambah');
     }
 
     /*===== Show =====*/

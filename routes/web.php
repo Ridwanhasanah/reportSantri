@@ -106,6 +106,7 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 	]);
 	
 	/*===== Kirim Saran End=====*/
+	Route::get('kkasantri','Kka\dashboard\SantriController@index')->name('kka.santri');
 	
 
 
@@ -196,7 +197,6 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		/*PDF*/
 		Route::get('register/pdf/{id}','Admin\RegisterController@exportPDF')->name('register.pdf');
 		/*===== Register End =====*/
-		
 		
 		/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
 		Route::resources([

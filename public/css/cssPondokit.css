@@ -1,7 +1,28 @@
 /*Box Santri*/
-.boxsantri{
-	border-radius: 5px;
-
+.card-santri{
+	width:230px; 
+	height: 400px; 
+	margin-top: 35px; 
+	border-radius: 10px; 
+	border: 1px solid #bebebe;
+	background: #E5E5E5;
+}
+.card-santri-body2 p{
+	margin-bottom: 0px;
+}
+.card-santri-body2 h4{
+	padding-top:  10px;
+}
+.card-santri-body2{
+	padding: 15px 10px 0px 10px;
+	background: #F3F3F3;
+	margin-bottom: 0px;
+}
+.card-santri-footer{
+    padding: 5px;
+    /*border-radius: 0px 0px 10px 10px;*/
+    position: absolute;
+    bottom: 0;
 }
 .errorRegis{
 	display: none;

@@ -64,6 +64,7 @@ Ubah Santri / Staff
                             <option {{$user->department=='Master' ? 'selected' : ''}} value="Staff Pondok IT">Master</option>
                             <option {{$user->department=='Staff Pondok IT' ? 'selected' : ''}} value="Staff Pondok IT">Staff Pondok IT</option>
                             <option {{$user->department=='Teacher' ? 'selected' : ''}} value="Cyber">Guru / Mentor</option>
+                            <option {{$user->department=='Foster Brother' ? 'selected' : ''}} value="Foster Brother">Kakak Asuh</option>
                             @endif
                             <option {{$user->department=='Programmer' ? 'selected' : ''}} value="Programmer">Programmer</option>
                             <option {{$user->department=='Multimedia' ? 'selected' : ''}}  value="Multimedia">Multimedia</option>

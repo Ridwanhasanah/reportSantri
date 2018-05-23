@@ -68,6 +68,7 @@ Add User
                             <option value="Cyber">Cyber</option>
                             @if(Auth::user()->hasRole('master'))
                             <option value="Staff Pondok IT">Staff Pondok IT</option>
+                            <option value="Foster Brother">Kakak Asuh</option>
                             <option value="Teacher">Guru / Mentor</option>
                             <option value="Master">Master</option>
                             @endif

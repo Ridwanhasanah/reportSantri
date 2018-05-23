@@ -43,7 +43,7 @@ class PondokitController extends Controller
     /*========== Menampilkan Santri Sesuai Divisi Start ========== */
     public function santriProgrammer(){
 
-        $students = DB::table('users')->select('*')->where('department',"Programmer")->latest()->paginate(21);
+        $students = DB::table('users')->select('*')->where('department',"Programmer")->latest()->paginate(20);
 
 
         $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -56,7 +56,7 @@ class PondokitController extends Controller
 
     public function santriMultimedia(){
 
-        $students = DB::table('users')->select('*')->where('department',"Multimedia")->latest()->paginate(21);
+        $students = DB::table('users')->select('*')->where('department',"Multimedia")->latest()->paginate(20);
 
         $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         $url_array = explode('/', $url);
@@ -71,7 +71,7 @@ class PondokitController extends Controller
 
     public function santriImers(){
 
-        $students = DB::table('users')->select('*')->where('department',"Imers")->latest()->paginate(21);
+        $students = DB::table('users')->select('*')->where('department',"Imers")->latest()->paginate(20);
 
         $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         $url_array = explode('/', $url);
@@ -86,7 +86,7 @@ class PondokitController extends Controller
 
     public function santriCyber(){
 
-        $students = DB::table('users')->select('*')->where('department',"Cyber")->latest()->paginate(21);
+        $students = DB::table('users')->select('*')->where('department',"Cyber")->latest()->paginate(20);
 
         $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         $url_array = explode('/', $url);

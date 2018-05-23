@@ -13,15 +13,15 @@
     padding-bottom: 110px;
 }
 #bouncing1{
-	width: 450px;
-	height: 450px;
+	width: 80%;
+	height: auto;
 	position: absolute;
 	top: 0px;
 	/*left: 50%;*/
 }
 #bouncing2{
-	width: 450px;
-	height: 450px;
+	width: 80%;
+	height: auto;
 	position: absolute;
 	top: 0px;
 	/*left: 50%;*/
