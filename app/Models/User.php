@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->hasMany(Models\Amaliyah::class, 'amaliyahs');
     }
 
+    /*Realtion Many to manty User - order*/
+    public function orders(){
+        return $this->hasMany(Order::class);//, 'activities');
+    }
+
     public function roles(){
         return $this->belongsToMany('App\Models\Role', 'role_users', 'user_id', 'role_id');
         

@@ -77,7 +77,7 @@ $(document).ready(function(){
 	PopUp("#name", 2, 'Nama harus lebih dari 2 karakter')
 	PopUp('#email',4,'Email harus lebih dari 4 karakter')
 	PopUp('#password',5,'Password harus lebih dari 5 karakter')
-	PopUp('#hp',2,'Nomor HP harus lebih dari 10 digit')
+	PopUp('#hp',10,'Nomor HP harus lebih dari 10 digit')
 	PopUp('#date_place',3,'Tempat Lahir harus lebih dari 3 karakter')
 	PopUp('#address',10,'Alamat harus lebih dari 10 karakter')
 

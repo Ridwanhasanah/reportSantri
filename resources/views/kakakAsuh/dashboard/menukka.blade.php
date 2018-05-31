@@ -28,7 +28,7 @@
     <!-- /.nav-second-level -->
 </li>
 <li>
-    <a href=""> <i class="fa fa-user fa-fw"></i>Profil Saya</a>
+    <a href="{{route('profile')}}"> <i class="fa fa-user fa-fw"></i>Profil Saya</a>
 </li>
 <li>
     <a href=""> <i class="fa fa-users fa-fw"></i>Adik Asuh Saya</a>
@@ -37,7 +37,10 @@
     <a href=""> <i class="fa fa-plus-circle fa-fw"></i>Tambah Adik Asuh</a>
 </li>
 <li>
-    <a href="{{route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>Kirim Saran</a>
+    <a style="color: red;" href="{{route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>Kirim Saran</a>
+</li>
+<li>
+    <a href="{{route('invoice.index')}}"> <i class="fa fa-money fa-fw"></i>Invoice Ku</a>
 </li>
 <li>
     <a href=""> <i class="fa fa-edit fa-fw"></i>Laporan</a>

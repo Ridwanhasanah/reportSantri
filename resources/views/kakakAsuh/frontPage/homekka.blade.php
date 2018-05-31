@@ -80,7 +80,7 @@
 				</div>
 				{{-- row 1 start--}}
 				<div class="row kka1">
-					<div class="kka1a col col-xs-6 col-sm-6 col-md-6 col-lg-7 ">
+					<div class="kka1a col col-xs-12 col-sm-12 col-md-6 col-lg-7 ">
 						<img src="http://pondokit.com/wp-content/uploads/2017/10/Logo-IT-tulisan-putih-e1519097611504.png">
 						<h1>
 							Ayo jadi kakak asuh di Pondok IT,
@@ -91,9 +91,10 @@
 						</h3>
 						<a href="" class="btn btn-lg btn-danger hidden-xs">Lanjut <span class="ti-arrow-right""></span></a>
 					</div>
-					<div class="kka1a col-xs-6 col-sm-6 col-md-6 col-lg-5 ">
+					<div class="kka1a col-xs-12 col-sm-12 col-md-6 col-lg-5 ">
 						<img id="bouncing1" src="https://sedekahharian.com/assets/kakakasuh/img/kakak-asuh-perempuan.png">
 					</div>
+					<div class="col col-lg-0 col-xs-12"><br><br><br><br><br></b></div>
 				</div>
 				{{-- row 1 end--}}
 				{{-- row 2 start--}}
@@ -101,12 +102,12 @@
 					<h1 class="row-title header-title">Mengapa program kakak asuh?</h1>
 					<div  class="row justify-content-md-center kka2a">
 						<div class="col col-lg-12 col-xs-12 col-md-12">
-							<div class="col col-xs-6 col-md-3 col-lg-3 feature">
+							<div class="col col-xs-12 col-md-3 col-lg-3 feature">
 								<span class="ti-ruler-pencil"></span>
 								<h3>Biaya Pendidikan</h3>
 								<p>Setiap kakak asuh di perkenankan untuk menanggung biaya pendidikan adik asuhnya sesuai jumlah adik asuh dan paket yang di ambil (sesuai pilihan dan kemampuan kakak asuh).</p>
 							</div>
-							<div class="col col-xs-6 col-md-3 col-lg-3 feature">
+							<div class="col col-xs-12 col-md-3 col-lg-3 feature">
 								<span class="ti-id-badge"></span>
 								<h3>Mendapat Data Diri</h3>
 								<p>Setiap kakak asuh akan mendapatkan data adik asuh yang menjadi tanggungannya</p>
@@ -152,31 +153,33 @@
 					<div class="kka4a">
 						<h2 class="row-title header-title">Cara Menjadi Kakak Asuh</h2>
 							<div class="row">
-								<div class="col col-lg-4 col-md-4 col-xs-6 box">
+								<div class="col-lg-1 col-xs-0"></div>
+								<div class="col col-lg-4 col-md-4 col-xs-12 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-1.png">
 									<h3>Isi Form</h3>
 									<p>Sertakan nama, email, nomor HP, alamat & foto asli.</p>
 								</div>
-								<div class="col col-lg-4 col-md-4 col-xs-6 box">
+								<div class="col col-lg-4 col-md-4 col-xs-12 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-2.png">
 									<h3>Pilih Beasiswa</h3>
 									<p>Tentukan jenis beasiswa yang ingin di ambil.</p>
 								</div>
-								<div class="col col-lg-4 col-md-4 box">
+								<div class="col col-lg-4 col-md-4 col-xs-12 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-3.png">
 									<h3>Jumlah Anak</h3>
 									<p>Tentukan jumlah anak yang ingin di asuh.</p>
 								</div>
 							</div>
-							<br>
-							<div class="row">
-								<div class="col col-xs-12 col-lg-2"></div>
-								<div class="col col-xs-6 col-lg-4 box">
+							{{-- <br> --}}
+							<div class="row" style="margin-top: 0px;">
+								<div class="col-lg-1 col-xs-0"></div>
+								<div class="col col-xs-0 col-lg-2"></div>
+								<div class="col col-xs-12 col-lg-4 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-4.png">
 									<h3>Transfer Awal</h3>
 									<p>Transfer awal sebagai bentuk komitmen.</p>
 								</div>
-								<div class="col col-xs-6 col-lg-4 box">
+								<div class="col col-xs-12 col-lg-4 box">
 									<img src="https://sedekahharian.com/assets/kakakasuh/img/number-5.png">
 									<h3>Invoice</h3>
 									<p>Kakak asuh akan menerima invoice keikutsertaan.</p>
@@ -188,7 +191,8 @@
 				{{-- row 5 start--}}
 				<div class="row kka5">
 					<div class="kka5a">
-						<div class="col col-lg-6 col-xs-6 col-md-6">
+						<div class="col col-lg-1 col-xs-0"></div>
+						<div class="col col-lg-6 col-xs-12 col-md-6">
 							@include('layouts.patrials.alerts')
 							<h3><span class="ti-write"></span> &nbsp; Form Keikutsertaan</h3>
 							<form class="form-horizontal" method="post" action="{{route('kkaregis.store')}}">
@@ -271,7 +275,7 @@
 									</div>
 							</form>
 						</div>
-						<div class="col col-lg-6 col-xs-6 col-md-6">
+						<div class="col col-lg-5 col-xs-12">
 							<img id="bouncing2" src="https://sedekahharian.com/assets/kakakasuh/img/kakak-asuh-pria.png">
 						</div>
 					</div>
@@ -280,7 +284,7 @@
 				{{-- footer start --}}
 				<footer class="row kka-footer">
 					<div class="footer-row">
-						<div class="col col-xs-6 col-lg-3 footer-col">
+						<div class="col col-xs-12 col-lg-3 footer-col">
 							<div class="icon-top">
 								<i class="fa fa-map-marker"></i>
 							</div>
@@ -294,7 +298,7 @@
 								Daerah Istimewa Yogyakarta 
 							</p>						
 						</div>
-						<div class="col col-xs-6 col-lg-3 footer-col">
+						<div class="col col-xs-12 col-lg-3 footer-col">
 							<div class="icon-top">
 								<i class="fa fa-envelope"></i>
 							</div>

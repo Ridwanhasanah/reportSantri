@@ -11,7 +11,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
-
     <link rel="shortcut icon" href="{{ asset('Logo IT ICON.png') }}" >    
 
     {{-- Pondokit Ridwan Css Start--}}
@@ -56,6 +55,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')}}"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')}}"></script>
     <![endif]-->
+    @yield('css')
 
 </head>
 
@@ -343,6 +343,9 @@
                                                 <a href="{{route('user.cyber')}}">Cyber</a>
                                             </li>
                                         </ul>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('user.kka')}}">Semua Kakak Asuh</a>
                                     </li>
                                     <li>
                                         <a href="{{route('user.staff')}}">Semua Staff</a>

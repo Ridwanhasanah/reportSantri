@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Kka\dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class SantriController extends Controller
+class CaregiverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,19 +14,17 @@ class SantriController extends Controller
      */
     public function index()
     {
-        $students = DB::table('users')->select('*')->whereIn('department',[
-             'Programmer',
-             'Multimedia',
-             'Imers',
-             'Cyber',
-         ])->latest()->paginate(20);
-
-        return view('dashboard.dashboard.listSantri',compact('students'));
+        //
     }
 
-    public function charity()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        return view('kakakAsuh.dashboard.orderForm');
+        //
     }
 
     /**

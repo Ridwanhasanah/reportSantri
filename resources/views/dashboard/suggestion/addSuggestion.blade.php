@@ -25,6 +25,7 @@ Kirim Saran
                     {{ method_field('POST') }}
                
                 <div class=" col-md-12 col-lg-12 "> 
+                  @if(!Auth::user()->hasRole('foster_brother'))
                   <div class="form-group">
                     <label>Nama : </label>
                     <input name="name" class="form-control" value="{{Auth::user()->name}}" readonly>
@@ -33,6 +34,7 @@ Kirim Saran
                     <label>Handphone : </label>
                     <input name="hp" class="form-control" value="{{Auth::user()->hp}}" readonly>
                   </div>
+                  @endif
                   <div class="form-group">
                     <label>Tanggal : </label>
                     <input name="date" class="form-control" value="{{date('d-m-Y')}}" readonly>
@@ -42,16 +44,13 @@ Kirim Saran
                     <textarea rows="15" class="form-control" type="text" name="suggestion"></textarea>
                   </div>
                   <div class="form-group">
-                  <input class="btn btn-primary" type="submit" name="submit">
+                  <input class="btn btn-primary" type="submit" name="submit" value="Kirim">
                   </div>
                 </div>
                 </form>
               </div>
         </div>
-        <div class="panel-footer">
-          <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-          <span class="pull-right">
-        </span>
+        <div class="panel-footer">  
         </div>
       </div>
     </div>

@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth','role:teacher']], function(){
         return "<h1>Ini Master Page</h1>";
     });
 }); 
+Route::get('detail-invoice','Kka\dashboard\invoice\InvoiceController@unpaid');
 
 Route::get('/', function(){
 	return view('kakakAsuh.frontPage.homekka');
@@ -104,11 +105,26 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 	Route::resources([
 		'suggestion' => 'SuggestionController'
 	]);
-	
 	/*===== Kirim Saran End=====*/
-	Route::get('kkasantri','Kka\dashboard\SantriController@index')->name('kka.santri');
 	
+	/*=============================================================================================*/
+	/*======================================== Caregiver Start ========================================*/
+	/*=============================================================================================*/
+	
+	Route::get('kkasantri','Kka\dashboard\SantriController@index')->name('kka.santri');
+	Route::get('charity','Kka\dashboard\SantriController@charity')->name('charity');
 
+	Route::group(['middleware'=>['auth','role:foster_brother']], function(){
+		Route::resource('caregiver','Kka\dashboard\CaregiverController');
+		Route::resource('invoice','Kka\dashboard\invoice\InvoiceController');
+		Route::get('api/invoice','Kka\dashboard\invoice\InvoiceController@apiInvoice')->name('api.invoice');
+		Route::get('paket-amal/add/{id_santri}','Kka\dashboard\order\OrderController@create')->name('paket-amal.create');
+		Route::post('paket-amal/add/{id_santri}','Kka\dashboard\order\OrderController@store')->name('paket-amal.store');
+
+	});
+	/*=============================================================================================*/
+	/*======================================== Caregiver end ========================================*/
+	/*=============================================================================================*/
 
 	/*=============================================================================================*/
 	/*======================================== Admin Start ========================================*/
@@ -120,6 +136,7 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::get('user/multimedia','AllUserController@santriMultimedia')->name('user.multimedia');
 		Route::get('user/imers','AllUserController@santriImers')->name('user.imers');
 		Route::get('user/cyber','AllUserController@santriCyber')->name('user.cyber');
+		Route::get('user/kka','AllUserController@kka')->name('user.kka');
 		Route::get('user/staff','AllUserController@index')->name('user.staff');
 
 		/*===== Acitivity Santri CRUD For The Admin Access Start =====*/

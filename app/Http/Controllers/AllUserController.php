@@ -296,8 +296,28 @@ class AllUserController extends Controller
         return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
 
     }
-
     /*================================ Menampilkan Santri Sesuai Divisi End ============================== */
+
+     /*================================ Menampilkan Seluruh Kakak Asuh Start============================== */
+
+    public function kka(){
+
+        $users = DB::table('users')->select('*')->where('department',"Foster Brother")->latest()->paginate(20);
+
+        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url_array = explode('/', $url);
+        $divisi = end($url_array);
+
+        /*Menghitung Total santri*/
+        $total = DB::table('users')->where('department','Foster Brother')->count();
+
+
+        return view('dashboard.admin.kakakAsuh.kakakAsuh', compact('users','divisi', 'total'));
+
+    }
+
+    /*================================ Menampilkan Seluruh Kakak Asuh Start============================== */
+
 
     /*================================ Activty Santri CRUD Start ========================================*/
 
