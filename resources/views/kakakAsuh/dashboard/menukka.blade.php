@@ -3,9 +3,7 @@
 </li>
 <li>
     <a href="#"><i class="fa fa-users fa-fw"></i> Santri<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-        <li>
-            <a  href="{{route('kka.santri')}}">Semua Santri<span class="fa arrow"></span></a>
+  
             <ul class="nav nav-third-level">
                 <li>
                     <a href="{{route('kka.santri')}}">Semua Santri</a>
@@ -23,8 +21,6 @@
                     <a href="{{route('list.cyber')}}">Cyber</a>
                 </li>
             </ul>
-        </li>
-    </ul>
     <!-- /.nav-second-level -->
 </li>
 <li>
@@ -46,7 +42,7 @@
     <a href=""> <i class="fa fa-edit fa-fw"></i>Laporan</a>
 </li>
 <li>
-    <a href=""> <i class="fa fa-money fa-fw"></i>Konfirmasi Donasi</a>
+    <a href="{{route('confirmation.create')}}"> <i class="fa fa-money fa-fw"></i>Konfirmasi Donasi</a>
 </li>
 <li>
     <a href=""> <i class="fa fa-book fa-fw"></i>Buku Panduan</a>

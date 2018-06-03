@@ -120,6 +120,9 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::get('api/invoice','Kka\dashboard\invoice\InvoiceController@apiInvoice')->name('api.invoice');
 		Route::get('paket-amal/add/{id_santri}','Kka\dashboard\order\OrderController@create')->name('paket-amal.create');
 		Route::post('paket-amal/add/{id_santri}','Kka\dashboard\order\OrderController@store')->name('paket-amal.store');
+		/*Confirmation*/
+		Route::get('konfirmasi','Kka\dashboard\invoice\ConfirmationController@create')->name('confirmation.create');
+		Route::post('konfirmasi','Kka\dashboard\invoice\ConfirmationController@store')->name('confirmation.store');
 
 	});
 	/*=============================================================================================*/

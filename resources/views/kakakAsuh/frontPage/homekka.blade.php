@@ -94,7 +94,6 @@
 					<div class="kka1a col-xs-12 col-sm-12 col-md-6 col-lg-5 ">
 						<img id="bouncing1" src="https://sedekahharian.com/assets/kakakasuh/img/kakak-asuh-perempuan.png">
 					</div>
-					<div class="col col-lg-0 col-xs-12"><br><br><br><br><br></b></div>
 				</div>
 				{{-- row 1 end--}}
 				{{-- row 2 start--}}
