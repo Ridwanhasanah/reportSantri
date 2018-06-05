@@ -49,7 +49,7 @@ Kegiatan Santri Hari Ini
                                                         </div>
                                                     @else
                                                         <div class="form-group">
-                                                            <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('images/personal.png')}}">
+                                                            <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('images/flower.jpg')}}">
                                                         </div>
                                                     @endif
 

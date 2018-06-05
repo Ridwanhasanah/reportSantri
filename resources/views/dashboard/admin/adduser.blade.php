@@ -26,7 +26,7 @@ Add User
 
                 <div class="col-md-3 col-lg-3 " align="center">
                 
-                  <img alt="User Pic" src="{{asset('images/personal.png')}}" class="img-circle img-responsive"> 
+                  <img alt="User Pic" src="{{asset('images/flower.jpg')}}" class="img-circle img-responsive"> 
                   <br>
                   <input type="file" name="photo" class="form-control">
                 </div>

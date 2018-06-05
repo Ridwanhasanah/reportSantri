@@ -70,7 +70,7 @@ class AllUserController extends Controller
         $role_users2 = new RoleUser; //RoleUser 2
         $role_users3 = new RoleUser; //RoleUser 3
         $role_users4 = new RoleUser; //RoleUser 4
-        $role_users5 = new RoleUser; //RoleUser 4
+        $role_users5 = new RoleUser; //RoleUser 5
 
         $this->validate($request,[
 

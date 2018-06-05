@@ -30,7 +30,7 @@ Edit {{$register->nama}}
               <div class="row">
                 <div class="col-md-6 col-lg-6 " align="center">
                   @if (strlen($register->foto) ==0)
-                    <img alt="User Pic" src="{{asset('images/personal.png')}}" class="img-circle img-responsive"> 
+                    <img alt="User Pic" src="{{asset('images/flower.jpg')}}" class="img-circle img-responsive"> 
                   @else
                     <img alt="User Pic" src="{{asset('photos/$register->foto')}}" class="img-circle img-responsive"> 
                   @endif

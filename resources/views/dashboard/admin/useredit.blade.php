@@ -28,7 +28,7 @@ Ubah Santri / Staff
 
                 <div class="col-md-3 col-lg-3 " align="center">
                 @if (strlen($user->photo) ==0)
-                  <img alt="User Pic" src="{{asset('images/personal.png')}}" class="img-circle img-responsive"> 
+                  <img alt="User Pic" src="{{asset('images/flower.jpg')}}" class="img-circle img-responsive"> 
                 @else
                   <img alt="User Pic" src="{{asset('storage/photos/'.$user->photo)}}" class="img-circle img-responsive"> 
                 @endif 
