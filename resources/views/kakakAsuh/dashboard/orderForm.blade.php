@@ -21,27 +21,24 @@
 	                <div class=" col-lg-offset-2 col-8"> 
 	                   <div class="funkyradio col-lg-8 col-lg-offset-1">
 					        <div class="funkyradio-info">
-					            <input value="108000" type="radio" checked name="package" id="package-a" />
-					            <label for="package-a">Paket A Rp 108.000,-</label>
+					            <input value="108000" type="radio" name="package" id="package-a" />
+					            <label for="package-a">Paket A Rp 108.000,- perbulan</label>
 					        </div>
 					        <div class="funkyradio-info">
 					            <input value="180000" type="radio" name="package" id="package-b" />
-					            <label for="package-b">Paket B Rp 180.000,-</label>
+					            <label for="package-b">Paket B Rp 180.000,- perbulan</label>
 					        </div>
 					        <div class="funkyradio-info">
-					            <input value="288000" type="radio" name="package" id="package-c" />
-					            <label for="package-c">Paket C Rp 288.000,-</label>
+					            <input checked value="288000" type="radio" name="package" id="package-c" />
+					            <label for="package-c">Paket C Rp 288.000,- perbulan</label>
 					        </div>
 					    
 					        <br>
 					        <div class="form-group">
 						        <select name="amount_month" class="form-control">
-									<option value="1" >1 bulan</option>
-									<option value="2">2 bulan</option>
+									<option value="6" >6 bulan</option>
 									<option value="3">3 bulan</option>
-									<option value="4">4 bulan</option>
-									<option value="5">5 bulan</option>
-									<option value="6">6 bulan</option>
+									<option value="1">1 bulan</option>
 								</select>
 							</div>
 							<div>

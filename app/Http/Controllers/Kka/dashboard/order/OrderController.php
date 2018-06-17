@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Kka\dashboard\order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Caregiver;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 
@@ -34,9 +35,11 @@ class OrderController extends Controller
         $last_id = DB::table('orders')->orderBy('id', 'desc')->first();
 
         $order = new Order;
+        $caregiver = new Caregiver;
 
         $order->create([
             'user_id' => Auth::user()->id,
+            'santri_id' => $id_santri,
             'package' => $request->package,
             'amount_month' => $request->amount_month,
             'price' => $price,
@@ -48,6 +51,11 @@ class OrderController extends Controller
             'invoice' => $last_id->id + 1,
 
         ]);
+
+        $caregiver->caregiver = Auth::user()->id;
+        $caregiver->santri    = $id_santri;
+        $caregiver->active    = false;
+        $caregiver->save();
         
 
         return redirect()->route('kka.santri')->with('success','Terima kasih pemintaan anda akan kami proses');

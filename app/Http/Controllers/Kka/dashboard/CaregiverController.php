@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Kka\dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Caregiver;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
+use Illuminate\Support\Facades\DB;
 
 class CaregiverController extends Controller
 {
@@ -14,7 +18,24 @@ class CaregiverController extends Controller
      */
     public function index()
     {
-        //
+        $caregivers = DB::table('caregivers')->select('*')
+        ->where([
+            ['caregiver',Auth::user()->id],
+            ['active',true],
+        ])->get();
+
+        foreach ($caregivers as $id) {
+            // $user = DB::table('users')->select('*')->where('id',$id)->get();
+            echo "<pre>";
+            print_r($id->santri);
+            echo "</pre>";
+
+        }
+
+
+        // dd($caregivers);
+
+        // return view('kakakAsuh.dashboard.adik-asuh',compact('caregivers',$user));
     }
 
     /**

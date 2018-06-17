@@ -17,6 +17,7 @@ class CreateCaregiversTable extends Migration
             $table->increments('id');
             $table->integer('caregiver');
             $table->integer('santri');
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }

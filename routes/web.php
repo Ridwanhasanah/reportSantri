@@ -18,8 +18,7 @@ Route::group(['middleware' => ['auth','role:teacher']], function(){
     Route::get('/master', function(){
         return "<h1>Ini Master Page</h1>";
     });
-}); 
-Route::get('detail-invoice','Kka\dashboard\invoice\InvoiceController@unpaid');
+});
 
 Route::get('/', function(){
 	return view('kakakAsuh.frontPage.homekka');
@@ -217,6 +216,11 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		/*PDF*/
 		Route::get('register/pdf/{id}','Admin\RegisterController@exportPDF')->name('register.pdf');
 		/*===== Register End =====*/
+
+		/*===== Invoice start =====*/
+		Route::resource('invoice-admin','Admin\InvoiceController');
+		Route::get('api/invoice-admin','Admin\InvoiceController@apiInvoice')->name('api.invoice-admin');
+		/*===== Invoice end =====*/
 		
 		/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
 		Route::resources([
