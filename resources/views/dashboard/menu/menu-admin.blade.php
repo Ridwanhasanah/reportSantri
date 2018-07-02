@@ -70,6 +70,9 @@
     <a href="{{route('invoice-admin.index')}}"> <i class="fa fa-money fa-fw"></i>Semua Invoice</a>
 </li>
 <li>
+    <a href="{{route('confirmation-admin.index')}}"> <i class="fa fa-pencil fa-fw"></i>Konfirmasi Transfer</a>
+</li>
+<li>
     <a href="#5"><i class="fa fa-shield fa-fw"></i> Tataterib Pondok IT</span></a>
 </li>
 <li>

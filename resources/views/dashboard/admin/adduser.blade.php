@@ -86,7 +86,15 @@ Add User
                           <input type="radio" name="gender" value="Wanita"> Wanita<br>
                         </td>
                       </tr>
-                        <tr>
+                      <tr>
+                        <td><b>Kota</b></td>
+                        <td><input placeholder="Contoh : DIY" class="form-control" type="text" name="city" value="{{old('city')}}"></td>
+                      </tr>
+                      <tr>
+                        <td><b>Kabupaten</b></td>
+                        <td><input placeholder="Contoh : Bantul" class="form-control" type="text" name="district" value="{{old('district')}}"></td>
+                      </tr>
+                      <tr>
                         <td>Alamat</td>
                         <td>
                           <textarea value="{{old('address')}}" placeholder="Contoh : jl.pesangrahan" class="form-control wysiwyg" type="text" name="address">

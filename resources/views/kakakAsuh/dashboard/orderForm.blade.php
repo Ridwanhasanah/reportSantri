@@ -20,19 +20,30 @@
 	                    {{ method_field('POST') }}
 	                <div class=" col-lg-offset-2 col-8"> 
 	                   <div class="funkyradio col-lg-8 col-lg-offset-1">
-					        <div class="funkyradio-info">
-					            <input value="108000" type="radio" name="package" id="package-a" />
+	                   	@if($package->package == 'A')
+	                   		<div class="funkyradio-info">
+					            <input checked value="180000" type="radio" name="package" id="package-b" />
+					            <label for="package-b">Paket B Rp 180.000,- perbulan</label>
+					        </div>
+					    @elseif($package->package == 'B')
+					    	<div class="funkyradio-info">
+					            <input checked value="108000" type="radio" name="package" id="package-a" />
 					            <label for="package-a">Paket A Rp 108.000,- perbulan</label>
 					        </div>
-					        <div class="funkyradio-info">
+					    @else
+	                   		<div class="funkyradio-info">
+					            <input checked value="288000" type="radio" name="package" id="package-c" />
+					            <label for="package-c">Paket C Rp 288.000,- perbulan</label>
+					        </div>
+	                   		<div class="funkyradio-info">
 					            <input value="180000" type="radio" name="package" id="package-b" />
 					            <label for="package-b">Paket B Rp 180.000,- perbulan</label>
 					        </div>
 					        <div class="funkyradio-info">
-					            <input checked value="288000" type="radio" name="package" id="package-c" />
-					            <label for="package-c">Paket C Rp 288.000,- perbulan</label>
+					            <input value="108000" type="radio" name="package" id="package-a" />
+					            <label for="package-a">Paket A Rp 108.000,- perbulan</label>
 					        </div>
-					    
+					    @endif
 					        <br>
 					        <div class="form-group">
 						        <select name="amount_month" class="form-control">

@@ -72,7 +72,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Kegiatan Santri Pondok IT</a>
+                <a style="color: #337AB7; font-size: 30px;" class="navbar-brand" href="{{route('dashboard.home')}}"><b>Beranda</b></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -309,22 +309,31 @@
                             </div>
                             <!-- /input-group -->
                         </li> --}}
-                        
-                        @if(Auth::user()->hasRole('student') && Auth::user()->hasRole('master'))
-                        {{-- ===== Master Dasboard===== --}}
-                            @include('dashboard.menu.menu-master')
-                        @elseif(Auth::user()->hasRole('student') && Auth::user()->hasRole('foster_brother'))
-                        {{-- ===== Kakak Asuh Dasboard===== --}}
-                            @include('kakakAsuh.dashboard.menukka')
-                        @elseif(Auth::user()->hasRole('student') && Auth::user()->hasRole('admin'))
-                        {{-- ===== Admin Dasboard===== --}}
-                            @include('dashboard.menu.menu-admin')
-                        @elseif(Auth::user()->hasRole('student') && Auth::user()->hasRole('teacher'))
-                        {{-- ===== Teacher Dasboard===== --}}
-                            @include('dashboard.menu.menu-teacher')
+                        <?php
+                        $url = $_SERVER['REQUEST_URI'];
+                        $url_array = explode('/', $url);
+                        $url_t = array_pop($url_array);
+                        $url_end = end($url_array);
+
+                        ?>
+                        @if($_SERVER['REQUEST_URI'] == '/profile' || $url_end == 'profile')
                         @else
-                            {{-- ===== Student Dasboard===== --}}
-                            @include('dashboard.menu.menu-student')
+                            @if(Auth::user()->hasRole('student') && Auth::user()->hasRole('master'))
+                            {{-- ===== Master Dasboard===== --}}
+                                @include('dashboard.menu.menu-master')
+                            @elseif(Auth::user()->hasRole('student') && Auth::user()->hasRole('foster_brother'))
+                            {{-- ===== Kakak Asuh Dasboard===== --}}
+                                @include('kakakAsuh.dashboard.menukka')
+                            @elseif(Auth::user()->hasRole('student') && Auth::user()->hasRole('admin'))
+                            {{-- ===== Admin Dasboard===== --}}
+                                @include('dashboard.menu.menu-admin')
+                            @elseif(Auth::user()->hasRole('student') && Auth::user()->hasRole('teacher'))
+                            {{-- ===== Teacher Dasboard===== --}}
+                                @include('dashboard.menu.menu-teacher')
+                            @else
+                                {{-- ===== Student Dasboard===== --}}
+                                @include('dashboard.menu.menu-student')
+                            @endif
                         @endif
                     </ul>
                 </div>

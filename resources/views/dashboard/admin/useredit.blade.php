@@ -74,6 +74,16 @@ Ubah Santri / Staff
                         </td>
                       </tr>
                       <tr>
+                        <td><b>Status</b></td>
+                        <td>
+                          <select name="status" class="form-control">
+                            <option {{$user->status=='' ? 'selected' : ''}} value=""> </option>
+                            <option {{$user->status=='Mandiri' ? 'selected' : ''}}  value="Mandiri">Mandiri</option>
+                            <option {{$user->status=='Telah Dibiayai' ? 'selected' : ''}} value="Telah Dibiayai">Telah Dibiayai</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
                         <td><b>Tempat, Tanggal Lahir</b></td>
                         <td><input class="form-control" id="datepicker" name="date_birth" value="{{$user->date_birth}}"> , <input placeholder="Contoh : Jakarta" name="birth_place" class="form-control" value="{{$user->birth_place}}"></td>
                       </tr>
@@ -85,7 +95,15 @@ Ubah Santri / Staff
                           <input  {{$user->gender=='Wanita' ? 'checked' : ''}} type="radio" name="gender" value="Wanita"> Wanita<br>
                         </td>
                       </tr>
-                        <tr>
+                      <tr>
+                        <td><b>Kota</b></td>
+                        <td><input placeholder="Contoh : DIY" class="form-control" type="text" name="city" value="{{$user->city}}"></td>
+                      </tr>
+                      <tr>
+                        <td><b>Kabupaten</b></td>
+                        <td><input placeholder="Contoh : Bantul" class="form-control" type="text" name="district" value="{{$user->district}}"></td>
+                      </tr>
+                      <tr>
                         <td><b>Alamat</b></td>
                         <td><textarea placeholder="Contoh : jl.pesangrahan" class="form-control" type="text" name="address">{{$user->address}}</textarea></td>
                       </tr>

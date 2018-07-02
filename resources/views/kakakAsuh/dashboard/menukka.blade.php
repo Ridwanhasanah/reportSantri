@@ -27,10 +27,10 @@
     <a href="{{route('profile')}}"> <i class="fa fa-user fa-fw"></i>Profil Saya</a>
 </li>
 <li>
-    <a href=""> <i class="fa fa-users fa-fw"></i>Adik Asuh Saya</a>
+    <a href="{{route('caregiver.index')}}"> <i class="fa fa-users fa-fw"></i>Adik Asuh Saya</a>
 </li>
 <li>
-    <a href=""> <i class="fa fa-plus-circle fa-fw"></i>Tambah Adik Asuh</a>
+    <a href="{{route('kka.santri')}}"> <i class="fa fa-plus-circle fa-fw"></i>Tambah Adik Asuh</a>
 </li>
 <li>
     <a style="color: red;" href="{{route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>Kirim Saran</a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -77,6 +78,8 @@ class InvoiceController extends Controller
     {
         $invoice = Order::find($id);
 
+        // dd($package->package);
+
         $invoice->package      = $request->package;
         $invoice->amount_month = $request->amount_month;
         $invoice->price        = $request->price;
@@ -88,6 +91,29 @@ class InvoiceController extends Controller
                 ['santri',$invoice->santri_id],
 
             ])->update(['active'=>true]);
+
+            $package = DB::table('users')->select('*')->where('id',$invoice->santri_id)->first();
+
+            if ($package->package == null) {
+                if ($request->package == 108000) {
+                DB::table('users')->select('*')->
+                where('id',$invoice->santri_id)->update(['package'=>'A']);
+                }elseif ($request->package == 180000) {
+                    DB::table('users')->select('*')->
+                    where('id',$invoice->santri_id)->update(['package'=>'B']);
+                }elseif ($request->package == 288000) {
+                    DB::table('users')->select('*')->
+                    where('id',$invoice->santri_id)->update(['package'=>'C','status'=>'Telah Dibiayai']);
+                }
+            }elseif ($package->package == 'A' || $package->package == 'B') {
+                DB::table('users')->select('*')->
+                where('id',$invoice->santri_id)->update(['package'=>'AB','status'=>'Telah Dibiayai']);
+            }
+
+           
+
+            // DB::table('users')->select('*')->
+            // where('id',$invoice->santri_id)->update(['status'=>'Telah Dibiayai']);
         }
         $invoice->save();
 
@@ -104,6 +130,13 @@ class InvoiceController extends Controller
     {
         $invoice = Order::find($id);
         $invoice->delete();
+
+        DB::table('caregivers')->select('*')->
+            where([
+                ['caregiver',$invoice->user_id],
+                ['santri',$invoice->santri_id],
+
+            ])->delete();
     }
 
     public function apiInvoice(){

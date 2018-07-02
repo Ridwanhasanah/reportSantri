@@ -24,18 +24,13 @@ class CaregiverController extends Controller
             ['active',true],
         ])->get();
 
-        foreach ($caregivers as $id) {
-            // $user = DB::table('users')->select('*')->where('id',$id)->get();
-            echo "<pre>";
-            print_r($id->santri);
-            echo "</pre>";
-
-        }
-
-
-        // dd($caregivers);
-
-        // return view('kakakAsuh.dashboard.adik-asuh',compact('caregivers',$user));
+        $count = DB::table('caregivers')->select('*')
+        ->where([
+            ['caregiver',Auth::user()->id],
+            ['active',true],
+        ])->count();
+        
+        return view('kakakAsuh.dashboard.adik-asuh',compact('caregivers','user','count'));
     }
 
     /**

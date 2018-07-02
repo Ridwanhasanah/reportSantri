@@ -24,7 +24,8 @@ class OrderController extends Controller
 
     public function create($id_santri)
     {
-        return view('kakakAsuh.dashboard.orderForm', compact('id_santri'));    
+        $package = DB::table('users')->select('*')->where('id',$id_santri)->first();
+        return view('kakakAsuh.dashboard.orderForm', compact('id_santri','package'));    
     }
 
     public function store(Request $request, $id_santri)

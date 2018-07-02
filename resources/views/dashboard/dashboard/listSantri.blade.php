@@ -29,14 +29,16 @@ Semua Santri @if(!(Auth::user()->hasRole('foster_brother') && Auth::user()->hasR
                     @endif
                     <div class="card-santri-body">
                       <div class="card-santri-body2">
-                          <h4 style="margin-bottom: 0px; margin-top: 0px"><b>{{ucwords(strtolower("$student->name"))}}</b></h4><br>
+                          <h4 style="margin-bottom: 0px; margin-top: 0px"><b>{{ucwords(strtolower("$student->name"))}}</b> -{{$student->status}}</h4><br>
                           <p><i class="fa fa-map-marker" style="font-size: 20px;"></i>{{$student->city}} - {{$student->district}}</p>
                           <p>{{ str_limit($student->quote, 70) }}</p>
                       </div>
                       <div class="card-santri-footer">
-                        <a href="#" class="btn btn-success">See Profile</a>
+                        <a href="{{route('profile.show',$student->id)}}" class="btn btn-success">Lihat Profil</a>
                         @if(Auth::user()->hasRole('foster_brother'))
-                        <a style="margin-left: 10px;" href="{{route('paket-amal.create',$student->id)}}" class="btn btn-info pull-right">Tambah</a>
+                          @if($student->status == '')
+                            <a style="margin-left: 10px;" href="{{route('paket-amal.create',$student->id)}}" class="btn btn-info pull-right">Tambah</a>
+                          @endif
                         @endif
                       </div>
                   </div>

@@ -86,6 +86,8 @@ class AllUserController extends Controller
         $member->date_birth  = $request->date_birth;
         $member->birth_place = $request->birth_place;
         $member->gender      = $request->gender;
+        $member->city        = $request->city;
+        $member->district    = $request->district;
         $member->address     = $request->address;
         $member->email       = $request->email;
         $member->hp          = $request->hp;
@@ -192,9 +194,12 @@ class AllUserController extends Controller
         $user  = User::find($id);
 
         $user->department  = $request->department;
+        $user->status      = $request->status;
         $user->date_birth  = $request->date_birth;
         $user->birth_place = $request->birth_place;
         $user->gender      = $request->gender;
+        $user->city        = $request->city;
+        $user->district    = $request->district;
         $user->address     = $request->address;
         $user->email       = $request->email;
         $user->hp          = $request->hp;
@@ -206,11 +211,11 @@ class AllUserController extends Controller
 
         if ($request->hasFile('photo')) {
 
-            if (strlen($request->photo) != 0){
-                //unlink(public_path('storage/photos/'.$user->photo));
+            // if (strlen($request->photo) != 0){
+            //     //unlink(public_path('storage/photos/'.$user->photo));
 
-                echo '<h1>'.strlen($request->photo).'</h1>';
-            }
+            //     echo '<h1>'.strlen($request->photo).'</h1>';
+            // }
             
             $filename = Auth::user()->id.$request->photo->getClientOriginalName();
             

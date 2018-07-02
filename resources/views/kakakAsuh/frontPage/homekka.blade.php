@@ -92,7 +92,7 @@
 						<a href="" class="btn btn-lg btn-danger hidden-xs">Lanjut <span class="ti-arrow-right""></span></a>
 					</div>
 					<div class="kka1a col-xs-12 col-sm-12 col-md-6 col-lg-5 ">
-						<img id="bouncing1" src="https://sedekahharian.com/assets/kakakasuh/img/kakak-asuh-perempuan.png">
+						<img id="bouncing1" src="{{asset('images/kakakasuh1.png')}}">
 					</div>
 				</div>
 				{{-- row 1 end--}}
@@ -275,7 +275,7 @@
 							</form>
 						</div>
 						<div class="col col-lg-5 col-xs-12">
-							<img id="bouncing2" src="https://sedekahharian.com/assets/kakakasuh/img/kakak-asuh-pria.png">
+							<img id="bouncing2" src="{{asset('images/kakakasuh2.png')}}">
 						</div>
 					</div>
 				</div>

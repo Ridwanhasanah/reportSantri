@@ -14,12 +14,9 @@
 
 
 // Route Tes
-Route::group(['middleware' => ['auth','role:teacher']], function(){
-    Route::get('/master', function(){
-        return "<h1>Ini Master Page</h1>";
-    });
+Route::get('tpr',function(){
+	return view('dashboard.profile.test');
 });
-
 Route::get('/', function(){
 	return view('kakakAsuh.frontPage.homekka');
 });
@@ -61,6 +58,8 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 
 	/*===== Profile Start ===== */
 	Route::get('profile','ProfileController@index')->name('profile');
+	// SHOW
+	Route::get('profile/{id}','ProfileController@show')->name('profile.show');
 	/*Edit*/
 	Route::get('profile/{id}/edit','ProfileController@edit')->name('profile.edit');
 	Route::patch('profile/{id}/edit','ProfileController@update')->name('profile.update');
@@ -221,6 +220,11 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::resource('invoice-admin','Admin\InvoiceController');
 		Route::get('api/invoice-admin','Admin\InvoiceController@apiInvoice')->name('api.invoice-admin');
 		/*===== Invoice end =====*/
+
+		/*=== Confirmation Start =====*/
+		Route::resource('confirmation-admin','Admin\ConfirmationController');
+		Route::get('api/confirmation-admin','Admin\ConfirmationController@apiConfirmation')->name('api.confirmation-admin');
+		/*=== Confirmation End =====*/
 		
 		/*Route Admin, route ini sudah termasuk CRUD karna ini Route::reosurce lebih jelas liat dok laravel*/
 		Route::resources([

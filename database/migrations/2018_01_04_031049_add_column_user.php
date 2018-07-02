@@ -38,7 +38,8 @@ class AddColumnUser extends Migration
             $table->text('quote')->nullable();
             $table->boolean('active')->default(false);
             $table->string('activation_token')->nullable();
-
+            $table->string('status')->nullable();
+            $table->string('package')->nullable();
         });
     }
 

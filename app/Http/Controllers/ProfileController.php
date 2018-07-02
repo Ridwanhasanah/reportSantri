@@ -27,9 +27,12 @@ class ProfileController extends Controller
         //
     }
 
+    /*===== Show =====*/
     public function show($id)
     {
-        
+        $user = User::find($id);
+
+        return view('dashboard.profile.profile', compact('user'));
     }
 
     public function edit($id)
@@ -60,14 +63,14 @@ class ProfileController extends Controller
         // dd(storage_path().'/app/public/photos');
         if ($request->hasFile('photo')) {
 
-            if (strlen($request->photo) != 0){
+//             if (strlen($request->photo) != 0){
 
-                return storage_path().'/app/public/photos'.$request->photo->delete();
+//                 return storage_path().'/app/public/photos'.$request->photo->delete();
                 
-//unlink(storeAs('photos').$user->photo);
+// //unlink(storeAs('photos').$user->photo);
 
-                // echo '<h1>'.strlen($request->photo).'</h1>';
-            }
+//                 // echo '<h1>'.strlen($request->photo).'</h1>';
+//             }
             $filename = Auth::user()->id.$request->photo->getClientOriginalName();
         
             $request->file('photo')->storeAs('photos',$filename);
