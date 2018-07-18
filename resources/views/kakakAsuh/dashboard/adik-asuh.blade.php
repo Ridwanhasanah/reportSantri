@@ -8,7 +8,7 @@ Semua Santri
 <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">Semua Santri</h1>
+        <h1 class="page-header">Adik Asuh</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -35,7 +35,7 @@ Semua Santri
                           <p>{{ str_limit($user[0]->quote, 70) }}</p>
                       </div>
                       <div class="card-santri-footer">
-                        <a href="#" class="btn btn-success">See Profile</a>
+                        <a target="_blank" href="{{route('profile.show',$user[0]->id)}}" class="btn btn-success">Lihat Profil</a>
                       </div>
                   </div>
             </div>

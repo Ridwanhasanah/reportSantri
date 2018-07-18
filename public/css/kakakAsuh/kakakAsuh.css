@@ -6,7 +6,19 @@
 	/*margin: 15px 0px 15px 0px;*/
 	padding: 10px 0px 10px 0px;
 }
-
+@media (max-width: 991px) {
+    .hide-img{
+        display: none;
+    }
+    .footer-row-sm{
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+    }
+    .footer-col-sm{
+        padding-bottom: 2px !important;
+        padding-top: 2px !important;
+    }
+}
 .kka1{
 	background: #fff;
 	padding-top: 20px;

@@ -91,7 +91,7 @@
 						</h3>
 						<a href="" class="btn btn-lg btn-danger hidden-xs">Lanjut <span class="ti-arrow-right""></span></a>
 					</div>
-					<div class="kka1a col-xs-12 col-sm-12 col-md-6 col-lg-5 ">
+					<div class="kka1a col-xs-12 col-sm-12 col-md-6 col-lg-5 hide-img">
 						<img id="bouncing1" src="{{asset('images/kakakasuh1.png')}}">
 					</div>
 				</div>
@@ -274,7 +274,7 @@
 									</div>
 							</form>
 						</div>
-						<div class="col col-lg-5 col-xs-12">
+						<div class="col col-xs-12 col-sm-12 col-md-6 col-lg-5 hide-img">
 							<img id="bouncing2" src="{{asset('images/kakakasuh2.png')}}">
 						</div>
 					</div>
@@ -282,8 +282,24 @@
 				{{-- row 5 end --}}
 				{{-- footer start --}}
 				<footer class="row kka-footer">
-					<div class="footer-row">
-						<div class="col col-xs-12 col-lg-3 footer-col">
+					<div class="footer-row footer-row-sm">
+						<div class="col col-xs-12 col-lg-3 col-sm-6 footer-col">
+							<div class="icon-top">
+								<i class="fa fa-envelope"></i>
+							</div>
+							<p>
+								info@pondokit.com
+							</p>						
+						</div>
+						<div class="col col-xs-12 col-lg-3 col-sm-6 footer-col">
+							<div class="icon-top">
+								<i class="fa fa-phone"></i>
+							</div>
+							<p>
+								085228802828 (informasi)
+							</p>						
+						</div>
+						<div class="col col-xs-12 col-lg-3 col-sm-6 footer-col">
 							<div class="icon-top">
 								<i class="fa fa-map-marker"></i>
 							</div>
@@ -297,23 +313,7 @@
 								Daerah Istimewa Yogyakarta 
 							</p>						
 						</div>
-						<div class="col col-xs-12 col-lg-3 footer-col">
-							<div class="icon-top">
-								<i class="fa fa-envelope"></i>
-							</div>
-							<p>
-								info@pondokit.com
-							</p>						
-						</div>
-						<div class="col col-xs-12 col-lg-3 footer-col">
-							<div class="icon-top">
-								<i class="fa fa-phone"></i>
-							</div>
-							<p>
-								085228802828 (informasi)
-							</p>						
-						</div>
-						<div class="col col-xs-12 col-lg-3 footer-col footer-sosmed">
+						<div class="col col-xs-12 col-lg-3 col-sm-6 footer-col footer-sosmed">
 							<div class="icon-top">
 								<a href="https://www.facebook.com/pondokitcom/?ref=br_rs" target="_blank">
 									<i class="fa fa-facebook"></i>

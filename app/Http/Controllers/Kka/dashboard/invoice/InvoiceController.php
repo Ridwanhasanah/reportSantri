@@ -24,7 +24,7 @@ class InvoiceController extends Controller
             ['status', 'unpaid'],
             ['user_id',  $id],
         ])->count();
-        dd($unpaid);
+        // dd($unpaid);
     }
     public function show($id)
     {
@@ -50,21 +50,19 @@ class InvoiceController extends Controller
              return 'Rp '.$invoices->price;
         })
         ->addColumn('action', function($invoices){
-            if ($invoices->status == "unpaid") {
-             return '<a target="_blank" onclick="detailInvoice('.$invoices->id.')" class="btn btn-danger btn-outline" style="width:85px;" >'.$invoices->status.'</a>'.
+            if ($invoices->status == 'unpaid') {
+                return '<a target="_blank" onclick="detailInvoice('.$invoices->id.')" class="btn btn-danger btn-outline" style="width:110px;" >Belum Bayar</a>'.
                 '<a target="_blank" style="margin-left: 5px;" onclick="detailInvoice('.$invoices->id.')" class="btn btn-outline btn-info btn-xs">Detail</a> ';
-
-             }elseif ($invoices->status == "paid") {
-             return '<a target="_blank" onclick="detailInvoice('.$invoices->id.')" class="btn btn-success btn-outline" style="width:85px;" >'.$invoices->status.'</a>'.
+            }elseif ($invoices->status == 'paid') {
+                return '<a target="_blank" onclick="detailInvoice('.$invoices->id.')" class="btn btn-success btn-outline" style="width:110px;" >Sudah Bayar</a>'.
                 '<a target="_blank" style="margin-left: 5px;" onclick="detailInvoice('.$invoices->id.')" class="btn btn-outline btn-info btn-xs">Detail</a> ';
-
-             }elseif ($invoices->status == "canceled") {
-                return '<a target="_blank" onclick="detailInvoice('.$invoices->id.')" class="btn btn-default btn-outline" style="width:85px;" >'.$invoices->status.'</a>'.
+            }elseif ($invoices->status == 'canceled') {
+                return '<a target="_blank" onclick="detailInvoice('.$invoices->id.')" class="btn btn-default btn-outline" style="width:110px;" >Batal</a>'.
                 '<a target="_blank" style="margin-left: 5px;" onclick="detailInvoice('.$invoices->id.')" class="btn btn-outline btn-info btn-xs">Detail</a> ';
-             }else{
-                return '<a target="_blank" onclick="detailInvoice('.$invoices->id.')" class="btn btn-info btn-outline" style="width:85px;" >'.$invoices->status.'</a>'.
+            }else {
+                return '<a target="_blank" onclick="detailInvoice('.$invoices->id.')" class="btn btn-info btn-outline" style="width:110px;" >Di Kembalikan</a>'.
                 '<a target="_blank" style="margin-left: 5px;" onclick="detailInvoice('.$invoices->id.')" class="btn btn-outline btn-info btn-xs">Detail</a> ';
-             }
+            }
         })->make(true);
         
     }

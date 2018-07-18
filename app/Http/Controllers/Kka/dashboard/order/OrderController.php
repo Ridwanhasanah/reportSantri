@@ -56,6 +56,8 @@ class OrderController extends Controller
         $caregiver->caregiver = Auth::user()->id;
         $caregiver->santri    = $id_santri;
         $caregiver->active    = false;
+        $today = date('Y-m-d H:i:s'); //tanggal hari ini
+        $caregiver->expired      = date('Y-m-d H:i:s', strtotime("+$request->amount_month month", strtotime($today)));
         $caregiver->save();
         
 

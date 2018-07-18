@@ -140,7 +140,7 @@ class AllUserController extends Controller
         }elseif ($request->department == 'Foster Brother') {
             
             $role_users3->user_id = $member->id;
-            $role_users3->role_id = 3;
+            $role_users3->role_id = 4;
             $role_users5->user_id = $member->id;
             $role_users5->role_id = 5;
 

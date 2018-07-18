@@ -34,7 +34,7 @@ Semua Santri @if(!(Auth::user()->hasRole('foster_brother') && Auth::user()->hasR
                           <p>{{ str_limit($student->quote, 70) }}</p>
                       </div>
                       <div class="card-santri-footer">
-                        <a href="{{route('profile.show',$student->id)}}" class="btn btn-success">Lihat Profil</a>
+                        <a target="_blank" href="{{route('profile.show',$student->id)}}" class="btn btn-success">Lihat Profil</a>
                         @if(Auth::user()->hasRole('foster_brother'))
                           @if($student->status == '')
                             <a style="margin-left: 10px;" href="{{route('paket-amal.create',$student->id)}}" class="btn btn-info pull-right">Tambah</a>

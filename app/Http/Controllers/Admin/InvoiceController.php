@@ -84,6 +84,8 @@ class InvoiceController extends Controller
         $invoice->amount_month = $request->amount_month;
         $invoice->price        = $request->price;
         $invoice->status       = $request->status;
+        
+        
         if ($request->status == 'paid') {
             DB::table('caregivers')->select('*')->
             where([
@@ -94,7 +96,7 @@ class InvoiceController extends Controller
 
             $package = DB::table('users')->select('*')->where('id',$invoice->santri_id)->first();
 
-            if ($package->package == null) {
+            if ($package->package == '') {
                 if ($request->package == 108000) {
                 DB::table('users')->select('*')->
                 where('id',$invoice->santri_id)->update(['package'=>'A']);
@@ -135,8 +137,10 @@ class InvoiceController extends Controller
             where([
                 ['caregiver',$invoice->user_id],
                 ['santri',$invoice->santri_id],
-
             ])->delete();
+
+        DB::table('users')->select('*')->
+            where('id',$invoice->santri_id)->update(['status'=>NULL]);
     }
 
     public function apiInvoice(){

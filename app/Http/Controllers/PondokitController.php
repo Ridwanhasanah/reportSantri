@@ -5,6 +5,7 @@ use App\Models\Goal;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Caregiver;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +14,20 @@ class PondokitController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $santri = DB::table('caregivers')->select('*')->get();
+        foreach ($santri as $santri) {
+            
+            // echo strtotime(date('Y-m-d H:i:s'));
+            // echo $expired = date(strtotime($santri->expired)); 
+            if (strtotime($santri->expired) <= strtotime(date('Y-m-d H:i:s')) ) {
+                DB::table('users')->select('*')->where('id',$santri->santri)
+                ->update(['status'=>'','package'=>'']);
+            //     echo "<pre>";
+            //     echo $santri->expired . "==" . date('Y-m-d H:i:s');
+            //     echo "</pre>";
+
+            }
+        }
     }
 
     // public function handle($request, Closure $next)
@@ -25,8 +40,7 @@ class PondokitController extends Controller
     //     return redirect('home');
     // }
     
-    public function index()
-    {
+    public function index(){
 
 
         $programmer = DB::table('users')->where('department','Programmer')->count();
