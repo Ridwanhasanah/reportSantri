@@ -15,7 +15,7 @@
 					<div class="form-group">
 						<label for="activity" class="col-md-1 control-label">Kegiatan</label>
 						<div class="col-md-11">
-							<textarea type="text" name="activity" id="activity" class="form-control wysiwyg" autofocus required></textarea>
+							<textarea type="text" name="activity" id="activity" class="form-control" autofocus required></textarea>
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>

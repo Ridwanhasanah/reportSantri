@@ -8,7 +8,7 @@ Semua Santri @if(!(Auth::user()->hasRole('foster_brother') && Auth::user()->hasR
 <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">Semua Santri @if(!(Auth::user()->hasRole('foster_brother') && Auth::user()->hasRole('foster_brother'))){{$divisi}}@endif</h1>
+        <h1 class="page-header">Semua Santri {{-- @if(!(Auth::user()->hasRole('foster_brother') && Auth::user()->hasRole('foster_brother'))){{$divisi}}@endif --}}</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>

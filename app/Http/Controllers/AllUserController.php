@@ -211,19 +211,19 @@ class AllUserController extends Controller
 
         if ($request->hasFile('photo')) {
 
-            // if (strlen($request->photo) != 0){
-            //     //unlink(public_path('storage/photos/'.$user->photo));
-
-            //     echo '<h1>'.strlen($request->photo).'</h1>';
-            // }
+            $extention =  $request->photo->getClientOriginalName();
+            $extention1 = explode('.', $extention);
+            $extention2 = end($extention1);
+            // dd($extention2);
+            if ($extention2 == "png" || $extention2 == "jpg") {
+                $filename = Auth::user()->id.$request->photo->getClientOriginalName();
             
-            $filename = Auth::user()->id.$request->photo->getClientOriginalName();
-            
-            $request->file('photo')->storeAs('photos',$filename);
+                $request->file('photo')->storeAs('photos',$filename);
 
-            $user->photo   = $filename;
-
-
+                $user->photo  = $filename;
+            }else{
+                return redirect()->back()->with('danger','Maaf anda hanya di perbolehkan menguplod file PNG atau JPG');
+            }
         }
 
         $user->update();

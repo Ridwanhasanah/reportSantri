@@ -205,7 +205,7 @@ class ActivityController extends Controller
             return $activities->when;
         })
         ->addColumn('activity', function($activities){
-             return html_entity_decode('<b>bismillah</b>');
+            return $activities->activity;
         })
         ->addColumn('action', function($activities){
             return '<a onclick="editActivity('.$activities->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.

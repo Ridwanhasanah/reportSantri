@@ -13,20 +13,8 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         return view('dashboard.profile.profile',compact('user'));
-
-
     }
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
+    
     /*===== Show =====*/
     public function show($id)
     {
@@ -63,26 +51,20 @@ class ProfileController extends Controller
         // dd(storage_path().'/app/public/photos');
         if ($request->hasFile('photo')) {
 
-//             if (strlen($request->photo) != 0){
-
-//                 return storage_path().'/app/public/photos'.$request->photo->delete();
-                
-// //unlink(storeAs('photos').$user->photo);
-
-//                 // echo '<h1>'.strlen($request->photo).'</h1>';
-//             }
-            $filename = Auth::user()->id.$request->photo->getClientOriginalName();
-        
-            $request->file('photo')->storeAs('photos',$filename);
-
-            $user->photo  = $filename;
+            $extention =  $request->photo->getClientOriginalName();
+            $extention1 = explode('.', $extention);
+            $extention2 = end($extention1);
+            // dd($extention2);
+            if ($extention2 == "png" || $extention2 == "jpg") {
+                $filename = Auth::user()->id.$request->photo->getClientOriginalName();
             
+                $request->file('photo')->storeAs('photos',$filename);
 
-
+                $user->photo  = $filename;
+            }else{
+                return redirect()->back()->with('danger','Maaf anda hanya di perbolehkan menguplod file PNG atau JPG');
+            }
         }
-
-
-
         $user->update();
 
         return redirect()->back()->with('success', 'Profile Updated');
