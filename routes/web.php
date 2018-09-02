@@ -138,6 +138,8 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::get('user/imers','AllUserController@santriImers')->name('user.imers');
 		Route::get('user/cyber','AllUserController@santriCyber')->name('user.cyber');
 		Route::get('user/kka','AllUserController@kka')->name('user.kka');
+		// Delete Kakak asuh
+		Route::delete('user/kka/{id}/delete','AllUserController@kkaDestroy')->name('user.kka.destroy');
 		Route::get('user/staff','AllUserController@index')->name('user.staff');
 
 		/*===== Acitivity Santri CRUD For The Admin Access Start =====*/

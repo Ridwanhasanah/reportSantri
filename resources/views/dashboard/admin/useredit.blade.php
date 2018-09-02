@@ -30,7 +30,7 @@ Ubah Santri / Staff
                 @if (strlen($user->photo) ==0)
                   <img alt="User Pic" src="{{asset('images/flower.jpg')}}" class="img-circle img-responsive"> 
                 @else
-                  <img alt="User Pic" src="{{asset('storage/photos/'.$user->photo)}}" class="img-circle img-responsive"> 
+                  <img alt="User Pic" src="{{asset('storage/photos/'.$user->photo)}}" class="img-circle img-responsive">
                 @endif 
                   <br>
                   <input type="file" name="photo" class="form-control">

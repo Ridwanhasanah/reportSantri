@@ -116,19 +116,24 @@
          </div>
      </div>
       <div class="row">
-         {{-- <div class="col-lg-12 col-md-12 col-sm-12">
-            <strong> Important: </strong>
+         <div class="col-lg-12 col-md-12 col-sm-12">
+            <strong> Anda Dapat mentransfer ke rekening berikut: </strong>
              <ol>
                   <li>
-                    This is an electronic generated invoice so doesn't require any signature.
+                    BNI 0276409213 (Kode 009) Atas Nama Pondok IT
 
                  </li>
                  <li>
-                     Please read all terms and polices on  www.yourdomaon.com for returns, replacement and other issues.
-
+                    Mandiri Syariah 7528802828 Atas Nama Pondok IT
+                 </li>
+                 <li>
+                    BCA  8465039848  (Kode 014) Atas Nama Rulli Indrawan
+                 </li>
+                 <li>
+                    Mandiri 1370009976966 (kode 008) Atas Nama Rulli Indrawan
                  </li>
              </ol>
-             </div> --}}
+             </div>
          </div>
       <div class="row pad-top-botm">
          {{-- <div class="col-lg-12 col-md-12 col-sm-12">

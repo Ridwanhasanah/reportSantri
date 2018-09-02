@@ -81,7 +81,7 @@
 				{{-- row 1 start--}}
 				<div class="row kka1">
 					<div class="kka1a col col-xs-12 col-sm-12 col-md-6 col-lg-7 ">
-						<img src="http://pondokit.com/wp-content/uploads/2017/10/Logo-IT-tulisan-putih-e1519097611504.png">
+						<img width="40%" src="{{asset('images/pondokit.png')}}" alt="pondokit">
 						<h1>
 							Ayo jadi kakak asuh di Pondok IT,
 							Pondok IT Membuka program membantu adik asuh (santri Pondok IT) yang tidak mampu atau belum mandiri

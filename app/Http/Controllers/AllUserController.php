@@ -193,6 +193,7 @@ class AllUserController extends Controller
     {
         $user  = User::find($id);
 
+        $user->name        = $request->name;
         $user->department  = $request->department;
         $user->status      = $request->status;
         $user->date_birth  = $request->date_birth;
@@ -313,11 +314,19 @@ class AllUserController extends Controller
         $url_array = explode('/', $url);
         $divisi = end($url_array);
 
-        /*Menghitung Total santri*/
+        /*Menghitung Total kakakasuh*/
         $total = DB::table('users')->where('department','Foster Brother')->count();
 
 
         return view('dashboard.admin.kakakAsuh.kakakAsuh', compact('users','divisi', 'total'));
+
+    }
+    public function kkaDestroy($id){
+
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back()->with('danger', 'Kakak Asuh sudah di hapus');;
+
 
     }
 

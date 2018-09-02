@@ -53,7 +53,7 @@ Santri @if($divisi=='kka'){{"Kakak Asuh"}}@endif
                                                             <input type="hidden">
                                                         </button>
                                                     <a>
-                                                    <form style="float: left; color: red;" class="" action="{{route('user.destroy',$user->id)}}" method="post">
+                                                    <form style="float: left; color: red;" class="" action="{{route('user.kka.destroy',$user->id)}}" method="post">
                                                           {{ csrf_field() }}
                                                           {{ method_field('DELETE') }}
                                                           <button type="submit" class="btn btn-danger rbtn">

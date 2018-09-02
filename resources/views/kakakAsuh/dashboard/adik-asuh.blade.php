@@ -36,6 +36,7 @@ Semua Santri
                       </div>
                       <div class="card-santri-footer">
                         <a target="_blank" href="{{route('profile.show',$user[0]->id)}}" class="btn btn-success">Lihat Profil</a>
+                        <a target="_blank" href="{{route('profile.show',$user[0]->id)}}" class="btn btn-info">Lihat Laporan</a>
                       </div>
                   </div>
             </div>
