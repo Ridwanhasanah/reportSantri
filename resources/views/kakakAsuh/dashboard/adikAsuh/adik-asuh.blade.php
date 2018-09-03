@@ -13,7 +13,7 @@ Semua Santri
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-<div class="row">
+<div class="row" style="padding-bottom:10%;">
     <div class="col col-lg-12">
         @for($i=0; $i<$count; $i++)
         <?php $user = DB::table('users')->select('*')->where('id',$caregivers[$i]->santri)->get(); ?>
@@ -35,8 +35,22 @@ Semua Santri
                           <p>{{ str_limit($user[0]->quote, 70) }}</p>
                       </div>
                       <div class="card-santri-footer">
-                        <a target="_blank" href="{{route('profile.show',$user[0]->id)}}" class="btn btn-success">Lihat Profil</a>
-                        <a target="_blank" href="{{route('profile.show',$user[0]->id)}}" class="btn btn-info">Lihat Laporan</a>
+                        <a class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#">
+                            Lihat Laporan
+                        </a>
+                        <ul class="dropdown-menu" style="top:auto; left:auto;">
+                            <li>
+                                <a target="_blank" href="{{route('adik.activity',$user[0]->id)}}"><i class="fa fa-th-list fa-fw"></i> Kegiatan</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="{{route('adik.target',$user[0]->id)}}"><i class="fa fa-dot-circle-o fa-fw"></i> Target</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="{{route('adik.amaliyah',$user[0]->id)}}"><i class="fa fa-moon-o fa-fw"></i> Amaliyah</a>
+                            </li>
+                        </ul>
+                        <a target="_blank" href="{{route('profile.show',$user[0]->id)}}" class="btn btn-success">Lihat Profil</a> &nbsp;
+                        
                       </div>
                   </div>
             </div>

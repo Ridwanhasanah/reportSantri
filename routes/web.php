@@ -121,7 +121,23 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		/*Confirmation*/
 		Route::get('konfirmasi','Kka\dashboard\invoice\ConfirmationController@create')->name('confirmation.create');
 		Route::post('konfirmasi','Kka\dashboard\invoice\ConfirmationController@store')->name('confirmation.store');
+		
+		/*
+		====== Adik Asuh Start =========
+		*/ 
+		// activity
+		Route::get('activity/adik-asuh/{id}','Kka\dashboard\CaregiverController@indexActivtySantri')->name('adik.activity');
+		//Api Activity apiActivtySantri
+		Route::get('api-activity/adik-asuh/{id}','Kka\dashboard\CaregiverController@apiActivtySantri')->name('adik.api-activity');		
+		//Taeget / Goal apiGoalSantri
+		Route::get('target/adik-asuh/{id}','Kka\dashboard\CaregiverController@indexGoalSantri')->name('adik.target');
+		//Api Target / Goal
+		Route::get('api-target/adik-asuh/{id}','Kka\dashboard\CaregiverController@apiGoalSantri')->name('adik.api-target');				
+		Route::get('amaliyah/adik-asuh/{id}','Kka\dashboard\CaregiverController@amaliyahIndex')->name('adik.amaliyah');
 
+		/*
+		====== Adik Asuh End =========
+		*/ 
 	});
 	/*=============================================================================================*/
 	/*======================================== Caregiver end ========================================*/
@@ -130,7 +146,9 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 	/*=============================================================================================*/
 	/*======================================== Admin Start ========================================*/
 	/*=============================================================================================*/
+	// Route::group(['middleware'=>['auth','role:teacher']], function(){ /*Auth untuk chek admin atau bukan*/
 	Route::group(['middleware'=>['auth','role:teacher']], function(){ /*Auth untuk chek admin atau bukan*/
+		
 
 		/*All Divisi*/
 		Route::get('user/programmer','AllUserController@santriProgrammer')->name('user.programmer');
