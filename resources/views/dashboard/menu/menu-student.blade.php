@@ -31,7 +31,7 @@
     </ul>
 </li>
 <li>
-    <a href="{{route('motor.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Izin Motor<span class="fa arrow"></span></a>
+    <a href="{{route('motor.index')}}"> <i class="fa fa-plane fa-fw"></i>Izin Pergi<span class="fa arrow"></span></a>
 </li>
 <li>
     <a href="{{route('amaliyah.index')}}"> <i class="fa fa-moon-o fa-fw"></i>Amaliah<span class="fa arrow"></span></a>

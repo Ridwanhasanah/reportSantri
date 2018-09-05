@@ -87,7 +87,7 @@
     <a href="{{route('confirmation-admin.index')}}"> <i class="fa fa-pencil fa-fw"></i>Konfirmasi Transfer</a>
 </li>
 <li>
-    <a href="{{route('adminmotor.index')}}">Semua Izin Motor</a>
+    <a href="{{route('adminmotor.index')}}"><i class="fa fa-plane fa-fw"></i> Semua Surat Izin</a>
 </li>
 {{-- Kirim Saran --}}
 <li>

@@ -22,7 +22,7 @@
 						</div>
 					</div>
 
-					<div id="motor1" class="form-group">
+					<div style="display: none;" id="motor1" class="form-group">
 						<label for="motor" class="col-md-3 control-label">Motor</label>
 						<div class="col-md-6">
 							<select name="motor" class="form-control">

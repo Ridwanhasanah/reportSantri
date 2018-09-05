@@ -73,7 +73,7 @@ class MotorController extends Controller
 
         return Datatables::of($motors)
         ->addColumn('action', function($motors){
-            return '<a onclick="editMotor('.$motors->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp;Edit</a> '.
+            return '<a onclick="editMotor('.$motors->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;&nbsp; Selesai</a> '.
                 '<a onclick="deleteMotor('.$motors->id.')" class="btn btn-outline btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;&nbsp;Delete</a> ';
         })->make(true);
     }

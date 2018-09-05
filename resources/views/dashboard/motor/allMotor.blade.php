@@ -1,6 +1,6 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-Semua Izin Motor
+Semua Surat Izin
 @endsection
 
 @section('content')
@@ -10,15 +10,15 @@ Semua Izin Motor
   <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">Semua Izin Motor</h1>
+        <h1 class="page-header">Semua Surat Izin</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>Semua Izin Motor
-                    <a onclick="createMotor()" class="btn btn-primary pull-right" style="margin-top: -8px;">Izin pakai motor</a>
+                <h4>Semua Surat Izin
+                    <a onclick="createMotor()" class="btn btn-primary pull-right" style="margin-top: -8px;">Buat Surat Izin pergi</a>
                 </h4>
             </div>
             <div class="panel-body">
@@ -30,7 +30,7 @@ Semua Izin Motor
                             @if (Auth::user()->hasRole('teacher'))
                             <th width="100">Nama</th>
                             @endif
-                            <th width="150">Motor</th>
+                            {{-- <th width="150">Motor</th> --}}
                             <th >Keterangan</th>
                             <th width="150"></th>
                         </tr>
@@ -55,7 +55,7 @@ Semua Izin Motor
                     columns:[
                       {data: 'borrow', name: 'borrow'},
                       {data: 'return', name: 'return'},
-                      {data: 'motor', name: 'motor'},
+                      // {data: 'motor', name: 'motor'},
                       {data: 'info', name: 'info'},
                       {data: 'action', name: 'action', ordertable: false, searchable:false}
 
@@ -66,14 +66,15 @@ Semua Izin Motor
     /*Tambah Data*/
       function createMotor(){ /*function ini di taro di <a onclick="addForm()" class="btn btn-primary pull-right" style="margin-top: -8px;">Izin pakai motor</a>*/
         save_method = "add"; /*ini menentukan url yang akan d gunakan*/
-        $('input[name=_method]').val('POST'); /*Untuk input post yanad ada di modal form, method_field()*/
+        $('input[name=_method]').val('POST'); /*Untuk input post yang ada di modal form, method_field()*/
         $('#modal-form').modal('show');
         $('#modal-form form')[0].reset(); /*untuk mereset form input*/
-        $('.modal-title').text('Izin Pakai Motor'); /*untuk memberikan judul title kontak pada form h3 class="modal-title"></h3>*/
+        $('.modal-title').text('Surat Izin Pergi'); /*untuk memberikan judul title kontak pada form h3 class="modal-title"></h3>*/
       }
 
       /*Edit Data*/
       function editMotor(id){
+
         save_method = 'edit';
         $('input[name=_method ]').val('PATCH');
         $('#modal-form form')[0].reset();
@@ -82,12 +83,12 @@ Semua Izin Motor
           type: "GET",
           dataType: "JSON",
           success: function(data){
-            $('#modal-form').modal('show');
-            $('.modal-title').text('Selesai pinjam motor');
+            // $('#modal-form').modal('show');
+            // $('.modal-title').text('Selesai pinjam motor');
 
-            $('#info1').hide();
-            $('#motor1').hide();
-            $('#motor2').show();
+            // $('#info1').hide();
+            // $('#motor1').hide();
+            // $('#motor2').show();
 
             $('#id').val(data.id);
             $('#borrow').val(data.borrow);
@@ -97,14 +98,30 @@ Semua Izin Motor
             // $('#motor').val(data.motor).attr('selected','selected');
             $('#info').val(data.info);
 
-          },
-          error: function(){
-            swal({
-                title: 'Oops',
-                text: 'Something went wrong',
-                type: 'error',
-                timer: '1500'
-              });
+            $.ajax({ //ini untuk jika di klik langsung edit
+
+              url : "{{ url('motor') . '/' }}" + id,
+              type : "POST",
+              data : $('#modal-form form').serialize(),
+              success : function(data){
+                $('#modal-form').modal('hide');
+                table.ajax.reload()
+                swal({
+                  title: 'Berhasil',
+                  type: 'success',
+                  timer: '1500'
+                })
+              },
+              error : function(){
+                swal({
+                  title: 'Oops',
+                  text: 'Something Error',
+                  type: 'error',
+                  timer: '1500'
+                })
+              }
+            });
+
           }
         });
       }
@@ -179,7 +196,6 @@ Semua Izin Motor
           if(!e.isDefaultPrevented()){
             var id = $('#id').val();
             if (save_method == 'add'){ url = "{{ url('motor')}}";}
-            else url = "{{ url('motor') . '/' }}" + id;
 
             $.ajax({
               url : url,
@@ -220,7 +236,7 @@ Semua Izin Motor
                       {data: 'borrow', name: 'borrow'},
                       {data: 'return', name: 'return'},
                       {data: 'name', name: 'name'},
-                      {data: 'motor', name: 'motor'},
+                      // {data: 'motor', name: 'motor'},
                       {data: 'info', name: 'info'},
                       {data: 'action', name: 'action', ordertable: false, searchable:false}
 

@@ -76,5 +76,5 @@
     <a href="#5"><i class="fa fa-shield fa-fw"></i> Tataterib Pondok IT</span></a>
 </li>
 <li>
-    <a href="{{route('adminmotor.index')}}">Semua Izin Motor</a>
+    <a href="{{route('adminmotor.index')}}"><i class="fa fa-plane fa-fw" ></i> Semua Surat Izin</a>
 </li>
