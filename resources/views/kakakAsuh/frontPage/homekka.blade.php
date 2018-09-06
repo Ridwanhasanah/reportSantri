@@ -48,7 +48,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{asset('dashboard/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-    {{-- kakak asug css --}}
+    {{-- kakak asuh css --}}
     <link rel="stylesheet" type="text/css" href="{{asset('css/kakakAsuh/kakakAsuh.css')}}">
     {{-- themify icons --}}
     <link rel="stylesheet" type="text/css" href="{{asset('css/kakakAsuh/themify-icons/themify-icons.css')}}">
@@ -62,7 +62,7 @@
     <![endif]-->
 
 </head>
-<body id="bounce1">
+<body style="overflow-x:hidden" id="bounce1">
 	<div class="header">
 		<div class="container-fluid">
 				<div class="row headerkka">

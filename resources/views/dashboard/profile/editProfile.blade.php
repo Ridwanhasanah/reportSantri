@@ -52,10 +52,12 @@
                         <td><b>Nama</b></td>
                         <td><input placeholder="Ridwan" class="form-control" type="" name="name" value="{{$user->name}}"></td>
                       </tr>
+                      @if (!Auth::user()->hasRole('student') && !Auth::user()->hasRole('foster_brother'))
                       <tr>
                         <td><b>Divisi</b></td>
                         <td><input readonly class="form-control" type="" name="departemt" value="{{$user->department}}"></td>
                       </tr>
+                      @endif
                       <tr>
                         <td><b>Tempat, Tanggal Lahir</b></td>
                         <td><input class="form-control" id="datepicker" name="date_birth" value="{{$user->date_birth}}"> , <input placeholder="Contoh : Jakarta" name="birth_place" class="form-control" value="{{$user->birth_place}}"></td>
@@ -120,11 +122,11 @@
               </div>
         </div>
         <div class="panel-footer">
-          <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+          {{-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
           <span class="pull-right">
             <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
             <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-          </span>
+          </span> --}}
         </div>
       </div>
 
