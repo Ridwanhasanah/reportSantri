@@ -113,7 +113,7 @@ Semua Kegiatan
           $.ajax({
             url: "{{ url('activity') }}" + '/' + id,
             type: "DELETE",
-            data: {'_mehtod' : 'DELETE', '_token' : csrf_token},
+            data: {'_method' : 'DELETE', '_token' : csrf_token},
             success: function(data){
               table.ajax.reload();
               swal({

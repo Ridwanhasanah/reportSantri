@@ -12,6 +12,9 @@ use Yajra\DataTables\DataTables;
 
 class AllUserController extends Controller
 {
+
+    /**==================== User Start =======================*/
+
     public function index()
     {
         /*Mengambil Url dan mengambil url divinysa untuk di masukan sebagaikondisi*/
@@ -237,100 +240,111 @@ class AllUserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('user.index')->with('danger', 'Santri sudah di hapus');
+        // return redirect()->route('user.index')->with('danger', 'Santri sudah di hapus');
     }
 
+    /**========== Api Show ALl Divisi start========== */
+    
+    public function apiUser($categorie){
 
-    /*========== Menampilkan Santri Sesuai Divisi Start ========== */
-    public function santriProgrammer(){
+        if($categorie == 'user'){ /**All Santri */
+             // Ini hanya untuk menampilkan seluruh santri saja
+            $users = DB::table('users')
+            ->whereIn('department',[
+            'Programmer',
+            'Multimedia',
+            'Imers',
+            'Cyber',
+            ])->select('*')
+            ->orderBy('id','desc');
+        
+            return Datatables::of($users)->addColumn('action',function($users){
+                return  '<a onclick="detailUser('.$users->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-star"></i> Detail</a>&nbsp;'.
+                '<a onclick="editUser('.$users->id.')" class="btn btn-outline btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>&nbsp;'.
+                        '<a onclick="deleteUser('.$users->id.')" class="btn btn-danger btn-outline btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'; 
+            })->make(true);
 
-        $users = DB::table('users')->select('*')->where('department',"Programmer")->latest()->paginate(20);
+        }elseif($categorie == 'programmer'){ /**Santri Prorammer */
+            $users = DB::table('users')
+            ->where('department','Programmer')
+            ->select('*')
+            ->orderBy('id','desc');
+        
+            return Datatables::of($users)->addColumn('action',function($users){
+                return  '<a onclick="detailUser('.$users->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-star"></i> Detail</a>&nbsp;'.
+                '<a onclick="editUser('.$users->id.')" class="btn btn-outline btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>&nbsp;'.
+                        '<a onclick="deleteUser('.$users->id.')" class="btn btn-danger btn-outline btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'; 
+            })->make(true);
 
-        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        $url_array = explode('/', $url);
-        $divisi = end($url_array);
+        }elseif($categorie == 'multimedia'){ /**Santri Multimedia */
+            $users = DB::table('users')
+            ->where('department','Multimedia')
+            ->select('*')
+            ->orderBy('id','desc');
+        
+            return Datatables::of($users)->addColumn('action',function($users){
+                return  '<a onclick="detailUser('.$users->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-star"></i> Detail</a>&nbsp;'.
+                '<a onclick="editUser('.$users->id.')" class="btn btn-outline btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>&nbsp;'.
+                        '<a onclick="deleteUser('.$users->id.')" class="btn btn-danger btn-outline btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'; 
+            })->make(true);
 
-        /*Menghitung Total santri*/
-        $total = DB::table('users')->where('department','Programmer')->count();
+        }elseif($categorie == 'imers'){ /**Santri Imers */
+            $users = DB::table('users')
+            ->where('department','Imers')
+            ->select('*')
+            ->orderBy('id','desc');
+        
+            return Datatables::of($users)->addColumn('action',function($users){
+                return  '<a onclick="detailUser('.$users->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-star"></i> Detail</a>&nbsp;'.
+                '<a onclick="editUser('.$users->id.')" class="btn btn-outline btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>&nbsp;'.
+                        '<a onclick="deleteUser('.$users->id.')" class="btn btn-danger btn-outline btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'; 
+            })->make(true);
+
+        }elseif($categorie == 'cyber'){ /**Santri Cyber */
+            $users = DB::table('users')
+            ->where('department','Cyber')
+            ->select('*')
+            ->orderBy('id','desc');
+        
+            return Datatables::of($users)->addColumn('action',function($users){
+                return  '<a onclick="detailUser('.$users->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-star"></i> Detail</a>&nbsp;'.
+                '<a onclick="editUser('.$users->id.')" class="btn btn-outline btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>&nbsp;'.
+                        '<a onclick="deleteUser('.$users->id.')" class="btn btn-danger btn-outline btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'; 
+            })->make(true);
 
 
-        return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
+        }elseif($categorie == 'staff'){ /**ALl Staff */
+            // Ini hanya untuk menampilkan seluruh santri prgorammer
+           $users = DB::table('users')
+           ->where('department','Staff Pondok IT')
+           ->select('*')
+           ->orderBy('id','desc');
+       
+           return Datatables::of($users)->addColumn('action',function($users){
+               return  '<a onclick="detailUser('.$users->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-star"></i> Detail</a>&nbsp;'.
+               '<a onclick="editUser('.$users->id.')" class="btn btn-outline btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>&nbsp;'.
+                       '<a onclick="deleteUser('.$users->id.')" class="btn btn-danger btn-outline btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'; 
+           })->make(true);
+
+        }else{ /**ALl Kakak Asuh */
+                // Ini hanya untuk menampilkan seluruh santri prgorammer
+            $users = DB::table('users')
+            ->where('department','Foster Brother')
+            ->select('*')
+            ->orderBy('id','desc');
+        
+            return Datatables::of($users)->addColumn('action',function($users){
+                return  '<a onclick="detailUser('.$users->id.')" class="btn btn-outline btn-primary btn-xs"><i class="glyphicon glyphicon-star"></i> Detail</a>&nbsp;'.
+                '<a onclick="editUser('.$users->id.')" class="btn btn-outline btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a>&nbsp;'.
+                        '<a onclick="deleteUser('.$users->id.')" class="btn btn-danger btn-outline btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>'; 
+            })->make(true);
+
+        }
 
     }
+    /**========== Api Show ALl Divisi End========== */
 
-    public function santriMultimedia(){
-
-        $users = DB::table('users')->select('*')->where('department',"Multimedia")->latest()->paginate(20);
-
-        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        $url_array = explode('/', $url);
-        $divisi = end($url_array);
-
-        /*Menghitung Total santri*/
-        $total = DB::table('users')->where('department','Multimedia')->count();
-
-        return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
-
-    }
-
-    public function santriImers(){
-
-        $users = DB::table('users')->select('*')->where('department',"Imers")->latest()->paginate(20);
-
-        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        $url_array = explode('/', $url);
-        $divisi = end($url_array);
-
-        /*Menghitung Total santri*/
-        $total = DB::table('users')->where('department','Imers')->count();
-
-        return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
-
-    }
-
-    public function santriCyber(){
-
-        $users = DB::table('users')->select('*')->where('department',"Cyber")->latest()->paginate(20);
-
-        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        $url_array = explode('/', $url);
-        $divisi = end($url_array);
-
-        /*Menghitung Total santri*/
-        $total = DB::table('users')->where('department','Cyber')->count();
-
-        return view('dashboard.admin.santri.santridivisi', compact('users','divisi', 'total'));
-
-    }
-    /*================================ Menampilkan Santri Sesuai Divisi End ============================== */
-
-     /*================================ Menampilkan Seluruh Kakak Asuh Start============================== */
-
-    public function kka(){
-
-        $users = DB::table('users')->select('*')->where('department',"Foster Brother")->latest()->paginate(20);
-
-        $url   = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        $url_array = explode('/', $url);
-        $divisi = end($url_array);
-
-        /*Menghitung Total kakakasuh*/
-        $total = DB::table('users')->where('department','Foster Brother')->count();
-
-
-        return view('dashboard.admin.kakakAsuh.kakakAsuh', compact('users','divisi', 'total'));
-
-    }
-    public function kkaDestroy($id){
-
-        $user = User::find($id);
-        $user->delete();
-        return redirect()->back()->with('danger', 'Kakak Asuh sudah di hapus');;
-
-
-    }
-
-    /*================================ Menampilkan Seluruh Kakak Asuh Start============================== */
+    /**==================== User End =======================*/
 
 
     /*================================ Activty Santri CRUD Start ========================================*/

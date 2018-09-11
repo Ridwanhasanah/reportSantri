@@ -151,11 +151,11 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		
 
 		/*All Divisi*/
-		Route::get('user/programmer','AllUserController@santriProgrammer')->name('user.programmer');
-		Route::get('user/multimedia','AllUserController@santriMultimedia')->name('user.multimedia');
-		Route::get('user/imers','AllUserController@santriImers')->name('user.imers');
-		Route::get('user/cyber','AllUserController@santriCyber')->name('user.cyber');
-		Route::get('user/kka','AllUserController@kka')->name('user.kka');
+		Route::get('user/programmer','AllUserController@index')->name('user.programmer');
+		Route::get('user/multimedia','AllUserController@index')->name('user.multimedia');
+		Route::get('user/imers','AllUserController@index')->name('user.imers');
+		Route::get('user/cyber','AllUserController@index')->name('user.cyber');
+		Route::get('user/kka','AllUserController@index')->name('user.kka');
 		// Delete Kakak asuh
 		Route::delete('user/kka/{id}/delete','AllUserController@kkaDestroy')->name('user.kka.destroy');
 		Route::get('user/staff','AllUserController@index')->name('user.staff');
@@ -222,7 +222,7 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::get('register/all/imers','Admin\RegisterController@index')->name('register.imers');
 		Route::get('register/all/cyber','Admin\RegisterController@index')->name('register.cyber');
 		/*===== API =====*/
-		/*All Divisi*/
+		/*All Register Register*/
 		Route::get('api/register','Admin\RegisterController@apiRegister')->name('api.register');
 		/*Divisi Programmer*/
 		Route::get('api/register/programmer','Admin\RegisterController@apiRegisterProgrammer')->name('api.register.programmer');
@@ -250,6 +250,7 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		Route::resources([
 				'user' => 'AllUserController'
 			]);
+		Route::get('api-user/{categorie}','AllUserController@apiUser')->name('api-user');
 	
 
 	});
