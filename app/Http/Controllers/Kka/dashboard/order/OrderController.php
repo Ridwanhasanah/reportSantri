@@ -8,7 +8,7 @@ use App\Models\Order;
 use App\Models\Caregiver;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
-
+use App\Events\Invoice\EventSendInvoice;
 
 class OrderController extends Controller
 {
@@ -30,7 +30,8 @@ class OrderController extends Controller
 
     public function store(Request $request, $id_santri)
     {
-
+        // variable ini $user di buat untuk di guanakn datanya saat mengirimkan email invoice
+        $user = Auth::User();
         $price = $request->amount_month * $request->package;
         $user_santri = DB::table('users')->select('name')->where('id',$id_santri)->first();
         $last_id = DB::table('orders')->orderBy('id', 'desc')->first();
@@ -48,6 +49,7 @@ class OrderController extends Controller
             'user_santri' => $user_santri->name,
             'address' => Auth::user()->address,
             'hp' => Auth::user()->hp,
+            'email' => Auth::user()->email,
             'status' => 'unpaid',
             'invoice' => $last_id->id + 1,
 
@@ -59,6 +61,14 @@ class OrderController extends Controller
         $today = date('Y-m-d H:i:s'); //tanggal hari ini
         $caregiver->expired      = date('Y-m-d H:i:s', strtotime("+$request->amount_month month", strtotime($today)));
         $caregiver->save();
+
+        //send email
+        // $id_last = $last_id+1;
+        $orderSendMail = Order::findOrFail($last_id->id+1);
+        // $orderSendMail = DB::table('orders')->select('*')
+        //                     ->where('id',$last_id+1)
+        //                     ->first();
+        event(new EventSendInvoice($orderSendMail));
         
 
         return redirect()->route('kka.santri')->with('success','Terima kasih pemintaan anda akan kami proses');

@@ -25,6 +25,7 @@ class CreateOrdersTable extends Migration
             $table->string('user_santri');
             $table->string('address');
             $table->string('hp')->nullable();
+            $table->string('email')->nullable();
             $table->enum('conrim',[
                 'confirm',
                 'unconfirm'
