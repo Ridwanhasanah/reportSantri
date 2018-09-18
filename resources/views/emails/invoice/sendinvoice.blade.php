@@ -49,27 +49,29 @@ Kami informasikan bahwa kami telah menerbitkan invoice untuk Donasi Anda kepada 
             <br />
              <b>Status pembayaran : {{$order->status}} </b>
              <br />
-             Tanggal invoice :  {{$order->created_at}}
+             Tanggal invoice :  {{date_format($order->created_at," d - m - Y ")}}
+            <br />
             <br />
        </div>
    </div>
    <div class="row">
        <div class="col-lg-12 col-md-12 col-sm-12">
          <div class="table-responsive">
-                              <table class="table table-striped table-bordered table-hover">
-                          <thead>
+                              <table style="border: 1px solid #000; padding: 30px;
+                              border-radius: 5px;" class="table table-striped table-bordered table-hover">
+                          <thead style="border: 1px solid #000;">
                               <tr>
-                                  <th>Nama Santri</th>
-                                  <th>Bulan</th>
-                                  <th>Paket</th>
-                                   <th>Total</th>
+                                  <th width="500" >Nama Santri</th>
+                                  <th width="500">Bulan</th>
+                                  <th width="500">Paket</th>
+                                   <th width="500">Total</th>
                               </tr>
                           </thead>
-                          <tbody>
+                          <tbody style="border: 1px solid #000;">
                               <tr>
-                              <td>{{$order->user_santri}}</td>
-                                  <td>{{$order->amount_month}} bulan</td>
-                                  <td>
+                              <td width="500">{{$order->user_santri}}</td>
+                                  <td width="500">{{$order->amount_month}} bulan</td>
+                                  <td width="500">
                                     @if ($order->package == 108000)
                                       Paket A Rp 108.000,-
                                     @elseif ($order->package == 208000)
@@ -78,7 +80,7 @@ Kami informasikan bahwa kami telah menerbitkan invoice untuk Donasi Anda kepada 
                                       Paket C Rp 288.000,-
                                     @endif
                                   </td>
-                                  <td>{{$order->price}}</td>
+                                  <td width="500">{{$order->price}}</td>
                               </tr>
                           </tbody>
                       </table>

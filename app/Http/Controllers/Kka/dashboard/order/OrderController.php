@@ -71,7 +71,7 @@ class OrderController extends Controller
         event(new EventSendInvoice($orderSendMail));
         
 
-        return redirect()->route('kka.santri')->with('success','Terima kasih pemintaan anda akan kami proses');
+        return redirect()->route('kka.santri')->with('success','Terima kasih pemintaan anda akan kami proses, Silahkan periksa email Anda');
 
     }
 
