@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
+use App\Events\Invoice\EventConfirmationTransfer;
 
 class InvoiceController extends Controller
 {
@@ -118,6 +119,8 @@ class InvoiceController extends Controller
             // where('id',$invoice->santri_id)->update(['status'=>'Telah Dibiayai']);
         }
         $invoice->save();
+        // Send Email
+        event(new EventConfirmationTrangitsfer($invoice));
 
         return redirect()->route('invoice-admin.index')->with('success','Berhasil merubah Invoice');
     }

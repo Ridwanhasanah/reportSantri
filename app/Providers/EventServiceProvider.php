@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\Invoice\EventSendInvoice' => [
             'App\Listeners\Invoice\ListenerSendInvoice',
+        ],
+        'App\Events\Invoice\EventConfirmationTransfer' => [
+            'App\Listeners\Invoice\ListenerConfirmationTransfer',
         ]
     ];
 
