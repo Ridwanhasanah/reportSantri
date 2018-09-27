@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Yajra\DataTables\DataTables;
 
 class DailyActivityController extends Controller
 {
@@ -18,85 +19,67 @@ class DailyActivityController extends Controller
      */
     public function index()
     {
-
-        $user = 
-
-        $activities = \App\Models\Activity::where('when', '=' , date('Y-m-d'))->latest()->paginate(20);
-        
-
-        return view('dashboard.admin.santri.dailyactivity', compact('activities'));
-
-        
-
-        
-        //dd($users[1]->activities[count($users[1]->activities)-1]->activity);
-
-        // return view('dashboard.admin.santri.dailyactivity', compact('activities'));
+        return view('dashboard.admin.santri.dailyactivity');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function apiDailyActivity(){
+        $activities = DB::table('users')
+                        ->select('users.name','users.department','activities.*')
+                        ->rightJoin('activities','activities.user_id','=','users.id')
+                        ->where('activities.when',date('Y-m-d'))
+                        ->orderBy('id','desc');
+        return DataTables::of($activities)->make(true);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function apiDailyActivityProgrammer(){
+        $activities = DB::table('users')
+                        ->select('users.name','users.department','activities.*')
+                        ->rightJoin('activities','activities.user_id','=','users.id')
+                        ->where([
+                            ['users.department','=','programmer'],
+                            ['activities.when','=',date('Y-m-d')]
+                            ])
+                        ->orderBy('id','desc');
+
+        return DataTables::of($activities)->make(true);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function apiDailyActivityMultimedia(){
+        $activities = DB::table('users')
+                        ->select('users.name','users.department','activities.*')
+                        ->rightJoin('activities','activities.user_id','=','users.id')
+                        ->where([
+                            ['users.department','=','Multimedia'],
+                            ['activities.when','=',date('Y-m-d')]
+                            ])
+                        ->orderBy('id','desc');
+                        
+        return DataTables::of($activities)->make(true);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function apiDailyActivityImers(){
+        $activities = DB::table('users')
+                        ->select('users.name','users.department','activities.*')
+                        ->rightJoin('activities','activities.user_id','=','users.id')
+                        ->where([
+                            ['users.department','=','Imers'],
+                            ['activities.when','=',date('Y-m-d')]
+                            ])
+                        ->orderBy('id','desc');
+                        
+        return DataTables::of($activities)->make(true);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function apiDailyActivityCyber(){
+        $activities = DB::table('users')
+                        ->select('users.name','users.department','activities.*')
+                        ->rightJoin('activities','activities.user_id','=','users.id')
+                        ->where([
+                            ['users.department','=','Cyber'],
+                            ['activities.when','=',date('Y-m-d')]
+                            ])
+                        ->orderBy('id','desc');
+                        
+        return DataTables::of($activities)->make(true);
     }
 }

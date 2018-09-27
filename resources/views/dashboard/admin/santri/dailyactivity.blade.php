@@ -21,31 +21,31 @@ Kegiatan Santri Hari Ini
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dailyActivity">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
-                                        <th>Kegiatan</th>
-                                        <th>Hasil</th>
-                                        <th>Tindak Lanjut</th>
-                                        <th>Jurusan</th>
-                                        <th>Tanggal</th>
+                                        <th width="100" >Nama</th>
+                                        <th width="300" >Kegiatan</th>
+                                        <th width="300" >Hasil</th>
+                                        <th width="300" >Tindak Lanjut</th>
+                                        <th width="100" >Jurusan</th>
+                                        <th width="100" >Tanggal</th>
                                     </tr>
                                 </thead>
                                 <tbody class="rfontsize">
 
-                                    @foreach ($activities as $activity)
+                                    {{-- @foreach ($activities as $activity)
 
-                                        @if ($activity->user->department != 'Staff Pondok IT')
+                                        @if ($activity->department != 'Staff Pondok IT')
                                             
                                             @if ($activity->when == date('Y-m-d'))
                                                 
                                             
                                             <tr class="odd gradeX">
                                                 <td>
-                                                    @if (strlen($activity->user->photo) != 0)
+                                                    @if (strlen($activity->photo) != 0)
                                                         <div class="form-group">
-                                                            <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$activity->user->photo)}}">
+                                                            <img height="50" width="70" style="float: left; padding-left: 10px; padding-right: 10px;" src="{{asset('storage/photos/'.$activity->photo)}}">
                                                         </div>
                                                     @else
                                                         <div class="form-group">
@@ -53,32 +53,21 @@ Kegiatan Santri Hari Ini
                                                         </div>
                                                     @endif
 
-                                                    <b>{{ $activity->user->name }}</b><br>
+                                                    <b>{{ $activity->name }}</b><br>
                                                 </td>
                                                 <td>{{$activity->activity}}</td>
                                                 <td>{{$activity->result}}</td>
                                                 <td>{{$activity->follow_up}}</td>
-                                                <td>{{$activity->user->department}}</td>
+                                                <td>{{$activity->department}}</td>
                                                 <td class="center">{{date('d F Y', strtotime($activity->when))}}</td>
                                             </tr>
                                             @endif
                                         @endif
                                     @endforeach
 
-                                    
+                                     --}}
                                 </tbody>
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Kegiatan</th>
-                                        <th>Hasil</th>
-                                        <th>Tindak Lanjut</th>
-                                        <th>Jurusan</th>
-                                        <th>Tanggal</th>
-                                    </tr>
-                                </thead>
                             </table>
-                            {!! $activities->render() !!}
                             <!-- /.table-responsive -->
                             
                         </div>
@@ -91,4 +80,28 @@ Kegiatan Santri Hari Ini
         </div>
         <!-- /#page-wrapper -->
 {{-- ====================================================== --}}
+@endsection
+@section('js')
+    <script type="text/javascript">
+    function getLastUrl(){
+        var url = window.location.pathname
+        var split = url.split("/")
+        var last = split.pop()
+        return last
+    }
+        $('#dailyActivity').DataTable({
+            order: [[1,'desc']],
+            processing: true,
+            serverSide: true,
+            ajax: "/api/dailyactivity/"+getLastUrl(),
+            columns:[
+                {data: "name", name: "name"},
+                {data: "activity", name: "activity"},
+                {data: "result", name: "result"},
+                {data: "follow_up", name: "follow_up"},
+                {data: "department", name: "department"},
+                {data: "when", name: "when"}
+            ],
+        })
+    </script>
 @endsection

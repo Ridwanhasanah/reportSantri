@@ -13,13 +13,15 @@
 
 
 
-// Route Tes
-Route::get('tpr',function(){
-	return view('dashboard.profile.test');
-});
+
 Route::get('/', function(){
 	return view('kakakAsuh.frontPage.homekka');
 });
+
+// Error page
+Route::get('/404',function(){
+	return view('404');
+})->name('404');
 
 Auth::routes();
 /* Activate Email*/
@@ -195,7 +197,21 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		/*===== All Activity Goal End=====*/
 		
 		/*===== Daily Activity  Start=====*/ 
-		Route::get('dailyactivity', 'Admin\DailyActivityController@index')->name('dailyactivity');
+		Route::get('dailyactivity/All', 'Admin\DailyActivityController@index')->name('dailyactivity.All');
+		Route::get('dailyactivity/Programmer', 'Admin\DailyActivityController@index')->name('dailyactivity.Programmer');
+		Route::get('dailyactivity/Multimedia', 'Admin\DailyActivityController@index')->name('dailyactivity.Multimedia');
+		Route::get('dailyactivity/Imers', 'Admin\DailyActivityController@index')->name('dailyactivity.Imers');
+		Route::get('dailyactivity/Cyber', 'Admin\DailyActivityController@index')->name('dailyactivity.Cyber');
+		//API DailyActivity
+		Route::get('api/dailyactivity/All','Admin\DailyActivityController@apiDailyActivity')->name('api.dailyActivity');
+		Route::get('api/dailyactivity/Programmer','Admin\DailyActivityController@apiDailyActivityProgrammer')->name('api.dailyActivity.Programmer');
+		Route::get('api/dailyactivity/Multimedia','Admin\DailyActivityController@apiDailyActivityMultimedia')->name('api.dailyActivity.Multimedia');
+		Route::get('api/dailyactivity/Imers','Admin\DailyActivityController@apiDailyActivityImers')->name('api.dailyActivity.Imers');
+		Route::get('api/dailyactivity/Cyber','Admin\DailyActivityController@apiDailyActivityCyber')->name('api.dailyActivity.Cyber');
+		// Belum Laporan Harian
+		Route::get('notReportActivity/All','Admin\NotReportActivityController@index')->name('notReport.All');
+		// APi yang blom laporan
+		Route::get('api/NotReportActivity/All','Admin\NotReportActivityController@apiNotDailyActivity')->name('api.not.reportActivity');
 		/*===== Daily Activity  End=====*/ 
 
 		/*===== Amaliyah Santri Start =====*/

@@ -37,23 +37,23 @@
     </ul>
 </li>
 <li>
-    <a href="{{route('dailyactivity')}}"><i class="fa fa-sun-o fa-fw"></i> Kegiatan Santri Hari ini<span class="fa arrow"></span></a>
+    <a href="{{route('dailyactivity.All')}}"><i class="fa fa-sun-o fa-fw"></i> Kegiatan Santri Hari ini<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level rhide"  id="show5">
         <li>
-            <a  href="{{route('dailyactivity')}}">Semua Santri</a>
-        </li>
-        {{-- <li>
-            <a href="">Programmer</a>
+            <a  href="{{route('dailyactivity.All')}}">Semua Santri</a>
         </li>
         <li>
-            <a href="">Multimedia</a>
+            <a href="{{route('dailyactivity.Programmer')}}">Programmer</a>
         </li>
         <li>
-            <a href="">Imers</a>
+            <a href="{{route('dailyactivity.Multimedia')}}">Multimedia</a>
         </li>
         <li>
-            <a href="">Cyber</a>
-        </li> --}}
+            <a href="{{route('dailyactivity.Imers')}}">Imers</a>
+        </li>
+        <li>
+            <a href="{{route('dailyactivity.Cyber')}}">Cyber</a>
+        </li>
     </ul>
     <!-- /.nav-second-level -->
 </li>
