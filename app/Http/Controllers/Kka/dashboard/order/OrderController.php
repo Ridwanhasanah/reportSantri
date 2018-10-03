@@ -63,11 +63,8 @@ class OrderController extends Controller
         $caregiver->save();
 
         //send email
-        // $id_last = $last_id+1;
         $orderSendMail = Order::findOrFail($last_id->id+1);
-        // $orderSendMail = DB::table('orders')->select('*')
-        //                     ->where('id',$last_id+1)
-        //                     ->first();
+
         event(new EventSendInvoice($orderSendMail));
         
 

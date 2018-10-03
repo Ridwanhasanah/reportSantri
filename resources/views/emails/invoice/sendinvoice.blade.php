@@ -49,6 +49,8 @@ Kami informasikan bahwa kami telah menerbitkan invoice untuk Donasi Anda kepada 
             <br />
              <b>Status pembayaran : {{$order->status}} </b>
              <br />
+            <b>No Invoice : {{$order->invoice}}</b> 
+            <br />
              Tanggal invoice :  {{date_format($order->created_at," d - m - Y ")}}
             <br />
             <br />
