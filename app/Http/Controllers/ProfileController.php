@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
         $user = User::find($id);
 
-        return view('dashboard.profile.profile', compact('user'));
+        return view('dashboard.profile.newProfile', compact('user'));
     }
 
     public function edit($id)
