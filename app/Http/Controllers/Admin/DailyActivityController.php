@@ -19,9 +19,11 @@ class DailyActivityController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.santri.dailyactivity');
+        return view('dashboard.admin.santri.dailyActivity.dailyactivity');
     }
-
+    /**
+     * Semua Santri yang sudah laporan start
+     */
     public function apiDailyActivity(){
         $activities = DB::table('users')
                         ->select('users.name','users.department','activities.*')
@@ -82,4 +84,7 @@ class DailyActivityController extends Controller
                         
         return DataTables::of($activities)->make(true);
     }
+    /**
+     * Semua Santri yang sudah laporan END
+     */
 }

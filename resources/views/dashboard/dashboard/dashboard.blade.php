@@ -103,6 +103,7 @@ Dasbor
         </div>
     </div>
 </div>
+@include('dashboard.dashboard.santri.dashboardSantri')
 <!-- /.row -->
 </div>
 @endsection

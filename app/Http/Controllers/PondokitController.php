@@ -41,7 +41,14 @@ class PondokitController extends Controller
     // }
     
     public function index(){
+        $id = Auth::user()->id;
 
+        $activities = DB::table('users')
+                        ->select('activities.*')
+                        ->rightJoin('activities', 'activities.user_id', '=', 'users.id' )
+                        ->where('users.id', "$id")
+                        ->orderBy('id', 'desc')
+                        ->paginate(5);
 
         $programmer = DB::table('users')->where('department','Programmer')->count();
         $multimedia = DB::table('users')->where('department','Multimedia')->count();
@@ -51,7 +58,7 @@ class PondokitController extends Controller
         // dd(Auth::user()->roles->id);
 
         // $userRoleName = User::find(1)->role[0]->name;
-        return view('dashboard.dashboard.dashboard', compact('programmer','multimedia','imers','cyber','userRoleName'));
+        return view('dashboard.dashboard.dashboard', compact('programmer','multimedia','imers','cyber','userRoleName','activities'));
     }
 
     /*========== Menampilkan Santri Sesuai Divisi Start ========== */

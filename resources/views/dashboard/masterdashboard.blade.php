@@ -272,7 +272,12 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="{{route('profile')}}"><i class="fa fa-user fa-fw"></i>{{Auth::user()->name}}</a>
+                        <li>
+                                @if(Auth::user()->hasRole('master') || Auth::user()->hasRole('foster_brother') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher') ) 
+                                @else
+                                    {{-- ===== Student Profile===== --}}
+                                    <a href="{{route('profile.show',Auth::user()->id)}}"><i class="fa fa-user fa-fw"></i>{{Auth::user()->name}}</a>
+                                @endif
                         </li>
                         <li><a href="{{route('profile.edit',Auth::user()->id)}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>

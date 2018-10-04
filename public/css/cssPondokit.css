@@ -105,6 +105,11 @@
 	font-size: 12px;
 }
 
+.btn-dashboard{
+	width: 200px;
+	margin-top: 5px;
+}
+
 /* Css Add Amaliyah */
 
 .form-group input[type="checkbox"] {

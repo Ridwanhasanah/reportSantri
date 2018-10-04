@@ -35,6 +35,10 @@
                   <br>
                   <a onclick="editPass()" class="btn btn-outline btn-danger">Ubah Password</a>
                   {{-- <a href="{{route('profilepass.edit',$user->id)}}" id="editpass" class="btn btn-outline btn-danger">Ubah Password</a> --}}
+                  @if (Auth::user()->hasRole('master') || Auth::user()->hasRole('foster_brother') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher')) 
+
+                  @else
+
                   <div class="panel panel-info rmargin">
                     <div class="panel-heading">
                       <h3 class="panel-title"><b>Quote</b></h3>
@@ -43,6 +47,7 @@
                       <textarea placeholder="Contoh : Berilmu sebelum berkata dan beramal" class="form-control" type="textarea" name="quote">{{$user->quote}}</textarea>
                     </div>
                   </div>
+                  @endif
                 </div>
                 <div class=" col-md-9 col-lg-9 "> 
                  
@@ -90,17 +95,21 @@
                         <td><b>Nomor HandPhone</b></td>
                         <td><input placeholder="Contoh : 089123456789" class="form-control" type="number" name="hp" value="{{$user->hp}}">(Mobile)</td>
                       </tr>
+                      @if (Auth::user()->hasRole('master') || Auth::user()->hasRole('foster_brother') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher')) 
+
+                      @else
+
                       <tr>
                         <td><b>Hobi</b></td>
-                        <td><input placeholder="Contoh : Memanah" class="form-control" type="" name="hobby" value="{{$user->hobby}}"></td>
+                        <td><textarea placeholder="Contoh : Memanah" class="form-control wysiwyg" type="text" name="hobby" rows="30">{{$user->hobby}}</textarea></td>
                       </tr>
                       <tr>
                         <td><b>Pengalaman</b></td>
-                        <td><input placeholder="Contoh : Membuat CRUD di Laravel" class="form-control" type="text" name="experience" value="{{$user->experience}}"></td>
+                        <td><textarea placeholder="Contoh : Membuat CRUD di Laravel" class="form-control wysiwyg" type="text" rows="30" name="experience">{{$user->experience}}</textarea></td>
                       </tr>
                       <tr>
                         <td><b>Karya</b></td>
-                        <td><input placeholder="Contoh : Membuat Web Onlinde Shop" class="form-control" type="" name="creation" value="{{$user->creation}}"></td>
+                        <td><textarea placeholder="Contoh : Membuat Web Onlinde Shop" class="form-control wysiwyg" type="" name="creation" rows="30">{{$user->creation}}</textarea></td>
                       </tr>
                       <tr>
                         <td><b>100 Cita - Cita ku</b></td>
@@ -111,6 +120,9 @@
                           2.Mempunyai Rumah 4 lantai di Jakarta, dst
                           " rows="30" class="form-control wysiwyg" type="text" name="dream">{{$user->dream}}</textarea></td>
                       </tr>
+
+                      @endif
+
                       <tr>
                         <td></td>
                         <td><input class="btn btn-primary" type="submit" name="submit"></td>

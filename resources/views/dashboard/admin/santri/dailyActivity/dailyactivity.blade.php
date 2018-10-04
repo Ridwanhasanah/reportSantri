@@ -17,7 +17,9 @@ Kegiatan Santri Hari Ini
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <p class="blue">Kegiatan Santri Hari Ini</b></p>
+                            <h4 class="blue">Kegiatan Santri Hari Ini
+                                <a href="{{route('notReport.All')}}" class="btn btn-danger pull-right" style="margin-top: -8px;">Santri Tidak Laporan</a>
+                            </h4>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
