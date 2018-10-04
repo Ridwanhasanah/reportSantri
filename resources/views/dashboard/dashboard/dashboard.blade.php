@@ -8,7 +8,22 @@ Dasbor
 <div class="row">
     <div class="col-lg-12">
         @include('layouts.patrials.alerts')
-        <h1 class="page-header">Dasbor</h1>
+        <br>
+        
+        @if (Auth::user()->hasRole('master') || Auth::user()->hasRole('foster_brother') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher')) 
+
+        @else
+            @if (Auth::user()->status == 'Telah Dibiayai')
+                <i class="btn-lg pull-right btn-success" >Telah Dibiayai</i>
+            @elseif(Auth::user()->status == 'Mandiri')
+                <i class="btn-lg pull-right btn-primary" >Sudah Mandiri</i>
+            @else
+            <i class="btn-lg pull-right btn-info" >Belum Di Biayai</i>
+            @endif
+        @endif
+        <br>
+        <br>
+        <hr>
     </div>
     <!-- /.col-lg-12 -->
 </div>

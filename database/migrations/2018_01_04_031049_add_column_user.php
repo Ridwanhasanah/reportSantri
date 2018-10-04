@@ -28,9 +28,9 @@ class AddColumnUser extends Migration
             $table->string('hp')->nullable();
             $table->text('dream')->nullable();
             $table->enum('gender', ['Pria', 'Wanita']);
-            $table->string('hobby')->nullable();
+            $table->text('hobby')->nullable();
             $table->text('experience')->nullable();
-            $table->string('creation')->nullable();
+            $table->text('creation')->nullable();
             $table->string('photo')->nullable();
             $table->date('date_birth')->nullable();
             $table->string('birth_place')->nullable();
