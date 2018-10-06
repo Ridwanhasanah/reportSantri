@@ -50,6 +50,10 @@ class User extends Authenticatable
         
     }
 
+    public function reportToKas(){
+        return $this->hasMany(ReportToKa::class);
+    }
+
     // public function hasAnyRole($roles){
 
     //     if (is_array($roles)) {

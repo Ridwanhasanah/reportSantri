@@ -49,7 +49,7 @@ class ConfirmationController extends Controller
             $confirmation->invoice = $request->invoice;
             $confirmation->transfer = $request->transfer;
             $confirmation->fund     = $request->fund;
-            $confirmation->bill_name = Auth::user()->name;
+            $confirmation->bill_name = $request->bill_name;
             $confirmation->email = Auth::user()->email;
             $confirmation->hp = Auth::user()->hp;
             $confirmation->information = $request->information;

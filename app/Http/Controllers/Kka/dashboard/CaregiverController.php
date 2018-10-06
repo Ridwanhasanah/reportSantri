@@ -80,7 +80,7 @@ class CaregiverController extends Controller
         $urls = end($url_array);
         
         
-        return view('kakakAsuh.dashboard.adikAsuh.allActivity', compact('activities', 'users','idNow','urls'));
+        return view('kakakAsuh.dashboard.adikAsuh.allActivity', compact('activities','idNow','urls'));
     }
 
     /*API*/

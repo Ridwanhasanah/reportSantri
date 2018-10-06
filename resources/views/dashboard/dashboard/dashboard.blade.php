@@ -118,7 +118,10 @@ Dasbor
         </div>
     </div>
 </div>
-@include('dashboard.dashboard.santri.dashboardSantri')
+@if(Auth::user()->hasRole('master') || Auth::user()->hasRole('foster_brother') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher') ) 
+@else
+    @include('dashboard.dashboard.santri.dashboardSantri')
+@endif
 <!-- /.row -->
 </div>
 @endsection

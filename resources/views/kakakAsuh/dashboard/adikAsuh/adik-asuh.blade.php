@@ -1,6 +1,6 @@
 @extends('dashboard.masterdashboard')
 @section('title')
-Semua Santri
+Adik Asuh Ku
 @endsection
 
 @section('content')
@@ -36,9 +36,12 @@ Semua Santri
                       </div>
                       <div class="card-santri-footer">
                         <a class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#">
-                            Lihat Laporan
+                            Lihat Kegiatan
                         </a>
                         <ul class="dropdown-menu" style="top:auto; left:auto;">
+                            <li>
+                                <a target="_blank" href="{{route('reporttoka.adikasuh',$user[0]->id)}}"><i class="fa fa-th-list fa-fw"></i> Laporan dari Adik Asuh</a>
+                            </li>
                             <li>
                                 <a target="_blank" href="{{route('adik.activity',$user[0]->id)}}"><i class="fa fa-th-list fa-fw"></i> Kegiatan</a>
                             </li>

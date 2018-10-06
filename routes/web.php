@@ -22,6 +22,9 @@ Route::get('/', function(){
 Route::get('/404',function(){
 	return view('404');
 })->name('404');
+Route::get('/405',function(){
+	return view('404');
+})->name('405');
 
 Auth::routes();
 /* Activate Email*/
@@ -100,6 +103,12 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 	Route::get('api/motor','MotorController@apiMotor')->name('api.motor');
 	Route::get('done/motor/{id}','MotorController@done')->name('done.motor');
 	/*===== Motor End =====*/
+
+	/*====== Report to Foster Brother Start =========*/
+	Route::resource('reporttoka','Kka\dashboard\ReportToKAController');
+	Route::get('reporttoka/adikasuh/{id}','Kka\dashboard\ReportToKAController@allReportAdikAsuh')->name('reporttoka.adikasuh');
+	/*====== Report to Foster Brother Start =========*/ 
+
 
 	/*===== Kirim Saran Start=====*/
 	Route::resources([

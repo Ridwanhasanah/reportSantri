@@ -1,6 +1,12 @@
 <li>
     <a href="{{route('dashboard.home')}}"><i class="fa fa-dashboard fa-fw"></i> Dasbor</a>
 </li>
+@if (Auth::user()->status == "Telah Dibiayai")
+<li>
+    <a style="color:#5CB85C;" href="{{route('reporttoka.index')}}"><i class="fa fa-thumb-tack fa-fw"></i> Laporan</a>
+</li>
+@endif
+
 <li>
     <a href="{{route('activity.index')}}"><i class="fa fa-thumb-tack fa-fw"></i> Kegiatan</a>
 </li>

@@ -120,7 +120,7 @@ class InvoiceController extends Controller
         }
         $invoice->save();
         // Send Email
-        event(new EventConfirmationTrangitsfer($invoice));
+        event(new EventConfirmationTransfer($invoice));
 
         return redirect()->route('invoice-admin.index')->with('success','Berhasil merubah Invoice');
     }
@@ -143,7 +143,10 @@ class InvoiceController extends Controller
             ])->delete();
 
         DB::table('users')->select('*')->
-            where('id',$invoice->santri_id)->update(['status'=>NULL]);
+            where('id',$invoice->santri_id)->update([
+                'status'=>NULL,
+                'package'=>NULL
+                ]);
     }
 
     public function apiInvoice(){

@@ -33,7 +33,7 @@
     <a href="{{route('kka.santri')}}"> <i class="fa fa-plus-circle fa-fw"></i>Tambah Adik Asuh</a>
 </li>
 <li>
-    <a style="color: red;" href="{{route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>Kirim Saran</a>
+    <a href="{{route('suggestion.create')}}"> <i class="fa fa-envelope-o fa-fw"></i>Kirim Saran</a>
 </li>
 <li>
     <a href="{{route('invoice.index')}}"> <i class="fa fa-money fa-fw"></i>Invoice Ku</a>
