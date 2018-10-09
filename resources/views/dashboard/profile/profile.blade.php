@@ -81,35 +81,28 @@
             <h2>Jenis Kelamin</h2>
             <p>{{$user->gender}}</p>
           </div>
-          <div class="entry">
+          {{-- <div class="entry">
             <h2>Hobi</h2>
             <p>{{$user->hobby}}</p>
           </div>
           <div class="entry">
             <h2>Quote</h2>
             <p>{{$user->quote}}</p>
-          </div>
-
-          <!-- End 1st Row -->
-          <!-- Begin 3rd Row -->
-          <div class="entry">
+          </div> --}}
+          {{-- <div class="entry">
             <h2>Pengalaman</h2>
             <p>{{$user->experience}}</p>
-          </div>
-          <!-- End 3rd Row -->
-          <!-- Begin 4th Row -->
-          <div class="entry">
+          </div> --}}
+          {{-- <div class="entry">
             <h2>Karya</h2>
             <p>{{$user->creation}}</p>
-          </div>
-          <!-- End 4th Row -->
-          <!-- Begin 5th Row -->
-          <div class="entry">
+          </div> --}}
+          {{-- <div class="entry">
             <h2>100 Cita-Cita Ku</h2>
               <div class="scrolltab">
                 {!! $user->dream !!}
               </div>
-          </div>
+          </div> --}}
           <!-- Begin 5th Row -->
             </div>
         <div class="clear"></div>

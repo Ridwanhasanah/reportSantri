@@ -76,6 +76,16 @@ Add User
                         </td>
                       </tr>
                       <tr>
+                        <td>Status</td>
+                        <td>
+                          <select name="status" class="form-control">
+                            <option value=""> </option>
+                            <option value="Mandiri">Mandiri</option>
+                            <option value="Telah Dibiayai">Telah Dibiayai</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
                         <td>Tanggal Lahir</td>
                         <td><input value="{{old('date_birth')}}" class="form-control" id="datepicker" name="date_birth" > , <input placeholder="Contoh : Jakarta" name="birth_place" class="form-control"></td>
                       </tr>
@@ -87,7 +97,7 @@ Add User
                         </td>
                       </tr>
                       <tr>
-                        <td><b>Kota</b></td>
+                        <td>Kota</td>
                         <td><input placeholder="Contoh : DIY" class="form-control" type="text" name="city" value="{{old('city')}}"></td>
                       </tr>
                       <tr>

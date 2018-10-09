@@ -86,6 +86,7 @@ class AllUserController extends Controller
         $member->name        = $request->name;
         $member->password    = bcrypt($request->password);
         $member->department  = $request->department;
+        $member->status      = $request->status;
         $member->date_birth  = $request->date_birth;
         $member->birth_place = $request->birth_place;
         $member->gender      = $request->gender;
