@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="{{asset('css/cssPondokit.css')}}">
     {{-- <link rel="stylesheet" href="{{asset('css/profile.css')}}">    --}}
     {{-- Pondokit Ridwan Css End--}}
-
-    <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     {{-- <link rel="stylesheet" href="/resources/demos/style.css"> --}}
     <link href="{{asset('dashboard/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

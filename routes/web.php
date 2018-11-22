@@ -132,6 +132,10 @@ Route::group(['middleware'=>['auth','role:student']], function(){
 		/*Confirmation*/
 		Route::get('konfirmasi','Kka\dashboard\invoice\ConfirmationController@create')->name('confirmation.create');
 		Route::post('konfirmasi','Kka\dashboard\invoice\ConfirmationController@store')->name('confirmation.store');
+
+		/** ===== Download Invoice ===== */
+		Route::get('dowloadinvoice/{id}','Kka\dashboard\invoice\InvoiceController@downloadInvoice')->name('download.invoice');
+
 		
 		/*
 		====== Adik Asuh Start =========

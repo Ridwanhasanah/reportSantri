@@ -272,6 +272,9 @@
 											</p>
 										</div>
 									</div>
+									<div>
+										<p style="padding: 2em; border-radius: 2em;" class="text-success text-center bg-success"><b>Kesulitan dalam mendaftar Hubungi WhatsApp 0857 1444 2664</b></p>
+									</div>
 							</form>
 						</div>
 						<div class="col col-xs-12 col-sm-12 col-md-6 col-lg-5 hide-img">

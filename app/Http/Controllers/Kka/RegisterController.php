@@ -78,7 +78,7 @@ class RegisterController extends Controller
         /*Send Email*/
         event(new UserActivationEmail($member));
 
-        return redirect()->route('login')->with('success', 'Registrasi berhasil, Silahkan buka email anda untuk melakukan Vertifikasi');
+        return redirect()->route('login')->with('register', 'Registrasi berhasil, Silahkan buka email anda untuk melakukan Vertifikasi, jika tidak memukannya anda bsa melihat di folder sosial atau promosi pada folder email anda, Anda kesulitan bisa hubungi nomor berikut 0857 1444 2664');
     }
 
     /**

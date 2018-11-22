@@ -136,13 +136,13 @@
              </div>
          </div>
       <div class="row pad-top-botm">
-         {{-- <div class="col-lg-12 col-md-12 col-sm-12">
+         <div class="col-lg-12 col-md-12 col-sm-12">
              <hr />
-             <a href="#" class="btn btn-primary btn-lg" >Print Invoice</a>
+             {{-- <a href="#" class="btn btn-primary btn-lg" >Print Invoice</a> --}}
              &nbsp;&nbsp;&nbsp;
-              <a href="#" class="btn btn-success btn-lg" >Download In Pdf</a>
+              <a href="{{route('download.invoice',$invoice->id)}}" class="btn btn-success btn-lg" >Download In Pdf</a>
 
-             </div> --}}
+             </div>
          </div>
  </div>
 

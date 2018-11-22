@@ -9,6 +9,7 @@ use App\Models\Order;
 use Illuminate\Support\Facades\Auth; //untukmenggunakan Controller Auth
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
+Use PDF;
 
 class InvoiceController extends Controller
 {
@@ -29,7 +30,7 @@ class InvoiceController extends Controller
     public function show($id)
     {
         $invoice = DB::table('orders')->select('*')->where('id',$id)->first();
-        return view('kakakAsuh.dashboard.invoice.detail-invoice', compact('invoice'));
+        return view('kakakAsuh.dashboard.invoice.detailInvoice', compact('invoice'));
 
     }
 
@@ -65,5 +66,16 @@ class InvoiceController extends Controller
             }
         })->make(true);
         
+    }
+
+    /**Download Invoice */
+    public function downloadInvoice($id){
+        $invoice = [];
+        $inv = DB::table('orders')->select('*')->where('id',$id)->first();
+        array_push($invoice,$inv);
+        
+        // dd($invoice);
+        $pdf = PDF::loadView('kakakAsuh.dashboard.invoice.downloadInvoice', $invoice);
+        return $pdf->download('invoice.pdf');
     }
 }

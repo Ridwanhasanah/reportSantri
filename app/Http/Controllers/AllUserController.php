@@ -555,14 +555,6 @@ class AllUserController extends Controller
 
     public function passwordUpdate(Request $request, $id){
 
-        // $this->validate($request,[
-
-        //     'password'   => 'required|min:6',
-        //     'repassword' => 'required|min:6',
-
-        // ]);
-
-
         $user = User::find($id);
         if ($request->password == $request->repass) {
             $user->password = bcrypt($request->password);
