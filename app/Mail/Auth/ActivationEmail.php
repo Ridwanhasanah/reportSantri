@@ -30,6 +30,7 @@ class ActivationEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.auth.activation');
+        return $this->subject('Aktivasi akun Kakak Asuh Indonesia')
+                   ->markdown('emails.auth.activation');
     }
 }

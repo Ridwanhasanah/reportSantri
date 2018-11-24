@@ -1,19 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-
-
 Route::get('/', function(){
 	return view('kakakAsuh.frontPage.homekka');
 });
@@ -34,7 +19,6 @@ Route::get('auth/activate/resend','Auth\ActivationResendController@showResendFor
 Route::post('auth/activate/resend','Auth\ActivationResendController@resend');
 
 /*===== Form Register Start =====*/
-Route::resource('pendaftaran', 'FrontPage\RegisterController');
 Route::resource('kkaregis', 'Kka\RegisterController');
 /*===== Form Register Start =====*/
 

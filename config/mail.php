@@ -9,6 +9,7 @@ return [
 2. vendor/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php
 3. vendor/laravel/framework/src/Illuminate/Mail/resources/views/html/footer.blade.php
 4. vendor/laravel/framework/src/Illuminate/Mail/resources/views/html/message.blade.php
+5.vendor/laravel/framework/src/Illuminate/Notifications/views/email.blade.php
 
 
     */
