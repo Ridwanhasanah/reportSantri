@@ -9,7 +9,7 @@ return [
 2. vendor/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php
 3. vendor/laravel/framework/src/Illuminate/Mail/resources/views/html/footer.blade.php
 4. vendor/laravel/framework/src/Illuminate/Mail/resources/views/html/message.blade.php
-5.vendor/laravel/framework/src/Illuminate/Notifications/views/email.blade.php
+5.vendor/laravel/framework/src/Illuminate/Notifications/resources/views/email.blade.php
 
 
     */
@@ -69,8 +69,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@pondokit.com'),
-        'name' => env('MAIL_FROM_NAME', 'Pondok IT'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info.kakakasuh@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Kakak Asuh Indonesia'),
     ],
 
     /*

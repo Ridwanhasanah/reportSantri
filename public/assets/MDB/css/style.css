@@ -84,6 +84,15 @@ body{
     position:  relative;
     background-color: #4285F4;
 }
+.infoku:hover{
+    -webkit-transition: all .4s ease 0s;
+    transition: all .4s ease 0s;
+    -webkit-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15);
+    z-index: 1;
+    position:  relative;
+}
 .load{
     position: absolute;
     z-index: 99;

@@ -32,6 +32,7 @@ class ConfirmationTransfer extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.invoice.confirmationTransfer');
+        return $this->subject('Konfirmasi Transfer, Kakak Asuh Indonesia')
+                    ->markdown('emails.invoice.confirmationTransfer');
     }
 }

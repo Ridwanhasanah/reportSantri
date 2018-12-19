@@ -74,6 +74,12 @@ Login
 							Login
 						</button>
 					</div>
+					<br>
+					<div class="container-login100-form-btn">
+						<a style="width:450px; height:50px; border-radius: 10px; line-height:250%;" href="/#register" type="submit" class="btn btn-success">
+							DAFTAR
+						</a>
+					</div>
 					
 					{{--  <div class="text-center p-t-46 p-b-20">
 						<span class="txt2">

@@ -2,13 +2,14 @@ $(document).ready(function () {
 	// Close Modal
 	$('.modal-close').click(function(){
 		$('.modal-reg').hide();
+		location.reload();
 	})
 	// Datepicker
 	$( "#datepicker" ).datepicker({
 		dateFormat:"dd-mm-yy",
 		changeMonth: true,
-		changeYear: true
-	});
+		changeYear: true,
+		yearRange: "1950:2020"});
 
 	function checkVal(//function for check input
 		name, //long string check and id 

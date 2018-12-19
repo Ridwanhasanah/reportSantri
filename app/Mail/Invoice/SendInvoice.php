@@ -35,6 +35,7 @@ class SendInvoice extends Mailable
         // $order = DB::table('orders')
         // ->select('*')
         // ->where('user_id',$this->user->id)->first();
-        return $this->markdown('emails.invoice.sendinvoice');
+        return $this->subject('Invoice, Kakak Asuh Indonesia')
+                    ->markdown('emails.invoice.sendinvoice');
     }
 }

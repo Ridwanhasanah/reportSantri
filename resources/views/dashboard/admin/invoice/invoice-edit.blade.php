@@ -79,7 +79,7 @@ Semua Invoice
 										<option value="paid" {{$invoice->status=='paid'?'selected':''}}>Sudah Bayar</option>
 										<option value="unpaid" {{$invoice->status=='unpaid'?'selected':''}}>Belum Bayar</option>
 										<option value="canceled" {{$invoice->status=='canceled'?'selected':''}}>Batal</option>
-										<option value="refuned" {{$invoice->status=='refunded'?'selected':''}}>Di Kembalikan</option>
+										<option value="refunded" {{$invoice->status=='refunded'?'selected':''}}>Di Kembalikan</option>
 									</select>
 									<span class="help-block with-errors"></span>
 								</div>

@@ -1,7 +1,7 @@
 @component('mail::message')
 # Aktivkan akunmu
 
-Terima kasih telah mendaftar sebagai Kakak Asuh Pondok IT, Silahkan aktifkan akun ini 
+Terima kasih telah mendaftar sebagai Kakak Asuh Indonesia, Silahkan aktifkan akun ini 
 
 @component('mail::button', ['url' => route('auth.activate',[
 				'token' => $user->activation_token,
@@ -12,6 +12,5 @@ Terima kasih telah mendaftar sebagai Kakak Asuh Pondok IT, Silahkan aktifkan aku
 @endcomponent
 
 Terima Kasih,<br>
-Pondok IT
-{{-- {{ config('app.name') }} --}}
+{{ config('app.name') }}
 @endcomponent

@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="google-site-verification" content="qJ1c-gv_nX60aLkLgHfCU4e5D-sPO_eefUMr5dTuChc" />
   <link rel="shortcut icon" href="{{ asset('Logo IT ICON.png') }}" >
+
   <link href="https://fonts.googleapis.com/css?family=Faster+One|Fredericka+the+Great|Fugaz+One" rel="stylesheet">
   <title>Kakak Asuh Indonesia</title>
    {{-- Date Picker --}}
@@ -61,7 +63,7 @@
       <div class="ol-md-6 col-lg-6 p-3">
         <div class="font-1">
         <h1>
-          Ayo jadi kakak asuh di Pondok IT,
+          Ayo jadi Kakak Asuh Indonesia di Pondok IT,
           Pondok IT Membuka program membantu adik asuh (santri Pondok IT) yang tidak mampu atau belum mandiri
         </h1>
         <h3>
@@ -77,7 +79,7 @@
   </div>
 
   <div class="container-fluid shadow-kka mt-5">
-    <h1 class="text-center p-3">Mengapa program kakak asuh?</h1>
+    <h1 class="text-center p-3">Mengapa program Kakak Asuh Indonesia?</h1>
     <div class="row justify-content-center text-center p-3">
       <div class=" col-md-3 col-lg-3 aniwhite wow slideInUp slower" data-wow-delay="0.3s">
         <span class="fa fa-pencil-square text-lg p-2 text-primary"></span>
@@ -125,7 +127,7 @@
     </div>
   </div>
   <div class="container mt-5 text-center ">
-    <h1 class="text-center p-3 wow slideInUp slower" data-wow-delay="0.3s">Cara Menjadi Kakak Asuh</h1>
+    <h1 class="text-center p-3 wow slideInUp slower" data-wow-delay="0.3s">Cara Menjadi Kakak Asuh Indonesia</h1>
     <div class="row justify-content-center">
       <div class="col-lg-3 col-md-3 p-2 aniwhite wow bounceInRight slower" data-wow-delay="0.3s">
         <div class="shadow-kka p-3">
@@ -161,7 +163,7 @@
         <div class="shadow-kka p-3">
           <img class="mb-5" src="{{asset('images/number-4.png')}}">
           <h3>Invoice</h3>
-          <p>Kakak asuh akan menerima invoice pembaran.</p>
+          <p>Kakak Asuh akan menerima invoice pembaran.</p>
         </div>
       </div>
     </div>
@@ -173,7 +175,7 @@
     <div class="row pt-5 px-5 ">
         <div class="load offset-md-3 offset-lg-3 col-lg-6 col-md-6" id="loadingDiv"><img class="load-img" src="{{asset('images/loading.gif')}}" alt="loading pendaftaran"></div>
       <div id="form-1" class="col-lg-6 col-md-6">
-        <h3><span class="fa fa-edit"></span> &nbsp; Form Keikutsertaan</h3>
+        <h3><span class="fa fa-edit"></span> &nbsp; Form Keikutsertaan Kakak Asuh Indonesia</h3>
         {{-- Error --}}
         <div class="alert alert-danger" style="display:none"></div>
 
@@ -251,9 +253,8 @@
               <div class="col-lg-3 col-md-3">
                   <a href="{{route('login')}}" class="btn btn-default"> Login </a>
               </div>
-              <div class="col-lg-12 col-md-12 mt-1 ani-no-bgc">
-                  <p style="border-radius: 5px;" class="text-white text-center bg-success p-3"><b>Kesulitan dalam
-                      mendaftar Hubungi WhatsApp 0857 1444 2664</b></p>
+              <div class="col-lg-12 col-md-12 mt-1 infoku">
+                  <p style="border-radius: 5px;" class="text-white text-center bg-success p-3"><b>Kesulitan dalam mendaftar Kakak Asuh Indonesia Hubungi WhatsApp 0857 1444 2664</b></p>
               </div>
             </div>
           </div>
@@ -273,7 +274,7 @@
             <i class="fa fa-envelope text-md"></i>
           </div>
           <p>
-            info@pondokit.com
+            info.pondokit@gmail.com
           </p>
         </div>
       </div>
@@ -281,7 +282,7 @@
         <div class="border border-light rounded py-3 footbox shadow-kka">
           <i class="fa fa-phone text-md"></i>
           <p>
-            085228802828 (informasi)
+            0852 2880 2828 (informasi)
           </p>
         </div>
       </div>
@@ -301,7 +302,7 @@
       </div>
       <div class=" col-lg-3 col-md-3 ani-no-bgc wow flipInX slower" data-wow-delay="1.5s">
         <div class="border border-light rounded py-3 footbox shadow-kka">
-          <a class="text-white p-2" href="https://www.facebook.com/pondokitcom/?ref=br_rs" target="_blank">
+          <a class="text-white p-2" href="https://www.facebook.com/pondokprogrammer/" target="_blank">
             <i class="fa fa-facebook text-md"></i>
           </a>
           <a class="text-white p-2" href="" target="_blank">

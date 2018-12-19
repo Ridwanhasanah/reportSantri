@@ -117,10 +117,13 @@ class InvoiceController extends Controller
 
             // DB::table('users')->select('*')->
             // where('id',$invoice->santri_id)->update(['status'=>'Telah Dibiayai']);
+
+            $invoice->save();
+            // Send Email
+            event(new EventConfirmationTransfer($invoice));
+        }else{
+            $invoice->save();
         }
-        $invoice->save();
-        // Send Email
-        event(new EventConfirmationTransfer($invoice));
 
         return redirect()->route('invoice-admin.index')->with('success','Berhasil merubah Invoice');
     }

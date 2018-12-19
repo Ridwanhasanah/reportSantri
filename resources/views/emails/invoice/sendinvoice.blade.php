@@ -8,7 +8,7 @@ Kami informasikan bahwa kami telah menerbitkan invoice untuk Donasi Anda kepada 
     <div class="row pad-top-botm ">
         <div class="col-lg-6 col-md-6 col-sm-6">
           
-             <strong>   Kakak Asuh Pondok IT.</strong>
+             <strong>   Kakak Asuh Indonesia.</strong>
             <br />
                 <i>Alamat :</i> Glagah Lor RT.02 No.64 ,
             <br />
@@ -22,7 +22,7 @@ Kami informasikan bahwa kami telah menerbitkan invoice untuk Donasi Anda kepada 
        <div class="col-lg-12 col-md-12 col-sm-12">
            <hr />
            <span>
-               <strong>Email : </strong>  info@pondokit.com 
+               <strong>Email : </strong>  info.kakakasuh@gmail.com 
            </span>
            <span>
                <strong>Telephone : </strong>  085228802828 
@@ -105,18 +105,11 @@ Kami informasikan bahwa kami telah menerbitkan invoice untuk Donasi Anda kepada 
        <div class="col-lg-12 col-md-12 col-sm-12">
           <strong> Anda Dapat mentransfer ke rekening berikut: </strong>
            <ol>
-                <li>
-                  BNI 0276409213 (Kode 009) Atas Nama Pondok IT
-
-               </li>
-               <li>
-                  Mandiri Syariah 7528802828 Atas Nama Pondok IT
-               </li>
                <li>
                   BCA  8465039848  (Kode 014) Atas Nama Rulli Indrawan
                </li>
                <li>
-                  Mandiri 1370009976966 (kode 008) Atas Nama Rulli Indrawan
+                  Mandiri 1370009976966 (Kode 008) Atas Nama Rulli Indrawan
                </li>
            </ol>
            </div>
